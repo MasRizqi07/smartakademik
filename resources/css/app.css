@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-glass;
+    }
+    
+    .glass-dark {
+        @apply bg-slate-900/70 backdrop-blur-md border border-slate-700/50 shadow-glass;
+    }
+    
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-accent-500;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}

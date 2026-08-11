@@ -1,18 +1,25 @@
-<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-slate-200">
-        <div class="p-6 bg-white border-b border-slate-200">
-            
-            @if (session()->has('message'))
-                <div class="mb-6 px-4 py-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-md">
-                    {{ session('message') }}
-                </div>
-            @endif
+<div class="space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-800">Input Nilai Formatif</h2>
+            <p class="text-slate-500">Kelola nilai tugas dan ulangan harian siswa di kelas yang Anda ajar.</p>
+        </div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-200">
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Kelas & Mata Pelajaran</label>
-                    @if(count($kombinasiKelasMapel) > 0)
-                        <select wire:model.live="selectedKombinasi" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50 text-base">
+    @if (session()->has('message'))
+        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl p-4 flex items-center gap-3 animate-slide-up">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="font-medium">{{ session('message') }}</span>
+        </div>
+    @endif
+
+    <x-modern-card>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Kelas & Mata Pelajaran</label>
+                @if(count($kombinasiKelasMapel) > 0)
+                    <div class="relative">
+                        <select wire:model.live="selectedKombinasi" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 text-slate-700 font-medium transition-colors appearance-none bg-white">
                             <option value="">-- Pilih Kelas & Mapel --</option>
                             @foreach($kombinasiKelasMapel as $key => $item)
                                 <option value="{{ $key }}">
@@ -20,69 +27,92 @@
                                 </option>
                             @endforeach
                         </select>
-                    @else
-                        <div class="mt-2 text-sm text-amber-600 bg-amber-50 border border-amber-200 rounded-md p-2">
-                            Anda belum memiliki jadwal mengajar.
-                        </div>
-                    @endif
-                </div>
+                    </div>
+                @else
+                    <div class="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2">
+                        <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        <span>Anda belum memiliki jadwal mengajar.</span>
+                    </div>
+                @endif
+            </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Jenis Penilaian</label>
-                    <select wire:model.live="jenis" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50 text-base">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Jenis Penilaian</label>
+                <div class="relative">
+                    <select wire:model.live="jenis" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 text-slate-700 font-medium transition-colors appearance-none bg-white">
                         <option value="tugas">Tugas</option>
                         <option value="ulangan_harian">Ulangan Harian</option>
                     </select>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Tanggal</label>
-                    <input type="date" wire:model.live="tanggal" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50 text-base">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <input type="date" wire:model.live="tanggal" class="pl-10 block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 text-slate-700 font-medium transition-colors">
+                </div>
+            </div>
+        </div>
+    </x-modern-card>
+
+    @if($selectedKombinasi && $tanggal && $jenis && count($siswas) > 0)
+        <form wire:submit="save" class="animate-fade-in relative min-h-[300px]">
+            <!-- Loading overlay when processing -->
+            <div wire:loading wire:target="save" class="absolute inset-0 z-20 bg-white/60 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                <div class="flex flex-col items-center gap-3 bg-white p-6 rounded-2xl shadow-xl border border-slate-100">
+                    <svg class="animate-spin h-8 w-8 text-brand-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span class="font-semibold text-slate-700">Menyimpan data nilai...</span>
                 </div>
             </div>
 
-            @if($selectedKombinasi && $tanggal && $jenis && count($siswas) > 0)
-                <form wire:submit="save">
-                    <div class="overflow-x-auto border border-slate-200 rounded-lg">
-                        <table class="min-w-full divide-y divide-slate-200">
-                            <thead class="bg-slate-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider w-16">No</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">NISN</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Nama Siswa</th>
-                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-slate-500 uppercase tracking-wider w-32">Nilai (0-100)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-200">
-                                @foreach($siswas as $index => $siswa)
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{{ $index + 1 }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{{ $siswa->nisn }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">{{ $siswa->nama }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            <input type="number" inputmode="numeric" step="0.01" min="0" max="100" 
-                                                   wire:model.defer="nilaiData.{{ $siswa->id }}" 
-                                                   class="block w-full text-center rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50 text-base py-1.5"
-                                                   placeholder="-">
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="mt-6 flex justify-end">
-                        <button type="submit" class="px-6 py-2 bg-emerald-600 text-white rounded-md font-semibold text-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-                            Simpan Nilai
-                        </button>
-                    </div>
-                </form>
-            @elseif($selectedKombinasi && $tanggal && $jenis && count($siswas) == 0)
-                <div class="text-center py-8 text-slate-500 bg-slate-50 rounded-lg border border-slate-200">
-                    Tidak ada siswa di kelas ini.
+            <x-modern-card title="Daftar Siswa & Nilai" icon="<svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01'></path></svg>">
+                <div class="space-y-4">
+                    @foreach($siswas as $index => $siswa)
+                        <div class="flex flex-col md:flex-row items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-300 hover:shadow-sm transition-all duration-300">
+                            <div class="flex items-center gap-4 w-full md:w-auto mb-4 md:mb-0">
+                                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500 shrink-0">
+                                    {{ $index + 1 }}
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-lg">{{ $siswa->nama }}</h4>
+                                    <p class="text-sm text-slate-500 font-medium">NISN: {{ $siswa->nisn }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full md:w-auto md:w-32 relative">
+                                <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400 font-bold">
+                                    /100
+                                </div>
+                                <input type="number" inputmode="numeric" step="0.01" min="0" max="100" 
+                                       wire:model.defer="nilaiData.{{ $siswa->id }}" 
+                                       class="block w-full text-center md:text-left pr-12 rounded-xl border-slate-300 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 font-bold text-lg text-slate-800 py-2 transition-all hover:border-slate-400"
+                                       placeholder="-">
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            @endif
-
+                
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-slate-100 pt-6 gap-4">
+                    <div class="text-sm text-slate-500">
+                        Total <span class="font-bold text-slate-700">{{ count($siswas) }}</span> siswa di kelas ini.
+                    </div>
+                    <x-animated-button type="submit" variant="primary" icon="<svg fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path></svg>">
+                        Simpan Nilai
+                    </x-animated-button>
+                </div>
+            </x-modern-card>
+        </form>
+    @elseif($selectedKombinasi && $tanggal && $jenis && count($siswas) == 0)
+        <div class="text-center py-12 text-slate-500 bg-white rounded-2xl border border-slate-200 shadow-sm animate-fade-in">
+            <svg class="w-16 h-16 mx-auto text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <h3 class="text-xl font-bold text-slate-700">Kelas Kosong</h3>
+            <p>Tidak ada siswa yang terdaftar di kelas ini.</p>
         </div>
-    </div>
+    @endif
 </div>

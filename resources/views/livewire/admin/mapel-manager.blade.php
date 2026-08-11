@@ -1,87 +1,121 @@
-<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-slate-200">
-        <div class="p-6 bg-white border-b border-slate-200">
-            
-            <!-- Header & Actions -->
-            <div class="flex justify-between items-center mb-6">
-                <div class="w-1/3">
-                    <input wire:model.live.debounce.300ms="search" type="text" placeholder="Cari Kode atau Nama Mapel..." 
-                           class="w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50">
+<div class="space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-800">Manajemen Mata Pelajaran</h2>
+            <p class="text-slate-500">Kelola data mata pelajaran sekolah.</p>
+        </div>
+        <div class="flex items-center gap-3 w-full md:w-auto">
+            <div class="relative w-full md:w-64">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <button wire:click="create" class="px-4 py-2 bg-emerald-600 text-white rounded-md font-semibold text-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-                    + Tambah Mapel
-                </button>
+                <input wire:model.live.debounce.300ms="search" type="text" placeholder="Cari Kode atau Nama..." 
+                       class="pl-10 w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
             </div>
-
-            <!-- Flash Message -->
-            @if (session()->has('message'))
-                <div class="mb-4 px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-md">
-                    {{ session('message') }}
-                </div>
-            @endif
-
-            <!-- Form (Toggleable) -->
-            @if($isFormOpen)
-                <div class="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-md">
-                    <h3 class="text-lg font-semibold mb-4 text-slate-900">{{ $mapelId ? 'Edit Mata Pelajaran' : 'Tambah Mata Pelajaran Baru' }}</h3>
-                    <form wire:submit="store">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700">Kode Mapel</label>
-                                <input type="text" wire:model="kode_mapel" placeholder="Misal: MTK, B-IND" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50 text-base">
-                                @error('kode_mapel') <span class="text-rose-500 text-xs">{{ $message }}</span> @enderror
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700">Nama Mata Pelajaran</label>
-                                <input type="text" wire:model="nama_mapel" placeholder="Misal: Matematika Wajib" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50 text-base">
-                                @error('nama_mapel') <span class="text-rose-500 text-xs">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-
-                        <div class="flex justify-end gap-2 mt-4">
-                            <button type="button" wire:click="resetForm" class="px-4 py-2 border border-slate-300 text-slate-700 rounded-md text-sm hover:bg-slate-100">Batal</button>
-                            <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded-md font-semibold text-sm hover:bg-emerald-700">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            @endif
-
-            <!-- Data Table -->
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-slate-200">
-                    <thead class="bg-slate-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Kode Mapel</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Nama Mata Pelajaran</th>
-                            <th class="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-slate-200">
-                        @forelse ($mapels as $mapel)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-900">{{ $mapel->kode_mapel }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">{{ $mapel->nama_mapel }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <button wire:click="edit({{ $mapel->id }})" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</button>
-                                    <button wire:click="delete({{ $mapel->id }})" wire:confirm="Yakin ingin menghapus mapel ini? Ini akan gagal jika mapel sudah digunakan di jadwal." class="text-rose-600 hover:text-rose-900">Hapus</button>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-center text-slate-500">
-                                    Tidak ada data mata pelajaran ditemukan.
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Pagination -->
-            <div class="mt-4">
-                {{ $mapels->links() }}
-            </div>
-
+            <x-animated-button wire:click="create" variant="primary" icon="<svg fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 4v16m8-8H4'></path></svg>">
+                Tambah
+            </x-animated-button>
         </div>
     </div>
+
+    @if (session()->has('message'))
+        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl p-4 flex items-center gap-3 animate-slide-up">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="font-medium">{{ session('message') }}</span>
+        </div>
+    @endif
+
+    @if($isFormOpen)
+        <div class="animate-fade-in mb-6 relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-20"></div>
+            <div class="relative bg-white rounded-2xl p-6 shadow-soft border border-slate-100">
+                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">{{ $mapelId ? 'Edit Mata Pelajaran' : 'Tambah Mata Pelajaran Baru' }}</h3>
+                </div>
+                
+                <form wire:submit="store">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Kode Mapel</label>
+                            <input type="text" wire:model="kode_mapel" placeholder="Misal: MTK, B-IND" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors uppercase">
+                            @error('kode_mapel') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Mata Pelajaran</label>
+                            <input type="text" wire:model="nama_mapel" placeholder="Misal: Matematika Wajib" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
+                            @error('nama_mapel') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
+                        <button type="button" wire:click="resetForm" class="px-6 py-2.5 border border-slate-200 text-slate-600 rounded-xl font-semibold text-sm hover:bg-slate-50 hover:text-slate-900 transition-all">Batal</button>
+                        <x-animated-button type="submit" variant="primary" icon="<svg fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path></svg>">
+                            Simpan Data
+                        </x-animated-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endif
+
+    <x-modern-card>
+        <div class="overflow-x-auto -mx-6 px-6 relative">
+            <div wire:loading wire:target="search, previousPage, nextPage, gotoPage" class="absolute inset-0 z-10 bg-white/50 backdrop-blur-sm flex items-center justify-center rounded-xl">
+                <svg class="animate-spin h-8 w-8 text-brand-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
+            
+            <table class="min-w-full divide-y divide-slate-100">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Kode Mapel</th>
+                        <th class="px-4 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Nama Mata Pelajaran</th>
+                        <th class="px-4 py-4 text-right text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @forelse ($mapels as $mapel)
+                        <tr class="hover:bg-slate-50/70 transition-colors group">
+                            <td class="px-4 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 uppercase">
+                                    {{ $mapel->kode_mapel }}
+                                </span>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm font-bold text-slate-900">{{ $mapel->nama_mapel }}</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button wire:click="edit({{ $mapel->id }})" class="p-2 text-sky-600 hover:bg-sky-50 rounded-lg transition-colors" title="Edit">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                    </button>
+                                    <button wire:click="delete({{ $mapel->id }})" wire:confirm="Yakin ingin menghapus mapel ini? Ini akan gagal jika mapel sudah digunakan di jadwal." class="p-2 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors" title="Hapus">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="px-4 py-12 text-center text-slate-500">
+                                <div class="flex flex-col items-center justify-center">
+                                    <svg class="w-12 h-12 text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                    <p class="text-base font-medium">Tidak ada data mata pelajaran yang ditemukan.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        @if($mapels->hasPages())
+            <div class="mt-6 pt-6 border-t border-slate-100">
+                {{ $mapels->links() }}
+            </div>
+        @endif
+    </x-modern-card>
 </div>
