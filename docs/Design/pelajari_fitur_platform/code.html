@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Features - Academic Portal MAN 4 Jombang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#006948",
+                        "on-background": "#191c1e",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-tertiary": "#ffffff",
+                        "border-default": "#e2e8f0",
+                        "on-surface": "#191c1e",
+                        "status-izin": "#f59e0b",
+                        "primary-fixed": "#85f8c4",
+                        "background": "#f7f9fb",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "tertiary-container": "#00855b",
+                        "primary-container": "#00855d",
+                        "on-tertiary-fixed": "#002113",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary-container": "#d5e3fc",
+                        "on-error-container": "#93000a",
+                        "secondary": "#515f74",
+                        "outline-variant": "#bccac0",
+                        "status-hadir": "#22c55e",
+                        "inverse-primary": "#68dba9",
+                        "on-primary-container": "#f5fff7",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#3d4a42",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed-variant": "#005137",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#f5fff6",
+                        "status-alfa": "#f43f5e",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary": "#006947",
+                        "surface-container": "#eceef0",
+                        "surface-tint": "#006c4a",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-primary-fixed": "#002114",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed-dim": "#68dba9",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "text-main": "#0f172a",
+                        "status-sakit": "#0ea5e9",
+                        "on-secondary-container": "#57657a",
+                        "outline": "#6d7a72"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "list-gap": "0.5rem",
+                        "grid-gutter": "1rem",
+                        "section-margin": "1.5rem",
+                        "container-padding-mobile": "1rem",
+                        "touch-target": "44px"
+                    },
+                    "fontFamily": {
+                        "body-default": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "input-text": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest shadow-sm border-r border-border-default z-20">
+<div class="p-6">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary truncate">MAN 4 Jombang</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Academic Management</p>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-2 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+<span class="font-label-md text-label-md">Grades</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<!-- Explictly active nav item conceptually linked to 'Features' or generic learning/settings -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-200 active:scale-95 group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-default">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center justify-center gap-2" style="min-height: 44px;">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Record Attendance
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky bg-surface border-b border-border-default flex justify-between items-center h-16 px-6 z-10 w-full">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Toggle (Visible only on small screens) -->
+<button class="md:hidden text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-extrabold text-primary hidden md:block">Academic Portal</span>
+</div>
+<!-- Search Bar on Left (as per JSON, implemented inline) -->
+<div class="hidden md:flex flex-1 max-w-md mx-6 relative items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary font-body-default text-body-default placeholder-on-surface-variant" placeholder="Search students, classes..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-border-default">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a professional school administrator in modern, well-lit office setting. They are wearing subtle, formal attire. The lighting is soft and natural, emphasizing a trustworthy and competent demeanor. The background is slightly blurred showing neat bookshelves, fitting the academic and professional emerald green aesthetic of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIKNDm0BiVq-6qCOfbK9iPSh9ZiP1ereM6y4w_aa9_seUqLQRCgbnq6jrMG6zqViw9LyRb41JJPS3E4lE1-XaQyyEVQVX5Z0ddvODNGFTyWddbETI2Jfvfv8DY3wfgIR42Um1sgRrv7f2vdSJzdFazquTUWhprGC9ndnu8DJCs1e0_XCZDS4qZFynXU-92KiRoYVfOd5uKxSQIj86ExWDXdtSAqFVTDbwDd4s4c_47Kai-2AgTP5jb7w"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-6 md:p-8 flex-1 max-w-7xl mx-auto w-full">
+<!-- Hero Section -->
+<section class="mb-12">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-border-default overflow-hidden">
+<div class="md:flex">
+<div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<span class="text-primary font-label-md text-label-md uppercase tracking-wider mb-2 block">Platform Capabilities</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-4">Mastering Academic Operations</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                                Discover the suite of integrated tools designed specifically for MAN 4 Jombang. From frictionless real-time attendance to comprehensive formative grading, our platform minimizes administrative overhead so educators can focus on teaching.
+                            </p>
+</div>
+<div class="md:w-1/2 bg-surface-container relative overflow-hidden min-h-[300px]">
+<!-- Subtle geometric pattern or gradient representing data/tech -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-surface-bright mix-blend-multiply"></div>
+<img class="w-full h-full object-cover absolute inset-0 opacity-80 mix-blend-overlay" data-alt="An abstract, high-tech conceptual visualization of data flowing smoothly between interconnected digital nodes, rendered in a modern emerald green and crisp white palette. The scene should convey speed, efficiency, and real-time synchronization in a clean, minimalist style, suitable for a professional corporate academic platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsJl6_kHps9V9bu0yvcQH8cFfG1vn3ODn4rBdUAuVuQ84ZX_6LAHgJWX9bXDx19J7AhMYbDzX7cD-CYpXSGhi_qeF66vIjN4pFRnirh2ulaM6RL8soGWzFBLvlpsRvLWVgg5zm_KHSKlt4A251fQVApPqGQIcZaoEbkwTqMZZDGTd12v53n2s4Ah8oaX4NJDmGflpmvLGaYVMlLc8SgZrO7Xjs8qcYw4nHEk3bPXcv_n2PmvXmn-zoFA"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

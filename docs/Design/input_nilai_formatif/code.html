@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Portal - Formative Grades</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration (Design System Tokens) -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#0d1c2e",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "status-hadir": "#22c55e",
+                        "tertiary": "#006947",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#005137",
+                        "on-error": "#ffffff",
+                        "border-default": "#e2e8f0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "status-sakit": "#0ea5e9",
+                        "inverse-primary": "#68dba9",
+                        "primary-container": "#00855d",
+                        "surface-tint": "#006c4a",
+                        "error": "#ba1a1a",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline-variant": "#bccac0",
+                        "status-alfa": "#f43f5e",
+                        "text-main": "#0f172a",
+                        "on-surface-variant": "#3d4a42",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "surface-container": "#eceef0",
+                        "tertiary-container": "#00855b",
+                        "surface-dim": "#d8dadc",
+                        "status-izin": "#f59e0b",
+                        "primary-fixed": "#85f8c4",
+                        "secondary-fixed": "#d5e3fc",
+                        "secondary": "#515f74",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#57657a",
+                        "primary-fixed-dim": "#68dba9",
+                        "outline": "#6d7a72",
+                        "secondary-container": "#d5e3fc",
+                        "on-primary-container": "#f5fff7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary-container": "#f5fff6",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#006948",
+                        "on-primary-fixed": "#002114",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "background": "#f7f9fb"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "list-gap": "0.5rem",
+                        "touch-target": "44px",
+                        "grid-gutter": "1rem",
+                        "section-margin": "1.5rem",
+                        "container-padding-mobile": "1rem"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Inter"],
+                        "input-text": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-default": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles to support design tokens */
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        
+        /* Hide scrollbar for cleaner UI in dense tables */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Custom numeric input styling */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        /* Input Validation Styles */
+        .input-valid { border-color: #22c55e !important; background-color: #f0fdf4 !important; }
+        .input-invalid { border-color: #ba1a1a !important; background-color: #fff1f2 !important; }
+    </style>
+</head>
+<body class="bg-surface text-text-main flex min-h-screen relative overflow-x-hidden">
+<!-- Mobile Navigation Overlay (Hidden by default) -->
+<div class="fixed inset-0 bg-on-background/50 z-40 hidden md:hidden transition-opacity" id="mobile-nav-overlay"></div>
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest shadow-sm flex flex-col p-4 border-r border-border-default z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300" id="sidebar">
+<div class="mb-8 flex items-center justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">MAN 4 Jombang</h1>
+<p class="font-body-default text-body-default text-on-surface-variant">Academic Management</p>
+</div>
+<!-- Mobile Close Btn -->
+<button class="md:hidden p-2 text-on-surface-variant rounded-full hover:bg-surface-container" id="close-sidebar">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Attendance -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+<!-- Grades (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined icon-fill">grade</span>
+<span class="font-label-md text-label-md">Grades</span>
+</a>
+<!-- Schedule -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-border-default">
+<button class="w-full flex items-center justify-center gap-2 bg-surface-container hover:bg-surface-container-high text-primary h-[44px] rounded-lg transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">add_task</span>
+                Record Attendance
+            </button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col min-w-0 md:ml-64 w-full">
+<!-- TopAppBar (Shared Component) -->
+<header class="docked full-width top-0 sticky bg-surface border-b border-border-default flex justify-between items-center h-16 px-4 md:px-6 z-30 w-full transition-all">
+<div class="flex items-center gap-3">
+<button class="md:hidden p-2 -ml-2 text-on-surface-variant rounded-full hover:bg-surface-container" id="open-sidebar">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-md text-headline-md font-extrabold text-primary">Academic Portal</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-lowest border border-border-default rounded-full px-3 h-10 w-64 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 w-full font-input-text text-input-text text-text-main placeholder-on-surface-variant" placeholder="Search students..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-default ml-2 cursor-pointer">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="Professional headshot of a teacher, well lit, neutral background, looking at camera, high quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu2UGeZFx4bqjKHnGKmaZl89AQm4c5-Zr-6BCyzliiUu67v3zsv3_FsMrWjBzB4dSXYff95IDshnbD3qEyq1vHoIfnnVVqPNyPY0MCpXYH049dP5QapJCbZYlNL_XKxDiqP1mDNe7n8-u6qsQXhFVIOkYiLHchbR5vrplqblmidivaVD6wx99w3Eu6gFIHbqpmoUoW_iiktxGfvqSPN38LLUgDfClEn1kbxDGXigVALgZ1kl-201GEUQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="flex-1 p-4 md:p-6 lg:p-8 w-full max-w-7xl mx-auto flex flex-col gap-6 pb-24 md:pb-8">
+<!-- Page Header & Bento Summary -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-text-main">Formative Assessment</h2>
+<p class="font-body-default text-body-default text-on-surface-variant mt-1">Input scores for daily tasks and evaluations.</p>
+</div>
+</div>
+<!-- Bento Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<!-- Context Card -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl border border-border-default shadow-sm p-4 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center gap-2 mb-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">class</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Class Context</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md font-semibold text-text-main">Physics • XI-A</div>
+<div class="font-body-default text-body-default text-on-surface-variant mt-1">Thursday, Oct 24, 2023</div>
+</div>
+</div>
+<!-- Assignment Selector Card -->
+<div class="md:col-span-5 bg-surface-container-lowest rounded-xl border border-border-default shadow-sm p-4 flex flex-col justify-between">
+<label class="flex items-center gap-2 mb-2 text-on-surface-variant" for="assignment-select">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Evaluation Type</span>
+</label>
+<div class="relative">
+<select class="w-full h-[44px] appearance-none bg-surface border border-border-default rounded-lg pl-4 pr-10 font-input-text text-input-text text-text-main focus:border-primary focus:ring-2 focus:ring-primary/20 transition-shadow cursor-pointer" id="assignment-select">
+<option value="tugas1">Tugas 1 (Kinematics)</option>
+<option value="uh1">Ulangan Harian 1</option>
+<option value="praktikum">Laporan Praktikum 1</option>
+<option class="text-primary font-medium" value="new">+ Add New Evaluation</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Live Average Card -->
+<div class="md:col-span-3 bg-surface-container-lowest rounded-xl border border-border-default shadow-sm p-4 flex flex-col justify-between items-center text-center relative overflow-hidden">
+<div class="flex items-center gap-2 mb-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Class Average</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-[36px] leading-none font-bold text-primary" id="class-average">0.0</span>
+<span class="font-body-default text-body-default text-on-surface-variant">/ 100</span>
+</div>
+<!-- Mini sparkline decoration -->
+<div class="absolute bottom-0 left-0 w-full h-8 opacity-20 bg-gradient-to-t from-primary to-transparent"></div>
+</div>
+</div>
+</div>
+<!-- Dense Input Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-border-default shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header (Desktop) -->
+<div class="hidden md:grid grid-cols-12 gap-4 bg-surface-container-low px-4 py-3 border-b border-border-default items-center">
+<div class="col-span-5 font-label-md text-label-md text-on-surface-variant">Student Details</div>
+<div class="col-span-3 font-label-md text-label-md text-on-surface-variant text-center">Score (0-100)</div>
+<div class="col-span-4 font-label-md text-label-md text-on-surface-variant">Teacher Notes</div>
+</div>
+<!-- Student List (Form Items) -->
+<div class="flex flex-col divide-y divide-border-default" id="student-list">
+<!-- Student Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-4 items-center hover:bg-surface/50 transition-colors group">
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md font-bold shrink-0">
+                                AA
+                            </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-text-main">Ahmad Alifian</div>
+<div class="font-body-default text-[13px] text-on-surface-variant">NISN: 0051234567</div>
+</div>
+</div>
+<div class="md:col-span-3 flex justify-start md:justify-center">
+<div class="relative w-full md:w-32">
+<input class="grade-input w-full h-[44px] text-center font-input-text text-[18px] font-semibold text-text-main border border-border-default rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-surface-container-lowest" max="100" min="0" placeholder="--" type="number"/>
+</div>
+</div>
+<div class="md:col-span-4 w-full">
+<input class="w-full h-[44px] px-3 font-input-text text-input-text border border-border-default rounded-lg bg-surface hover:bg-surface-container-lowest focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-on-surface-variant/50" placeholder="Optional notes..." type="text"/>
+</div>
+</div>
+<!-- Student Row 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-4 items-center hover:bg-surface/50 transition-colors group">
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md font-bold shrink-0">
+                                BP
+                            </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-text-main">Budi Pratama</div>
+<div class="font-body-default text-[13px] text-on-surface-variant">NISN: 0051234568</div>
+</div>
+</div>
+<div class="md:col-span-3 flex justify-start md:justify-center">
+<div class="relative w-full md:w-32">
+<input class="grade-input w-full h-[44px] text-center font-input-text text-[18px] font-semibold text-text-main border border-border-default rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-surface-container-lowest" max="100" min="0" placeholder="--" type="number"/>
+</div>
+</div>
+<div class="md:col-span-4 w-full">
+<input class="w-full h-[44px] px-3 font-input-text text-input-text border border-border-default rounded-lg bg-surface hover:bg-surface-container-lowest focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-on-surface-variant/50" placeholder="Optional notes..." type="text"/>
+</div>
+</div>
+<!-- Student Row 3 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-4 items-center hover:bg-surface/50 transition-colors group">
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md font-bold shrink-0">
+                                CA
+                            </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-text-main">Citra Ayu</div>
+<div class="font-body-default text-[13px] text-on-surface-variant">NISN: 0051234569</div>
+</div>
+</div>
+<div class="md:col-span-3 flex justify-start md:justify-center">
+<div class="relative w-full md:w-32">
+<input class="grade-input w-full h-[44px] text-center font-input-text text-[18px] font-semibold text-text-main border border-border-default rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-surface-container-lowest" max="100" min="0" placeholder="--" type="number"/>
+</div>
+</div>
+<div class="md:col-span-4 w-full">
+<input class="w-full h-[44px] px-3 font-input-text text-input-text border border-border-default rounded-lg bg-surface hover:bg-surface-container-lowest focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-on-surface-variant/50" placeholder="Optional notes..." type="text"/>
+</div>
+</div>
+<!-- Student Row 4 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-4 items-center hover:bg-surface/50 transition-colors group">
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md font-bold shrink-0">
+                                DW
+                            </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-text-main">Dian Wulandari</div>
+<div class="font-body-default text-[13px] text-on-surface-variant">NISN: 0051234570</div>
+</div>
+</div>
+<div class="md:col-span-3 flex justify-start md:justify-center">
+<div class="relative w-full md:w-32">
+<input class="grade-input w-full h-[44px] text-center font-input-text text-[18px] font-semibold text-text-main border border-border-default rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-surface-container-lowest" max="100" min="0" placeholder="--" type="number"/>
+</div>
+</div>
+<div class="md:col-span-4 w-full">
+<input class="w-full h-[44px] px-3 font-input-text text-input-text border border-border-default rounded-lg bg-surface hover:bg-surface-container-lowest focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-on-surface-variant/50" placeholder="Optional notes..." type="text"/>
+</div>
+</div>
+<!-- Student Row 5 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-4 items-center hover:bg-surface/50 transition-colors group">
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md font-bold shrink-0">
+                                EK
+                            </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-text-main">Eko Kurniawan</div>
+<div class="font-body-default text-[13px] text-on-surface-variant">NISN: 0051234571</div>
+</div>
+</div>
+<div class="md:col-span-3 flex justify-start md:justify-center">
+<div class="relative w-full md:w-32">
+<input class="grade-input w-full h-[44px] text-center font-input-text text-[18px] font-semibold text-text-main border border-border-default rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-surface-container-lowest" max="100" min="0" placeholder="--" type="number"/>
+</div>
+</div>
+<div class="md:col-span-4 w-full">
+<input class="w-full h-[44px] px-3 font-input-text text-input-text border border-border-default rounded-lg bg-surface hover:bg-surface-container-lowest focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder-on-surface-variant/50" placeholder="Optional notes..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Action Bar (Mobile Bottom, Desktop Inline) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-border-default p-4 flex justify-between items-center z-20 md:static md:bg-transparent md:border-none md:p-0 md:justify-end shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:shadow-none">
+<div class="md:hidden flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Students</span>
+<span class="font-label-md text-label-md font-bold">5 Graded</span>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="hidden md:block h-[44px] px-6 rounded-lg font-label-md text-label-md font-semibold text-on-surface-variant hover:bg-surface-container transition-colors border border-transparent">
+                        Cancel
+                    </button>
+<button class="flex-1 md:flex-none bg-primary text-on-primary h-[44px] px-8 rounded-lg font-label-md text-label-md font-semibold shadow-sm hover:bg-primary-container transition-all flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Grades
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Interactive Scripts -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Sidebar Toggle
+            const openSidebarBtn = document.getElementById('open-sidebar');
+            const closeSidebarBtn = document.getElementById('close-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-nav-overlay');
+
+            function toggleSidebar(show) {
+                if (show) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            openSidebarBtn.addEventListener('click', () => toggleSidebar(true));
+            closeSidebarBtn.addEventListener('click', () => toggleSidebar(false));
+            overlay.addEventListener('click', () => toggleSidebar(false));
+
+            // Grade Logic: Validation and Average Calculation
+            const gradeInputs = document.querySelectorAll('.grade-input');
+            const averageDisplay = document.getElementById('class-average');
+
+            function updateAverage() {
+                let total = 0;
+                let count = 0;
+
+                gradeInputs.forEach(input => {
+                    const val = parseFloat(input.value);
+                    
+                    // Validation Styling
+                    if (input.value !== '') {
+                        if (val >= 0 && val <= 100) {
+                            input.classList.add('input-valid');
+                            input.classList.remove('input-invalid');
+                            total += val;
+                            count++;
+                        } else {
+                            input.classList.add('input-invalid');
+                            input.classList.remove('input-valid');
+                        }
+                    } else {
+                        input.classList.remove('input-valid', 'input-invalid');
+                    }
+                });
+
+                if (count > 0) {
+                    const avg = (total / count).toFixed(1);
+                    averageDisplay.textContent = avg;
+                    
+                    // Simple color coding for average
+                    if(avg >= 80) averageDisplay.className = "font-headline-lg text-[36px] leading-none font-bold text-status-hadir";
+                    else if (avg < 60) averageDisplay.className = "font-headline-lg text-[36px] leading-none font-bold text-status-alfa";
+                    else averageDisplay.className = "font-headline-lg text-[36px] leading-none font-bold text-primary";
+                } else {
+                    averageDisplay.textContent = '0.0';
+                    averageDisplay.className = "font-headline-lg text-[36px] leading-none font-bold text-primary";
+                }
+            }
+
+            // Add event listeners to all inputs
+            gradeInputs.forEach(input => {
+                input.addEventListener('input', updateAverage);
+                // Select all text on focus for quick entry
+                input.addEventListener('focus', function() { this.select(); });
+            });
+            
+            // Randomly pre-fill a couple of grades for visual demonstration
+            setTimeout(() => {
+                if(gradeInputs[0]) { gradeInputs[0].value = 85; gradeInputs[0].dispatchEvent(new Event('input')); }
+                if(gradeInputs[1]) { gradeInputs[1].value = 92; gradeInputs[1].dispatchEvent(new Event('input')); }
+            }, 500);
+        });
+    </script>
+</body></html>

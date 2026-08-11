@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "status-hadir": "#22c55e",
+                      "tertiary-container": "#00855b",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-tertiary-container": "#f5fff6",
+                      "surface-container-highest": "#e0e3e5",
+                      "error-container": "#ffdad6",
+                      "primary": "#006948",
+                      "text-main": "#0f172a",
+                      "on-primary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "primary-container": "#00855d",
+                      "on-primary-fixed-variant": "#005137",
+                      "secondary-fixed": "#d5e3fc",
+                      "status-sakit": "#0ea5e9",
+                      "background": "#f7f9fb",
+                      "on-secondary-container": "#57657a",
+                      "outline-variant": "#bccac0",
+                      "border-default": "#e2e8f0",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#006947",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#6d7a72",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d8dadc",
+                      "secondary-container": "#d5e3fc",
+                      "on-primary-container": "#f5fff7",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "on-background": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-surface-variant": "#3d4a42",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "surface": "#f7f9fb",
+                      "primary-fixed-dim": "#68dba9",
+                      "surface-tint": "#006c4a",
+                      "secondary": "#515f74",
+                      "primary-fixed": "#85f8c4",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-tertiary-fixed": "#002113",
+                      "inverse-primary": "#68dba9",
+                      "status-alfa": "#f43f5e",
+                      "status-izin": "#f59e0b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target": "44px",
+                      "container-padding-mobile": "1rem",
+                      "grid-gutter": "1rem",
+                      "section-margin": "1.5rem",
+                      "list-gap": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-default": ["Inter"],
+                      "label-md": ["Inter"],
+                      "input-text": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "input-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex h-screen overflow-hidden">
+<!-- SideNavBar (from JSON) -->
+<nav class="h-screen w-64 hidden lg:flex flex-col border-r border-border-default bg-surface z-40 fixed left-0 top-0">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">MAN 4 Jombang</h1>
+<p class="font-body-default text-body-default text-secondary">Academic Portal</p>
+</div>
+<ul class="flex-1 px-4 space-y-2 mt-4 overflow-y-auto">
+<!-- Dashboard -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<!-- Attendance -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+</li>
+<!-- Grades -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+<span class="font-label-md text-label-md">Grades</span>
+</a>
+</li>
+<!-- Schedule -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+</li>
+<!-- Management -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-label-md">Management</span>
+</a>
+</li>
+<!-- Settings - ACTIVE -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 right-0 left-0 lg:left-64 h-16 flex items-center justify-between px-6 z-30 shadow-sm bg-surface">
+<!-- Mobile Menu Button (Hamburger) -->
+<div class="lg:hidden">
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Contextual Title (Hidden on small, showing on medium+) -->
+<div class="hidden md:block">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Student Profile</h2>
+</div>
+<div class="flex items-center gap-4">
+<!-- Actions -->
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto mt-16 p-4 md:p-8">
+<div class="max-w-5xl mx-auto space-y-6">
+<!-- Bento Grid Layout for Profile Info -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Profile Card (Span 1) -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col items-center text-center">
+<div class="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-surface-container ring-2 ring-primary-container/20">
+<img alt="Student Photo" class="w-full h-full object-cover" data-alt="A professional, well-lit studio portrait of a high school student wearing a standard Indonesian school uniform with a neat white shirt and dark tie. The background is a clean, neutral soft gray. The lighting is bright and even, casting soft shadows, conveying a clean, modern, and formal academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf92umBLnedqNEMGSh7foturesfY2QN9TYuvpzAhaGwLFskWFLTiwYfmA7hME5hEmh2DW9LDUpmrBvBjB7mRFkEpNdnUddVD0ufl3L0YX_mHpwsRUhMJarFkhgMk7xZOvj8OvWga3Pl6E5NqdgN3eE_gWuebHDsWiogsRzCfuYt1k6waOjbdcYR8WspdkaEqSmTtdYRRtmQuLa15DHnfXNokUfQX0AObdzICya0vNzmYrNRsCiMjk8Mw"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Ahmad Faisal</h3>
+<p class="font-body-default text-body-default text-secondary mb-4">XII IPA 1</p>
+<div class="w-full flex justify-between px-4 py-2 bg-surface-container-low rounded-lg mt-auto">
+<span class="font-label-sm text-label-sm text-secondary">NISN</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">0045892134</span>
+</div>
+</div>
+<!-- Details Card (Span 2) -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-xl p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col justify-center">
+<h4 class="font-headline-sm text-lg font-semibold text-on-surface mb-4 border-b border-border-default pb-2">Personal Information</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Full Name</p>
+<p class="font-body-default text-body-default text-on-surface">Ahmad Faisal Ramadhan</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Date of Birth</p>
+<p class="font-body-default text-body-default text-on-surface">15 August 2006</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Gender</p>
+<p class="font-body-default text-body-default text-on-surface">Male</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Homeroom Teacher</p>
+<p class="font-body-default text-body-default text-on-surface">Bpk. Budi Santoso, M.Pd</p>
+</div>
+<div class="sm:col-span-2">
+<p class="font-label-sm text-label-sm text-secondary mb-1">Address</p>
+<p class="font-body-default text-body-default text-on-surface">Jl. Merdeka No. 45, RT 02/RW 03, Kec. Jombang, Kab. Jombang, Jawa Timur</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Academic Summary Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Attendance Summary -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-headline-sm text-lg font-semibold text-on-surface">Attendance Overview</h4>
+<span class="material-symbols-outlined text-secondary">date_range</span>
+</div>
+<div class="flex items-center justify-center mb-6">
+<!-- Circular Progress (Fake) -->
+<div class="relative w-32 h-32 flex items-center justify-center rounded-full bg-surface-container">
+<!-- SVG representing a 92% circle -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-border-default" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.8"></path>
+<path class="text-status-hadir" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-width="3.8"></path>
+</svg>
+<div class="flex flex-col items-center">
+<span class="text-2xl font-bold text-on-surface">92%</span>
+<span class="font-label-sm text-label-sm text-secondary">Present</span>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2 bg-surface p-2 rounded border border-border-default">
+<div class="w-3 h-3 rounded-full bg-status-hadir"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Hadir: 110</span>
+</div>
+<div class="flex items-center gap-2 bg-surface p-2 rounded border border-border-default">
+<div class="w-3 h-3 rounded-full bg-status-izin"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Izin: 5</span>
+</div>
+<div class="flex items-center gap-2 bg-surface p-2 rounded border border-border-default">
+<div class="w-3 h-3 rounded-full bg-status-sakit"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Sakit: 4</span>
+</div>
+<div class="flex items-center gap-2 bg-surface p-2 rounded border border-border-default">
+<div class="w-3 h-3 rounded-full bg-status-alfa"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Alfa: 1</span>
+</div>
+</div>
+</div>
+<!-- Recent Formative Scores -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col">
+<div class="flex items-center justify-between mb-4 border-b border-border-default pb-2">
+<h4 class="font-headline-sm text-lg font-semibold text-on-surface">Recent Assessments</h4>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex-1 overflow-y-auto pr-2">
+<ul class="space-y-[0.5rem]">
+<!-- Score Item 1 -->
+<li class="flex items-center justify-between p-3 bg-surface rounded-lg border border-border-default hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Matematika Wajib</span>
+<span class="font-label-sm text-label-sm text-secondary">UH 3 - Trigonometri</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-sm text-xs rounded-full">12 Nov</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">88</span>
+</div>
+</li>
+<!-- Score Item 2 -->
+<li class="flex items-center justify-between p-3 bg-surface rounded-lg border border-border-default hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Fisika</span>
+<span class="font-label-sm text-label-sm text-secondary">Praktek - Hukum Newton</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-sm text-xs rounded-full">08 Nov</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">92</span>
+</div>
+</li>
+<!-- Score Item 3 -->
+<li class="flex items-center justify-between p-3 bg-surface rounded-lg border border-border-default hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Bahasa Indonesia</span>
+<span class="font-label-sm text-label-sm text-secondary">Tugas Makalah</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-sm text-xs rounded-full">05 Nov</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">78</span>
+</div>
+</li>
+<!-- Score Item 4 -->
+<li class="flex items-center justify-between p-3 bg-surface rounded-lg border border-border-default hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Kimia</span>
+<span class="font-label-sm text-label-sm text-secondary">UH 2 - Senyawa</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-sm text-xs rounded-full">01 Nov</span>
+<span class="font-headline-md text-headline-md text-status-alfa font-bold">65</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

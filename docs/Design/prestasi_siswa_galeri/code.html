@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Achievements - Academic Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "border-default": "#e2e8f0",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "status-sakit": "#0ea5e9",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#bccac0",
+                      "error": "#ba1a1a",
+                      "tertiary": "#006947",
+                      "primary": "#006948",
+                      "on-surface": "#191c1e",
+                      "outline": "#6d7a72",
+                      "on-primary-fixed-variant": "#005137",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary-container": "#00855b",
+                      "primary-fixed": "#85f8c4",
+                      "primary-container": "#00855d",
+                      "on-tertiary-container": "#f5fff6",
+                      "on-primary-fixed": "#002114",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-container": "#d5e3fc",
+                      "on-secondary-container": "#57657a",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "status-alfa": "#f43f5e",
+                      "surface-container-low": "#f2f4f6",
+                      "secondary-fixed": "#d5e3fc",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-tint": "#006c4a",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-variant": "#e0e3e5",
+                      "on-background": "#191c1e",
+                      "surface-container": "#eceef0",
+                      "primary-fixed-dim": "#68dba9",
+                      "text-main": "#0f172a",
+                      "status-izin": "#f59e0b",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "inverse-surface": "#2d3133",
+                      "surface-bright": "#f7f9fb",
+                      "on-surface-variant": "#3d4a42",
+                      "surface-dim": "#d8dadc",
+                      "surface": "#f7f9fb",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#f5fff7",
+                      "inverse-primary": "#68dba9",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#002113",
+                      "background": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "status-hadir": "#22c55e",
+                      "secondary": "#515f74"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "list-gap": "0.5rem",
+                      "section-margin": "1.5rem",
+                      "container-padding-mobile": "1rem",
+                      "grid-gutter": "1rem",
+                      "touch-target": "44px"
+              },
+              "fontFamily": {
+                      "body-default": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "input-text": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-default": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "input-text": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .shadow-soft { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-default text-body-default antialiased overflow-x-hidden min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky bg-surface dark:bg-surface border-b border-border-default dark:border-outline-variant flat no shadows flex justify-between items-center h-16 px-6 ml-0 md:ml-64 w-full md:w-[calc(100%-16rem)] z-20">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors p-2 rounded-full h-[44px] w-[44px] flex items-center justify-center cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">Academic Portal</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex relative items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-default rounded-full text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-[44px]" placeholder="Search achievements..." type="text"/>
+</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors p-2 rounded-full h-[44px] w-[44px] flex items-center justify-center cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors p-2 rounded-full h-[44px] w-[44px] flex items-center justify-center cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover ml-2 border border-border-default shadow-soft" data-alt="Professional headshot of an academic administrator in a light modern office setting, bright and clean photography, corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRWr01p2L_u4RS7smKS6UIeONQU8M3ljH0pzD1PecqM3ws4zIBigVAe7hNg5yCCPVmz2ZS0gnYW_dONv_VvSMUP0bcpVpHrS__dAlA1WZayrKMUFmIYUJ_tl_1Cr8OOQtOGhJHGwSgz0K-94EpgmtR0xPwZQo9IYj738gwGw1YMxnJzEFIj9F-tzuiXAW6wTU1MsmH-L0LGCfQ7-M8Q2rdllJkVew1q0ePUAAHZ4ZrAZnk2tol5I5OUA"/>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface-container-lowest dark:bg-surface-container-lowest h-screen w-64 fixed left-0 top-0 shadow-sm flex flex-col h-full p-4 border-r border-border-default dark:border-outline-variant z-30">
+<div class="flex items-center gap-4 mb-8 p-2">
+<img alt="Teacher Profile Picture" class="w-12 h-12 rounded-lg object-cover shadow-soft" data-alt="School building exterior, modern minimal architectural style, bright daylight, professional corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCjEsV0INwlIGvwr13iHmUFPQME2zsEYwIThTj1yqXveAfwpAVcGB5Fymwq7d7ICnVXh6gJnp_Y-SPQlTlC4tsOK88iywhgwrMHvw45OACbIdgLwcRE1tsQcrY8NLMnBA6_PQGq_S1z-l-sxdev4JHNqO-5KrHb-yJ5NRImmpp1_G5EWnSKvWZIQaDVIyFQhwKsrrwOy-6UMTeCWmcbiQXk8JLVYKMBqTlNHp1DzvswBJ99ogVs__zMw"/>
+<div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim text-lg leading-tight">MAN 4 Jombang</h2>
+<p class="font-label-md text-label-md text-on-surface-variant text-sm">Academic Management</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow font-label-md text-label-md">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high dark:hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high dark:hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+                Attendance
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high dark:hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+                Grades
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high dark:hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Schedule
+            </a>
+<!-- Active State using intent fallback mapping Reports -> Achievements/Portfolio -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-lg font-bold transition-all duration-200 active:scale-95 hover:bg-surface-container-high dark:hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high dark:hover:bg-surface-container-high mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</div>
+<button class="mt-4 bg-primary text-on-primary font-label-md text-label-md rounded-lg py-3 px-4 h-[44px] shadow-soft hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+            Record Attendance
+        </button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 p-container-padding-mobile md:p-section-margin max-w-[1280px] mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-section-margin gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg font-semibold text-text-main">Student Achievements</h2>
+<p class="font-body-default text-body-default text-on-surface-variant mt-1">Portfolio of academic and extracurricular excellence.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md rounded-lg h-[44px] px-6 shadow-soft hover:bg-tertiary transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
+<span class="material-symbols-outlined text-sm">add</span> Add Achievement
+            </button>
+</div>
+<!-- Filters / KPIs Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-grid-gutter mb-section-margin">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-soft border border-border-default flex flex-col justify-center">
+<div class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Total Achievements</div>
+<div class="font-headline-lg text-headline-lg font-bold text-primary">142</div>
+<div class="text-xs text-status-hadir flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +12% this year
+                </div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-soft border border-border-default flex flex-col justify-center">
+<div class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">National Level</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-main">38</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-soft border border-border-default flex flex-col justify-center">
+<div class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Provincial Level</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-main">64</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-soft border border-border-default flex items-end">
+<div class="w-full">
+<label class="text-on-surface-variant font-label-sm text-label-sm mb-2 block">Filter Year</label>
+<select class="w-full h-[44px] bg-surface-container-low border border-border-default rounded-lg px-3 py-2 text-on-surface font-body-default text-body-default focus:ring-2 focus:ring-primary focus:border-transparent">
+<option>Academic Year 2023/2024</option>
+<option>Academic Year 2022/2023</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Achievement Gallery - Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter">
+<!-- Featured Achievement (Large) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl shadow-soft border border-border-default overflow-hidden flex flex-col md:flex-row relative group">
+<div class="w-full md:w-1/2 h-64 md:h-auto relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0" data-alt="Student receiving a gold medal on stage at a science olympiad, bright stage lighting, professional corporate photography, modern and clean style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABTmKPwHQzffRSHp5bUEorsigfyM0ejW6P3RDAOJujLSt4g6RaoSqbG0aC8N9brfwftI9qr8yEL98spGFXUOpbfld_aYLX-SJpg7Tq7xaDIYkgrJae22q4L303AetjMntKBcJ1Tb3iv0tUyHKMDACL1OpJEFMbK-nCxz9PnEZqqKvIko4CAC9-CkwB03u_QtVlwS2JRKrwCDngRB4X7o3zL_IQDkD3vx6Bl4Nq6PKG1T0b9AV_heWLNw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
+</div>
+<div class="w-full md:w-1/2 p-6 flex flex-col justify-between z-10 bg-surface-container-lowest md:bg-transparent">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold uppercase tracking-wide border border-primary/20">Nasional</span>
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-full text-[10px] font-bold uppercase tracking-wide">Akademik</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-text-main mb-2">Juara 1 Olimpiade Fisika Nasional</h3>
+<p class="font-body-default text-body-default text-on-surface-variant mb-4 line-clamp-3">Achieved highest score in theoretical and practical physics examination representing East Java province at the National Science Olympiad.</p>
+</div>
+<div class="flex items-center justify-between mt-4 md:mt-0 pt-4 border-t border-border-default">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-sm">
+                                BA
+                            </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-text-main">Budi Antoro</div>
+<div class="text-xs text-on-surface-variant">Class 12 MIPA 1</div>
+</div>
+</div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 12 Nov 2023
+                        </div>
+</div>
+</div>
+</div>
+<!-- Recent Achievement (Medium) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl shadow-soft border border-border-default p-6 flex flex-col relative overflow-hidden group">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2 py-1 bg-status-izin/10 text-status-izin rounded-full text-[10px] font-bold uppercase tracking-wide border border-status-izin/20">Provinsi</span>
+</div>
+<h3 class="font-body-lg text-body-lg font-semibold text-text-main mb-2">Juara 2 Lomba Debat Bahasa Inggris</h3>
+<p class="font-body-default text-body-default text-on-surface-variant text-sm mb-6 flex-grow">East Java English Debate Championship held at Universitas Airlangga.</p>
+<div class="flex items-center justify-between pt-4 border-t border-border-default">
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2">
+<img alt="Student 1" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Portrait of a female high school student in uniform, modern bright professional headshot, corporate lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPyUfPac07yeMRNueROWJVF2ae3xlQlf-k7yvrhRvfWyt25T9BvzT6fbnN4SBahPzHSQU39753U7M-AuCLNUBMoBkTGlbfXuzEg84pzQeF9vIpCrvkjduF4oePOAddRngIqGGkYkiTAH1rZGOErlBkuoHED19qKzuBSa5S98VjluVuQ_OiXwqjItxouWIYltIqFkQoQpsOo-fl7kxIqJPNWxOtyY2dudTsfkUafOGAHRAAdKGUaXl3PA"/>
+<img alt="Student 2" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Portrait of a male high school student in uniform, modern bright professional headshot, corporate lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC_AIFbq4wgMMcYraWyEdziOYtjfcVN0pnJBwb1BVmQAcfTncDCwvVG_g4ql6uFFuU9icGm-X0JZhbz-nfDcm-STS89Voo2J4LRkMUbH9bdwTAlV-yfOaPk5lrOMrWheWSevV1dKt4XDyzQus5MzRReXVI7uwy7w14RmPm8ohY6UnukYwuQyTmx4MJdnKQuWAhe4a-DyZk6tUNHcCemULxMpmLBEhWIHgv27UOgj8Mm8DsxZVEuK6Bgg"/>
+</div>
+<div class="text-xs text-on-surface-variant ml-1">Team of 3</div>
+</div>
+<div class="text-xs text-on-surface-variant">24 Oct 2023</div>
+</div>
+</div>
+<!-- List View (Data Dense for Admin) -->
+<div class="md:col-span-12 bg-surface-container-lowest rounded-xl shadow-soft border border-border-default overflow-hidden mt-4">
+<div class="p-6 border-b border-border-default flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md font-semibold text-text-main">Achievement Registry</h3>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline h-[44px] px-2">
+                        View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="p-4 font-medium">Student Name</th>
+<th class="p-4 font-medium">Achievement Details</th>
+<th class="p-4 font-medium hidden sm:table-cell">Category</th>
+<th class="p-4 font-medium">Level</th>
+<th class="p-4 font-medium hidden md:table-cell">Date</th>
+</tr>
+</thead>
+<tbody class="font-body-default text-body-default divide-y divide-border-default">
+<tr class="hover:bg-slate-50 transition-colors group cursor-pointer">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold text-xs hidden sm:flex">SA</div>
+<div>
+<div class="font-semibold text-text-main">Siti Aminah</div>
+<div class="text-xs text-on-surface-variant">11 IPS 2</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-text-main font-medium">Medali Emas Pencak Silat</td>
+<td class="p-4 hidden sm:table-cell text-on-surface-variant">Olahraga</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold uppercase tracking-wide border border-primary/20">Nasional</span>
+</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">05 Sep 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group cursor-pointer">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-status-sakit/10 text-status-sakit flex items-center justify-center font-semibold text-xs hidden sm:flex">DW</div>
+<div>
+<div class="font-semibold text-text-main">Dimas Wahyu</div>
+<div class="text-xs text-on-surface-variant">10 MIPA 3</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-text-main font-medium">Juara Harapan 1 MTQ</td>
+<td class="p-4 hidden sm:table-cell text-on-surface-variant">Keagamaan</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface rounded-full text-[10px] font-bold uppercase tracking-wide border border-outline-variant">Kabupaten</span>
+</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">21 Aug 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group cursor-pointer">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-status-izin/10 text-status-izin flex items-center justify-center font-semibold text-xs hidden sm:flex">RN</div>
+<div>
+<div class="font-semibold text-text-main">Rina Novita</div>
+<div class="text-xs text-on-surface-variant">12 MIPA 2</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-text-main font-medium">Finalis Lomba Karya Tulis Ilmiah</td>
+<td class="p-4 hidden sm:table-cell text-on-surface-variant">Akademik</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-status-izin/10 text-status-izin rounded-full text-[10px] font-bold uppercase tracking-wide border border-status-izin/20">Provinsi</span>
+</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">10 Aug 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

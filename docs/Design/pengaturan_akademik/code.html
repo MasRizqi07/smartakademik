@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Settings - MAN 4 Jombang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "status-hadir": "#22c55e",
+                      "tertiary-container": "#00855b",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-tertiary-container": "#f5fff6",
+                      "surface-container-highest": "#e0e3e5",
+                      "error-container": "#ffdad6",
+                      "primary": "#006948",
+                      "text-main": "#0f172a",
+                      "on-primary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "primary-container": "#00855d",
+                      "on-primary-fixed-variant": "#005137",
+                      "secondary-fixed": "#d5e3fc",
+                      "status-sakit": "#0ea5e9",
+                      "background": "#f7f9fb",
+                      "on-secondary-container": "#57657a",
+                      "outline-variant": "#bccac0",
+                      "border-default": "#e2e8f0",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#006947",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#6d7a72",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d8dadc",
+                      "secondary-container": "#d5e3fc",
+                      "on-primary-container": "#f5fff7",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "on-background": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-surface-variant": "#3d4a42",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "surface": "#f7f9fb",
+                      "primary-fixed-dim": "#68dba9",
+                      "surface-tint": "#006c4a",
+                      "secondary": "#515f74",
+                      "primary-fixed": "#85f8c4",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-tertiary-fixed": "#002113",
+                      "inverse-primary": "#68dba9",
+                      "status-alfa": "#f43f5e",
+                      "status-izin": "#f59e0b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target": "44px",
+                      "container-padding-mobile": "1rem",
+                      "grid-gutter": "1rem",
+                      "section-margin": "1.5rem",
+                      "list-gap": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-default": ["Inter"],
+                      "label-md": ["Inter"],
+                      "input-text": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "input-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Base styles */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background font-body-default text-body-default flex antialiased">
+<!-- SideNavBar -->
+<aside class="bg-surface dark:bg-on-background font-label-md text-label-md h-screen w-64 hidden lg:flex flex-col border-r border-border-default border-r border-border-default dark:border-on-secondary-fixed-variant fixed left-0 top-0 h-full z-40">
+<div class="p-6 h-16 flex items-center mb-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MAN 4 Jombang</h1>
+</div>
+<nav class="flex-1 px-4 space-y-2 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+                Attendance
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+                Grades
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Schedule
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+                Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-4 border-t border-border-default mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small, professional avatar image representing an academic administrator or principal in a high-quality, professional photography style. The lighting is bright and evenly distributed, with a clean, neutral white background. The subject is dressed in formal business attire, and the mood is authoritative yet approachable, fitting for an academic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6DEAe5Gtpi4pjXDWuaWUXw_Cvx3mnIHn1WitxAaElFLtW3q4higabTjyM4JlGn7fxXSCwOjHdRBMOOMIJJUJ_1F4ZaCj-Md9ydfH6ezHNyuLfG_MEekkTrvoFh6S10UPWyqPD0TGf4sVvUuRzg4PdCLFSnVVVlTGxtuQdcGbUt-clw4P2YtXWIDoyU4wFUti-2q77b_wd9kX_9IsQKgCJIn7ZE7QTvNROizCICxR8l-xKYWV5prw0A"/>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Admin User</div>
+<div class="font-label-sm text-label-sm text-secondary">Academic Portal</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background font-label-md text-label-md docked full-width top-0 shadow-sm dark:shadow-none bg-surface dark:bg-on-background shadow-sm fixed top-0 right-0 left-0 lg:left-64 h-16 flex items-center justify-between px-6 z-30 border-b lg:border-none border-border-default">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="p-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MAN 4 Jombang</h1>
+</div>
+<div class="hidden lg:flex items-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Academic Settings</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center text-secondary hover:text-primary hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-full cursor-pointer transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-secondary hover:text-primary hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-full cursor-pointer transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 pt-16 lg:ml-64 p-4 lg:p-8 min-h-screen">
+<div class="max-w-6xl mx-auto space-y-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div>
+<p class="font-body-default text-body-default text-secondary mt-1">Manage core institutional parameters and academic periods.</p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none h-touch-target px-4 rounded-lg border border-border-default text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+                        Cancel
+                    </button>
+<button class="flex-1 md:flex-none h-touch-target px-6 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Changes
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Column 1: Academic Period (Bento Style) -->
+<div class="xl:col-span-1 space-y-6">
+<!-- Active Semester Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default/50 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110 duration-500"></div>
+<div class="flex items-center gap-3 mb-6 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">calendar_clock</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Active Semester</h3>
+<p class="font-label-sm text-label-sm text-secondary">Current operational period</p>
+</div>
+</div>
+<div class="space-y-4 relative z-10">
+<!-- Year Selection -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Academic Year</label>
+<div class="relative">
+<select class="w-full h-touch-target pl-4 pr-10 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary appearance-none cursor-pointer">
+<option value="2022/2023">2022/2023</option>
+<option selected="" value="2023/2024">2023/2024</option>
+<option value="2024/2025">2024/2025</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Semester Toggle -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2">Semester Term</label>
+<div class="grid grid-cols-2 gap-2 p-1 bg-surface-container-low rounded-lg border border-border-default">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="semester" type="radio" value="ganjil"/>
+<div class="h-10 flex items-center justify-center rounded-md font-label-md text-label-md text-secondary peer-checked:bg-surface-container-lowest peer-checked:text-primary peer-checked:shadow-sm transition-all">
+                                            Ganjil (Odd)
+                                        </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="semester" type="radio" value="genap"/>
+<div class="h-10 flex items-center justify-center rounded-md font-label-md text-label-md text-secondary peer-checked:bg-surface-container-lowest peer-checked:text-primary peer-checked:shadow-sm transition-all">
+                                            Genap (Even)
+                                        </div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- System Status Widget -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default/50 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-hadir opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-status-hadir"></span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">System Online</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Last synced: 2m ago</span>
+</div>
+</div>
+<!-- Column 2 & 3: Institution Profile (Glassmorphism inspired) -->
+<div class="xl:col-span-2">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default/50 h-full">
+<div class="flex items-center gap-3 mb-8 pb-4 border-b border-border-default">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">School Profile</h3>
+<p class="font-label-sm text-label-sm text-secondary">Official institutional details</p>
+</div>
+</div>
+<div class="space-y-6">
+<!-- Logo Upload Area -->
+<div class="flex items-start gap-6">
+<div class="w-24 h-24 rounded-lg bg-surface-container-low border border-dashed border-outline-variant flex flex-col items-center justify-center text-secondary hover:border-primary hover:text-primary transition-colors cursor-pointer group relative overflow-hidden">
+<span class="material-symbols-outlined text-[32px] group-hover:scale-110 transition-transform">add_photo_alternate</span>
+<span class="font-label-sm text-label-sm mt-1">Logo</span>
+</div>
+<div class="flex-1 space-y-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Institution Name</label>
+<input class="w-full h-touch-target px-4 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="MAN 4 Jombang"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">NPSN</label>
+<input class="w-full h-touch-target px-4 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="20500000"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Accreditation</label>
+<select class="w-full h-touch-target px-4 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary appearance-none">
+<option selected="" value="A">A (Excellent)</option>
+<option value="B">B (Good)</option>
+<option value="C">C (Fair)</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-border-default border-dashed">
+<!-- Principal Info -->
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-secondary uppercase tracking-wider text-xs font-semibold">Leadership</h4>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Principal Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">person</span>
+<input class="w-full h-touch-target pl-10 pr-4 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="Drs. H. Ahmad Fulan, M.Pd."/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">NIP (Employee ID)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">badge</span>
+<input class="w-full h-touch-target pl-10 pr-4 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="19700101 200003 1 001"/>
+</div>
+</div>
+</div>
+<!-- Contact Info -->
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-secondary uppercase tracking-wider text-xs font-semibold">Location &amp; Contact</h4>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Full Address</label>
+<textarea class="w-full p-3 rounded-lg border border-border-default bg-surface-container-lowest font-input-text text-input-text text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none h-[112px]">Jl. KH. Wahab Hasbullah, Tambakberas, Kec. Jombang, Kabupaten Jombang, Jawa Timur 61451</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple interactivity for form elements to simulate active states if needed
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.classList.add('focused-wrapper');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.classList.remove('focused-wrapper');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Presensi Siswa - MAN 4 Jombang</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#57657a",
+                        "tertiary-container": "#00855b",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "border-default": "#e2e8f0",
+                        "surface-container-lowest": "#ffffff",
+                        "status-sakit": "#0ea5e9",
+                        "outline": "#6d7a72",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-variant": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary": "#006947",
+                        "surface-tint": "#006c4a",
+                        "on-primary-container": "#f5fff7",
+                        "on-surface-variant": "#3d4a42",
+                        "secondary": "#515f74",
+                        "primary-fixed-dim": "#68dba9",
+                        "status-izin": "#f59e0b",
+                        "on-background": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#00855d",
+                        "primary-fixed": "#85f8c4",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "on-surface": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-dim": "#d8dadc",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "text-main": "#0f172a",
+                        "on-primary-fixed-variant": "#005137",
+                        "primary": "#006948",
+                        "surface-container": "#eceef0",
+                        "status-alfa": "#f43f5e",
+                        "outline-variant": "#bccac0",
+                        "on-primary-fixed": "#002114",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-container": "#f5fff6",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#d5e3fc",
+                        "status-hadir": "#22c55e",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#68dba9",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-tertiary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "1rem",
+                        "grid-gutter": "1rem",
+                        "list-gap": "0.5rem",
+                        "touch-target": "44px",
+                        "section-margin": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-default": ["Inter"],
+                        "input-text": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md-mobile": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .tap-highlight-transparent { -webkit-tap-highlight-color: transparent; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Attendance Button Transitions */
+        .status-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Selected States */
+        input[type="radio"]:checked + .btn-hadir { background-color: theme('colors.status-hadir'); color: white; border-color: theme('colors.status-hadir'); }
+        input[type="radio"]:checked + .btn-izin { background-color: theme('colors.status-izin'); color: white; border-color: theme('colors.status-izin'); }
+        input[type="radio"]:checked + .btn-sakit { background-color: theme('colors.status-sakit'); color: white; border-color: theme('colors.status-sakit'); }
+        input[type="radio"]:checked + .btn-alfa { background-color: theme('colors.status-alfa'); color: white; border-color: theme('colors.status-alfa'); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen pb-24 font-body-default md:flex overflow-x-hidden">
+<!-- Background Animation Layer -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-30">
+<!-- STITCH_SHADER_START:ANIMATION_5 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_5" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_5');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec3 color1 = vec3(0.02, 0.58, 0.41); // Emerald 600 base
+    vec3 color2 = vec3(0.97, 0.98, 0.98); // Slate 50 background
+    
+    float noise = sin(uv.x * 10.0 + u_time) * cos(uv.y * 10.0 + u_time) * 0.5 + 0.5;
+    vec3 finalColor = mix(color2, color1, noise * 0.05); // Very subtle background motion
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_5 -->
+</div>
+<!-- TopAppBar (Mobile) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-touch-target bg-surface shadow-sm md:hidden">
+<div class="flex items-center gap-3">
+<img alt="Official School Logo" class="w-8 h-8 rounded-full object-cover border border-border-default" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDteyQYXpxwG3OZVRd8b65YEwmZ0oF_YukMlcK-IHn4AMz7Dz9Y2zpAxWKgYOynPhnIbLdPKjEXdOQ4HtqDssQ0w__iBIwEt6OTDS9Ebfqhifnd_TzEMQAHu9xf1QkJTRC1T16wIyvVcj7cViyUF_dE7YPsEOiaffjfD2FMcd_YXkWGvATdDZa-sxEbhwo1c5oZAsQl1-3wQAa5o68r4AElMqtaeHPIVbroEfqt2m5wvl0LmHM1xwLR_g"/>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary">MAN 4 Jombang</h1>
+</div>
+<button class="w-touch-target h-touch-target flex items-center justify-center text-primary rounded-full hover:bg-surface-container-high transition-colors active:opacity-80 tap-highlight-transparent">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen w-80 rounded-r-xl bg-surface shadow-xl fixed left-0 top-0 z-40">
+<!-- Drawer Header -->
+<div class="p-6 border-b border-border-default flex flex-col items-start gap-4">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-primary-container shadow-sm" data-alt="A professional headshot of a male high school physics teacher in his mid-30s, wearing a neat batik shirt, standing in a well-lit classroom with a blurred whiteboard in the background. The lighting is soft and natural, emphasizing a modern corporate and academic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0bredyXN8w1PZMqb2TM-6fXueHU0eMWmu3AjYlGq5wjMVrwmwl-bxnFnLfgSs5EodjYY453Bp51W5BQG0ur2zvpriWmoIh0CE7Jn4tzUe9f-RUACGkrteYdQMZO0tCdmiq1yhxvVOqSa5hnx6vDzED281CJSWjgRsVZfpb06atgJKkwqUyzKhsPNuY4ttVpGjnszDCMZpQpQEhhM9plJ-JXDsm6o7CeoF3BDylzstmLiKavQO78QlRA"/>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Ahmad Fauzi, S.Pd.</h2>
+<p class="font-body-default text-body-default text-on-surface-variant">Guru Mapel Fisika</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">NIP: 19880102...</p>
+</div>
+</div>
+<!-- Drawer Links -->
+<div class="flex flex-col p-4 gap-list-gap flex-1 overflow-y-auto hide-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all tap-highlight-transparent font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Jadwal Mengajar
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-bold shadow-sm tap-highlight-transparent font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+                Rekap Presensi
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all tap-highlight-transparent font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+                Input Formatif
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all tap-highlight-transparent font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">event_note</span>
+                Kalender Akademik
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all tap-highlight-transparent font-label-md text-label-md mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Pengaturan
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="w-full pt-[calc(env(safe-area-inset-top)+64px)] px-container-padding-mobile md:pl-[340px] md:pr-8 md:pt-8 max-w-7xl mx-auto flex-1 flex flex-col gap-section-margin">
+<!-- Context Header -->
+<section class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-border-default relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-primary">science</span>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-primary-container text-on-primary-container px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold uppercase tracking-wide">Fisika</span>
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 07:00 - 08:30
+                        </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Kelas XI-A</h2>
+<p class="font-body-default text-body-default text-on-surface-variant mt-1">Senin, 24 Oktober 2023</p>
+</div>
+<!-- Quick Stats -->
+<div class="flex gap-3 bg-surface-container-low p-2 rounded-lg border border-border-default">
+<div class="flex flex-col items-center px-3 border-r border-border-default">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">32</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Siswa</span>
+</div>
+<div class="flex flex-col items-center px-3 text-status-hadir">
+<span class="font-headline-md text-headline-md font-bold" id="stat-hadir">0</span>
+<span class="font-label-sm text-label-sm">Hadir</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Attendance List -->
+<section class="flex flex-col gap-list-gap pb-20 md:pb-0">
+<!-- Student Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover border border-border-default shrink-0" data-alt="A small, professional portrait photo of a male high school student wearing a standard Indonesian grey and white uniform. The background is a plain light blue. Neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsGSpGHWvNQRXumdJMTyaDWxGCEBKdIg4ukbm3rJWWgAetOmESlcnx_6hNGkRKYZRR8HyU2Ln5py4QXJrq8leL2rz7gRIpF2g-O45hnmgPsHYaQlyeJ6ieoO5IAPJl4MvllEXH27gRuqRKWNNj_hHpfxbi4laUvpOiJV0STzge5uox5F6CLObi14Zn68cmxn5LoYgdqdWB94V_B07GgAQdlJx6aYu0dLfoPgnBMNy-8XcwDjkpfZpLvg"/>
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-on-surface">Budi Santoso</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">NISN: 0051234567</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-between lg:justify-end gap-2 w-full lg:w-auto">
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input checked="" class="sr-only" name="status_1" onchange="updateStats()" type="radio" value="hadir"/>
+<div class="status-btn btn-hadir h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">H</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_1" onchange="updateStats()" type="radio" value="izin"/>
+<div class="status-btn btn-izin h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">I</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_1" onchange="updateStats()" type="radio" value="sakit"/>
+<div class="status-btn btn-sakit h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">S</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_1" onchange="updateStats()" type="radio" value="alfa"/>
+<div class="status-btn btn-alfa h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">A</div>
+</label>
+</div>
+</div>
+<!-- Student Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover border border-border-default shrink-0" data-alt="A small, professional portrait photo of a female high school student wearing a standard Indonesian grey and white uniform with a neat white hijab. The background is a plain light blue. Neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUyctG84BeAWmSOmiKtM8JiL5aI_hrN_9s6hhjSUU01tBH_s4iBRcDr3Ew7TlRfKDuPzaTXt8g0d-vBP4CkA3VfX7DuxcwzAxzRqyAKzwDNxo54m3vpSZuAcxDGIQFjFCNhQJF3YZ3mG_16-2AzX1AIX-_hcAQgHEzhVoFPsdF7u9SXOy8BboNifJaCfKIEH6Kkw7QfhfJQoxjvMVOoTDzvT6-tmLZlvkpuYQQjrYcjNOmkQHSdP8JTQ"/>
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-on-surface">Dewi Lestari</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">NISN: 0057654321</p>
+</div>
+</div>
+<div class="flex justify-between lg:justify-end gap-2 w-full lg:w-auto">
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_2" onchange="updateStats()" type="radio" value="hadir"/>
+<div class="status-btn btn-hadir h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">H</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input checked="" class="sr-only" name="status_2" onchange="updateStats()" type="radio" value="izin"/>
+<div class="status-btn btn-izin h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">I</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_2" onchange="updateStats()" type="radio" value="sakit"/>
+<div class="status-btn btn-sakit h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">S</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_2" onchange="updateStats()" type="radio" value="alfa"/>
+<div class="status-btn btn-alfa h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">A</div>
+</label>
+</div>
+</div>
+<!-- Student Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-md text-headline-md font-bold border border-border-default shrink-0">
+                        FA
+                    </div>
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-on-surface">Fajar Akbar</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">NISN: 0059988776</p>
+</div>
+</div>
+<div class="flex justify-between lg:justify-end gap-2 w-full lg:w-auto">
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_3" onchange="updateStats()" type="radio" value="hadir"/>
+<div class="status-btn btn-hadir h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">H</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_3" onchange="updateStats()" type="radio" value="izin"/>
+<div class="status-btn btn-izin h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">I</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input checked="" class="sr-only" name="status_3" onchange="updateStats()" type="radio" value="sakit"/>
+<div class="status-btn btn-sakit h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">S</div>
+</label>
+<label class="flex-1 lg:flex-none cursor-pointer">
+<input class="sr-only" name="status_3" onchange="updateStats()" type="radio" value="alfa"/>
+<div class="status-btn btn-alfa h-touch-target lg:w-[72px] flex items-center justify-center rounded-lg border-2 border-border-default font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container-lowest tap-highlight-transparent">A</div>
+</label>
+</div>
+</div>
+<!-- Select All Convenience -->
+<div class="mt-4 flex justify-end">
+<button class="text-primary font-label-md text-label-md font-bold flex items-center gap-1 hover:underline tap-highlight-transparent h-touch-target px-4" onclick="markAllHadir()" type="button">
+<span class="material-symbols-outlined text-[20px]">done_all</span>
+                    Tandai Semua Hadir
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area (Sticky) -->
+<div class="fixed bottom-0 md:bottom-auto md:top-8 md:right-8 left-0 w-full md:w-auto z-40 bg-surface md:bg-transparent border-t md:border-none border-border-default p-4 md:p-0 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] md:shadow-none pb-safe">
+<button class="w-full md:w-auto md:px-8 h-touch-target bg-[#006948] text-white font-label-md text-label-md font-bold rounded-xl shadow-md hover:bg-[#005137] active:scale-95 transition-all flex items-center justify-center gap-2 tap-highlight-transparent">
+<span class="material-symbols-outlined">save</span>
+            Simpan Presensi
+        </button>
+</div>
+<!-- BottomNavBar (Mobile Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 pb-safe bg-surface border-t border-border-default md:hidden hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-16 h-12 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">dashboard</span>
+<span class="font-label-sm text-[10px] leading-none">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 w-20 h-14 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<span class="font-label-sm text-[10px] leading-none font-bold">Presensi</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-16 h-12 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">grade</span>
+<span class="font-label-sm text-[10px] leading-none">Nilai</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-16 h-12 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">person</span>
+<span class="font-label-sm text-[10px] leading-none">Profil</span>
+</a>
+</nav>
+<!-- Mobile shell visibility logic based on context -->
+<script>
+        // Only show bottom nav if not in a focused task. 
+        // Presensi is a task, so we hide the main bottom nav and show the save button instead.
+        // The bottom nav HTML is present but hidden via classes for architectural completeness.
+        
+        function updateStats() {
+            const hadirRadios = document.querySelectorAll('input[value="hadir"]:checked');
+            const statHadir = document.getElementById('stat-hadir');
+            if(statHadir) {
+                statHadir.textContent = hadirRadios.length;
+            }
+        }
+        
+        function markAllHadir() {
+            const hadirRadios = document.querySelectorAll('input[value="hadir"]');
+            hadirRadios.forEach(radio => radio.checked = true);
+            updateStats();
+        }
+        
+        // Initial run
+        document.addEventListener('DOMContentLoaded', updateStats);
+    </script>
+</body></html>

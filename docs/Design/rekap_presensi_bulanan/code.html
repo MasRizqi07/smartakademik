@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monthly Attendance Report - Academic Portal</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for matrix table */
+        .matrix-scroll::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .matrix-scroll::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-lowest'); 
+        }
+        .matrix-scroll::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant'); 
+            border-radius: 4px;
+        }
+        .matrix-scroll::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline'); 
+        }
+    </style>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0d1c2e",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "status-hadir": "#22c55e",
+                        "tertiary": "#006947",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#005137",
+                        "on-error": "#ffffff",
+                        "border-default": "#e2e8f0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "status-sakit": "#0ea5e9",
+                        "inverse-primary": "#68dba9",
+                        "primary-container": "#00855d",
+                        "surface-tint": "#006c4a",
+                        "error": "#ba1a1a",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline-variant": "#bccac0",
+                        "status-alfa": "#f43f5e",
+                        "text-main": "#0f172a",
+                        "on-surface-variant": "#3d4a42",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "surface-container": "#eceef0",
+                        "tertiary-container": "#00855b",
+                        "surface-dim": "#d8dadc",
+                        "status-izin": "#f59e0b",
+                        "primary-fixed": "#85f8c4",
+                        "secondary-fixed": "#d5e3fc",
+                        "secondary": "#515f74",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#57657a",
+                        "primary-fixed-dim": "#68dba9",
+                        "outline": "#6d7a72",
+                        "secondary-container": "#d5e3fc",
+                        "on-primary-container": "#f5fff7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary-container": "#f5fff6",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#006948",
+                        "on-primary-fixed": "#002114",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "background": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "list-gap": "0.5rem",
+                        "touch-target": "44px",
+                        "grid-gutter": "1rem",
+                        "section-margin": "1.5rem",
+                        "container-padding-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "input-text": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-default": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex font-body-default text-body-default">
+<!-- SideNavBar (from JSON) -->
+<aside class="hidden md:flex bg-surface-container-lowest shadow-sm h-screen w-64 fixed left-0 top-0 flex-col p-4 border-r border-border-default z-20">
+<!-- Brand / Header -->
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">MAN 4 Jombang</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Management</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-1 font-label-md text-label-md">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<!-- Attendance -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+                Attendance
+            </a>
+<!-- Grades -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+                Grades
+            </a>
+<!-- Schedule -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Schedule
+            </a>
+<!-- Reports (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="assessment" style="font-variation-settings: 'FILL' 1;">assessment</span>
+                Reports
+            </a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<!-- CTA -->
+<div class="mt-auto pt-4">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Record Attendance
+            </button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 w-full md:w-[calc(100%-16rem)] min-w-0">
+<!-- TopAppBar (from JSON) -->
+<header class="bg-surface border-b border-border-default flex justify-between items-center h-16 px-6 sticky top-0 z-10">
+<!-- Left: Mobile Menu (Not in JSON, but practical) & Title -->
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">Academic Portal</h2>
+</div>
+<!-- Center: Search (on_left in JSON, we can put it here or next to title) -->
+<div class="hidden md:flex flex-1 max-w-md mx-6 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-border-default rounded-full font-input-text text-input-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Search..." type="text"/>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="ml-2 w-8 h-8 rounded-full bg-secondary overflow-hidden cursor-pointer">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A small, professional portrait photo of a school administrator in a bright, modern setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJQgvbCUrRv1mbASvWEii4ojfyih9kHTHSd3_c8oPp9DaJ8OMEPtgX7XZMFQLBU8eQ03Gss0_oppl6acsywjY_mIFtYdOUDxib4IVX5o0p7nUzrLnjUx-rNpPq7MRVdNuDHSenQn7txLAyXqXdNGbHFNNhQ1vIJBWwuctmxM5paT7XrzHiStrdmJSqQMJs1qEwL96cpNzqcg7a-GWMD9N-9oZupkBm6VtcgeUUdGbo0RPMUaCM7IhAMw"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-6 md:p-8 overflow-y-auto">
+<!-- Page Header & Actions -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-bold mb-1">Monthly Attendance Report</h2>
+<p class="font-body-default text-body-default text-on-surface-variant">Rekapitulasi Kehadiran Siswa - Data Matrix</p>
+</div>
+<!-- Filters & Export Toolbar (Glassmorphic hint) -->
+<div class="flex flex-wrap items-center gap-3 bg-surface-container-lowest/80 backdrop-blur-md p-2 rounded-xl border border-outline-variant shadow-sm w-full lg:w-auto">
+<!-- Filters -->
+<div class="flex items-center gap-2 px-2 border-r border-outline-variant border-opacity-50">
+<select class="bg-transparent border-none text-on-surface font-label-md text-label-md focus:ring-0 py-1 pl-2 pr-8 cursor-pointer">
+<option>October</option>
+<option>November</option>
+<option>December</option>
+</select>
+<select class="bg-transparent border-none text-on-surface font-label-md text-label-md focus:ring-0 py-1 pl-2 pr-8 cursor-pointer">
+<option>2023</option>
+<option>2024</option>
+</select>
+<select class="bg-transparent border-none text-on-surface font-label-md text-label-md focus:ring-0 py-1 pl-2 pr-8 cursor-pointer font-bold text-primary">
+<option>Class XI-A</option>
+<option>Class XI-B</option>
+</select>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2 pl-2">
+<button class="h-[44px] px-4 flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface-variant rounded-lg font-label-md text-label-md transition-colors border border-outline-variant shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined text-lg">description</span>
+                            PDF
+                        </button>
+<button class="h-[44px] px-4 flex items-center gap-2 bg-primary text-on-primary hover:bg-primary/90 rounded-lg font-label-md text-label-md transition-colors shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
+<span class="material-symbols-outlined text-lg">table_chart</span>
+                            Excel
+                        </button>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-4 mb-4 px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Legend:</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm"><div class="w-3 h-3 rounded-sm bg-status-hadir"></div> Hadir (H)</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm"><div class="w-3 h-3 rounded-sm bg-status-izin"></div> Izin (I)</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm"><div class="w-3 h-3 rounded-sm bg-status-sakit"></div> Sakit (S)</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm"><div class="w-3 h-3 rounded-sm bg-status-alfa"></div> Alfa (A)</div>
+</div>
+<!-- Data Table Card (Matrix) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col max-h-[calc(100vh-250px)]">
+<div class="overflow-x-auto matrix-scroll flex-1 relative rounded-xl">
+<table class="w-full text-left border-collapse min-w-max">
+<thead class="sticky top-0 z-10 bg-surface-container-lowest shadow-sm">
+<tr>
+<th class="sticky left-0 z-20 bg-surface-container-lowest px-4 py-3 font-label-md text-label-md font-bold text-on-surface border-b border-r border-border-default min-w-[200px]">Student Name</th>
+<!-- Days 1-31 -->
+<th class="px-2 py-2 font-label-sm text-label-sm text-center text-on-surface-variant border-b border-r border-border-default bg-surface-container-low" colspan="31">Days (October)</th>
+<!-- Summary Headers -->
+<th class="px-2 py-2 font-label-sm text-label-sm text-center font-bold text-primary border-b border-border-default bg-primary-container/10" colspan="4">Summary</th>
+</tr>
+<tr>
+<th class="sticky left-0 z-20 bg-surface-container-lowest px-4 py-2 border-b border-r border-border-default"></th>
+<!-- Day Numbers -->
+<script>
+                                    for(let i=1; i<=31; i++) {
+                                        document.write(`<th class="w-8 min-w-[32px] px-1 py-2 font-label-sm text-label-sm text-center text-on-surface-variant border-b border-r border-border-default">${i}</th>`);
+                                    }
+                                </script>
+<!-- Summary Initials -->
+<th class="w-10 min-w-[40px] px-1 py-2 font-label-sm text-label-sm text-center text-status-hadir font-bold border-b border-r border-border-default bg-primary-container/5">H</th>
+<th class="w-10 min-w-[40px] px-1 py-2 font-label-sm text-label-sm text-center text-status-izin font-bold border-b border-r border-border-default bg-primary-container/5">I</th>
+<th class="w-10 min-w-[40px] px-1 py-2 font-label-sm text-label-sm text-center text-status-sakit font-bold border-b border-r border-border-default bg-primary-container/5">S</th>
+<th class="w-10 min-w-[40px] px-1 py-2 font-label-sm text-label-sm text-center text-status-alfa font-bold border-b border-border-default bg-primary-container/5">A</th>
+</tr>
+</thead>
+<tbody class="font-body-default text-body-default">
+<!-- Student Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="sticky left-0 z-10 bg-surface-container-lowest group-hover:bg-surface-container-low px-4 py-2 border-b border-r border-border-default font-medium text-on-surface">Ahmad Fadillah</td>
+<!-- Days Data (Mocked pattern) -->
+<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-status-hadir bg-status-hadir/10 rounded-sm">H</div></td>
+<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-status-hadir bg-status-hadir/10 rounded-sm">H</div></td>
+<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-status-sakit bg-status-sakit/10 rounded-sm">S</div></td>
+<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-status-hadir bg-status-hadir/10 rounded-sm">H</div></td>
+<script>
+                                    for(let i=5; i<=31; i++) {
+                                        let status = 'H'; let color = 'status-hadir';
+                                        if(i === 12) { status = 'I'; color = 'status-izin'; }
+                                        if(i === 20 || i === 21) { status = 'A'; color = 'status-alfa'; }
+                                        document.write(`<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-${color} bg-${color}/10 rounded-sm">${status}</div></td>`);
+                                    }
+                                </script>
+<!-- Summary Data -->
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-hadir">27</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-izin">1</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-sakit">1</td>
+<td class="px-1 py-2 text-center font-medium border-b border-border-default bg-primary-container/5 text-status-alfa">2</td>
+</tr>
+<!-- Student Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-surface-container-lowest">
+<td class="sticky left-0 z-10 bg-surface-container-lowest group-hover:bg-surface-container-low px-4 py-2 border-b border-r border-border-default font-medium text-on-surface">Budi Santoso</td>
+<script>
+                                    for(let i=1; i<=31; i++) {
+                                        document.write(`<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-status-hadir bg-status-hadir/10 rounded-sm">H</div></td>`);
+                                    }
+                                </script>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-hadir">31</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-izin">0</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-sakit">0</td>
+<td class="px-1 py-2 text-center font-medium border-b border-border-default bg-primary-container/5 text-status-alfa">0</td>
+</tr>
+<!-- Student Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="sticky left-0 z-10 bg-surface-container-lowest group-hover:bg-surface-container-low px-4 py-2 border-b border-r border-border-default font-medium text-on-surface">Citra Kirana</td>
+<script>
+                                    for(let i=1; i<=31; i++) {
+                                        let status = 'H'; let color = 'status-hadir';
+                                        if(i > 5 && i < 10) { status = 'S'; color = 'status-sakit'; }
+                                        document.write(`<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-${color} bg-${color}/10 rounded-sm">${status}</div></td>`);
+                                    }
+                                </script>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-hadir">27</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-izin">0</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-sakit">4</td>
+<td class="px-1 py-2 text-center font-medium border-b border-border-default bg-primary-container/5 text-status-alfa">0</td>
+</tr>
+<!-- Student Row 4 (Adding more rows to show scroll potential) -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-surface-container-lowest">
+<td class="sticky left-0 z-10 bg-surface-container-lowest group-hover:bg-surface-container-low px-4 py-2 border-b border-r border-border-default font-medium text-on-surface">Dewi Lestari</td>
+<script>
+                                    for(let i=1; i<=31; i++) {
+                                        document.write(`<td class="p-1 border-b border-r border-border-default"><div class="w-full h-full flex items-center justify-center font-label-sm text-label-sm font-bold text-status-hadir bg-status-hadir/10 rounded-sm">H</div></td>`);
+                                    }
+                                </script>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-hadir">31</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-izin">0</td>
+<td class="px-1 py-2 text-center font-medium border-b border-r border-border-default bg-primary-container/5 text-status-sakit">0</td>
+<td class="px-1 py-2 text-center font-medium border-b border-border-default bg-primary-container/5 text-status-alfa">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination placeholder -->
+<div class="px-4 py-3 bg-surface-container-lowest border-t border-border-default flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span>Showing 4 of 32 students in Class XI-A</span>
+<div class="flex gap-2">
+<button class="p-1 rounded hover:bg-surface-container transition-colors disabled:opacity-50" disabled=""><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
