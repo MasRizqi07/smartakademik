@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Livewire\Guru\AbsensiGuru;
+use App\Livewire\Guru\NilaiGuru;
 use App\Models\Guru;
 use App\Models\JadwalPelajaran;
 use App\Models\Kelas;
@@ -9,7 +11,9 @@ use App\Models\Mapel;
 use App\Models\Siswa;
 use App\Models\User;
 use Database\Seeders\RoleAndUserSeeder;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
@@ -29,14 +33,21 @@ class RBACTest extends TestCase
         $guru2User = User::where('email', 'guru2@smartakademik.test')->first();
         $jadwal = JadwalPelajaran::first(); // this belongs to guru1 (Budi Santoso)
 
-        $response = $this->actingAs($guru2User)->get(route('guru.absensi', $jadwal));
+        Livewire::actingAs($guru2User)
+            ->test(AbsensiGuru::class)
+            ->set('selectedJadwalId', $jadwal->id)
+            ->assertStatus(403);
+    }
 
-        // It should throw a 403 because of middleware or policy check
-        // The policy will deny because $jadwal->guru->user_id !== $guru2User->id
-        // However, we need to make sure the Livewire component or the route uses the policy.
-        // Wait, the route right now is: Route::get('absensi/{jadwal}', InputAbsensi::class)->name('absensi');
-        // Let's add explicit can middleware or check in the test later if Livewire component blocks it.
-        // For now, let's just test that the route exists. The PRD says "enforced at query level".
+    public function test_guru_cannot_access_nilai_for_other_gurus_class()
+    {
+        $guru2User = User::where('email', 'guru2@smartakademik.test')->first();
+        $jadwal = JadwalPelajaran::first(); // belongs to guru1
+
+        Livewire::actingAs($guru2User)
+            ->test(NilaiGuru::class)
+            ->set('selectedKombinasi', $jadwal->kelas_id . '_' . $jadwal->mapel_id)
+            ->assertStatus(403);
     }
 
     public function test_siswa_cannot_access_crud_endpoints()
@@ -60,3 +71,4 @@ class RBACTest extends TestCase
         $response->assertStatus(403);
     }
 }
+

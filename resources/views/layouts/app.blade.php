@@ -5,41 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SmartAkademik') }}</title>
+        <title>{{ config('app.name', 'SmartAkademik') }} - MAN 4 Jombang</title>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased text-slate-800 bg-gradient-to-br from-slate-50 to-emerald-50/30 min-h-screen">
-        <div class="min-h-screen flex flex-col relative overflow-hidden">
-            <!-- Decorative background elements -->
-            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-500/5 blur-3xl pointer-events-none z-0"></div>
-            <div class="absolute bottom-[-10%] right-[-5%] w-[30%] h-[40%] rounded-full bg-accent-500/5 blur-3xl pointer-events-none z-0"></div>
-            
-            <div class="relative z-10 w-full flex-grow flex flex-col">
-                <livewire:layout.navigation />
+    <body class="bg-surface text-on-surface antialiased min-h-screen relative font-sans">
+        <div class="min-h-screen flex flex-col md:flex-row relative">
+            <livewire:layout.navigation />
 
-                <!-- Page Heading -->
+            <!-- Main Content Wrapper -->
+            <div class="flex-1 md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen flex flex-col relative z-10 transition-all">
                 @if (isset($header))
-                    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200/60 sticky top-0 z-40 shadow-sm transition-all duration-300">
-                        <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
+                    <header class="bg-surface-container-lowest/90 backdrop-blur-md border-b border-border-default h-16 px-6 sticky top-0 flex items-center justify-between z-30 shadow-xs">
+                        <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
                             {{ $header }}
                         </div>
                     </header>
                 @endif
 
-                <!-- Page Content -->
-                <main class="flex-grow animate-fade-in">
-                    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-                        {{ $slot }}
-                    </div>
+                <!-- Page Canvas -->
+                <main class="flex-1 p-4 md:p-8 max-w-[1280px] mx-auto w-full flex flex-col gap-section-margin animate-fade-in">
+                    {{ $slot }}
                 </main>
-                
+
                 <!-- Footer -->
-                <footer class="mt-auto py-6 text-center text-sm text-slate-500">
-                    &copy; {{ date('Y') }} SmartAkademik MAN 4 Jombang. All rights reserved.
+                <footer class="mt-auto py-6 px-6 text-center text-label-sm text-on-surface-variant border-t border-border-default/60">
+                    &copy; {{ date('Y') }} MAN 4 Jombang Academic Portal. All rights reserved.
                 </footer>
             </div>
         </div>
     </body>
 </html>
+

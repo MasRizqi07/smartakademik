@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAN 4 Jombang - Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "status-hadir": "#22c55e",
+                      "tertiary-container": "#00855b",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-tertiary-container": "#f5fff6",
+                      "surface-container-highest": "#e0e3e5",
+                      "error-container": "#ffdad6",
+                      "primary": "#006948",
+                      "text-main": "#0f172a",
+                      "on-primary-fixed": "#002114",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "primary-container": "#00855d",
+                      "on-primary-fixed-variant": "#005137",
+                      "secondary-fixed": "#d5e3fc",
+                      "status-sakit": "#0ea5e9",
+                      "background": "#f7f9fb",
+                      "on-secondary-container": "#57657a",
+                      "outline-variant": "#bccac0",
+                      "border-default": "#e2e8f0",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#006947",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#6d7a72",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d8dadc",
+                      "secondary-container": "#d5e3fc",
+                      "on-primary-container": "#f5fff7",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "on-background": "#191c1e",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-surface-variant": "#3d4a42",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "surface": "#f7f9fb",
+                      "primary-fixed-dim": "#68dba9",
+                      "surface-tint": "#006c4a",
+                      "secondary": "#515f74",
+                      "primary-fixed": "#85f8c4",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-tertiary-fixed": "#002113",
+                      "inverse-primary": "#68dba9",
+                      "status-alfa": "#f43f5e",
+                      "status-izin": "#f59e0b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target": "44px",
+                      "container-padding-mobile": "1rem",
+                      "grid-gutter": "1rem",
+                      "section-margin": "1.5rem",
+                      "list-gap": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-default": ["Inter"],
+                      "label-md": ["Inter"],
+                      "input-text": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "input-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-default text-body-default min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-0 lg:left-64 h-16 flex items-center justify-between px-6 z-30 shadow-sm dark:shadow-none bg-surface dark:bg-on-background">
+<div class="flex items-center gap-4">
+<button aria-label="Open menu" class="lg:hidden p-2 -ml-2 text-primary hover:bg-surface-container rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MAN 4 Jombang</h1>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
+<input class="w-full pl-10 pr-4 h-[44px] bg-surface-container-low border border-border-default rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-input-text text-input-text transition-colors" placeholder="Search users, roles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-[44px] h-[44px] flex items-center justify-center text-secondary hover:text-primary hover:bg-surface-container rounded-full transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-[44px] h-[44px] flex items-center justify-center text-secondary hover:text-primary hover:bg-surface-container rounded-full transition-transform active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full z-40 w-64 hidden lg:flex flex-col border-r border-border-default bg-surface dark:bg-on-background">
+<div class="p-6 border-b border-border-default">
+<div class="flex items-center gap-3">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A small, professional avatar placeholder image, solid color background with a stylized user silhouette, high contrast, minimalist, fitting a modern corporate dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvkmoPHZaQ2dYGmaY87N47L_ceZF598VfTOiZpgyR40KoDb3givfVSNA0aLdDufv4RIWPymxc2Z4HtgWNfa4mrRJ9ergXlj819aQBvs2gJdaFxB1yiNFpmKafd7X04asB_J3bCfeRyBxKYXWcqO9ktjyFAto3lrR0KoetbGsADVGnxIqZSFn47sliGFIR_As7rNu9mPbz0x9c6cCik8MnoHNFmR5JTFYiR3kuGRgUIRaA0ZEi1cE-nvQ"/>
+<div>
+<h2 class="font-label-md text-label-md text-primary font-semibold">MAN 4 Jombang</h2>
+<p class="font-label-sm text-label-sm text-secondary">Academic Portal</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md hover:bg-surface-container-high rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md hover:bg-surface-container-high rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+                Attendance
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md hover:bg-surface-container-high rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+                Grades
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md hover:bg-surface-container-high rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Schedule
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+                Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md hover:bg-surface-container-high rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="lg:pl-64 pt-16 min-h-screen bg-slate-50">
+<div class="max-w-[1280px] mx-auto p-4 md:p-6 lg:p-8 space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-text-main">User Management</h2>
+<p class="text-secondary mt-1">Manage staff, teachers, and student access.</p>
+</div>
+<button class="h-[44px] px-6 bg-primary text-white rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-primary-container transition-colors shadow-sm hover:shadow active:scale-95">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+                    Add User
+                </button>
+</div>
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="md:hidden relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
+<input class="w-full pl-10 pr-4 h-[44px] bg-white border border-border-default rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent font-input-text text-input-text shadow-sm" placeholder="Search users..." type="text"/>
+</div>
+<!-- Stats/Filters Bento -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white p-4 rounded-xl shadow-sm border border-border-default">
+<div class="text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-1">Total Users</div>
+<div class="font-headline-lg text-headline-lg text-text-main">1,248</div>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-border-default">
+<div class="text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-1">Guru (Teachers)</div>
+<div class="font-headline-lg text-headline-lg text-text-main">84</div>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-border-default">
+<div class="text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-1">Siswa (Students)</div>
+<div class="font-headline-lg text-headline-lg text-text-main">1,150</div>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-sm border border-border-default">
+<div class="text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-1">Administrators</div>
+<div class="font-headline-lg text-headline-lg text-text-main">14</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white rounded-xl shadow-sm border border-border-default overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-default bg-surface-container-lowest">
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Name / ID</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Role</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Status</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Last Active</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-secondary uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-default">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-label-md text-label-md font-bold">AB</div>
+<div>
+<div class="font-label-md text-label-md text-text-main font-semibold">Ahmad Budi</div>
+<div class="font-label-sm text-label-sm text-secondary">NIP: 198005122005011003</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
+                                        Guru
+                                    </span>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-status-hadir">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-6 font-body-default text-body-default text-secondary">
+                                    Today, 08:15
+                                </td>
+<td class="py-3 px-6 text-right">
+<button aria-label="Edit User" class="p-2 text-secondary hover:text-primary transition-colors h-[44px] w-[44px] inline-flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-label-md text-label-md font-bold">SN</div>
+<div>
+<div class="font-label-md text-label-md text-text-main font-semibold">Siti Nurhaliza</div>
+<div class="font-label-sm text-label-sm text-secondary">NISN: 0051234567</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">
+                                        Siswa
+                                    </span>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-status-hadir">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-6 font-body-default text-body-default text-secondary">
+                                    Yesterday
+                                </td>
+<td class="py-3 px-6 text-right">
+<button aria-label="Edit User" class="p-2 text-secondary hover:text-primary transition-colors h-[44px] w-[44px] inline-flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-label-md text-label-md font-bold">DR</div>
+<div>
+<div class="font-label-md text-label-md text-text-main font-semibold">Dian Sastro</div>
+<div class="font-label-sm text-label-sm text-secondary">ID: ADM-001</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                                        Admin TU
+                                    </span>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-status-hadir">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-6 font-body-default text-body-default text-secondary">
+                                    Just now
+                                </td>
+<td class="py-3 px-6 text-right">
+<button aria-label="Edit User" class="p-2 text-secondary hover:text-primary transition-colors h-[44px] w-[44px] inline-flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-label-md text-label-md font-bold">BW</div>
+<div>
+<div class="font-label-md text-label-md text-text-main font-semibold text-slate-500">Bambang Wijaya</div>
+<div class="font-label-sm text-label-sm text-slate-400">NIP: 197503212000121001</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 opacity-70">
+                                        Guru
+                                    </span>
+</td>
+<td class="py-3 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+                                        Inactive
+                                    </span>
+</td>
+<td class="py-3 px-6 font-body-default text-body-default text-secondary">
+                                    2 months ago
+                                </td>
+<td class="py-3 px-6 text-right">
+<button aria-label="Edit User" class="p-2 text-secondary hover:text-primary transition-colors h-[44px] w-[44px] inline-flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="border-t border-border-default px-6 py-4 flex items-center justify-between bg-white">
+<span class="text-sm text-secondary">Showing 1 to 10 of 1,248</span>
+<div class="flex gap-2">
+<button class="h-8 px-3 text-sm text-secondary border border-border-default rounded hover:bg-slate-50 disabled:opacity-50" disabled="">Prev</button>
+<button class="h-8 px-3 text-sm text-secondary border border-border-default rounded hover:bg-slate-50">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

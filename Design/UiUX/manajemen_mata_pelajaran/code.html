@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manajemen Mata Pelajaran - MAN 4 Jombang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-hadir": "#22c55e",
+                        "tertiary-container": "#00855b",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-container": "#f5fff6",
+                        "surface-container-highest": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "primary": "#006948",
+                        "text-main": "#0f172a",
+                        "on-primary-fixed": "#002114",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "primary-container": "#00855d",
+                        "on-primary-fixed-variant": "#005137",
+                        "secondary-fixed": "#d5e3fc",
+                        "status-sakit": "#0ea5e9",
+                        "background": "#f7f9fb",
+                        "on-secondary-container": "#57657a",
+                        "outline-variant": "#bccac0",
+                        "border-default": "#e2e8f0",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#006947",
+                        "surface-bright": "#f7f9fb",
+                        "outline": "#6d7a72",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#d5e3fc",
+                        "on-primary-container": "#f5fff7",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-background": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-surface-variant": "#3d4a42",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#68dba9",
+                        "surface-tint": "#006c4a",
+                        "secondary": "#515f74",
+                        "primary-fixed": "#85f8c4",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-fixed": "#002113",
+                        "inverse-primary": "#68dba9",
+                        "status-alfa": "#f43f5e",
+                        "status-izin": "#f59e0b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "container-padding-mobile": "1rem",
+                        "grid-gutter": "1rem",
+                        "section-margin": "1.5rem",
+                        "list-gap": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-default": ["Inter"],
+                        "label-md": ["Inter"],
+                        "input-text": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-default text-body-default antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-0 lg:left-64 h-16 flex items-center justify-between px-6 z-30 shadow-sm dark:shadow-none bg-surface dark:bg-on-background">
+<div class="flex items-center gap-4">
+<button aria-label="Open menu" class="lg:hidden text-secondary hover:text-primary transition-transform active:scale-90 h-touch-target w-touch-target flex items-center justify-center rounded-full hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden lg:flex items-center gap-2">
+<!-- Brand / Product Name for Desktop if needed, usually handled by Sidebar, but here to respect JSON TopAppBar -->
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MAN 4 Jombang</h1>
+</div>
+<div class="relative max-w-md w-full lg:ml-8">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-border-default rounded-full text-input-text font-input-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" placeholder="Cari mata pelajaran..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Notifications" class="text-secondary hover:text-primary transition-transform active:scale-90 hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-full h-touch-target w-touch-target flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="Account" class="text-secondary hover:text-primary transition-transform active:scale-90 hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant rounded-full h-touch-target w-touch-target flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full z-40 w-64 hidden lg:flex flex-col border-r border-border-default bg-surface dark:bg-on-background dark:border-on-secondary-fixed-variant">
+<div class="p-6 border-b border-border-default flex flex-col gap-1">
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MAN 4 Jombang</h2>
+<span class="text-secondary font-label-sm text-label-sm">Academic Portal</span>
+</div>
+<ul class="flex flex-col flex-1 p-4 gap-2 overflow-y-auto font-label-md text-label-md">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+                    Attendance
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">grade</span>
+                    Grades
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                    Schedule
+                </a>
+</li>
+<li>
+<!-- Active State -->
+<a aria-current="page" class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                    Management
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all duration-200 active:scale-95 rounded-lg mt-auto border-t border-border-default pt-4" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-16 min-h-screen p-container-padding-mobile lg:p-8">
+<div class="max-w-7xl mx-auto space-y-section-margin">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-text-main">Manajemen Mata Pelajaran</h2>
+<p class="text-secondary mt-1">Kelola data mata pelajaran, kurikulum, dan beban mengajar.</p>
+</div>
+<button class="bg-primary text-on-primary h-touch-target px-6 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] hover:bg-primary-container transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined">add</span>
+                    Tambah Mapel
+                </button>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default overflow-hidden">
+<!-- Table Controls (Mobile friendly) -->
+<div class="p-4 border-b border-border-default bg-surface-bright flex flex-col sm:flex-row gap-4 justify-between items-center">
+<div class="flex gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0">
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md whitespace-nowrap">Semua</button>
+<button class="px-4 py-2 rounded-full border border-border-default text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md whitespace-nowrap">MIPA</button>
+<button class="px-4 py-2 rounded-full border border-border-default text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md whitespace-nowrap">IPS</button>
+<button class="px-4 py-2 rounded-full border border-border-default text-secondary hover:bg-surface-container-low transition-colors font-label-md text-label-md whitespace-nowrap">Agama</button>
+</div>
+<div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm w-full sm:w-auto justify-end">
+<span class="material-symbols-outlined">sort</span>
+                        Urutkan: Kode Mapel
+                    </div>
+</div>
+<!-- Data Table (Desktop) / Cards (Mobile) -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="border-b border-border-default text-secondary font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-low">
+<th class="p-4 font-medium">Kode</th>
+<th class="p-4 font-medium">Mata Pelajaran</th>
+<th class="p-4 font-medium">Kelompok/Jurusan</th>
+<th class="p-4 font-medium">Beban (JP/Mg)</th>
+<th class="p-4 font-medium text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="font-body-default text-body-default">
+<!-- Row 1 -->
+<tr class="border-b border-border-default hover:bg-surface-bright transition-colors">
+<td class="p-4 text-secondary font-mono text-sm">MP-MIPA-01</td>
+<td class="p-4 font-medium text-text-main">Matematika Peminatan</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">MIPA</span>
+</td>
+<td class="p-4">4 JP</td>
+<td class="p-4 text-right">
+<button aria-label="Edit" class="text-secondary hover:text-primary transition-colors p-2 h-touch-target w-touch-target rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-border-default hover:bg-surface-bright transition-colors bg-slate-50/50">
+<td class="p-4 text-secondary font-mono text-sm">MP-WAJIB-01</td>
+<td class="p-4 font-medium text-text-main">Pendidikan Agama Islam</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-surface-container-high text-on-surface-variant">Umum (Wajib A)</span>
+</td>
+<td class="p-4">3 JP</td>
+<td class="p-4 text-right">
+<button aria-label="Edit" class="text-secondary hover:text-primary transition-colors p-2 h-touch-target w-touch-target rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-border-default hover:bg-surface-bright transition-colors">
+<td class="p-4 text-secondary font-mono text-sm">MP-IPS-02</td>
+<td class="p-4 font-medium text-text-main">Ekonomi</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-on-primary-fixed-variant">IPS</span>
+</td>
+<td class="p-4">4 JP</td>
+<td class="p-4 text-right">
+<button aria-label="Edit" class="text-secondary hover:text-primary transition-colors p-2 h-touch-target w-touch-target rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-border-default hover:bg-surface-bright transition-colors bg-slate-50/50">
+<td class="p-4 text-secondary font-mono text-sm">MP-AGM-03</td>
+<td class="p-4 font-medium text-text-main">Ilmu Tafsir</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-fixed text-on-secondary-fixed">Keagamaan</span>
+</td>
+<td class="p-4">2 JP</td>
+<td class="p-4 text-right">
+<button aria-label="Edit" class="text-secondary hover:text-primary transition-colors p-2 h-touch-target w-touch-target rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 flex items-center justify-between border-t border-border-default bg-surface-bright">
+<span class="text-secondary font-label-sm text-label-sm">Menampilkan 1-4 dari 42 mata pelajaran</span>
+<div class="flex gap-1">
+<button class="h-touch-target w-touch-target flex items-center justify-center rounded-lg border border-border-default text-secondary hover:bg-surface-container-low disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="h-touch-target w-touch-target flex items-center justify-center rounded-lg border border-border-default text-secondary hover:bg-surface-container-low">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAN 4 Jombang - Academic Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#00855d",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed-dim": "#68dba9",
+                        "secondary": "#515f74",
+                        "on-secondary-container": "#57657a",
+                        "inverse-primary": "#68dba9",
+                        "on-surface-variant": "#3d4a42",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d5e3fc",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#f5fff6",
+                        "surface-tint": "#006c4a",
+                        "tertiary": "#006947",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-primary-fixed": "#002114",
+                        "outline": "#6d7a72",
+                        "status-alfa": "#f43f5e",
+                        "text-main": "#0f172a",
+                        "tertiary-container": "#00855b",
+                        "surface": "#f7f9fb",
+                        "primary": "#006948",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#f5fff7",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-primary-fixed-variant": "#005137",
+                        "surface-container-high": "#e6e8ea",
+                        "status-hadir": "#22c55e",
+                        "secondary-container": "#d5e3fc",
+                        "surface-container": "#eceef0",
+                        "status-sakit": "#0ea5e9",
+                        "primary-fixed": "#85f8c4",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#191c1e",
+                        "background": "#f7f9fb",
+                        "border-default": "#e2e8f0",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-low": "#f2f4f6",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1e",
+                        "outline-variant": "#bccac0",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "status-izin": "#f59e0b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "grid-gutter": "1rem",
+                        "container-padding-mobile": "1rem",
+                        "list-gap": "0.5rem",
+                        "section-margin": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "body-default": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "input-text": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-default min-h-screen flex flex-col antialiased">
+<!-- Ambient Background -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-20">
+</div>
+<!-- Navigation -->
+<header class="bg-surface/80 backdrop-blur-md border-b border-border-default sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<img alt="MAN 4 Jombang Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLs0eSzzzX5fg4unHtSSi0jI_O1VUsDOoExOmsv9ErGHkyjlXyzceBtUQpfxFxqKk6h49cnOzfnN5G2XYxVjID4DQ3I1p1arWmaUGx_qumCMn-o6I_HNRXv1Ac-lhSRMiwQlCFTLuklJcTQvKs5i4XmVd0HUv_YPxXv9960BWJfKiQhXzbHEK4G0GOf5e9ylMp8eIwSh3YAmzfGh66C-IqnzimFFscWgMz_N5ArISSs6p_2QSK59HtPv0G9u"/>
+<span class="font-headline-md text-headline-md font-bold text-primary">MAN 4 Jombang</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#features">Fitur</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#about">Tentang</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#contact">Kontak</a>
+</nav>
+<div class="flex items-center">
+<a class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm h-touch-target flex items-center" href="#">Masuk Portal</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<main class="flex-grow">
+<section class="relative pt-24 pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container text-on-secondary-container mb-8">
+<span class="material-symbols-outlined text-[18px]">school</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Portal Akademik Resmi</span>
+</div>
+<h1 class="font-headline-lg text-[40px] md:text-[56px] leading-tight font-extrabold text-on-surface mb-6 max-w-4xl mx-auto">
+                    Manajemen Akademik <br class="hidden md:block"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-fixed-dim">Cepat &amp; Terintegrasi</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    Sistem informasi akademik MAN 4 Jombang. Dirancang khusus untuk efisiensi guru dan kemudahan pemantauan siswa dalam satu platform modern.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="bg-primary text-on-primary font-label-md text-label-md px-8 rounded-lg hover:bg-primary-container transition-colors shadow-sm h-touch-target flex items-center justify-center gap-2" href="#">
+                        Masuk Portal <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="bg-surface-container text-on-surface font-label-md text-label-md px-8 rounded-lg hover:bg-surface-container-high transition-colors h-touch-target flex items-center justify-center gap-2" href="#features">
+                        Pelajari Fitur
+                    </a>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 bg-surface-container-lowest" id="features">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mb-4">Solusi Lengkap Operasional Sekolah</h2>
+<p class="font-body-default text-body-default text-on-surface-variant max-w-2xl mx-auto">Fitur utama yang dirancang untuk mempercepat proses administratif sehingga guru dapat fokus pada pengajaran.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="col-span-1 md:col-span-2 bg-surface rounded-xl p-8 border border-border-default hover:shadow-sm transition-shadow">
+<div class="h-12 w-12 rounded-lg bg-secondary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary-container">how_to_reg</span>
+</div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-3">Presensi Real-time</h3>
+<p class="font-body-default text-body-default text-on-surface-variant mb-6">Catat kehadiran siswa kurang dari 60 detik. Antarmuka yang dioptimalkan untuk mobile memudahkan guru di dalam kelas.</p>
+<!-- Mini Preview -->
+<div class="bg-surface-container-lowest border border-border-default rounded-lg p-4 max-w-sm">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-md text-label-md font-semibold">XII IPA 1</span>
+<span class="text-[10px] bg-status-hadir/20 text-status-hadir px-2 py-1 rounded-full font-bold">28 HADIR</span>
+</div>
+<div class="flex gap-2">
+<div class="h-2 bg-status-hadir rounded-full flex-grow"></div>
+<div class="h-2 bg-status-izin rounded-full w-8"></div>
+<div class="h-2 bg-status-sakit rounded-full w-4"></div>
+</div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="col-span-1 bg-surface rounded-xl p-8 border border-border-default hover:shadow-sm transition-shadow flex flex-col">
+<div class="h-12 w-12 rounded-lg bg-tertiary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-tertiary-container text-[24px]">grade</span>
+</div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-3">Nilai Formatif</h3>
+<p class="font-body-default text-body-default text-on-surface-variant flex-grow">Input nilai harian dan ujian dengan format kalkulasi otomatis sesuai kurikulum terbaru.</p>
+</div>
+<!-- Feature 3 -->
+<div class="col-span-1 bg-surface rounded-xl p-8 border border-border-default hover:shadow-sm transition-shadow">
+<div class="h-12 w-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_month</span>
+</div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-3">Jadwal Pintar</h3>
+<p class="font-body-default text-body-default text-on-surface-variant">Manajemen jadwal mengajar yang terhubung langsung dengan notifikasi perpindahan jam pelajaran.</p>
+</div>
+<!-- Feature 4 -->
+<div class="col-span-1 md:col-span-2 bg-surface rounded-xl p-8 border border-border-default hover:shadow-sm transition-shadow">
+<div class="h-12 w-12 rounded-lg bg-secondary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary-container">assessment</span>
+</div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-3">Laporan Waka Kurikulum</h3>
+<p class="font-body-default text-body-default text-on-surface-variant">Dashboard analitik komprehensif untuk memantau performa kelas, kehadiran guru, dan rekapitulasi nilai seluruh sekolah dalam satu tampilan.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-border-default pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<img alt="MAN 4 Jombang Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLs0eSzzzX5fg4unHtSSi0jI_O1VUsDOoExOmsv9ErGHkyjlXyzceBtUQpfxFxqKk6h49cnOzfnN5G2XYxVjID4DQ3I1p1arWmaUGx_qumCMn-o6I_HNRXv1Ac-lhSRMiwQlCFTLuklJcTQvKs5i4XmVd0HUv_YPxXv9960BWJfKiQhXzbHEK4G0GOf5e9ylMp8eIwSh3YAmzfGh66C-IqnzimFFscWgMz_N5ArISSs6p_2QSK59HtPv0G9u"/>
+<span class="font-headline-md text-[18px] font-bold text-primary">MAN 4 Jombang</span>
+</div>
+<p class="font-body-default text-body-default text-on-surface-variant mb-4 max-w-xs">
+                        Portal akademik terintegrasi untuk mendukung proses belajar mengajar yang efektif dan efisien.
+                    </p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-4">Tautan Cepat</h4>
+<ul class="space-y-3">
+<li><a class="font-body-default text-body-default text-on-surface-variant hover:text-primary transition-colors" href="#">Portal Login</a></li>
+<li><a class="font-body-default text-body-default text-on-surface-variant hover:text-primary transition-colors" href="#">Panduan Penggunaan</a></li>
+<li><a class="font-body-default text-body-default text-on-surface-variant hover:text-primary transition-colors" href="#">Lupa Password</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-4">Kontak Admin</h4>
+<ul class="space-y-3">
+<li class="flex items-center gap-2 text-on-surface-variant font-body-default text-body-default">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                            Jl. Raya Jombang No. 123
+                        </li>
+<li class="flex items-center gap-2 text-on-surface-variant font-body-default text-body-default">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            admin@man4jombang.sch.id
+                        </li>
+<li class="flex items-center gap-2 text-on-surface-variant font-body-default text-body-default">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                            (0321) 123456
+                        </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-border-default pt-8 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    © 2024 MAN 4 Jombang. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

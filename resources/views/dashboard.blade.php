@@ -1,17 +1,25 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">
+                Dashboard Portal Siswa
+            </h2>
+            <span class="font-label-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">
+                Siswa Active
+            </span>
+        </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+    <!-- Welcome Card -->
+    <section class="flex flex-col gap-6">
+        <div class="bg-surface-container-lowest p-8 rounded-xl border border-border-default shadow-card flex flex-col gap-3">
+            <h1 class="font-headline-lg text-headline-lg font-bold text-text-main">
+                Selamat Datang, {{ auth()->user()->name }} 🎓
+            </h1>
+            <p class="font-body-default text-body-default text-on-surface-variant max-w-2xl">
+                Pantau progres akademik madrasah Anda, kehadiran presensi harian, serta perolehan nilai tugas dan ulangan harian.
+            </p>
         </div>
-    </div>
+    </section>
 </x-app-layout>
+

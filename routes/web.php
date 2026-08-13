@@ -37,7 +37,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // ===== WAKA KURIKULUM ROUTES =====
     Route::middleware('role:waka_kurikulum')->prefix('waka')->name('waka.')->group(function () {
         Route::view('dashboard', 'waka.dashboard')->name('dashboard');
-        Route::get('jadwal', \App\Livewire\Admin\JadwalManager::class)->name('jadwal'); // Waka uses Admin's component for now, or just mapped here
+        Route::get('jadwal', \App\Livewire\Waka\JadwalManager::class)->name('jadwal');
+        Route::get('rekap-absensi', \App\Livewire\Waka\RekapAbsensi::class)->name('rekap-absensi');
+        Route::get('rekap-nilai', \App\Livewire\Waka\RekapNilai::class)->name('rekap-nilai');
     });
 
     // ===== GURU ROUTES =====

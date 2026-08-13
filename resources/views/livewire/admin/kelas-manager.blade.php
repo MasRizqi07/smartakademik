@@ -1,139 +1,135 @@
-<div class="space-y-6">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex flex-col gap-6">
+    <!-- Header Title & Action Bar -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-            <h2 class="text-2xl font-bold text-slate-800">Manajemen Kelas</h2>
-            <p class="text-slate-500">Kelola data kelas dan wali kelas.</p>
+            <h2 class="font-headline-lg text-headline-lg font-bold text-text-main">Manajemen Data Rombel Kelas</h2>
+            <p class="font-body-default text-body-default text-on-surface-variant">Pengaturan rombongan belajar, tingkat kelas, dan penugasan wali kelas.</p>
         </div>
-        <div class="flex items-center gap-3 w-full md:w-auto">
-            <div class="relative w-full md:w-64">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+            <div class="relative w-full sm:w-64">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
                 <input wire:model.live.debounce.300ms="search" type="text" placeholder="Cari Nama Kelas..." 
-                       class="pl-10 w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
+                       class="w-full pl-10 pr-4 h-touch-target rounded-DEFAULT border border-border-default bg-surface-bright font-input-text text-input-text text-text-main placeholder:text-outline-variant focus-ring transition-colors">
             </div>
-            <x-animated-button wire:click="create" variant="primary" icon="<svg fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 4v16m8-8H4'></path></svg>">
-                Tambah
-            </x-animated-button>
+            <button wire:click="create" class="h-touch-target px-5 bg-primary hover:bg-primary-container text-on-primary font-label-md rounded-DEFAULT shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 shrink-0 active:scale-95">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                <span>Tambah Kelas</span>
+            </button>
         </div>
     </div>
 
+    <!-- Alert Flash Message -->
     @if (session()->has('message'))
-        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl p-4 flex items-center gap-3 animate-slide-up">
-            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span class="font-medium">{{ session('message') }}</span>
+        <div class="bg-status-hadir/10 border border-status-hadir/30 text-status-hadir rounded-lg p-4 flex items-center gap-3 animate-fade-in">
+            <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            <span class="font-label-md">{{ session('message') }}</span>
         </div>
     @endif
 
+    <!-- Form Drawer / Modal Card -->
     @if($isFormOpen)
-        <div class="animate-fade-in mb-6 relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-20"></div>
-            <div class="relative bg-white rounded-2xl p-6 shadow-soft border border-slate-100">
-                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                    <div class="w-10 h-10 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card flex flex-col gap-6 animate-fade-in">
+            <div class="flex items-center justify-between pb-4 border-b border-border-default">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-status-izin/10 text-status-izin flex items-center justify-center font-bold">
+                        <span class="material-symbols-outlined text-[24px]">meeting_room</span>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800">{{ $kelasId ? 'Edit Kelas' : 'Tambah Kelas Baru' }}</h3>
+                    <h3 class="font-headline-md text-headline-md font-bold text-text-main">{{ $kelasId ? 'Edit Kelas' : 'Tambah Kelas Baru' }}</h3>
                 </div>
-                
-                <form wire:submit="store">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Tingkat</label>
-                            <div class="relative">
-                                <select wire:model="tingkat" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors appearance-none bg-white">
-                                    <option value="">-- Pilih --</option>
-                                    <option value="X">X</option>
-                                    <option value="XI">XI</option>
-                                    <option value="XII">XII</option>
-                                </select>
-                            </div>
-                            @error('tingkat') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Kelas</label>
-                            <input type="text" wire:model="nama_kelas" placeholder="Mis: X-A, XI-IPA-1" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
-                            @error('nama_kelas') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Wali Kelas (Opsional)</label>
-                            <div class="relative">
-                                <select wire:model="wali_kelas_id" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors appearance-none bg-white">
-                                    <option value="">-- Tidak ada --</option>
-                                    @foreach($gurus as $guru)
-                                        <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error('wali_kelas_id') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
-                        <button type="button" wire:click="resetForm" class="px-6 py-2.5 border border-slate-200 text-slate-600 rounded-xl font-semibold text-sm hover:bg-slate-50 hover:text-slate-900 transition-all">Batal</button>
-                        <x-animated-button type="submit" variant="primary" icon="<svg fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path></svg>">
-                            Simpan Data
-                        </x-animated-button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    @endif
-
-    <x-modern-card>
-        <div class="overflow-x-auto -mx-6 px-6 relative">
-            <div wire:loading wire:target="search, previousPage, nextPage, gotoPage" class="absolute inset-0 z-10 bg-white/50 backdrop-blur-sm flex items-center justify-center rounded-xl">
-                <svg class="animate-spin h-8 w-8 text-brand-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+                <button type="button" wire:click="resetForm" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full">
+                    <span class="material-symbols-outlined text-[20px]">close</span>
+                </button>
             </div>
             
-            <table class="min-w-full divide-y divide-slate-100">
+            <form wire:submit="store" class="flex flex-col gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Tingkat</label>
+                        <select wire:model="tingkat" class="block w-full h-touch-target rounded-DEFAULT border border-border-default bg-surface-bright font-input-text text-input-text focus-ring transition-colors">
+                            <option value="">-- Pilih Tingkat --</option>
+                            <option value="X">X</option>
+                            <option value="XI">XI</option>
+                            <option value="XII">XII</option>
+                        </select>
+                        @error('tingkat') <span class="text-error text-label-sm mt-1 block">{{ $message }}</span> @enderror
+                    </div>
+                    <div>
+                        <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Nama Kelas</label>
+                        <input type="text" wire:model="nama_kelas" placeholder="Misal: X-A, XI-IPA-1" class="block w-full h-touch-target rounded-DEFAULT border border-border-default bg-surface-bright font-input-text text-input-text focus-ring transition-colors">
+                        @error('nama_kelas') <span class="text-error text-label-sm mt-1 block">{{ $message }}</span> @enderror
+                    </div>
+                    <div>
+                        <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Wali Kelas (Opsional)</label>
+                        <select wire:model="wali_kelas_id" class="block w-full h-touch-target rounded-DEFAULT border border-border-default bg-surface-bright font-input-text text-input-text focus-ring transition-colors">
+                            <option value="">-- Tidak Ada Wali Kelas --</option>
+                            @foreach($gurus as $guru)
+                                <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                            @endforeach
+                        </select>
+                        @error('wali_kelas_id') <span class="text-error text-label-sm mt-1 block">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-4 border-t border-border-default">
+                    <button type="button" wire:click="resetForm" class="h-touch-target px-6 border border-border-default text-secondary font-label-md rounded-DEFAULT hover:bg-surface-container transition-all">Batal</button>
+                    <button type="submit" class="h-touch-target px-6 bg-primary hover:bg-primary-container text-on-primary font-label-md rounded-DEFAULT shadow-xs transition-all flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">save</span>
+                        <span>Simpan Data Kelas</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    @endif
+
+    <!-- Data Table Container -->
+    <div class="bg-surface-container-lowest rounded-xl border border-border-default shadow-card flex flex-col overflow-hidden relative">
+        <div wire:loading wire:target="search, previousPage, nextPage, gotoPage" class="absolute inset-0 z-20 bg-surface-container-lowest/70 backdrop-blur-xs flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-[36px] animate-spin">progress_activity</span>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr>
-                        <th class="px-4 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Tingkat</th>
-                        <th class="px-4 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Nama Kelas</th>
-                        <th class="px-4 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Wali Kelas</th>
-                        <th class="px-4 py-4 text-right text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Aksi</th>
+                    <tr class="bg-surface-container-low border-b border-border-default font-label-sm text-on-surface-variant text-[12px] uppercase tracking-wider">
+                        <th class="py-3.5 px-4 font-semibold">Tingkat</th>
+                        <th class="py-3.5 px-4 font-semibold">Nama Rombel Kelas</th>
+                        <th class="py-3.5 px-4 font-semibold">Wali Kelas</th>
+                        <th class="py-3.5 px-4 font-semibold text-right">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-border-default/60 font-body-default text-body-default text-text-main">
                     @forelse ($kelases as $kelas)
-                        <tr class="hover:bg-slate-50/70 transition-colors group">
-                            <td class="px-4 py-4 whitespace-nowrap">
-                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand-50 text-brand-700 font-bold text-sm">
+                        <tr class="hover:bg-surface-container-low/60 transition-colors">
+                            <td class="py-3.5 px-4">
+                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-container/20 text-primary font-bold text-xs">
                                     {{ $kelas->tingkat }}
                                 </span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm font-bold text-slate-900">{{ $kelas->nama_kelas }}</td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-slate-600 font-medium">
+                            <td class="py-3.5 px-4 font-semibold text-text-main">{{ $kelas->nama_kelas }}</td>
+                            <td class="py-3.5 px-4">
                                 @if($kelas->waliKelas)
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                        {{ $kelas->waliKelas->nama }}
-                                    </div>
+                                    <span class="font-medium text-text-main">{{ $kelas->waliKelas->nama }}</span>
                                 @else
-                                    <span class="text-slate-400 italic">Belum ada</span>
+                                    <span class="text-outline text-xs italic">Belum Ditentukan</span>
                                 @endif
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-right">
-                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button wire:click="edit({{ $kelas->id }})" class="p-2 text-sky-600 hover:bg-sky-50 rounded-lg transition-colors" title="Edit">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <td class="py-3.5 px-4 text-right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <button wire:click="edit({{ $kelas->id }})" class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit Data">
+                                        <span class="material-symbols-outlined text-[20px]">edit</span>
                                     </button>
-                                    <button wire:click="delete({{ $kelas->id }})" wire:confirm="Yakin ingin menghapus kelas ini? Ini akan gagal jika kelas masih memiliki siswa." class="p-2 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors" title="Hapus">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    <button wire:click="delete({{ $kelas->id }})" wire:confirm="Yakin ingin menghapus kelas ini? Data siswa di kelas ini bisa terpengaruh." class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors" title="Hapus Data">
+                                        <span class="material-symbols-outlined text-[20px]">delete</span>
                                     </button>
                                 </div>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="px-4 py-12 text-center text-slate-500">
-                                <div class="flex flex-col items-center justify-center">
-                                    <svg class="w-12 h-12 text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                                    <p class="text-base font-medium">Tidak ada data kelas yang ditemukan.</p>
+                            <td colspan="4" class="py-12 px-4 text-center text-on-surface-variant">
+                                <div class="flex flex-col items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-[48px] text-outline">search_off</span>
+                                    <p class="font-label-md text-label-md">Tidak ada data kelas ditemukan.</p>
                                 </div>
                             </td>
                         </tr>
@@ -143,9 +139,9 @@
         </div>
 
         @if($kelases->hasPages())
-            <div class="mt-6 pt-6 border-t border-slate-100">
+            <div class="p-4 border-t border-border-default bg-surface-container-low">
                 {{ $kelases->links() }}
             </div>
         @endif
-    </x-modern-card>
+    </div>
 </div>

@@ -2,17 +2,20 @@
 
 namespace App\Livewire\Admin;
 
+use App\Imports\GuruImport;
+use App\Imports\KelasImport;
+use App\Imports\MapelImport;
 use App\Imports\SiswaImport;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ImportExcel extends Component
 {
     use WithFileUploads;
 
+    public $type = 'siswa'; // 'siswa', 'guru', 'kelas', 'mapel'
     public $file;
     public $failures = [];
     public $successCount = 0;
@@ -21,21 +24,36 @@ class ImportExcel extends Component
     public function rules()
     {
         return [
+            'type' => 'required|in:siswa,guru,kelas,mapel',
             'file' => 'required|mimes:xlsx,xls,csv|max:2048', // max 2MB
         ];
     }
 
     public function downloadTemplate(): StreamedResponse
     {
+        $filename = "template_import_{$this->type}.csv";
         $headers = [
             'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="template_import_siswa.csv"',
+            'Content-Disposition' => "attachment; filename=\"{$filename}\"",
         ];
         
-        $callback = function() {
+        $type = $this->type;
+
+        $callback = function() use ($type) {
             $file = fopen('php://output', 'w');
-            fputcsv($file, ['nisn', 'nama', 'tingkat', 'nama_kelas']);
-            fputcsv($file, ['1234567890', 'Budi Santoso', 'X', 'X-A']);
+            if ($type === 'guru') {
+                fputcsv($file, ['nip_nuptk', 'nama', 'email']);
+                fputcsv($file, ['198501012010011002', 'Dewi Lestari', 'dewi@smartakademik.test']);
+            } elseif ($type === 'kelas') {
+                fputcsv($file, ['nama_kelas', 'tingkat']);
+                fputcsv($file, ['X-B', 'X']);
+            } elseif ($type === 'mapel') {
+                fputcsv($file, ['kode_mapel', 'nama_mapel']);
+                fputcsv($file, ['BIO', 'Biologi']);
+            } else {
+                fputcsv($file, ['nisn', 'nama', 'tingkat', 'nama_kelas']);
+                fputcsv($file, ['1234567890', 'Budi Santoso', 'X', 'X-A']);
+            }
             fclose($file);
         };
 
@@ -50,17 +68,21 @@ class ImportExcel extends Component
         $this->isImporting = true;
 
         try {
-            $import = new SiswaImport;
-            Excel::import($import, $this->file);
+            $importer = match ($this->type) {
+                'guru' => new GuruImport,
+                'kelas' => new KelasImport,
+                'mapel' => new MapelImport,
+                default => new SiswaImport,
+            };
+
+            Excel::import($importer, $this->file);
             
-            $this->failures = $import->failures();
-            $this->successCount = session('import_success_count', 0); // we might need to track this if possible, but Laravel Excel doesn't give a straight count easily without events. 
-            // We'll just say "Import selesai."
+            $this->failures = $importer->failures();
             
             if (count($this->failures) > 0) {
                 session()->flash('warning', 'Import selesai dengan beberapa error pada baris tertentu.');
             } else {
-                session()->flash('message', 'Semua data berhasil diimport!');
+                session()->flash('message', 'Semua data ' . strtoupper($this->type) . ' berhasil diimport!');
             }
             
         } catch (\Exception $e) {
@@ -76,3 +98,4 @@ class ImportExcel extends Component
         return view('livewire.admin.import-excel')->layout('layouts.app', ['header' => 'Import Data Massal']);
     }
 }
+

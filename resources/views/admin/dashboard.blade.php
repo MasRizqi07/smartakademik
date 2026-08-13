@@ -1,88 +1,125 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-2xl text-slate-800 leading-tight">
-            {{ __('Dashboard Admin TU') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">
+                Dashboard Admin Tata Usaha
+            </h2>
+            <span class="font-label-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">
+                MAN 4 Jombang
+            </span>
+        </div>
     </x-slot>
 
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            
-            <!-- Greeting Card -->
-            <div class="bg-gradient-to-r from-brand-600 to-accent-600 rounded-2xl p-8 text-white shadow-glow relative overflow-hidden">
-                <div class="absolute right-0 top-0 opacity-10 scale-150 transform translate-x-1/4 -translate-y-1/4">
-                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
-                </div>
-                <div class="relative z-10">
-                    <h3 class="text-3xl font-bold mb-2">Selamat datang, {{ auth()->user()->name }}! 👋</h3>
-                    <p class="text-brand-100 text-lg max-w-2xl">Kelola data master akademik dengan mudah. Pilih menu di bawah untuk mulai bekerja.</p>
-                </div>
+    <!-- Welcome Header -->
+    <section class="flex flex-col gap-2">
+        <h1 class="font-headline-lg text-headline-lg font-bold text-text-main">
+            Selamat Datang, {{ auth()->user()->name }} 👋
+        </h1>
+        <p class="font-body-default text-body-default text-on-surface-variant">
+            Ringkasan operasional data akademik dan akses cepat manajemen master data madrasah.
+        </p>
+    </section>
+
+    <!-- Bento Grid Stats -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-grid-gutter">
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-primary">
+                <span class="material-symbols-outlined">class</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Total Kelas</span>
             </div>
-
-            <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">Akses Cepat Master Data</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Siswa Widget -->
-                <a href="{{ route('admin.siswa') }}" class="group block">
-                    <x-modern-card class="h-full border-l-4 border-l-brand-500 hover:border-l-accent-500 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 group-hover:text-brand-600 transition-colors">Kelola Siswa</h4>
-                                <p class="text-sm text-slate-500">Data & Akun Siswa</p>
-                            </div>
-                        </div>
-                    </x-modern-card>
-                </a>
-
-                <!-- Guru Widget -->
-                <a href="{{ route('admin.guru') }}" class="group block">
-                    <x-modern-card class="h-full border-l-4 border-l-sky-500 hover:border-l-accent-500 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 group-hover:text-sky-600 transition-colors">Kelola Guru</h4>
-                                <p class="text-sm text-slate-500">Data & Akun Guru</p>
-                            </div>
-                        </div>
-                    </x-modern-card>
-                </a>
-
-                <!-- Kelas Widget -->
-                <a href="{{ route('admin.kelas') }}" class="group block">
-                    <x-modern-card class="h-full border-l-4 border-l-amber-500 hover:border-l-accent-500 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 group-hover:text-amber-600 transition-colors">Kelola Kelas</h4>
-                                <p class="text-sm text-slate-500">Daftar Rombel</p>
-                            </div>
-                        </div>
-                    </x-modern-card>
-                </a>
-
-                <!-- Mapel Widget -->
-                <a href="{{ route('admin.mapel') }}" class="group block">
-                    <x-modern-card class="h-full border-l-4 border-l-rose-500 hover:border-l-accent-500 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 group-hover:text-rose-600 transition-colors">Kelola Mapel</h4>
-                                <p class="text-sm text-slate-500">Mata Pelajaran</p>
-                            </div>
-                        </div>
-                    </x-modern-card>
-                </a>
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\Kelas::count() }}
             </div>
-            
         </div>
-    </div>
+
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-secondary">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Total Siswa</span>
+            </div>
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\Siswa::count() }}
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-status-sakit">
+                <span class="material-symbols-outlined">badge</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Total Guru</span>
+            </div>
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\Guru::count() }}
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-status-hadir">
+                <span class="material-symbols-outlined">menu_book</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Mata Pelajaran</span>
+            </div>
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\Mapel::count() }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Action Cards Grid -->
+    <section class="flex flex-col gap-4">
+        <h3 class="font-headline-md text-headline-md font-bold text-text-main">
+            Modul Manajemen Master Data
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-grid-gutter">
+            <a href="{{ route('admin.siswa') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-primary-container/10 text-primary flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">groups</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Data Siswa</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Kelola identitas siswa, NISN, kelas, dan akun portal.</p>
+                </div>
+            </a>
+
+            <a href="{{ route('admin.guru') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-secondary-container/30 text-secondary flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">badge</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Data Guru & Role</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Kelola NIP, daftar pengajar, dan hak akses pengguna.</p>
+                </div>
+            </a>
+
+            <a href="{{ route('admin.kelas') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-status-izin/10 text-status-izin flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">meeting_room</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Data Rombel Kelas</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Manajemen nama kelas, tingkat, dan wali kelas.</p>
+                </div>
+            </a>
+
+            <a href="{{ route('admin.mapel') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-status-sakit/10 text-status-sakit flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">book</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Mata Pelajaran</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Pengaturan mata pelajaran dan bobot kurikulum.</p>
+                </div>
+            </a>
+
+            <a href="{{ route('admin.import') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-status-hadir/10 text-status-hadir flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">upload_file</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Import Data Excel</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Unggah berkas Excel untuk impor masal data siswa & guru.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 </x-app-layout>
+

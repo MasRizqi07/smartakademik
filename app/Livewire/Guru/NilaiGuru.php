@@ -5,10 +5,13 @@ namespace App\Livewire\Guru;
 use App\Models\JadwalPelajaran;
 use App\Models\NilaiFormatif;
 use App\Models\Siswa;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class NilaiGuru extends Component
 {
+    use AuthorizesRequests;
+
     public $kombinasiKelasMapel = []; // list of unique kelas & mapel pairs for the guru
     public $selectedKombinasi = ''; // Will hold "kelasId_mapelId"
     
@@ -82,6 +85,10 @@ class NilaiGuru extends Component
 
         [$kelasId, $mapelId] = explode('_', $this->selectedKombinasi);
 
+        // K2: Authorize check that the teacher has a schedule for this kelas and mapel
+        $jadwal = JadwalPelajaran::where('kelas_id', $kelasId)->where('mapel_id', $mapelId)->first();
+        abort_unless($jadwal && $jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
+
         $this->siswas = Siswa::where('kelas_id', $kelasId)->orderBy('nama')->get();
 
         $existing = NilaiFormatif::where('mapel_id', $mapelId)
@@ -114,6 +121,10 @@ class NilaiGuru extends Component
         }
 
         [$kelasId, $mapelId] = explode('_', $this->selectedKombinasi);
+
+        // K2: Authorize check before save
+        $jadwal = JadwalPelajaran::where('kelas_id', $kelasId)->where('mapel_id', $mapelId)->first();
+        abort_unless($jadwal && $jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
 
         foreach ($this->siswas as $siswa) {
             $nilaiStr = $this->nilaiData[$siswa->id] ?? '';

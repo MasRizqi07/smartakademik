@@ -1,43 +1,95 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-2xl text-slate-800 leading-tight">
-            {{ __('Dashboard Waka Kurikulum') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-headline-md text-headline-md text-primary font-bold">
+                Dashboard Waka Kurikulum
+            </h2>
+            <span class="font-label-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">
+                Monitoring Kurikulum
+            </span>
+        </div>
     </x-slot>
 
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            
-            <!-- Greeting Card -->
-            <div class="bg-gradient-to-r from-accent-600 to-brand-600 rounded-2xl p-8 text-white shadow-glow relative overflow-hidden">
-                <div class="absolute right-0 top-0 opacity-10 scale-150 transform translate-x-1/4 -translate-y-1/4">
-                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path></svg>
-                </div>
-                <div class="relative z-10">
-                    <h3 class="text-3xl font-bold mb-2">Selamat datang, {{ auth()->user()->name }}! 👋</h3>
-                    <p class="text-brand-100 text-lg max-w-2xl">Pantau kurikulum dan kelola jadwal pelajaran di seluruh kelas dengan antarmuka modern.</p>
-                </div>
-            </div>
+    <!-- Welcome Header -->
+    <section class="flex flex-col gap-2">
+        <h1 class="font-headline-lg text-headline-lg font-bold text-text-main">
+            Selamat Datang, {{ auth()->user()->name }} 👋
+        </h1>
+        <p class="font-body-default text-body-default text-on-surface-variant">
+            Pusat pemantauan kegiatan belajar mengajar, analisis kehadiran, dan laporan capaian formatif madrasah.
+        </p>
+    </section>
 
-            <h3 class="text-xl font-bold text-slate-800 mt-8 mb-4">Akses Cepat Kurikulum</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Jadwal Widget -->
-                <a href="{{ route('waka.jadwal') }}" class="group block">
-                    <x-modern-card class="h-full border-l-4 border-l-brand-500 hover:border-l-accent-500 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm border border-brand-100">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl text-slate-800 group-hover:text-brand-600 transition-colors">Kelola Jadwal</h4>
-                                <p class="text-base text-slate-500 mt-1">Atur jadwal mengajar guru per rombongan belajar</p>
-                            </div>
-                        </div>
-                    </x-modern-card>
-                </a>
+    <!-- Bento Grid Stats -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-primary">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Jadwal Mengajar</span>
             </div>
-            
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\JadwalPelajaran::count() }} Sesi
+            </div>
         </div>
-    </div>
+
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-status-hadir">
+                <span class="material-symbols-outlined">how_to_reg</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Presensi Siswa</span>
+            </div>
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\Absensi::count() }} Record
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-status-sakit">
+                <span class="material-symbols-outlined">assessment</span>
+                <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Nilai Formatif</span>
+            </div>
+            <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
+                {{ \App\Models\Nilai::count() }} Input
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Action Cards Grid -->
+    <section class="flex flex-col gap-4">
+        <h3 class="font-headline-md text-headline-md font-bold text-text-main">
+            Modul Monitoring & Laporan Kurikulum
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-grid-gutter">
+            <a href="{{ route('waka.jadwal') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-primary-container/10 text-primary flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">calendar_month</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Monitoring Jadwal</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Kelola jadwal KBM harian kelas dan alokasi pengajar.</p>
+                </div>
+            </a>
+
+            <a href="{{ route('waka.rekap-absensi') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-status-hadir/10 text-status-hadir flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">how_to_reg</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Rekap Absensi</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Laporan bulanan persentase kehadiran siswa per rombel.</p>
+                </div>
+            </a>
+
+            <a href="{{ route('waka.rekap-nilai') }}" wire:navigate class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-status-sakit/10 text-status-sakit flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">assessment</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-headline-md text-[18px] font-bold text-text-main group-hover:text-primary transition-colors">Rekap Nilai Formatif</h4>
+                    <p class="font-body-default text-body-default text-on-surface-variant">Ringkasan capaian penilaian harian & tugas siswa.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 </x-app-layout>
+

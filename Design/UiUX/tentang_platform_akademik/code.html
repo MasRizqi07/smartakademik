@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAN 4 Jombang - Tentang Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#2d3133",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#006948",
+                      "on-background": "#191c1e",
+                      "secondary-fixed": "#d5e3fc",
+                      "on-tertiary": "#ffffff",
+                      "border-default": "#e2e8f0",
+                      "on-surface": "#191c1e",
+                      "status-izin": "#f59e0b",
+                      "primary-fixed": "#85f8c4",
+                      "background": "#f7f9fb",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "tertiary-container": "#00855b",
+                      "primary-container": "#00855d",
+                      "on-tertiary-fixed": "#002113",
+                      "inverse-on-surface": "#eff1f3",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#e6e8ea",
+                      "secondary-container": "#d5e3fc",
+                      "on-error-container": "#93000a",
+                      "secondary": "#515f74",
+                      "outline-variant": "#bccac0",
+                      "status-hadir": "#22c55e",
+                      "inverse-primary": "#68dba9",
+                      "on-primary-container": "#f5fff7",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface": "#f7f9fb",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#3d4a42",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-dim": "#d8dadc",
+                      "on-primary-fixed-variant": "#005137",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#f5fff6",
+                      "status-alfa": "#f43f5e",
+                      "tertiary-fixed": "#6ffbbe",
+                      "tertiary": "#006947",
+                      "surface-container": "#eceef0",
+                      "surface-tint": "#006c4a",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "on-primary-fixed": "#002114",
+                      "surface-variant": "#e0e3e5",
+                      "primary-fixed-dim": "#68dba9",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "text-main": "#0f172a",
+                      "status-sakit": "#0ea5e9",
+                      "on-secondary-container": "#57657a",
+                      "outline": "#6d7a72"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "list-gap": "0.5rem",
+                      "grid-gutter": "1rem",
+                      "section-margin": "1.5rem",
+                      "container-padding-mobile": "1rem",
+                      "touch-target": "44px"
+              },
+              "fontFamily": {
+                      "body-default": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "input-text": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-default": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "input-text": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-on-surface">
+<!-- Top App Bar -->
+<header class="docked full-width top-0 sticky bg-surface dark:bg-surface border-b border-border-default dark:border-outline-variant flat no shadows flex justify-between items-center h-16 px-6 ml-64 w-[calc(100%-16rem)] hidden md:flex z-50">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">Academic Portal</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-low transition-colors text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A small, professional portrait of a school administrator in smart casual attire, smiling warmly. The photo is well-lit with natural light, suitable for a profile avatar in an enterprise application, using the Modern Corporate aesthetic of the system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlSl26zKf-o8suXyQhH-vpQ7-ibL6vpUWNEWSgYPsU-SI43csskN3dFktY4dujY_BiPsadabo_f9M2YOLWZbn3FjHDiI0uuFr_noo9u6yPwSr3PSN0DA3BumqSpRMey-cDJr8RwPzQhSML9NTUI48pvT8QnQJNdrnfz1ihLFzJd0yYIH9lRWzg2NJoQTVNF6zR_j_5hmQydL93wSb6DJ43du483iPUbAs5USs86b6BZKw8OK3qb-rpow"/>
+</div>
+</header>
+<!-- Side Nav Bar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-lowest shadow-sm hidden md:flex flex-col p-4 border-r border-border-default dark:border-outline-variant z-50">
+<div class="mb-8 px-4">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim mb-1">MAN 4 Jombang</div>
+<div class="font-label-md text-label-md text-secondary">Academic Management</div>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">grade</span>
+<span class="font-label-md text-label-md">Grades</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<!-- Setting Settings as active since 'Tentang' implies administrative/info scope if not specifically listed -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-lg font-bold transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                Record Attendance
+            </button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="md:ml-64 p-6 lg:p-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12 relative rounded-xl overflow-hidden shadow-sm bg-surface-container-lowest">
+<div class="grid md:grid-cols-2 gap-0">
+<div class="p-8 lg:p-12 flex flex-col justify-center">
+<h1 class="font-headline-lg text-headline-lg lg:text-[32px] lg:leading-[40px] text-primary mb-4 font-extrabold">Digital Transformation at MAN 4 Jombang</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Empowering educators with high-performance tools for academic excellence. Our platform is designed to streamline operations, reduce administrative burden, and focus entirely on student success.</p>
+</div>
+<div class="h-64 md:h-auto bg-surface-container relative">
+<img alt="Modern Classroom" class="absolute inset-0 w-full h-full object-cover" data-alt="A wide angle photograph of a modern, bright classroom setting in an Islamic school. Students and a teacher are engaged, utilizing tablets for learning. The lighting is crisp and natural, highlighting a clean, professional academic environment aligning with the Modern Corporate aesthetic of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8DgcvDPbIK6jId1u-9y-8hz2Lwh1t1gOr0FvWcdX8S892rriTGbwpmOgjCRfW44jXG4ucCp6P_ZDMZvzNSq6NVvv4sMQ-fdpO6pK8V4H8TuaG1oXWqphDkrf07_X0KX1egtnO5svKe_ebb-xRctTa0cykWokSxPw99ivmdBrAo0NegeP7OPZ5o2a-c2ETh7DuqnZT3YxLPJZE0yE0m511kGmQmzboM2r8Sf4VWY1n6XChZ3qLOl0alA"/>
+</div>
+</div>
+</section>
+<!-- Vision & Mission -->
+<section class="grid md:grid-cols-2 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-border-default">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Visi Platform</h2>
+</div>
+<p class="font-body-default text-body-default text-on-surface-variant">
+                    Menjadi pionir platform manajemen akademik yang andal, cepat, dan intuitif, memfasilitasi lingkungan belajar mengajar yang efisien dan terstruktur di MAN 4 Jombang. Kami berkomitmen untuk menyediakan infrastruktur digital kelas satu untuk mendukung pendidik.
+                </p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-border-default">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Misi Kami</h2>
+</div>
+<ul class="font-body-default text-body-default text-on-surface-variant space-y-3">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Mendukung guru dengan alat pencatatan kehadiran kurang dari 60 detik.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Menyediakan dasbor analitik real-time bagi Waka Kurikulum.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+<span>Mengurangi beban administratif melalui otomatisasi pelaporan.</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Benefits Bento Grid -->
+<section class="mb-12">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-border-default pb-2">Manfaat Transformasi</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="col-span-1 md:col-span-2 bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-border-default flex flex-col justify-between relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-primary mb-4 block">speed</span>
+<h3 class="font-label-md text-label-md font-bold text-on-surface mb-2">Efisiensi Maksimal</h3>
+<p class="font-body-default text-body-default text-on-surface-variant w-3/4">Desain antarmuka difokuskan pada kecepatan. Interaksi dioptimalkan untuk penggunaan satu tangan di perangkat seluler, memungkinkan guru menyelesaikan tugas rutin dengan cepat di tengah kesibukan kelas.</p>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[200px]">speed</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-primary text-on-primary rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary-fixed mb-4 block">security</span>
+<h3 class="font-label-md text-label-md font-bold mb-2">Integritas Data</h3>
+<p class="font-body-default text-body-default text-on-primary opacity-90">Sistem terpusat memastikan setiap data absensi dan nilai tersimpan dengan aman dan akurat, mengurangi risiko human-error.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-border-default flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">insights</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Pelaporan Otomatis</h3>
+<p class="font-body-default text-body-default text-on-surface-variant text-sm">Generasi laporan kehadiran harian secara instan.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-border-default flex gap-4 items-center md:col-span-2">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-error-container">phonelink</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Aksesibilitas Multi-Perangkat</h3>
+<p class="font-body-default text-body-default text-on-surface-variant text-sm">Responsif penuh dari layar ponsel pintar guru hingga monitor desktop administrasi, memberikan pengalaman konsisten.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

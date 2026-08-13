@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event &amp; Exam Management - Academic Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-default": "#e2e8f0",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "status-sakit": "#0ea5e9",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bccac0",
+                        "error": "#ba1a1a",
+                        "tertiary": "#006947",
+                        "primary": "#006948",
+                        "on-surface": "#191c1e",
+                        "outline": "#6d7a72",
+                        "on-primary-fixed-variant": "#005137",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-container": "#00855b",
+                        "primary-fixed": "#85f8c4",
+                        "primary-container": "#00855d",
+                        "on-tertiary-container": "#f5fff6",
+                        "on-primary-fixed": "#002114",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#d5e3fc",
+                        "on-secondary-container": "#57657a",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "status-alfa": "#f43f5e",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-tint": "#006c4a",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "primary-fixed-dim": "#68dba9",
+                        "text-main": "#0f172a",
+                        "status-izin": "#f59e0b",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface-variant": "#3d4a42",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#f5fff7",
+                        "inverse-primary": "#68dba9",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "background": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "status-hadir": "#22c55e",
+                        "secondary": "#515f74"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "list-gap": "0.5rem",
+                        "section-margin": "1.5rem",
+                        "container-padding-mobile": "1rem",
+                        "grid-gutter": "1rem",
+                        "touch-target": "44px"
+                    },
+                    "fontFamily": {
+                        "body-default": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "input-text": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen w-full flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest shadow-sm h-screen w-64 fixed left-0 top-0 flex flex-col h-full p-4 border-r border-border-default z-20">
+<div class="mb-8 px-2 flex items-center gap-3">
+<img alt="Teacher Profile Picture" class="h-10 w-10 rounded-lg object-cover" data-alt="A clean, minimalist abstract logo for a modern educational management system. The logo features sharp geometric shapes in deep emerald green and slate grey, set against a pristine white background. It conveys professionalism, precision, and high-performance academic operations in a modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDHdM15_2sXxeLsbt0MCftw16MbxOWNiJZN8iGC1kokwihycp07K2r2Si3hJvqYFk3t3wBEfo0z6swAqKPytYhsKax03d9PKK4x40fgHc7bdiKYnYKVVzSh_Jg54l6S9DDpC2NIWVTutc7pj3nRw5HPieGA74Mf85Rr8UNIJbr3ZJmQmna3N5S1FUSwCa9dW9ddI_jY3JnjOPZDvj-Amo1Lj6LOjipjjErCjO7vKT8efpLmVCsesSxZw"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">MAN 4 Jombang</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Management</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+                    Attendance
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="grade">grade</span>
+                    Grades
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold font-label-md text-label-md transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                    Schedule
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="mt-auto pt-4 border-t border-border-default">
+<button class="w-full h-touch-target bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                Record Attendance
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 w-[calc(100%-16rem)] flex flex-col h-full bg-background relative overflow-y-auto">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-border-default flex justify-between items-center h-16 px-6 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">Academic Portal</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-default rounded-full text-body-default font-body-default focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-64 transition-all" placeholder="Search events, exams..." type="text"/>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-border-default overflow-hidden">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a school administrator in a modern, brightly lit office environment. The lighting is soft and corporate. The individual is wearing smart business attire suitable for an academic setting. The overall aesthetic is clean, trustworthy, and high-quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT4eoaMajiApAG21mkOQjA5IPIHXxAtL0E6s3UXKcK0VPEfUF4PLWKQ78SxcERhx48W9SNgPDnvSbcSYMhoTkPX6p0WbxkLrhIAXhklDgbB-N6L5oYy8dAlRqMnCTuFXuLKr8DYlMSxyxe8x3wiG6nrAXI1Zt_PqkJnFHDljQFnivS7_3LVXpeamDvZ23qZf47NkMk_9d63BpnKL-lbT2ECL78f9LeEb-1Ivlb8REFVCtTWXpkaKuFLA"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 max-w-7xl mx-auto w-full flex-grow flex flex-col gap-section-margin">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-text-main mb-1">Event &amp; Exam Management</h2>
+<p class="font-body-default text-body-default text-on-surface-variant">Manage upcoming major assessments, room allocations, and proctor assignments.</p>
+</div>
+<button class="h-touch-target px-6 bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">event_note</span>
+                    Add Event
+                </button>
+</div>
+<!-- Dashboard Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter mb-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-secondary-container text-on-secondary-container rounded-lg">
+<span class="material-symbols-outlined">assignment</span>
+</span>
+<span class="text-xs font-bold uppercase tracking-wider text-primary px-2 py-1 bg-primary-container/10 rounded-full">Active</span>
+</div>
+<div>
+<h3 class="font-body-default text-body-default text-on-surface-variant">Upcoming Exams</h3>
+<p class="font-headline-lg text-headline-lg text-text-main">24</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-surface-container-high text-on-surface rounded-lg">
+<span class="material-symbols-outlined">person_check</span>
+</span>
+</div>
+<div>
+<h3 class="font-body-default text-body-default text-on-surface-variant">Proctors Assigned</h3>
+<p class="font-headline-lg text-headline-lg text-text-main">18<span class="text-label-sm text-on-surface-variant font-normal ml-1">/ 24</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-surface-container-high text-on-surface rounded-lg">
+<span class="material-symbols-outlined">meeting_room</span>
+</span>
+<span class="text-xs font-bold uppercase tracking-wider text-error px-2 py-1 bg-error-container text-on-error-container rounded-full">Action Needed</span>
+</div>
+<div>
+<h3 class="font-body-default text-body-default text-on-surface-variant">Rooms Allocated</h3>
+<p class="font-headline-lg text-headline-lg text-text-main">22<span class="text-label-sm text-on-surface-variant font-normal ml-1">/ 24</span></p>
+</div>
+</div>
+</div>
+<!-- List Section -->
+<div class="bg-surface-container-lowest border border-border-default rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-border-default flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-text-main">Upcoming Major Assessments (PTS &amp; PAS)</h3>
+<div class="flex gap-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors border border-border-default bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors border border-border-default bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider border-b border-border-default">
+<th class="py-3 px-6 font-semibold">Assessment</th>
+<th class="py-3 px-6 font-semibold">Date &amp; Time</th>
+<th class="py-3 px-6 font-semibold">Subject</th>
+<th class="py-3 px-6 font-semibold">Room Assignment</th>
+<th class="py-3 px-6 font-semibold">Proctor (Pengawas)</th>
+<th class="py-3 px-6 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-default text-body-default text-text-main divide-y divide-border-default">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md bg-tertiary-container/10 flex items-center justify-center text-tertiary-container font-bold text-xs border border-tertiary-container/20">
+                                            PTS
+                                        </div>
+<div>
+<p class="font-medium text-text-main">Penilaian Tengah Semester</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Semester Ganjil 2023/2024</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="font-medium">12 Oct 2023</p>
+<p class="text-label-sm text-on-surface-variant">07:30 - 09:30</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-surface-container-high border border-border-default text-xs font-medium text-on-surface-variant">
+                                        Matematika Wajib
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1 text-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">meeting_room</span>
+                                            Ruang 01 (XI MIPA 1)
+                                        </div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px] font-bold">
+                                            BS
+                                        </div>
+<span class="text-sm">Budi Santoso, S.Pd</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary-container transition-colors p-2 rounded-md hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md bg-tertiary-container/10 flex items-center justify-center text-tertiary-container font-bold text-xs border border-tertiary-container/20">
+                                            PTS
+                                        </div>
+<div>
+<p class="font-medium text-text-main">Penilaian Tengah Semester</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Semester Ganjil 2023/2024</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="font-medium">12 Oct 2023</p>
+<p class="text-label-sm text-on-surface-variant">10:00 - 12:00</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-surface-container-high border border-border-default text-xs font-medium text-on-surface-variant">
+                                        Bahasa Inggris
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1 text-sm text-error font-medium">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+                                            Unassigned
+                                        </div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full border border-dashed border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">person_add</span>
+</div>
+<span class="text-sm text-on-surface-variant italic">Pending Assignment</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary-container transition-colors p-2 rounded-md hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center text-primary font-bold text-xs border border-primary/20">
+                                            PAS
+                                        </div>
+<div>
+<p class="font-medium text-text-main">Penilaian Akhir Semester</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Semester Ganjil 2023/2024</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="font-medium">05 Dec 2023</p>
+<p class="text-label-sm text-on-surface-variant">07:30 - 09:30</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-surface-container-high border border-border-default text-xs font-medium text-on-surface-variant">
+                                        Fisika
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1 text-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">meeting_room</span>
+                                            Ruang Aula Utama
+                                        </div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[8px] font-bold">AS</div>
+<span class="text-xs">Agus Salim, M.Pd</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[8px] font-bold">RD</div>
+<span class="text-xs">Rini Dwi, S.Si</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary-container transition-colors p-2 rounded-md hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 border-t border-border-default bg-surface-bright flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-label-md">Showing 1 to 3 of 24 events</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 border border-border-default rounded-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">Prev</button>
+<button class="px-3 py-1 border border-primary bg-primary-container text-on-primary-container rounded-md font-medium">1</button>
+<button class="px-3 py-1 border border-border-default rounded-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors">2</button>
+<button class="px-3 py-1 border border-border-default rounded-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors">3</button>
+<button class="px-3 py-1 border border-border-default rounded-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

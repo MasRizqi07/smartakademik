@@ -5,10 +5,13 @@ namespace App\Livewire\Guru;
 use App\Models\Absensi;
 use App\Models\JadwalPelajaran;
 use App\Models\Siswa;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class AbsensiGuru extends Component
 {
+    use AuthorizesRequests;
+
     public $jadwals = [];
     public $selectedJadwalId = null;
     public $siswas = [];
@@ -57,10 +60,10 @@ class AbsensiGuru extends Component
             return;
         }
 
-        $jadwal = JadwalPelajaran::find($this->selectedJadwalId);
-        if (!$jadwal) {
-            return;
-        }
+        $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
+
+        // K2: Authorize that the logged in user can input absensi for this schedule
+        abort_unless($jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
 
         $this->siswas = Siswa::where('kelas_id', $jadwal->kelas_id)->orderBy('nama')->get();
 
@@ -75,8 +78,8 @@ class AbsensiGuru extends Component
             if ($existing->has($siswa->id)) {
                 $this->absensiData[$siswa->id] = $existing[$siswa->id]->status;
             } else {
-                // Default 'hadir'
-                $this->absensiData[$siswa->id] = 'hadir';
+                // M4: Default null (unselected) per design-system.md 5.2 to prevent default "hadir"
+                $this->absensiData[$siswa->id] = null;
             }
         }
     }
@@ -87,8 +90,21 @@ class AbsensiGuru extends Component
             return;
         }
 
+        $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
+
+        // K2: Authorize check before save
+        abort_unless($jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
+
+        // M4: Check if any student attendance status is unselected
         foreach ($this->siswas as $siswa) {
-            $status = $this->absensiData[$siswa->id] ?? 'hadir';
+            if (empty($this->absensiData[$siswa->id])) {
+                session()->flash('error', 'Semua siswa wajib ditandai status kehadirannya!');
+                return;
+            }
+        }
+
+        foreach ($this->siswas as $siswa) {
+            $status = $this->absensiData[$siswa->id];
             
             Absensi::updateOrCreate(
                 [
@@ -111,3 +127,4 @@ class AbsensiGuru extends Component
         return view('livewire.guru.absensi-guru')->layout('layouts.app', ['header' => 'Absensi Kelas']);
     }
 }
+

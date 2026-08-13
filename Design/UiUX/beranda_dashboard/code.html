@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAN 4 Jombang - Academic Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#0d1c2e",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "status-hadir": "#22c55e",
+                      "tertiary": "#006947",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#005137",
+                      "on-error": "#ffffff",
+                      "border-default": "#e2e8f0",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "status-sakit": "#0ea5e9",
+                      "inverse-primary": "#68dba9",
+                      "primary-container": "#00855d",
+                      "surface-tint": "#006c4a",
+                      "error": "#ba1a1a",
+                      "surface": "#f7f9fb",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "outline-variant": "#bccac0",
+                      "status-alfa": "#f43f5e",
+                      "text-main": "#0f172a",
+                      "on-surface-variant": "#3d4a42",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "surface-container": "#eceef0",
+                      "tertiary-container": "#00855b",
+                      "surface-dim": "#d8dadc",
+                      "status-izin": "#f59e0b",
+                      "primary-fixed": "#85f8c4",
+                      "secondary-fixed": "#d5e3fc",
+                      "secondary": "#515f74",
+                      "surface-container-high": "#e6e8ea",
+                      "inverse-surface": "#2d3133",
+                      "on-tertiary-fixed": "#002113",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#191c1e",
+                      "on-secondary-container": "#57657a",
+                      "primary-fixed-dim": "#68dba9",
+                      "outline": "#6d7a72",
+                      "secondary-container": "#d5e3fc",
+                      "on-primary-container": "#f5fff7",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-tertiary-container": "#f5fff6",
+                      "surface-container-low": "#f2f4f6",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-bright": "#f7f9fb",
+                      "primary": "#006948",
+                      "on-primary-fixed": "#002114",
+                      "on-surface": "#191c1e",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-highest": "#e0e3e5",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "background": "#f7f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "list-gap": "0.5rem",
+                      "touch-target": "44px",
+                      "grid-gutter": "1rem",
+                      "section-margin": "1.5rem",
+                      "container-padding-mobile": "1rem"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "input-text": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-default": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "input-text": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-default": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen relative">
+<!-- Animation Background -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-20">
+</div>
+<!-- SideNavBar (JSON Configured) -->
+<nav class="bg-surface-container-lowest shadow-sm h-screen w-64 fixed left-0 top-0 flex flex-col p-4 border-r border-border-default z-20">
+<!-- Brand Header -->
+<div class="mb-8 flex flex-col gap-1 px-4">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">MAN 4 Jombang</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Management</p>
+</div>
+<!-- Navigation Tabs -->
+<ul class="flex flex-col gap-list-gap flex-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+                    Attendance
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">grade</span>
+                    Grades
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                    Schedule
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg transition-all duration-200 active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<!-- Bottom CTA / Profile -->
+<div class="mt-auto pt-4 border-t border-border-default">
+<button class="w-full bg-primary text-on-primary h-[44px] rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 shadow-sm hover:bg-surface-tint transition-colors active:scale-95">
+<span class="material-symbols-outlined">edit_document</span>
+                Record Attendance
+            </button>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="ml-64 w-[calc(100%-16rem)] min-h-screen flex flex-col relative z-10">
+<!-- TopAppBar (JSON Configured) -->
+<header class="bg-surface border-b border-border-default h-16 px-6 sticky top-0 flex justify-between items-center z-20">
+<!-- Product Name -->
+<div class="flex items-center">
+<span class="font-headline-md text-headline-md font-extrabold text-primary cursor-pointer active:opacity-80 transition-opacity">Academic Portal</span>
+</div>
+<!-- Search (on left logically, but flexible in layout) -->
+<div class="flex-1 max-w-md mx-6 hidden md:block">
+<div class="relative relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full font-input-text text-input-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search students, classes..." type="text"/>
+</div>
+</div>
+<!-- Actions & Profile -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-border-default cursor-pointer">
+<img alt="Administrator Profile" class="h-full w-full object-cover" data-alt="Professional headshot of a male teacher in a modern, well-lit educational setting. He is wearing formal corporate academic attire, appearing approachable and authoritative. The background is slightly blurred, showing a bright, clean school corridor or classroom environment with subtle emerald green architectural accents. Lighting is soft, high-key, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHGA8rtB155OJnTI2UovdGgoqmVKSsKifMFzcgsDTZ33oAKgs7-qqCy4Z-UBuUYgqO-3-WlKIv8IFH2sA39-NFDY75-Zqkhs_i15tcBMMFt8k0s24ULiAnwM_Yqqj27oyhy1xocdQ_cGCj18XY3QlANJW_CAY_c0cHbAdD7aPRIB7HAbA9LRgTOKuJTD0h6Hf2COq7pmsbVWmLzGQ92_SRlCnZ43JEaN4hCpUi75cyyDZUb7zoPzSfEA"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 p-6 md:p-8 max-w-[1280px] mx-auto w-full flex flex-col gap-section-margin">
+<!-- Welcome Header -->
+<section class="flex flex-col gap-2">
+<h2 class="font-headline-lg text-headline-lg text-text-main">Selamat Datang, Ahmad Fauzi, S.Pd.</h2>
+<p class="font-body-default text-body-default text-on-surface-variant">Here is an overview of your academic operations today.</p>
+</section>
+<!-- Bento Grid Stats -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-grid-gutter">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col gap-2 hover:bg-surface-container-lowest transition-colors">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">class</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Active Classes</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-text-main mt-1">4</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col gap-2">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Students</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-text-main mt-1">128</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col gap-2">
+<div class="flex items-center gap-2 text-status-hadir">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Attendance Rate</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-text-main mt-1">96.5%</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col gap-2">
+<div class="flex items-center gap-2 text-status-izin">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Pending Grades</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-text-main mt-1">12 Tasks</div>
+</div>
+</section>
+<!-- Main Layout: Table + Side Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-grid-gutter">
+<!-- Schedule Table -->
+<section class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col overflow-hidden">
+<div class="p-5 border-b border-border-default bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-text-main">Today's Schedule</h3>
+<button class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1">
+                            View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase border-b border-border-default">
+<th class="py-3 px-5 font-semibold">Time</th>
+<th class="py-3 px-5 font-semibold">Subject</th>
+<th class="py-3 px-5 font-semibold">Class</th>
+<th class="py-3 px-5 font-semibold">Room</th>
+<th class="py-3 px-5 font-semibold text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-default text-body-default text-text-main divide-y divide-border-default">
+<tr class="hover:bg-slate-50 transition-colors bg-white">
+<td class="py-3 px-5 text-on-surface-variant">07:00 - 08:30</td>
+<td class="py-3 px-5 font-medium">Matematika Wajib</td>
+<td class="py-3 px-5">XII-IPA 1</td>
+<td class="py-3 px-5 text-on-surface-variant">R. 201</td>
+<td class="py-3 px-5 text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-surface-container text-on-surface-variant uppercase">
+                                            Finished
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors bg-slate-100">
+<td class="py-3 px-5 text-on-surface-variant">08:30 - 10:00</td>
+<td class="py-3 px-5 font-medium">Matematika Lanjut</td>
+<td class="py-3 px-5">XI-IPA 2</td>
+<td class="py-3 px-5 text-on-surface-variant">R. 204</td>
+<td class="py-3 px-5 text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-fixed text-primary-container uppercase ring-1 ring-primary-container/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+                                            Ongoing
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors bg-white">
+<td class="py-3 px-5 text-on-surface-variant">10:30 - 12:00</td>
+<td class="py-3 px-5 font-medium">Bimbingan Olimpiade</td>
+<td class="py-3 px-5">Tim OSN</td>
+<td class="py-3 px-5 text-on-surface-variant">Lab Komputer</td>
+<td class="py-3 px-5 text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-surface text-secondary uppercase border border-border-default">
+                                            Upcoming
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Recent Activity Panel -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default flex flex-col h-full">
+<div class="p-5 border-b border-border-default bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">history</span>
+                            Recent Activity
+                        </h3>
+</div>
+<div class="p-5 flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-4 relative">
+<!-- Timeline line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-px bg-border-default -z-10"></div>
+<li class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px] text-status-hadir">check</span>
+</div>
+<div class="flex flex-col">
+<p class="font-body-default text-body-default text-text-main"><span class="font-semibold">Budi Santoso</span> marked as <span class="text-status-hadir font-medium">Hadir</span> in XI-A</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10 mins ago</span>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px] text-status-sakit">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<p class="font-body-default text-body-default text-text-main"><span class="font-semibold">Siti Aminah</span> marked as <span class="text-status-sakit font-medium">Sakit</span> in XII-IPA 1</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1 hour ago</span>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px] text-primary">upload_file</span>
+</div>
+<div class="flex flex-col">
+<p class="font-body-default text-body-default text-text-main">Uploaded Nilai Formatif 2 untuk Kelas XI-IPA 2</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Yesterday, 14:30</span>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

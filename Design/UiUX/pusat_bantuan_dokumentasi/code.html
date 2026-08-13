@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Portal - Help Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-default": "#e2e8f0",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "status-sakit": "#0ea5e9",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bccac0",
+                        "error": "#ba1a1a",
+                        "tertiary": "#006947",
+                        "primary": "#006948",
+                        "on-surface": "#191c1e",
+                        "outline": "#6d7a72",
+                        "on-primary-fixed-variant": "#005137",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-container": "#00855b",
+                        "primary-fixed": "#85f8c4",
+                        "primary-container": "#00855d",
+                        "on-tertiary-container": "#f5fff6",
+                        "on-primary-fixed": "#002114",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#d5e3fc",
+                        "on-secondary-container": "#57657a",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "status-alfa": "#f43f5e",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-tint": "#006c4a",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "primary-fixed-dim": "#68dba9",
+                        "text-main": "#0f172a",
+                        "status-izin": "#f59e0b",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface-variant": "#3d4a42",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#f5fff7",
+                        "inverse-primary": "#68dba9",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "background": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "status-hadir": "#22c55e",
+                        "secondary": "#515f74"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "list-gap": "0.5rem",
+                        "section-margin": "1.5rem",
+                        "container-padding-mobile": "1rem",
+                        "grid-gutter": "1rem",
+                        "touch-target": "44px"
+                    },
+                    "fontFamily": {
+                        "body-default": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "input-text": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-default": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "input-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-default text-body-default min-h-screen flex flex-col md:flex-row antialiased">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest shadow-sm flex-col p-4 border-r border-border-default z-20">
+<div class="mb-8 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<img alt="Teacher Profile Picture" class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a teacher or administrator smiling warmly in a bright, modern school hallway. The lighting is soft and inviting, emphasizing approachability and competence. The color palette features neutral grays and soft blues, aligning with a corporate educational environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVxDxf6oMK041A2L5D_7hBgJC0pj9pyFRjCQxX8L6AnnaCkNPJBKs80zcMgG2kSEpbVcZLBzbqcO5CbNIXdTqIPIyd7TiF8ZraNZQpa64lZt9IbxquGLVenrjmo4gH74nAjF359BEeB4xhkjj9Es9Se7qy16Yz-EgA7rOIk-C4Fam4ABtecAE7gtFAx5k6wN5H2ThrpFkLO0u1idmL9d1EuiDFxCZwVXolSnJACBEiPh64zO9Pa0Xypg"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">MAN 4 Jombang</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Management</p>
+</div>
+</div>
+<button class="w-full h-touch-target bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold shadow-sm hover:bg-surface-tint transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+                Record Attendance
+            </button>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+                    Attendance
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">grade</span>
+                    Grades
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                    Schedule
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow md:ml-64 w-full md:w-[calc(100%-16rem)] flex flex-col min-h-screen">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex justify-between items-center h-16 px-6 bg-surface border-b border-border-default sticky top-0 z-10 w-full">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">Academic Portal</span>
+<div class="relative ml-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary text-body-default font-input-text h-touch-target w-64" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary font-bold bg-secondary-container hover:bg-surface-container-low transition-colors active:opacity-80 border-b-2 border-primary pb-1">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover ml-2 border border-border-default" data-alt="A small, circular avatar image of a school administrator. The image is professional, sharp, and uses neutral lighting suitable for a corporate dashboard profile icon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSjQi0qVl2YLjifxqoT1BYRrtmjYs6GaB2-0tqfO1UOUVB7m3t-NKHnF5llIldW08A4U2Tc-9Ghp3UF2xSZDPxazd5ukgJfWiUomSMcUyjdRxHUGqSaoozxBfzXjI93O6gw9W3cm-Tlbr2OT9Iqa7niO-2Jlyw2wLH3Y5f8rJYb0GEzE3s76Iz2iBqOY4zheVViWch5MFbC7dRa5gWgbCrUIgFi0HF8hlNTteZsFT1XutMZvGccN33PA"/>
+</div>
+</header>
+<!-- Mobile Header (Minimal) -->
+<header class="md:hidden flex items-center justify-between p-4 bg-surface-container-lowest border-b border-border-default sticky top-0 z-10">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">Academic Portal</span>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Canvas / Page Content -->
+<div class="p-container-padding-mobile md:p-8 flex-grow flex flex-col gap-section-margin max-w-5xl mx-auto w-full">
+<!-- Hero Search Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full opacity-10" data-alt="A clean, abstract architectural background featuring soft, diffused lighting and geometric shapes. The color palette should predominantly use cool, neutral tones like slate-50 and subtle hints of emerald green. The aesthetic should be modern, corporate, and minimalist, providing a calming backdrop for an academic help center." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDK1qF-WpaYSJklyaIq9BONTFcO_AZ1H6F8aBa623oQyxsLD3c-G_nX07622OoZ43Y0P8r19MZWsJUTUePkaA1LVdSZPSDmkfTCU_RYbmRBkAj-3rDOwmw0UlTbb4Aay-XjcYqYtn7gs24HzRQwsSj1yEvorI7o9RRawKkOF_wnQKMm4PCRvQiWC7RWkPrUm_WZ3jdwEAGMasOnI0sA6nZmIYXqCfanR5E-3gHKw23CrOITjK0N9eTWMg')"></div>
+<div class="p-8 md:p-12 relative z-10 flex flex-col items-center text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">How can we help you today?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 max-w-lg">Search our knowledge base for guides on attendance, grading, scheduling, and portal management.</p>
+<div class="relative w-full max-w-xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[24px]">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest rounded-lg border border-border-default focus:border-primary focus:ring-2 focus:ring-primary/20 text-input-text font-input-text h-[52px] shadow-sm transition-shadow" placeholder="Search for articles, guides, or keywords..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-on-primary px-4 py-1.5 rounded font-label-md text-label-md hover:bg-surface-tint transition-colors">Search</button>
+</div>
+</div>
+</section>
+<!-- FAQ Categories (Bento-ish Grid) -->
+<section>
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Browse by Category</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+<!-- Absensi Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default hover:border-outline-variant transition-colors group cursor-pointer h-full flex flex-col">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-secondary-container group-hover:text-on-primary-container text-[24px]">how_to_reg</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Absensi (Attendance)</h4>
+<p class="font-body-default text-body-default text-on-surface-variant mb-4 flex-grow">Guides on recording daily student attendance, managing statuses (Hadir, Izin, Sakit, Alfa), and syncing data.</p>
+<ul class="flex flex-col gap-2 mt-auto">
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> How to record attendance quickly</a></li>
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Editing past attendance records</a></li>
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Troubleshooting sync errors</a></li>
+</ul>
+</div>
+<!-- Nilai Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default hover:border-outline-variant transition-colors group cursor-pointer h-full flex flex-col">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-secondary-container group-hover:text-on-primary-container text-[24px]">grade</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Nilai (Grades)</h4>
+<p class="font-body-default text-body-default text-on-surface-variant mb-4 flex-grow">Instructions for inputting formatif and sumatif grades, generating reports, and understanding grading rubrics.</p>
+<ul class="flex flex-col gap-2 mt-auto">
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Inputting numeric grades on mobile</a></li>
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Calculating final semester scores</a></li>
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Exporting grade data to Excel</a></li>
+</ul>
+</div>
+<!-- Jadwal Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] border border-border-default hover:border-outline-variant transition-colors group cursor-pointer h-full flex flex-col">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-secondary-container group-hover:text-on-primary-container text-[24px]">calendar_month</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Jadwal (Schedule)</h4>
+<p class="font-body-default text-body-default text-on-surface-variant mb-4 flex-grow">Information regarding class schedules, academic calendars, holidays, and substitution requests.</p>
+<ul class="flex flex-col gap-2 mt-auto">
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Viewing your weekly teaching schedule</a></li>
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Managing schedule conflicts</a></li>
+<li><a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">arrow_right_alt</span> Requesting a class substitution</a></li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>
