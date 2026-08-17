@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Absensi;
+use App\Models\NilaiFormatif;
+use App\Policies\AbsensiPolicy;
+use App\Policies\NilaiFormatifPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::policy(Absensi::class, AbsensiPolicy::class);
+        Gate::policy(NilaiFormatif::class, NilaiFormatifPolicy::class);
     }
 }

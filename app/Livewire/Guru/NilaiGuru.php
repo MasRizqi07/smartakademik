@@ -85,9 +85,10 @@ class NilaiGuru extends Component
 
         [$kelasId, $mapelId] = explode('_', $this->selectedKombinasi);
 
-        // K2: Authorize check that the teacher has a schedule for this kelas and mapel
+        // Authorize check that the teacher has a schedule for this kelas and mapel via policy
         $jadwal = JadwalPelajaran::where('kelas_id', $kelasId)->where('mapel_id', $mapelId)->first();
-        abort_unless($jadwal && $jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
+        abort_unless($jadwal, 404, 'Jadwal tidak ditemukan');
+        $this->authorize('create', [NilaiFormatif::class, $jadwal]);
 
         $this->siswas = Siswa::where('kelas_id', $kelasId)->orderBy('nama')->get();
 
@@ -122,9 +123,10 @@ class NilaiGuru extends Component
 
         [$kelasId, $mapelId] = explode('_', $this->selectedKombinasi);
 
-        // K2: Authorize check before save
+        // Authorize check before save via policy
         $jadwal = JadwalPelajaran::where('kelas_id', $kelasId)->where('mapel_id', $mapelId)->first();
-        abort_unless($jadwal && $jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
+        abort_unless($jadwal, 404, 'Jadwal tidak ditemukan');
+        $this->authorize('create', [NilaiFormatif::class, $jadwal]);
 
         foreach ($this->siswas as $siswa) {
             $nilaiStr = $this->nilaiData[$siswa->id] ?? '';

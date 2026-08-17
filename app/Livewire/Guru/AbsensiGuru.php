@@ -62,8 +62,8 @@ class AbsensiGuru extends Component
 
         $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
 
-        // K2: Authorize that the logged in user can input absensi for this schedule
-        abort_unless($jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
+        // Authorize that the logged in user can input absensi for this schedule via policy
+        $this->authorize('create', [Absensi::class, $jadwal]);
 
         $this->siswas = Siswa::where('kelas_id', $jadwal->kelas_id)->orderBy('nama')->get();
 
@@ -92,8 +92,8 @@ class AbsensiGuru extends Component
 
         $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
 
-        // K2: Authorize check before save
-        abort_unless($jadwal->guru && $jadwal->guru->user_id === auth()->id(), 403, 'Anda tidak memiliki akses ke jadwal kelas ini.');
+        // Authorize check before save via policy
+        $this->authorize('create', [Absensi::class, $jadwal]);
 
         // M4: Check if any student attendance status is unselected
         foreach ($this->siswas as $siswa) {
