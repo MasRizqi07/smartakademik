@@ -4,6 +4,8 @@ namespace App\Imports;
 
 use App\Models\Kelas;
 use App\Models\Siswa;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -28,10 +30,22 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
             return null; // Should be caught by validation, but just in case
         }
 
+        $email = $row['nisn'] . '@siswa.smartakademik.local';
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            [
+                'name' => $row['nama'],
+                'password' => Hash::make($row['nisn']),
+                'must_change_password' => true,
+            ]
+        );
+        $user->assignRole('siswa');
+
         return new Siswa([
             'nisn'     => $row['nisn'],
             'nama'     => $row['nama'],
             'kelas_id' => $kelas->id,
+            'user_id'  => $user->id,
         ]);
     }
 

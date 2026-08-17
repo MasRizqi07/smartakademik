@@ -69,6 +69,63 @@ class ImportExcelTest extends TestCase
             'nisn' => '0099887766',
             'nama' => 'Budi Import',
         ]);
+
+        $siswa = Siswa::where('nisn', '0099887766')->first();
+        $this->assertNotNull($siswa->user_id);
+
+        $user = User::find($siswa->user_id);
+        $this->assertNotNull($user);
+        $this->assertEquals('0099887766@siswa.smartakademik.local', $user->email);
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('0099887766', $user->password));
+        $this->assertTrue((bool) $user->must_change_password);
+        $this->assertTrue($user->hasRole('siswa'));
+    }
+
+    public function test_retroactive_siswa_user_account_provisioning()
+    {
+        $kelas = Kelas::where('nama_kelas', 'X-A')->first();
+        $unprovisionedSiswa = Siswa::create([
+            'nisn' => '1122334455',
+            'nama' => 'Siswa Unprovisioned',
+            'kelas_id' => $kelas->id,
+            'user_id' => null,
+        ]);
+
+        $this->assertNull($unprovisionedSiswa->user_id);
+
+        // Retroactive single creation via SiswaManager
+        Livewire::actingAs($this->adminUser)
+            ->test(\App\Livewire\Admin\SiswaManager::class)
+            ->call('createUserAccount', $unprovisionedSiswa->id)
+            ->assertHasNoErrors();
+
+        $unprovisionedSiswa->refresh();
+        $this->assertNotNull($unprovisionedSiswa->user_id);
+
+        $user = User::find($unprovisionedSiswa->user_id);
+        $this->assertEquals('1122334455@siswa.smartakademik.local', $user->email);
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('1122334455', $user->password));
+        $this->assertTrue((bool) $user->must_change_password);
+        $this->assertTrue($user->hasRole('siswa'));
+
+        // Retroactive bulk generation via SiswaManager
+        $siswa2 = Siswa::create([
+            'nisn' => '9988776655',
+            'nama' => 'Siswa Bulk Unprovisioned',
+            'kelas_id' => $kelas->id,
+            'user_id' => null,
+        ]);
+
+        Livewire::actingAs($this->adminUser)
+            ->test(\App\Livewire\Admin\SiswaManager::class)
+            ->call('generateMissingAccounts')
+            ->assertHasNoErrors();
+
+        $siswa2->refresh();
+        $this->assertNotNull($siswa2->user_id);
+        $user2 = User::find($siswa2->user_id);
+        $this->assertEquals('9988776655@siswa.smartakademik.local', $user2->email);
+        $this->assertTrue($user2->hasRole('siswa'));
     }
 
     public function test_guru_import_logic()

@@ -11,6 +11,10 @@
                 <input wire:model.live.debounce.300ms="search" type="text" placeholder="Cari NISN atau Nama..." 
                        class="w-full pl-10 pr-4 h-touch-target rounded-DEFAULT border border-border-default bg-surface-bright font-input-text text-input-text text-text-main placeholder:text-outline-variant focus-ring transition-colors">
             </div>
+            <button wire:click="generateMissingAccounts" wire:confirm="Buat akun login otomatis untuk semua siswa yang belum memiliki akun?" class="h-touch-target px-4 bg-secondary-container hover:bg-secondary-container/80 text-on-secondary-container font-label-md rounded-DEFAULT shadow-xs transition-all flex items-center justify-center gap-2 shrink-0 active:scale-95" title="Generate Akun Siswa">
+                <span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+                <span class="hidden md:inline">Buat Akun Massal</span>
+            </button>
             <button wire:click="create" class="h-touch-target px-5 bg-primary hover:bg-primary-container text-on-primary font-label-md rounded-DEFAULT shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 shrink-0 active:scale-95">
                 <span class="material-symbols-outlined text-[20px]">person_add</span>
                 <span>Tambah Siswa</span>
@@ -145,6 +149,11 @@
                             </td>
                             <td class="py-3.5 px-4 text-right">
                                 <div class="flex items-center justify-end gap-1">
+                                    @if(!$siswa->user_id)
+                                        <button wire:click="createUserAccount({{ $siswa->id }})" class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Buat Akun Portal">
+                                            <span class="material-symbols-outlined text-[20px]">person_add</span>
+                                        </button>
+                                    @endif
                                     <button wire:click="edit({{ $siswa->id }})" class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit Data">
                                         <span class="material-symbols-outlined text-[20px]">edit</span>
                                     </button>

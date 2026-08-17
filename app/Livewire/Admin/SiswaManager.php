@@ -67,6 +67,7 @@ class SiswaManager extends Component
                 'name' => $this->nama,
                 'email' => $this->email,
                 'password' => Hash::make($this->nisn), // Default password is NISN
+                'must_change_password' => true,
             ]);
             $user->assignRole('siswa');
             $userId = $user->id;
@@ -84,6 +85,51 @@ class SiswaManager extends Component
 
         $this->resetForm();
         session()->flash('message', $this->siswaId ? 'Siswa updated successfully.' : 'Siswa created successfully.');
+    }
+
+    public function createUserAccount($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        if ($siswa->user_id) {
+            session()->flash('message', 'Siswa sudah memiliki akun portal.');
+            return;
+        }
+
+        $email = $siswa->nisn . '@siswa.smartakademik.local';
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            [
+                'name' => $siswa->nama,
+                'password' => Hash::make($siswa->nisn),
+                'must_change_password' => true,
+            ]
+        );
+        $user->assignRole('siswa');
+
+        $siswa->update(['user_id' => $user->id]);
+        session()->flash('message', "Akun login berhasil dibuat untuk siswa {$siswa->nama}.");
+    }
+
+    public function generateMissingAccounts()
+    {
+        $unprovisioned = Siswa::whereNull('user_id')->get();
+        $count = 0;
+        foreach ($unprovisioned as $siswa) {
+            $email = $siswa->nisn . '@siswa.smartakademik.local';
+            $user = User::firstOrCreate(
+                ['email' => $email],
+                [
+                    'name' => $siswa->nama,
+                    'password' => Hash::make($siswa->nisn),
+                    'must_change_password' => true,
+                ]
+            );
+            $user->assignRole('siswa');
+            $siswa->update(['user_id' => $user->id]);
+            $count++;
+        }
+
+        session()->flash('message', "Berhasil membuat {$count} akun login siswa.");
     }
 
     public function delete($id)
