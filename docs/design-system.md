@@ -12,58 +12,60 @@
 3. **Status visual instan.** Warna dan ikon untuk status kehadiran (hadir/izin/sakit/alfa) harus bisa dibaca sekilas tanpa membaca teks.
 4. **Netral secara institusional.** Bukan web pemasaran sekolah — hindari ornamen islami/dekoratif berat yang sudah ada di website utama. Ini alat kerja, tampilan tenang dan fungsional.
 
-## 2. Token Architecture (3 Tier)
+## 2. Token Architecture (Material Design 3 Semantic Tokens)
 
-Ikuti pola token 3-tingkat: komponen tidak pernah reference hex value mentah.
+Sistem token diimplementasikan langsung melalui theme extension di `tailwind.config.js` menggunakan penamaan semantik berbasis Material Design 3 (M3). Komponen menggunakan nama kelas semantik Tailwind (bukan arbitrary hex values inline).
 
-```css
-/* TIER 1: PRIMITIVES */
-:root {
-  --color-slate-50:  #f8fafc;
-  --color-slate-200: #e2e8f0;
-  --color-slate-600: #475569;
-  --color-slate-900: #0f172a;
-
-  --color-emerald-500: #10b981;  /* brand primary — netral-hijau, bukan hijau islami-berat */
-  --color-emerald-600: #059669;
-  --color-emerald-50:  #ecfdf5;
-
-  --color-amber-500: #f59e0b;   /* izin */
-  --color-sky-500:    #0ea5e9;  /* sakit */
-  --color-rose-500:   #f43f5e;  /* alfa */
-  --color-green-500:  #22c55e;  /* hadir */
-}
-
-/* TIER 2: SEMANTIC */
-:root {
-  --color-text-primary:   var(--color-slate-900);
-  --color-text-secondary: var(--color-slate-600);
-  --color-bg-page:        var(--color-slate-50);
-  --color-bg-surface:     #ffffff;
-  --color-border-default: var(--color-slate-200);
-
-  --color-brand:           var(--color-emerald-600);
-  --color-brand-surface:   var(--color-emerald-50);
-
-  --color-status-hadir: var(--color-green-500);
-  --color-status-izin:  var(--color-amber-500);
-  --color-status-sakit: var(--color-sky-500);
-  --color-status-alfa:  var(--color-rose-500);
-}
-
-/* TIER 3: COMPONENT */
-:root {
-  --button-primary-bg: var(--color-brand);
-  --card-bg: var(--color-bg-surface);
-  --card-border: var(--color-border-default);
-  --badge-hadir-bg: var(--color-status-hadir);
-  --badge-izin-bg:  var(--color-status-izin);
-  --badge-sakit-bg: var(--color-status-sakit);
-  --badge-alfa-bg:  var(--color-status-alfa);
+```javascript
+// tailwind.config.js theme.extend.colors
+colors: {
+    // Surface & Background
+    'surface': '#f7f9fb',
+    'surface-dim': '#d8dadc',
+    'surface-bright': '#f7f9fb',
+    'surface-container-lowest': '#ffffff',
+    'surface-container-low': '#f2f4f6',
+    'surface-container': '#eceef0',
+    'surface-container-high': '#e6e8ea',
+    'surface-container-highest': '#e0e3e5',
+    'on-surface': '#191c1e',
+    'on-surface-variant': '#3d4a42',
+    
+    // Brand & Primary
+    'primary': '#006948',
+    'on-primary': '#ffffff',
+    'primary-container': '#00855d',
+    'on-primary-container': '#f5fff7',
+    
+    // Secondary & Neutral
+    'secondary': '#515f74',
+    'on-secondary': '#ffffff',
+    'secondary-container': '#d5e3fc',
+    'on-secondary-container': '#57657a',
+    
+    // Status Absensi
+    'status-hadir': '#22c55e',
+    'status-izin':  '#f59e0b',
+    'status-sakit': '#0ea5e9',
+    'status-alfa':  '#f43f5e',
+    
+    // Borders & Text
+    'border-default': '#e2e8f0',
+    'text-main': '#0f172a',
+    
+    // Brand Palette
+    brand: {
+        50: '#ecfdf5',
+        100: '#d1fae5',
+        500: '#006948',
+        600: '#006948',
+        900: '#002114',
+    }
 }
 ```
 
-**Catatan dark mode:** tidak masuk MVP (guru pakai HP di kelas terang, prioritas rendah). Tapi struktur 3-tier di atas sudah siap ditambahkan `[data-theme="dark"]` di fase berikutnya tanpa refactor komponen — jangan hardcode hex di file komponen manapun.
+> **Catatan Arsitektur Token & Dark Mode:**
+> 3-tier CSS variable migration deferred until dark mode is actually scoped — tracked as a future phase, not MVP debt. Implementasi flat theme extension dengan semantic tokens yang aktif saat ini sudah stabil, teruji, dan mencukupi kebutuhan operasional MVP.
 
 ## 3. Tipografi
 
