@@ -5,6 +5,7 @@ namespace App\Livewire\Waka;
 use App\Models\Absensi;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -52,25 +53,25 @@ class RekapAbsensi extends Component
 
         $siswas = $siswaQuery->orderBy('nama')->paginate(15);
 
-        // Fetch absensi statistics for these students
+        // Fetch absensi statistics for these students in a single aggregated query (eliminates N+1)
+        $siswaIds = $siswas->pluck('id');
+
+        $absensiCounts = Absensi::whereIn('siswa_id', $siswaIds)
+            ->when(!empty($this->startDate), fn($q) => $q->where('tanggal', '>=', $this->startDate))
+            ->when(!empty($this->endDate), fn($q) => $q->where('tanggal', '<=', $this->endDate))
+            ->select('siswa_id', 'status', DB::raw('count(*) as total'))
+            ->groupBy('siswa_id', 'status')
+            ->get()
+            ->groupBy('siswa_id');
+
         $rekapData = [];
         foreach ($siswas as $siswa) {
-            $absensiQuery = Absensi::where('siswa_id', $siswa->id);
-
-            if (!empty($this->startDate)) {
-                $absensiQuery->where('tanggal', '>=', $this->startDate);
-            }
-            if (!empty($this->endDate)) {
-                $absensiQuery->where('tanggal', '<=', $this->endDate);
-            }
-
-            $records = $absensiQuery->get();
-
-            $hadir = $records->where('status', 'hadir')->count();
-            $izin  = $records->where('status', 'izin')->count();
-            $sakit = $records->where('status', 'sakit')->count();
-            $alfa  = $records->where('status', 'alfa')->count();
-            $total = $records->count();
+            $records = $absensiCounts->get($siswa->id, collect());
+            $hadir = (int) ($records->firstWhere('status', 'hadir')->total ?? 0);
+            $izin  = (int) ($records->firstWhere('status', 'izin')->total ?? 0);
+            $sakit = (int) ($records->firstWhere('status', 'sakit')->total ?? 0);
+            $alfa  = (int) ($records->firstWhere('status', 'alfa')->total ?? 0);
+            $total = $hadir + $izin + $sakit + $alfa;
 
             $persentase = $total > 0 ? round(($hadir / $total) * 100, 1) : 0;
 

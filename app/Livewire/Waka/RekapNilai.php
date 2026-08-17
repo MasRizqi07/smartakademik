@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\NilaiFormatif;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -58,26 +59,41 @@ class RekapNilai extends Component
 
         $siswas = $siswaQuery->orderBy('nama')->paginate(15);
 
-        // Fetch grades for these students
+        // Fetch grades for these students in a single aggregated query (eliminates N+1)
+        $siswaIds = $siswas->pluck('id');
+
+        $nilaiQuery = NilaiFormatif::whereIn('siswa_id', $siswaIds)
+            ->when(!empty($this->selectedMapel), fn($q) => $q->where('mapel_id', $this->selectedMapel))
+            ->when(!empty($this->selectedJenis), fn($q) => $q->where('jenis', $this->selectedJenis));
+
+        $nilaiByJenis = (clone $nilaiQuery)
+            ->select('siswa_id', 'jenis', DB::raw('avg(nilai) as avg_nilai'), DB::raw('count(*) as count_nilai'))
+            ->groupBy('siswa_id', 'jenis')
+            ->get()
+            ->groupBy('siswa_id');
+
+        $nilaiOverall = (clone $nilaiQuery)
+            ->select('siswa_id', DB::raw('avg(nilai) as overall_avg'), DB::raw('count(*) as total_count'))
+            ->groupBy('siswa_id')
+            ->get()
+            ->keyBy('siswa_id');
+
         $rekapNilai = [];
         foreach ($siswas as $siswa) {
-            $nilaiQuery = NilaiFormatif::where('siswa_id', $siswa->id);
+            $records = $nilaiByJenis->get($siswa->id, collect());
+            $overall = $nilaiOverall->get($siswa->id);
 
-            if (!empty($this->selectedMapel)) {
-                $nilaiQuery->where('mapel_id', $this->selectedMapel);
-            }
+            $tugas = $records->firstWhere('jenis', 'tugas');
+            $uh    = $records->firstWhere('jenis', 'uh');
+            $pts   = $records->firstWhere('jenis', 'pts');
+            $pas   = $records->firstWhere('jenis', 'pas');
 
-            if (!empty($this->selectedJenis)) {
-                $nilaiQuery->where('jenis', $this->selectedJenis);
-            }
+            $tugasAvg = ($tugas && $tugas->count_nilai > 0) ? round((float)$tugas->avg_nilai, 1) : '-';
+            $uhAvg    = ($uh && $uh->count_nilai > 0) ? round((float)$uh->avg_nilai, 1) : '-';
+            $ptsAvg   = ($pts && $pts->count_nilai > 0) ? round((float)$pts->avg_nilai, 1) : '-';
+            $pasAvg   = ($pas && $pas->count_nilai > 0) ? round((float)$pas->avg_nilai, 1) : '-';
 
-            $records = $nilaiQuery->get();
-
-            $totalRata = $records->count() > 0 ? round($records->avg('nilai'), 1) : null;
-            $tugasAvg  = $records->where('jenis', 'tugas')->count() > 0 ? round($records->where('jenis', 'tugas')->avg('nilai'), 1) : '-';
-            $uhAvg     = $records->where('jenis', 'uh')->count() > 0 ? round($records->where('jenis', 'uh')->avg('nilai'), 1) : '-';
-            $ptsAvg    = $records->where('jenis', 'pts')->count() > 0 ? round($records->where('jenis', 'pts')->avg('nilai'), 1) : '-';
-            $pasAvg    = $records->where('jenis', 'pas')->count() > 0 ? round($records->where('jenis', 'pas')->avg('nilai'), 1) : '-';
+            $totalRata = ($overall && $overall->total_count > 0) ? round((float)$overall->overall_avg, 1) : null;
 
             $rekapNilai[$siswa->id] = [
                 'tugas' => $tugasAvg,
@@ -85,7 +101,7 @@ class RekapNilai extends Component
                 'pts' => $ptsAvg,
                 'pas' => $pasAvg,
                 'rata_rata' => $totalRata ?? '-',
-                'jumlah_nilai' => $records->count(),
+                'jumlah_nilai' => $overall ? (int)$overall->total_count : 0,
             ];
         }
 
