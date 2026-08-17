@@ -63,6 +63,7 @@ class GuruManager extends Component
                 'name' => $this->nama,
                 'email' => $this->email,
                 'password' => Hash::make($this->nip_nuptk), // Default password is NIP/NUPTK
+                'must_change_password' => true,
             ]);
             $user->assignRole('guru');
             $userId = $user->id;

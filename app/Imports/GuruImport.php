@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Guru;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -20,7 +21,11 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
     {
         $user = User::firstOrCreate(
             ['email' => $row['email']],
-            ['name' => $row['nama'], 'password' => bcrypt('password')]
+            [
+                'name' => $row['nama'],
+                'password' => Hash::make($row['nip_nuptk']),
+                'must_change_password' => true,
+            ]
         );
         $user->assignRole('guru');
 
