@@ -25,6 +25,45 @@
     .focus-ring {
         @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
     }
+
+    .hover-lift {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .tap-highlight-transparent {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+}
+
+/* Shader-like animated gradient background */
+.shader-bg {
+    background: linear-gradient(135deg, #f7f9fb 0%, #d5e3fc 50%, #85f8c4 100%);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 html {
@@ -32,7 +71,7 @@ html {
     font-family: 'Inter', sans-serif;
 }
 
-/* Material Symbols sizing helper */
+/* Material Symbols styling helper */
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     display: inline-block;
@@ -40,7 +79,36 @@ html {
     line-height: 1;
 }
 
-.material-symbols-outlined.fill {
+.material-symbols-outlined.fill,
+.material-symbols-outlined.filled {
     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+/* Attendance button transitions and active states */
+.status-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="radio"]:checked + .btn-hadir {
+    background-color: #22c55e !important;
+    color: white !important;
+    border-color: #22c55e !important;
+}
+
+input[type="radio"]:checked + .btn-izin {
+    background-color: #f59e0b !important;
+    color: white !important;
+    border-color: #f59e0b !important;
+}
+
+input[type="radio"]:checked + .btn-sakit {
+    background-color: #0ea5e9 !important;
+    color: white !important;
+    border-color: #0ea5e9 !important;
+}
+
+input[type="radio"]:checked + .btn-alfa {
+    background-color: #f43f5e !important;
+    color: white !important;
+    border-color: #f43f5e !important;
+}

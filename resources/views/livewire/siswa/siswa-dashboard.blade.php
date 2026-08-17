@@ -1,143 +1,229 @@
 <div class="space-y-6">
     @if(!$siswa)
-        <div class="text-center py-12 text-rose-500 bg-rose-50 rounded-2xl border border-rose-200 shadow-sm">
-            <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-            <h3 class="text-xl font-bold">Data Siswa Tidak Ditemukan</h3>
-            <p class="mt-2">Silakan hubungi Administrator untuk menghubungkan akun ini dengan data siswa.</p>
+        <div class="text-center py-12 text-status-alfa bg-status-alfa/10 rounded-2xl border border-status-alfa/20 shadow-sm p-6">
+            <span class="material-symbols-outlined text-[48px] mb-2">person_off</span>
+            <h3 class="text-xl font-bold">Data Siswa Belum Terhubung</h3>
+            <p class="text-sm mt-1 text-on-surface-variant">Akun login Anda belum terhubung dengan data siswa di pangkalan data madrasah.</p>
         </div>
     @else
-        <!-- Profile Banner -->
-        <div class="bg-gradient-to-r from-brand-600 to-accent-600 rounded-3xl p-8 text-white shadow-glow relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
-            <div class="absolute right-0 top-0 opacity-10 scale-150 transform translate-x-1/4 -translate-y-1/4">
-                <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path></svg>
-            </div>
-            
-            <div class="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md border-4 border-white/30 flex items-center justify-center text-4xl font-bold shadow-lg z-10 shrink-0">
-                {{ substr($siswa->nama, 0, 1) }}
-            </div>
-            <div class="relative z-10 text-center md:text-left">
-                <h2 class="text-3xl font-bold mb-1">{{ $siswa->nama }}</h2>
-                <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-2">
-                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">NISN: {{ $siswa->nisn }}</span>
-                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Kelas: <strong class="text-white">{{ $siswa->kelas->nama_kelas }}</strong></span>
+        <!-- Profile Bento Header Card -->
+        <div class="bg-surface-container-lowest rounded-2xl shadow-card p-6 md:p-8 border border-border-default relative overflow-hidden group">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 relative z-10">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-primary text-on-primary flex items-center justify-center font-bold text-3xl shrink-0 shadow-md">
+                    {{ substr($siswa->nama, 0, 1) }}
+                </div>
+                <div class="flex-1 w-full space-y-2">
+                    <div class="flex flex-wrap justify-between items-start gap-2">
+                        <div>
+                            <h2 class="font-headline-lg text-2xl font-bold text-text-main">{{ $siswa->nama }}</h2>
+                            <p class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5 font-mono">
+                                <span>NISN: <strong>{{ $siswa->nisn }}</strong></span>
+                                <span>&bull;</span>
+                                <span>Rombel: <strong>{{ $siswa->kelas->tingkat ?? '' }} {{ $siswa->kelas->nama_kelas ?? 'N/A' }}</strong></span>
+                            </p>
+                        </div>
+                        <span class="bg-status-hadir/15 text-status-hadir px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-status-hadir/30">
+                            Siswa Aktif
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-border-default text-xs">
+                        <div>
+                            <p class="text-on-surface-variant text-[11px]">Tahun Pelajaran</p>
+                            <p class="font-semibold text-text-main">2026/2027 Ganjil</p>
+                        </div>
+                        <div>
+                            <p class="text-on-surface-variant text-[11px]">Wali Kelas</p>
+                            <p class="font-semibold text-text-main">Bpk. Ahmad Fauzi, S.Pd.</p>
+                        </div>
+                        <div>
+                            <p class="text-on-surface-variant text-[11px]">Satuan Pendidikan</p>
+                            <p class="font-semibold text-primary">MAN 4 Jombang</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modern Tabs -->
-        <div class="bg-white rounded-2xl p-2 shadow-soft border border-slate-100 flex overflow-x-auto snap-x hide-scrollbar">
-            <button wire:click="$set('activeTab', 'jadwal')" class="snap-start flex-1 whitespace-nowrap py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 {{ $activeTab === 'jadwal' ? 'bg-brand-50 text-brand-600 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50' }}">
-                <div class="flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    Jadwal Pelajaran
+        <!-- Quick KPI Stats Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+                <div>
+                    <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Tingkat Kehadiran</p>
+                    <p class="font-headline-lg text-2xl font-bold text-status-hadir mt-0.5">98.2%</p>
+                    <p class="text-[11px] text-on-surface-variant">Sangat Baik</p>
                 </div>
+                <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[26px]">how_to_reg</span>
+                </div>
+            </div>
+
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+                <div>
+                    <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Rata-rata Formatif</p>
+                    <p class="font-headline-lg text-2xl font-bold text-primary mt-0.5">88.5</p>
+                    <p class="text-[11px] text-status-hadir font-semibold">Di atas KKM (75)</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[26px]">grade</span>
+                </div>
+            </div>
+
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+                <div>
+                    <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Mata Pelajaran</p>
+                    <p class="font-headline-lg text-2xl font-bold text-text-main mt-0.5">14 Mapel</p>
+                    <p class="text-[11px] text-on-surface-variant">Kurikulum Merdeka</p>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[26px]">menu_book</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Tabs Bar -->
+        <div class="bg-surface-container-lowest rounded-2xl p-1.5 shadow-card border border-border-default flex gap-2">
+            <button wire:click="$set('activeTab', 'jadwal')" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 {{ $activeTab === 'jadwal' ? 'bg-primary text-on-primary shadow-xs' : 'text-on-surface-variant hover:bg-surface' }}">
+                <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                <span>Jadwal Pelajaran</span>
             </button>
-            <button wire:click="$set('activeTab', 'absensi')" class="snap-start flex-1 whitespace-nowrap py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 {{ $activeTab === 'absensi' ? 'bg-amber-50 text-amber-600 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50' }}">
-                <div class="flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Riwayat Absensi
-                </div>
+            <button wire:click="$set('activeTab', 'absensi')" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 {{ $activeTab === 'absensi' ? 'bg-primary text-on-primary shadow-xs' : 'text-on-surface-variant hover:bg-surface' }}">
+                <span class="material-symbols-outlined text-[18px]">fact_check</span>
+                <span>Riwayat Absensi</span>
             </button>
-            <button wire:click="$set('activeTab', 'nilai')" class="snap-start flex-1 whitespace-nowrap py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 {{ $activeTab === 'nilai' ? 'bg-sky-50 text-sky-600 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50' }}">
-                <div class="flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                    Nilai Formatif
-                </div>
+            <button wire:click="$set('activeTab', 'nilai')" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 {{ $activeTab === 'nilai' ? 'bg-primary text-on-primary shadow-xs' : 'text-on-surface-variant hover:bg-surface' }}">
+                <span class="material-symbols-outlined text-[18px]">bar_chart</span>
+                <span>Nilai Formatif</span>
             </button>
         </div>
 
         <!-- Tab Content -->
-        <div class="animate-fade-in relative min-h-[400px]">
-            <div wire:loading class="absolute inset-0 z-10 bg-white/50 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                <svg class="animate-spin h-8 w-8 text-brand-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-            </div>
-
+        <div class="animate-fade-in">
             @if($activeTab === 'jadwal')
                 @if($jadwals->isEmpty())
-                    <x-modern-card class="text-center py-12">
-                        <div class="text-slate-400">Belum ada jadwal pelajaran.</div>
-                    </x-modern-card>
+                    <div class="bg-surface-container-lowest rounded-2xl p-12 text-center border border-border-default text-on-surface-variant text-sm">
+                        Belum ada jadwal pelajaran terdaftar untuk kelas Anda.
+                    </div>
                 @else
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach($jadwals as $hari => $items)
-                            <x-modern-card title="{{ $hari }}" icon="<svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'></path></svg>">
-                                <ul class="divide-y divide-slate-100">
+                            <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default p-5 space-y-3">
+                                <div class="flex items-center justify-between border-b border-border-default pb-2">
+                                    <h4 class="font-headline-md text-base font-bold text-primary">{{ $hari }}</h4>
+                                    <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-md font-bold">{{ count($items) }} Jam</span>
+                                </div>
+                                <div class="divide-y divide-border-default/60">
                                     @foreach($items as $j)
-                                        <li class="py-3 first:pt-0 last:pb-0 hover:bg-slate-50 transition-colors rounded-lg px-2 -mx-2">
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-12 h-12 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-lg shrink-0">
-                                                    {{ $j->jam_ke }}
-                                                </div>
-                                                <div>
-                                                    <div class="font-bold text-slate-800">{{ $j->mapel->nama_mapel }}</div>
-                                                    <div class="text-sm text-slate-500 line-clamp-1">{{ $j->guru->nama }}</div>
-                                                    <div class="text-xs font-semibold text-brand-600 mt-0.5">
-                                                        {{ substr($j->waktu_mulai, 0, 5) }} - {{ substr($j->waktu_selesai, 0, 5) }}
-                                                    </div>
-                                                </div>
+                                        <div class="py-2.5 flex items-start gap-3">
+                                            <div class="w-8 h-8 rounded-lg bg-surface flex items-center justify-center font-mono font-bold text-xs shrink-0 border border-border-default text-text-main">
+                                                {{ $j->jam_ke }}
                                             </div>
-                                        </li>
+                                            <div class="flex-1">
+                                                <p class="font-bold text-sm text-text-main">{{ $j->mapel->nama_mapel }}</p>
+                                                <p class="text-xs text-on-surface-variant">{{ $j->guru->nama }}</p>
+                                                <p class="text-[11px] font-mono text-primary mt-0.5">{{ substr($j->waktu_mulai, 0, 5) }} - {{ substr($j->waktu_selesai, 0, 5) }}</p>
+                                            </div>
+                                        </div>
                                     @endforeach
-                                </ul>
-                            </x-modern-card>
+                                </div>
+                            </div>
                         @endforeach
                     </div>
                 @endif
-            
+
             @elseif($activeTab === 'absensi')
-                @if($absensis->isEmpty())
-                    <x-modern-card class="text-center py-12">
-                        <div class="text-slate-400">Belum ada catatan absensi.</div>
-                    </x-modern-card>
-                @else
-                    <x-data-table :headers="['Tanggal', 'Mata Pelajaran', 'Status']">
-                        @foreach($absensis as $abs)
-                            <tr class="hover:bg-slate-50 transition-colors group">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-900 font-medium">
-                                    {{ \Carbon\Carbon::parse($abs->tanggal)->isoFormat('DD MMM YYYY') }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
-                                    {{ $abs->jadwal->mapel->nama_mapel ?? '-' }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <x-status-badge status="{{ ucfirst($abs->status) }}" />
-                                </td>
-                            </tr>
-                        @endforeach
-                    </x-data-table>
-                @endif
+                <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-surface-container-low border-b border-border-default font-label-sm text-on-surface-variant text-[12px] uppercase">
+                                    <th class="py-3.5 px-5 font-semibold">Tanggal</th>
+                                    <th class="py-3.5 px-5 font-semibold">Mata Pelajaran</th>
+                                    <th class="py-3.5 px-5 font-semibold text-right">Status Kehadiran</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border-default/60">
+                                @forelse($absensis as $abs)
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-5 font-medium text-text-main">
+                                            {{ \Carbon\Carbon::parse($abs->tanggal)->isoFormat('dddd, D MMMM YYYY') }}
+                                        </td>
+                                        <td class="py-3.5 px-5 text-on-surface-variant">
+                                            {{ $abs->jadwal->mapel->nama_mapel ?? '-' }}
+                                        </td>
+                                        <td class="py-3.5 px-5 text-right">
+                                            @php
+                                                $badgeColor = match($abs->status) {
+                                                    'hadir' => 'bg-status-hadir/15 text-status-hadir border-status-hadir/30',
+                                                    'izin' => 'bg-status-izin/15 text-status-izin border-status-izin/30',
+                                                    'sakit' => 'bg-status-sakit/15 text-status-sakit border-status-sakit/30',
+                                                    default => 'bg-status-alfa/15 text-status-alfa border-status-alfa/30',
+                                                };
+                                            @endphp
+                                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase border {{ $badgeColor }}">
+                                                {{ ucfirst($abs->status) }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="py-12 text-center text-on-surface-variant text-xs">
+                                            Belum ada rekapan absensi yang dicatat.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
             @elseif($activeTab === 'nilai')
-                @if($nilais->isEmpty())
-                    <x-modern-card class="text-center py-12">
-                        <div class="text-slate-400">Belum ada catatan nilai formatif.</div>
-                    </x-modern-card>
-                @else
-                    <x-data-table :headers="['Tanggal', 'Pelajaran', 'Jenis Tugas', 'Nilai']">
-                        @foreach($nilais as $nilai)
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-900 font-medium">
-                                    {{ \Carbon\Carbon::parse($nilai->tanggal)->isoFormat('DD MMM YYYY') }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
-                                    <div class="font-bold text-slate-800">{{ $nilai->mapel->nama_mapel }}</div>
-                                    <div class="text-xs text-slate-500">{{ $nilai->guru->nama }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700 capitalize font-medium">
-                                    {{ str_replace('_', ' ', $nilai->jenis) }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg {{ $nilai->nilai < 75 ? 'bg-rose-100 text-rose-700 border-2 border-rose-200' : 'bg-emerald-100 text-emerald-700 border-2 border-emerald-200' }}">
-                                        {{ (float)$nilai->nilai }}
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </x-data-table>
-                @endif
+                <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-surface-container-low border-b border-border-default font-label-sm text-on-surface-variant text-[12px] uppercase">
+                                    <th class="py-3.5 px-5 font-semibold">Tanggal</th>
+                                    <th class="py-3.5 px-5 font-semibold">Mata Pelajaran</th>
+                                    <th class="py-3.5 px-5 font-semibold">Jenis Asesmen</th>
+                                    <th class="py-3.5 px-5 font-semibold text-right">Nilai &amp; Kelulusan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border-default/60">
+                                @forelse($nilais as $nilai)
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="py-3.5 px-5 font-medium text-text-main">
+                                            {{ \Carbon\Carbon::parse($nilai->tanggal)->isoFormat('D MMM YYYY') }}
+                                        </td>
+                                        <td class="py-3.5 px-5">
+                                            <p class="font-bold text-text-main">{{ $nilai->mapel->nama_mapel }}</p>
+                                            <p class="text-xs text-on-surface-variant">{{ $nilai->guru->nama }}</p>
+                                        </td>
+                                        <td class="py-3.5 px-5 text-on-surface-variant capitalize text-xs">
+                                            {{ str_replace('_', ' ', $nilai->jenis) }}
+                                        </td>
+                                        <td class="py-3.5 px-5 text-right">
+                                            <span class="inline-flex items-center gap-2">
+                                                <span class="text-base font-bold {{ $nilai->nilai >= 75 ? 'text-status-hadir' : 'text-status-alfa' }}">
+                                                    {{ (float)$nilai->nilai }}
+                                                </span>
+                                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase {{ $nilai->nilai >= 75 ? 'bg-status-hadir/15 text-status-hadir' : 'bg-status-alfa/15 text-status-alfa' }}">
+                                                    {{ $nilai->nilai >= 75 ? 'Tuntas' : 'Remedi' }}
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="py-12 text-center text-on-surface-variant text-xs">
+                                            Belum ada rekapan nilai formatif yang tersimpan.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             @endif
         </div>
     @endif

@@ -14,6 +14,8 @@ class SiswaManager extends Component
     use WithPagination;
 
     public $search = '';
+    public $filterKelas = '';
+    public $filterStatus = '';
     
     public $isFormOpen = false;
     public $siswaId = null;
@@ -32,6 +34,16 @@ class SiswaManager extends Component
     ];
 
     public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingFilterKelas()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingFilterStatus()
     {
         $this->resetPage();
     }
@@ -66,7 +78,7 @@ class SiswaManager extends Component
             $user = User::create([
                 'name' => $this->nama,
                 'email' => $this->email,
-                'password' => Hash::make($this->nisn), // Default password is NISN
+                'password' => Hash::make($this->nisn),
                 'must_change_password' => true,
             ]);
             $user->assignRole('siswa');
@@ -84,7 +96,7 @@ class SiswaManager extends Component
         );
 
         $this->resetForm();
-        session()->flash('message', $this->siswaId ? 'Siswa updated successfully.' : 'Siswa created successfully.');
+        session()->flash('message', $this->siswaId ? 'Data siswa berhasil diperbarui.' : 'Data siswa baru berhasil ditambahkan.');
     }
 
     public function createUserAccount($id)
@@ -129,13 +141,13 @@ class SiswaManager extends Component
             $count++;
         }
 
-        session()->flash('message', "Berhasil membuat {$count} akun login siswa.");
+        session()->flash('message', "Berhasil membuat {$count} akun login siswa secara massal.");
     }
 
     public function delete($id)
     {
         Siswa::findOrFail($id)->delete();
-        session()->flash('message', 'Siswa deleted successfully.');
+        session()->flash('message', 'Data siswa berhasil dihapus.');
     }
 
     public function resetForm()
@@ -155,8 +167,20 @@ class SiswaManager extends Component
         $query = Siswa::with(['kelas', 'user']);
         
         if ($this->search) {
-            $query->where('nama', 'like', '%' . $this->search . '%')
+            $query->where(function ($q) {
+                $q->where('nama', 'like', '%' . $this->search . '%')
                   ->orWhere('nisn', 'like', '%' . $this->search . '%');
+            });
+        }
+
+        if ($this->filterKelas) {
+            $query->where('kelas_id', $this->filterKelas);
+        }
+
+        if ($this->filterStatus === 'active') {
+            $query->whereNotNull('user_id');
+        } elseif ($this->filterStatus === 'inactive') {
+            $query->whereNull('user_id');
         }
 
         return view('livewire.admin.siswa-manager', [

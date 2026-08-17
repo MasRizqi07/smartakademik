@@ -2,8 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+// Public & Marketing Routes
+Route::view('/', 'welcome')->name('home');
+Route::view('/portal', 'portal')->name('portal');
+Route::view('/tentang', 'tentang')->name('tentang');
+Route::view('/fitur', 'fitur')->name('fitur');
+Route::view('/prestasi', 'prestasi')->name('prestasi');
+Route::view('/kalender', 'kalender')->name('kalender');
+Route::view('/bantuan', 'bantuan')->name('bantuan');
+Route::view('/kontak', 'kontak')->name('kontak');
 
+// Authenticated Routes
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard — redirects based on role
     Route::get('dashboard', function () {
@@ -31,6 +40,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('guru', \App\Livewire\Admin\GuruManager::class)->name('guru');
         Route::get('kelas', \App\Livewire\Admin\KelasManager::class)->name('kelas');
         Route::get('mapel', \App\Livewire\Admin\MapelManager::class)->name('mapel');
+        Route::get('jadwal', \App\Livewire\Waka\JadwalManager::class)->name('jadwal');
+        Route::get('event-ujian', \App\Livewire\Admin\EventUjianManager::class)->name('event-ujian');
+        Route::get('pengaturan', \App\Livewire\Admin\PengaturanManager::class)->name('pengaturan');
         Route::get('import', \App\Livewire\Admin\ImportExcel::class)->name('import');
     });
 
@@ -38,6 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('role:waka_kurikulum')->prefix('waka')->name('waka.')->group(function () {
         Route::view('dashboard', 'waka.dashboard')->name('dashboard');
         Route::get('jadwal', \App\Livewire\Waka\JadwalManager::class)->name('jadwal');
+        Route::get('event-ujian', \App\Livewire\Admin\EventUjianManager::class)->name('event-ujian');
         Route::get('rekap-absensi', \App\Livewire\Waka\RekapAbsensi::class)->name('rekap-absensi');
         Route::get('rekap-nilai', \App\Livewire\Waka\RekapNilai::class)->name('rekap-nilai');
     });
@@ -47,6 +60,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::view('dashboard', 'guru.dashboard')->name('dashboard');
         Route::get('absensi', \App\Livewire\Guru\AbsensiGuru::class)->name('absensi');
         Route::get('nilai', \App\Livewire\Guru\NilaiGuru::class)->name('nilai');
+        Route::get('profil', \App\Livewire\Guru\ProfilGuru::class)->name('profil');
+        Route::get('jadwal', \App\Livewire\Waka\JadwalManager::class)->name('jadwal');
     });
 
     // ===== SISWA ROUTES =====

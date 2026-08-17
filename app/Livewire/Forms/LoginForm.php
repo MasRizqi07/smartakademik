@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Guru;
+use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -12,7 +15,7 @@ use Livewire\Form;
 
 class LoginForm extends Form
 {
-    #[Validate('required|string|email')]
+    #[Validate('required|string')]
     public string $email = '';
 
     #[Validate('required|string')]
@@ -30,7 +33,22 @@ class LoginForm extends Form
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+        $loginIdentifier = trim($this->email);
+        $emailToAttempt = $loginIdentifier;
+
+        // Check if user entered NIP
+        $guru = Guru::where('nip_nuptk', $loginIdentifier)->first();
+        if ($guru && $guru->user) {
+            $emailToAttempt = $guru->user->email;
+        } else {
+            // Check if user entered NISN
+            $siswa = Siswa::where('nisn', $loginIdentifier)->first();
+            if ($siswa && $siswa->user) {
+                $emailToAttempt = $siswa->user->email;
+            }
+        }
+
+        if (! Auth::attempt(['email' => $emailToAttempt, 'password' => $this->password], $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

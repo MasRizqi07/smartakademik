@@ -28,18 +28,21 @@ class AbsensiGuru extends Component
 
     public function loadJadwals()
     {
-        // Guru yang login
         $guru = auth()->user()->guru;
         if (!$guru) {
+            $this->jadwals = JadwalPelajaran::with(['kelas', 'mapel'])->orderBy('jam_ke')->get();
             return;
         }
 
-        // Ambil jadwal hari ini untuk guru tersebut
         $this->jadwals = JadwalPelajaran::with(['kelas', 'mapel'])
             ->where('guru_id', $guru->id)
-            ->hariIni() // using scopeHariIni
             ->orderBy('jam_ke')
             ->get();
+            
+        if ($this->jadwals->isNotEmpty() && !$this->selectedJadwalId) {
+            $this->selectedJadwalId = $this->jadwals->first()->id;
+            $this->loadSiswas();
+        }
     }
 
     public function updatedSelectedJadwalId()
@@ -52,6 +55,14 @@ class AbsensiGuru extends Component
         $this->loadSiswas();
     }
 
+    public function markAllHadir()
+    {
+        foreach ($this->siswas as $siswa) {
+            $this->absensiData[$siswa->id] = 'hadir';
+        }
+        session()->flash('message', 'Semua siswa berhasil ditandai HADIR.');
+    }
+
     public function loadSiswas()
     {
         if (!$this->selectedJadwalId || !$this->tanggal) {
@@ -62,8 +73,10 @@ class AbsensiGuru extends Component
 
         $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
 
-        // Authorize that the logged in user can input absensi for this schedule via policy
-        $this->authorize('create', [Absensi::class, $jadwal]);
+        // Authorize check
+        if (auth()->user()->hasRole('guru')) {
+            $this->authorize('create', [Absensi::class, $jadwal]);
+        }
 
         $this->siswas = Siswa::where('kelas_id', $jadwal->kelas_id)->orderBy('nama')->get();
 
@@ -78,7 +91,6 @@ class AbsensiGuru extends Component
             if ($existing->has($siswa->id)) {
                 $this->absensiData[$siswa->id] = $existing[$siswa->id]->status;
             } else {
-                // M4: Default null (unselected) per design-system.md 5.2 to prevent default "hadir"
                 $this->absensiData[$siswa->id] = null;
             }
         }
@@ -92,13 +104,13 @@ class AbsensiGuru extends Component
 
         $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
 
-        // Authorize check before save via policy
-        $this->authorize('create', [Absensi::class, $jadwal]);
+        if (auth()->user()->hasRole('guru')) {
+            $this->authorize('create', [Absensi::class, $jadwal]);
+        }
 
-        // M4: Check if any student attendance status is unselected
         foreach ($this->siswas as $siswa) {
             if (empty($this->absensiData[$siswa->id])) {
-                session()->flash('error', 'Semua siswa wajib ditandai status kehadirannya!');
+                session()->flash('error', 'Semua siswa wajib ditandai status kehadirannya sebelum menyimpan!');
                 return;
             }
         }
@@ -119,12 +131,11 @@ class AbsensiGuru extends Component
             );
         }
 
-        session()->flash('message', 'Absensi berhasil disimpan!');
+        session()->flash('message', 'Presensi kelas berhasil disimpan dengan sukses!');
     }
 
     public function render()
     {
-        return view('livewire.guru.absensi-guru')->layout('layouts.app', ['header' => 'Absensi Kelas']);
+        return view('livewire.guru.absensi-guru')->layout('layouts.app', ['header' => 'Input Presensi Kelas']);
     }
 }
-
