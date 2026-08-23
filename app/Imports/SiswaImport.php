@@ -13,9 +13,11 @@ use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Illuminate\Validation\Rule;
 
-class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, SkipsOnError
+class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, SkipsOnError, WithChunkReading, WithBatchInserts
 {
     use SkipsFailures, SkipsErrors;
 
@@ -57,5 +59,15 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
             'tingkat' => 'required|string',
             'nama_kelas' => 'required|string|exists:kelas,nama_kelas',
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 250;
+    }
+
+    public function batchSize(): int
+    {
+        return 250;
     }
 }

@@ -12,8 +12,10 @@ use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
 
-class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, SkipsOnError
+class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, SkipsOnError, WithChunkReading, WithBatchInserts
 {
     use SkipsFailures, SkipsErrors;
 
@@ -43,5 +45,15 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 250;
+    }
+
+    public function batchSize(): int
+    {
+        return 250;
     }
 }

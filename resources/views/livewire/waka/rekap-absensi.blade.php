@@ -6,6 +6,10 @@
             <p class="font-body-default text-body-default text-on-surface-variant mt-1">Laporan komprehensif tingkat kehadiran siswa per kelas dan pemantauan alfa/izin.</p>
         </div>
         <div class="flex items-center gap-3">
+            <button wire:click="exportCsv" class="px-4 h-touch-target border border-primary/20 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg font-label-md text-sm font-semibold shadow-xs transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">download</span>
+                <span>Export CSV</span>
+            </button>
             <button onclick="window.print()" class="px-5 h-touch-target border border-border-default bg-surface hover:bg-surface-container text-text-main rounded-lg font-label-md text-sm font-semibold shadow-xs transition-all flex items-center gap-2">
                 <span class="material-symbols-outlined text-[18px]">print</span>
                 <span>Cetak Rekap</span>

@@ -109,4 +109,21 @@ class WakaTest extends TestCase
         // With 15 students, N+1 would execute 15+ queries. The collapsed queries run in <= 6 queries.
         $this->assertLessThanOrEqual(7, count($queries), "Query count is " . count($queries) . ", which should be constant.");
     }
+
+    public function test_waka_can_export_rekap_absensi_csv()
+    {
+        $kelas = \App\Models\Kelas::first();
+        $siswa = \App\Models\Siswa::create([
+            'nisn' => '0010009999',
+            'nama' => "Siswa Export Test",
+            'kelas_id' => $kelas->id,
+        ]);
+
+        $response = Livewire::actingAs($this->wakaUser)
+            ->test(RekapAbsensi::class)
+            ->call('exportCsv');
+
+        $response->assertFileDownloaded();
+    }
 }
+
