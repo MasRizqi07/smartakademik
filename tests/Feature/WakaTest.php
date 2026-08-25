@@ -119,11 +119,44 @@ class WakaTest extends TestCase
             'kelas_id' => $kelas->id,
         ]);
 
-        $response = Livewire::actingAs($this->wakaUser)
+        // Seed 2 hadir, 1 izin, 1 sakit, 1 alfa with explicit dates
+        $statuses = ['hadir', 'hadir', 'izin', 'sakit', 'alfa'];
+        foreach ($statuses as $idx => $status) {
+            $day = sprintf('%02d', 10 + $idx);
+            \App\Models\Absensi::create([
+                'siswa_id' => $siswa->id,
+                'jadwal_id' => 1,
+                'tanggal' => "2026-08-{$day}",
+                'status' => $status,
+                'dicatat_oleh' => $this->wakaUser->id,
+            ]);
+        }
+
+        $test = Livewire::actingAs($this->wakaUser)
             ->test(RekapAbsensi::class)
+            ->set('search', 'Siswa Export Test')
+            ->set('startDate', '2026-08-01')
+            ->set('endDate', '2026-08-31')
             ->call('exportCsv');
 
-        $response->assertFileDownloaded();
+        $test->assertFileDownloaded();
+
+        $content = base64_decode(data_get($test->effects, 'download.content'));
+        $lines = array_values(array_filter(explode("\n", trim($content))));
+        $this->assertCount(2, $lines); // Header + exactly 1 filtered student row
+
+        $header = str_getcsv($lines[0]);
+        $this->assertEquals(['NISN', 'Nama Siswa', 'Kelas', 'Hadir', 'Izin', 'Sakit', 'Alfa', 'Total JP', 'Persentase Kehadiran (%)'], $header);
+
+        $row = str_getcsv($lines[1]);
+        $this->assertEquals('0010009999', $row[0]);
+        $this->assertEquals('Siswa Export Test', $row[1]);
+        $this->assertEquals('2', $row[3]); // Hadir
+        $this->assertEquals('1', $row[4]); // Izin
+        $this->assertEquals('1', $row[5]); // Sakit
+        $this->assertEquals('1', $row[6]); // Alfa
+        $this->assertEquals('5', $row[7]); // Total
+        $this->assertEquals('40%', $row[8]); // Persentase (2/5 * 100)
     }
 }
 

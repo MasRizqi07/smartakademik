@@ -58,9 +58,12 @@ class RBACTest extends TestCase
         $response = $this->actingAs($siswaUser)->get('/admin/siswa');
         $response->assertStatus(403);
         
-        // Waka route
+        // Waka routes
         $response2 = $this->actingAs($siswaUser)->get('/waka/jadwal');
         $response2->assertStatus(403);
+
+        $response3 = $this->actingAs($siswaUser)->get('/waka/rekap-absensi');
+        $response3->assertStatus(403);
     }
     
     public function test_guru_cannot_access_admin_endpoints()
@@ -69,6 +72,9 @@ class RBACTest extends TestCase
 
         $response = $this->actingAs($guruUser)->get('/admin/siswa');
         $response->assertStatus(403);
+
+        $response2 = $this->actingAs($guruUser)->get('/waka/rekap-absensi');
+        $response2->assertStatus(403);
     }
 }
 
