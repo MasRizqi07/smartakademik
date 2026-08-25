@@ -40,6 +40,7 @@ Setiap penambahan fitur di masa depan wajib dicek terhadap tabel gap di atas seb
 3. Nilai formatif (tugas/ulangan harian)
 4. Import massal data siswa/guru/kelas/mapel via Excel
 5. RBAC 4 role: Admin/TU, Waka Kurikulum, Guru, Siswa
+6. Export rekap absensi (CSV) untuk Waka Kurikulum — cakupan dari kebutuhan "lihat seluruh laporan absensi lintas kelas" di role table (Section 4). Implemented & reviewed: RekapAbsensi.php.
 
 **Eksplisit di luar MVP (calon fase 2, proyek terpisah):**
 - Portal komunikasi orang tua
@@ -55,7 +56,7 @@ Keputusan scope diambil breadth-narrowed-first: awalnya dipertimbangkan breadth-
 | Role | Akses |
 |---|---|
 | **Admin/TU** | Full CRUD master data (siswa, guru, kelas, mapel), manajemen user & role, import Excel |
-| **Waka Kurikulum** | CRUD jadwal pelajaran, lihat seluruh laporan absensi & nilai formatif lintas kelas |
+| **Waka Kurikulum** | CRUD jadwal pelajaran, lihat seluruh laporan absensi & nilai formatif lintas kelas (termasuk export CSV rekap absensi) |
 | **Guru** | Lihat jadwal mengajar sendiri, input absensi & nilai formatif untuk kelas/mapel yang diampu saja (scoped by jadwal miliknya) |
 | **Siswa** | Read-only: jadwal, riwayat absensi, nilai formatif miliknya sendiri |
 
@@ -107,5 +108,5 @@ nilai_formatif (id, siswa_id, mapel_id, jenis[tugas|ulangan_harian], nilai, tang
 ## 9. Open Questions untuk Fase Implementasi
 
 - Hosting target: shared hosting cPanel (umum untuk sekolah ID) atau VPS? Ini menentukan constraint Laravel deployment (queue driver, scheduler via cron).
-- Apakah wali kelas butuh view tambahan (rekap absensi kelas per bulan) di luar 4 role di atas, atau itu cukup di-cover Waka Kurikulum?
+- Apakah wali kelas butuh view tambahan (rekap absensi kelas per bulan)? RESOLVED (25 Agustus 2026): Cukup di-cover Waka Kurikulum lewat RekapAbsensi — tidak perlu role wali kelas baru. Termasuk export CSV, locked ke Section 3 item 6.
 - Semester aktif / tahun ajaran — apakah data historis lintas semester perlu tetap bisa diakses (arsip), atau reset tiap semester baru?
