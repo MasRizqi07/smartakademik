@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html class="light" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masuk Portal - MAN 4 Jombang Academic Portal</title>
+    <x-theme-init />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-background text-on-background font-body-default min-h-screen flex items-center justify-center shader-bg overflow-x-hidden relative p-4">
+    <!-- Floating Theme Toggle in Top Right -->
+    <div class="fixed top-5 right-5 z-50">
+        <x-theme-toggle variant="pill" />
+    </div>
+
     <!-- Decorative Ambient Elements -->
     <div class="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-pulse pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-tertiary rounded-full mix-blend-multiply filter blur-[120px] opacity-20 pointer-events-none" style="animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>

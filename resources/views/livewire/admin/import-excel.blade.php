@@ -130,21 +130,27 @@
                         @foreach($failures as $failure)
                             <tr class="hover:bg-surface-container-low/60 transition-colors">
                                 <td class="py-3 px-4 font-bold text-text-main">
-                                    <span class="inline-block px-2 py-0.5 bg-surface-container-high rounded text-xs">#{{ $failure->row() }}</span>
+                                    <span class="inline-block px-2 py-0.5 bg-surface-container-high rounded text-xs">#{{ is_array($failure) ? ($failure['row'] ?? '-') : $failure->row() }}</span>
                                 </td>
                                 <td class="py-3 px-4 font-medium text-text-main capitalize">
-                                    {{ str_replace('_', ' ', $failure->attribute()) }}
+                                    {{ str_replace('_', ' ', is_array($failure) ? ($failure['attribute'] ?? '-') : $failure->attribute()) }}
                                 </td>
                                 <td class="py-3 px-4 text-error font-medium">
                                     <ul class="list-disc pl-4 space-y-0.5">
-                                        @foreach($failure->errors() as $error)
+                                        @php
+                                            $errs = is_array($failure) ? ($failure['errors'] ?? []) : $failure->errors();
+                                        @endphp
+                                        @foreach($errs as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
                                     </ul>
                                 </td>
                                 <td class="py-3 px-4 text-outline font-mono text-xs hidden md:table-cell">
-                                    <code class="bg-surface-container-low p-1.5 rounded block truncate max-w-xs" title="{{ json_encode($failure->values()) }}">
-                                        {{ json_encode($failure->values()) }}
+                                    @php
+                                        $vals = is_array($failure) ? ($failure['values'] ?? []) : $failure->values();
+                                    @endphp
+                                    <code class="bg-surface-container-low p-1.5 rounded block truncate max-w-xs" title="{{ json_encode($vals) }}">
+                                        {{ json_encode($vals) }}
                                     </code>
                                 </td>
                             </tr>

@@ -41,17 +41,18 @@ new class extends Component
 <div x-data="{ mobileOpen: false, roleMenuOpen: false }">
     <!-- Desktop Sidebar Navbar -->
     <nav class="hidden md:flex bg-surface-container-lowest shadow-sm h-screen w-64 fixed left-0 top-0 flex-col p-4 border-r border-border-default z-40">
-        <!-- Brand Header -->
-        <div class="mb-4 flex flex-col gap-1 px-3 pt-2">
-            <a href="{{ url('/') }}" class="flex items-center gap-3 group">
+        <!-- Brand Header & Theme Toggle -->
+        <div class="mb-4 flex items-center justify-between px-2 pt-2">
+            <a href="{{ url('/') }}" class="flex items-center gap-2.5 group">
                 <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-bold shadow-xs group-hover:scale-105 transition-transform">
                     <span class="material-symbols-outlined text-[20px]">school</span>
                 </div>
                 <div>
-                    <h1 class="font-headline-md text-base leading-tight font-bold text-primary">MAN 4 Jombang</h1>
-                    <p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Academic Portal</p>
+                    <h1 class="font-headline-md text-sm leading-tight font-bold text-primary">MAN 4 Jombang</h1>
+                    <p class="font-label-sm text-[9px] text-on-surface-variant uppercase tracking-wider">Academic Portal</p>
                 </div>
             </a>
+            <x-theme-toggle variant="compact" />
         </div>
 
         <!-- Navigation Links -->
@@ -258,9 +259,12 @@ new class extends Component
             <span class="font-headline-md text-base text-primary font-extrabold">MAN 4 Jombang</span>
         </div>
 
-        <button @click="mobileOpen = !mobileOpen" aria-label="Toggle navigation" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
-            <span class="material-symbols-outlined text-[24px]" x-text="mobileOpen ? 'close' : 'menu'">menu</span>
-        </button>
+        <div class="flex items-center gap-2">
+            <x-theme-toggle variant="compact" />
+            <button @click="mobileOpen = !mobileOpen" aria-label="Toggle navigation" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+                <span class="material-symbols-outlined text-[24px]" x-text="mobileOpen ? 'close' : 'menu'">menu</span>
+            </button>
+        </div>
     </header>
 
     <!-- Mobile Navigation Drawer Overlay -->
@@ -343,10 +347,14 @@ new class extends Component
             </a>
         @endif
 
-        <div class="pt-3 border-t border-border-default/60 flex items-center justify-between">
-            <button wire:click="logout" class="w-full h-touch-target bg-error/10 hover:bg-error/20 text-error font-semibold text-sm rounded-lg transition-all flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">logout</span>
-                <span>Keluar dari Portal</span>
+        <div class="pt-3 border-t border-border-default/60 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2 text-xs font-semibold text-on-surface-variant">
+                <span>Mode Tema:</span>
+                <x-theme-toggle variant="pill" />
+            </div>
+            <button wire:click="logout" class="px-4 py-2 bg-error/10 hover:bg-error/20 text-error font-semibold text-xs rounded-lg transition-all flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">logout</span>
+                <span>Keluar</span>
             </button>
         </div>
     </div>

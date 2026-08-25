@@ -7,10 +7,18 @@
 
         <title>{{ config('app.name', 'SmartAkademik') }} - MAN 4 Jombang</title>
 
+        <!-- Zero-FOUT Theme Initialization -->
+        <x-theme-init />
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-surface text-on-surface antialiased min-h-screen relative font-sans flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Floating Theme Toggle in Top Right -->
+        <div class="fixed top-5 right-5 z-50">
+            <x-theme-toggle variant="pill" />
+        </div>
+
         <!-- Subtle Glow Elements -->
         <div class="fixed inset-0 z-0 pointer-events-none opacity-40">
             <div class="absolute top-[-10%] left-[20%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]"></div>
@@ -22,4 +30,3 @@
         </div>
     </body>
 </html>
-

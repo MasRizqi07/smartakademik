@@ -166,4 +166,43 @@ class ImportExcelTest extends TestCase
             'nama_mapel' => 'Fisika',
         ]);
     }
+
+    public function test_import_excel_component_handles_validation_failures_gracefully()
+    {
+        // File with invalid rows (missing NISN on row 2)
+        $invalidContent = "nisn,nama,tingkat,nama_kelas\n,Siswa Tanpa NISN,X,X-A";
+        $file = UploadedFile::fake()->createWithContent('invalid_siswa.csv', $invalidContent);
+
+        $test = Livewire::actingAs($this->adminUser)
+            ->test(ImportExcel::class)
+            ->set('type', 'siswa')
+            ->set('file', $file)
+            ->call('import');
+
+        $test->assertHasNoErrors();
+        $this->assertCount(1, $test->get('failures'));
+        $test->assertSee('Laporan Kegagalan Impor')
+            ->assertSee('Siswa Tanpa NISN');
+    }
+
+    public function test_import_excel_component_successful_import()
+    {
+        $validContent = "nisn,nama,tingkat,nama_kelas\n0088776655,Siswa Livewire Import,X,X-A";
+        $file = UploadedFile::fake()->createWithContent('valid_siswa.csv', $validContent);
+
+        $test = Livewire::actingAs($this->adminUser)
+            ->test(ImportExcel::class)
+            ->set('type', 'siswa')
+            ->set('file', $file)
+            ->call('import');
+
+        $test->assertHasNoErrors();
+        $this->assertCount(0, $test->get('failures'));
+        $test->assertDontSee('Laporan Kegagalan Impor');
+
+        $this->assertDatabaseHas('siswa', [
+            'nisn' => '0088776655',
+            'nama' => 'Siswa Livewire Import',
+        ]);
+    }
 }

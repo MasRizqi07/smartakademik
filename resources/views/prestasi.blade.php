@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri Prestasi Siswa - MAN 4 Jombang Academic Portal</title>
+    <x-theme-init />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-surface text-on-surface font-body-default min-h-screen flex flex-col antialiased">
@@ -31,6 +32,8 @@
                 </nav>
 
                 <div class="flex items-center gap-3">
+                    <x-theme-toggle variant="pill" />
+
                     @auth
                         <a class="bg-primary text-on-primary font-label-md text-label-md px-5 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm h-touch-target flex items-center gap-2" href="{{ route('dashboard') }}">
                             <span>Dashboard</span>

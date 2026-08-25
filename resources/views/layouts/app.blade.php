@@ -7,6 +7,9 @@
 
         <title>{{ config('app.name', 'SmartAkademik') }} - MAN 4 Jombang</title>
 
+        <!-- Zero-FOUT Theme Initialization -->
+        <x-theme-init />
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -18,8 +21,13 @@
             <div class="flex-1 md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen flex flex-col relative z-10 transition-all">
                 @if (isset($header))
                     <header class="bg-surface-container-lowest/90 backdrop-blur-md border-b border-border-default h-16 px-6 sticky top-0 flex items-center justify-between z-30 shadow-xs">
-                        <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
-                            {{ $header }}
+                        <div class="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
+                            <div class="flex-1 truncate">
+                                {{ $header }}
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <x-theme-toggle variant="pill" />
+                            </div>
                         </div>
                     </header>
                 @endif
@@ -30,11 +38,14 @@
                 </main>
 
                 <!-- Footer -->
-                <footer class="mt-auto py-6 px-6 text-center text-label-sm text-on-surface-variant border-t border-border-default/60">
-                    &copy; {{ date('Y') }} MAN 4 Jombang Academic Portal. All rights reserved.
+                <footer class="mt-auto py-6 px-6 text-center text-label-sm text-on-surface-variant border-t border-border-default/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span>&copy; {{ date('Y') }} MAN 4 Jombang Academic Portal. All rights reserved.</span>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs">Tema:</span>
+                        <x-theme-toggle variant="compact" />
+                    </div>
                 </footer>
             </div>
         </div>
     </body>
 </html>
-

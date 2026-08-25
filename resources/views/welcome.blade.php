@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAN 4 Jombang - Academic Portal</title>
+    <x-theme-init />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-surface text-on-surface font-body-default min-h-screen flex flex-col antialiased">
@@ -31,6 +32,8 @@
                 </nav>
 
                 <div class="flex items-center gap-3">
+                    <x-theme-toggle variant="pill" />
+
                     <a href="{{ url('/portal') }}" class="hidden sm:inline-flex bg-surface-container text-on-surface font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-surface-container-high transition-colors h-touch-target items-center justify-center">
                         Gerbang Portal
                     </a>

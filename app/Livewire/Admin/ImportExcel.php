@@ -77,10 +77,18 @@ class ImportExcel extends Component
 
             Excel::import($importer, $this->file);
             
-            $this->failures = $importer->failures();
+            $rawFailures = $importer->failures();
+            $this->failures = collect($rawFailures)->map(function ($failure) {
+                return [
+                    'row' => $failure->row(),
+                    'attribute' => $failure->attribute(),
+                    'errors' => $failure->errors(),
+                    'values' => $failure->values(),
+                ];
+            })->toArray();
             
             if (count($this->failures) > 0) {
-                session()->flash('warning', 'Import selesai dengan beberapa error pada baris tertentu.');
+                session()->flash('warning', 'Import selesai dengan beberapa error pada baris tertentu (' . count($this->failures) . ' baris bermasalah).');
             } else {
                 session()->flash('message', 'Semua data ' . strtoupper($this->type) . ' berhasil diimport!');
             }
