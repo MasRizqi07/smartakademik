@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\EventUjian;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Mapel;
@@ -21,14 +22,6 @@ class EventUjianManager extends Component
     public $pengawasNama = 'Ahmad Fauzi, S.Pd.';
     public $status = 'Terjadwal';
 
-    public $events = [
-        ['id' => 1, 'nama' => 'Penilaian Tengah Semester (PTS) Ganjil - Matematika', 'jenis' => 'PTS Ganjil', 'tanggal' => '15 Sep 2026', 'waktu' => '07:30 - 09:30', 'ruang' => 'Ruang 01 (Lab IPA)', 'pengawas' => 'Ahmad Fauzi, S.Pd.', 'peserta' => 32, 'status' => 'Terjadwal'],
-        ['id' => 2, 'nama' => 'PTS Ganjil - Bahasa Indonesia & Sastra', 'jenis' => 'PTS Ganjil', 'tanggal' => '16 Sep 2026', 'waktu' => '07:30 - 09:30', 'ruang' => 'Ruang 02', 'pengawas' => 'Siti Aminah, M.Pd.', 'peserta' => 30, 'status' => 'Terjadwal'],
-        ['id' => 3, 'nama' => 'PTS Ganjil - Pendidikan Agama Islam (PAI)', 'jenis' => 'PTS Ganjil', 'tanggal' => '17 Sep 2026', 'waktu' => '07:30 - 09:30', 'ruang' => 'Ruang 03', 'pengawas' => 'K.H. Nur Hadi', 'peserta' => 32, 'status' => 'Terjadwal'],
-        ['id' => 4, 'nama' => 'Penilaian Akhir Semester (PAS) - Fisika & Kimia', 'jenis' => 'PAS Ganjil', 'tanggal' => '02 Des 2026', 'waktu' => '08:00 - 10:00', 'ruang' => 'Lab Komputer', 'pengawas' => 'Budi Santoso, S.Kom.', 'peserta' => 36, 'status' => 'Persiapan'],
-        ['id' => 5, 'nama' => 'Asesmen Bakat Skolastik (ABM) Madrasah', 'jenis' => 'Asesmen Madrasah', 'tanggal' => '10 Nov 2026', 'waktu' => '07:30 - 11:30', 'ruang' => 'Aula Utama', 'pengawas' => 'Tim Kurikulum', 'peserta' => 120, 'status' => 'Terjadwal'],
-    ];
-
     public function openAddModal()
     {
         $this->namaUjian = '';
@@ -36,7 +29,7 @@ class EventUjianManager extends Component
         $this->tanggalUjian = date('Y-m-d');
         $this->waktuUjian = '07:30 - 09:30';
         $this->ruangan = 'Ruang 01';
-        $this->pengawasNama = 'Ahmad Fauzi, S.Pd.';
+        $this->pengawasNama = Guru::first()?->nama ?? 'Ahmad Fauzi, S.Pd.';
         $this->isAddOpen = true;
     }
 
@@ -44,21 +37,23 @@ class EventUjianManager extends Component
     {
         $this->validate([
             'namaUjian' => 'required|string|max:255',
-            'tanggalUjian' => 'required',
-            'ruangan' => 'required',
+            'jenisUjian' => 'required|in:PTS Ganjil,PAS Ganjil,PTS Genap,PAT/AAT,Asesmen Madrasah',
+            'tanggalUjian' => 'required|date',
+            'waktuUjian' => 'required|string|max:255',
+            'ruangan' => 'required|string|max:255',
+            'pengawasNama' => 'required|string|max:255',
         ]);
 
-        $this->events[] = [
-            'id' => count($this->events) + 1,
+        EventUjian::create([
             'nama' => $this->namaUjian,
             'jenis' => $this->jenisUjian,
-            'tanggal' => date('d M Y', strtotime($this->tanggalUjian)),
+            'tanggal' => $this->tanggalUjian,
             'waktu' => $this->waktuUjian,
-            'ruang' => $this->ruangan,
-            'pengawas' => $this->pengawasNama,
-            'peserta' => rand(25, 36),
+            'ruangan' => $this->ruangan,
+            'pengawas_nama' => $this->pengawasNama,
+            'peserta' => null,
             'status' => 'Terjadwal',
-        ];
+        ]);
 
         $this->isAddOpen = false;
         session()->flash('message', 'Jadwal event ujian & asesmen berhasil ditambahkan!');
@@ -66,28 +61,30 @@ class EventUjianManager extends Component
 
     public function deleteEvent($id)
     {
-        $this->events = array_values(array_filter($this->events, fn($e) => $e['id'] != $id));
+        EventUjian::findOrFail($id)->delete();
         session()->flash('message', 'Event asesmen berhasil dihapus.');
     }
 
     public function render()
     {
-        $filtered = collect($this->events);
+        $query = EventUjian::query();
 
         if (!empty($this->search)) {
-            $filtered = $filtered->filter(function($e) {
-                return str_contains(strtolower($e['nama']), strtolower($this->search)) ||
-                       str_contains(strtolower($e['ruang']), strtolower($this->search)) ||
-                       str_contains(strtolower($e['pengawas']), strtolower($this->search));
+            $query->where(function ($q) {
+                $q->where('nama', 'like', '%' . $this->search . '%')
+                  ->orWhere('ruangan', 'like', '%' . $this->search . '%')
+                  ->orWhere('pengawas_nama', 'like', '%' . $this->search . '%');
             });
         }
 
         if (!empty($this->filterJenis)) {
-            $filtered = $filtered->where('jenis', $this->filterJenis);
+            $query->where('jenis', $this->filterJenis);
         }
 
+        $eventList = $query->orderBy('tanggal')->get();
+
         return view('livewire.admin.event-ujian-manager', [
-            'eventList' => $filtered,
+            'eventList' => $eventList,
             'gurus' => Guru::all(),
             'kelases' => Kelas::all(),
             'mapels' => Mapel::all(),

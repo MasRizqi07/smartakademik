@@ -30,7 +30,7 @@
             </div>
             <div>
                 <h3 class="font-body-default text-xs text-on-surface-variant">Total Event Asesmen</h3>
-                <p class="font-headline-lg text-2xl font-bold text-text-main mt-1">{{ count($events) }} Ujian</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main mt-1">{{ $eventList->count() }} Ujian</p>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
             </div>
             <div>
                 <h3 class="font-body-default text-xs text-on-surface-variant">Pengawas Terploting</h3>
-                <p class="font-headline-lg text-2xl font-bold text-text-main mt-1">{{ count($events) }} <span class="text-xs font-normal text-on-surface-variant">/ Guru Pendidik</span></p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main mt-1">{{ $eventList->whereNotNull('pengawas_nama')->count() }} <span class="text-xs font-normal text-on-surface-variant">/ Guru Pendidik</span></p>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
             </div>
             <div>
                 <h3 class="font-body-default text-xs text-on-surface-variant">Ruang &amp; Lab Digunakan</h3>
-                <p class="font-headline-lg text-2xl font-bold text-text-main mt-1">12 Ruang</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main mt-1">{{ $eventList->pluck('ruangan')->filter()->unique()->count() }} Ruang</p>
             </div>
         </div>
     </div>
@@ -74,7 +74,9 @@
                 <option value="">Semua Jenis Asesmen</option>
                 <option value="PTS Ganjil">PTS Ganjil</option>
                 <option value="PAS Ganjil">PAS Ganjil</option>
-                <option value="Asesmen Madrasah">Asesmen Madrasah / ABM</option>
+                <option value="PTS Genap">PTS Genap</option>
+                <option value="PAT/AAT">PAT / AAT</option>
+                <option value="Asesmen Madrasah">Asesmen Madrasah</option>
             </select>
         </div>
     </div>
@@ -100,29 +102,29 @@
                                 <div class="flex items-center gap-2">
                                     <span class="w-2.5 h-2.5 rounded-full bg-primary shrink-0"></span>
                                     <div>
-                                        <p class="font-bold text-text-main text-sm">{{ $e['nama'] }}</p>
-                                        <span class="text-[11px] font-semibold text-primary uppercase">{{ $e['jenis'] }}</span>
+                                        <p class="font-bold text-text-main text-sm">{{ $e->nama }}</p>
+                                        <span class="text-[11px] font-semibold text-primary uppercase">{{ $e->jenis }}</span>
                                     </div>
                                 </div>
                             </td>
                             <td class="py-3.5 px-5">
-                                <p class="font-semibold text-xs text-text-main">{{ $e['tanggal'] }}</p>
-                                <p class="text-[11px] text-on-surface-variant font-mono">{{ $e['waktu'] }}</p>
+                                <p class="font-semibold text-xs text-text-main">{{ $e->tanggal ? date('d M Y', strtotime($e->tanggal)) : '-' }}</p>
+                                <p class="text-[11px] text-on-surface-variant font-mono">{{ $e->waktu }}</p>
                             </td>
                             <td class="py-3.5 px-5">
                                 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-surface-container text-text-main border border-border-default">
                                     <span class="material-symbols-outlined text-[14px] text-primary">meeting_room</span>
-                                    {{ $e['ruang'] }}
+                                    {{ $e->ruangan }}
                                 </span>
                             </td>
                             <td class="py-3.5 px-5 text-xs text-on-surface-variant font-medium">
-                                {{ $e['pengawas'] }}
+                                {{ $e->pengawas_nama }}
                             </td>
                             <td class="py-3.5 px-5 text-xs font-bold text-text-main">
-                                {{ $e['peserta'] }} Siswa
+                                {{ $e->peserta ? $e->peserta . ' Siswa' : '–' }}
                             </td>
                             <td class="py-3.5 px-5 text-right">
-                                <button wire:click="deleteEvent({{ $e['id'] }})" wire:confirm="Hapus jadwal ujian ini?" class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors" title="Hapus Ujian">
+                                <button wire:click="deleteEvent({{ $e->id }})" wire:confirm="Hapus jadwal ujian ini?" class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors" title="Hapus Ujian">
                                     <span class="material-symbols-outlined text-[20px]">delete</span>
                                 </button>
                             </td>
@@ -157,6 +159,7 @@
                     <div>
                         <label class="block text-xs font-semibold text-on-surface-variant mb-1">Nama Asesmen / Mata Ujian</label>
                         <input wire:model="namaUjian" type="text" required class="w-full px-3 py-2 rounded-lg border border-border-default bg-surface focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Contoh: PTS Ganjil - Matematika Wajib">
+                        @error('namaUjian') <span class="text-error text-xs">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
@@ -169,10 +172,12 @@
                                 <option value="PAT/AAT">PAT / Asesmen Akhir Tahun</option>
                                 <option value="Asesmen Madrasah">Asesmen Madrasah</option>
                             </select>
+                            @error('jenisUjian') <span class="text-error text-xs">{{ $message }}</span> @enderror
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-on-surface-variant mb-1">Tanggal Ujian</label>
                             <input wire:model="tanggalUjian" type="date" required class="w-full px-3 py-2 rounded-lg border border-border-default bg-surface text-sm">
+                            @error('tanggalUjian') <span class="text-error text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
 
@@ -180,10 +185,12 @@
                         <div>
                             <label class="block text-xs font-semibold text-on-surface-variant mb-1">Ruangan / Lab</label>
                             <input wire:model="ruangan" type="text" required class="w-full px-3 py-2 rounded-lg border border-border-default bg-surface text-sm" placeholder="Contoh: Ruang 01 (Lab IPA)">
+                            @error('ruangan') <span class="text-error text-xs">{{ $message }}</span> @enderror
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-on-surface-variant mb-1">Waktu Pelaksanaan</label>
                             <input wire:model="waktuUjian" type="text" required class="w-full px-3 py-2 rounded-lg border border-border-default bg-surface text-sm" placeholder="07:30 - 09:30">
+                            @error('waktuUjian') <span class="text-error text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
 
@@ -194,6 +201,7 @@
                                 <option value="{{ $g->nama }}">{{ $g->nama }}</option>
                             @endforeach
                         </select>
+                        @error('pengawasNama') <span class="text-error text-xs">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="flex justify-end gap-2 pt-3 border-t border-border-default">
