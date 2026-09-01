@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('jadwal_id')->constrained('jadwal_pelajaran')->restrictOnDelete();
             $table->date('tanggal');
             $table->enum('status', ['hadir', 'izin', 'sakit', 'alfa']);
+            $table->string('keterangan')->nullable();
             $table->foreignId('dicatat_oleh')->constrained('users')->restrictOnDelete();
             $table->timestamps();
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Guru;
+use App\Models\JadwalPelajaran;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Siswa;
@@ -20,74 +21,121 @@ class RoleAndUserSeeder extends Seeder
             Role::findOrCreate($role, 'web');
         }
 
-        // Admin/TU
+        // 1. Admin/TU
         $adminUser = User::firstOrCreate(
             ['email' => 'admin@smartakademik.test'],
-            ['name' => 'Admin TU', 'password' => bcrypt('password')]
+            ['name' => 'Admin TU MAN 4', 'password' => bcrypt('password')]
         );
-        $adminUser->assignRole('admin_tu');
+        $adminUser->syncRoles(['admin_tu']);
 
-        // Waka Kurikulum
+        // 2. Waka Kurikulum
         $wakaUser = User::firstOrCreate(
             ['email' => 'waka@smartakademik.test'],
             ['name' => 'Waka Kurikulum', 'password' => bcrypt('password')]
         );
-        $wakaUser->assignRole('waka_kurikulum');
+        $wakaUser->syncRoles(['waka_kurikulum']);
 
-        // Guru — also create guru record linked to user
+        // 3. Guru 1 (Budi Santoso)
         $guruUser = User::firstOrCreate(
             ['email' => 'guru@smartakademik.test'],
-            ['name' => 'Budi Santoso', 'password' => bcrypt('password')]
+            ['name' => 'Budi Santoso, S.Pd.', 'password' => bcrypt('password')]
         );
-        $guruUser->assignRole('guru');
+        $guruUser->syncRoles(['guru']);
         $guru = Guru::firstOrCreate(
             ['user_id' => $guruUser->id],
-            ['nama' => 'Budi Santoso', 'nip_nuptk' => '198501012010011001']
+            ['nama' => 'Budi Santoso, S.Pd.', 'nip_nuptk' => '198501012010011001']
         );
 
-        // Guru 2 — for RBAC negative testing (different guru accessing other's class)
+        // 4. Guru 2 (Siti Aminah)
         $guru2User = User::firstOrCreate(
             ['email' => 'guru2@smartakademik.test'],
-            ['name' => 'Siti Aminah', 'password' => bcrypt('password')]
+            ['name' => 'Siti Aminah, M.Pd.', 'password' => bcrypt('password')]
         );
-        $guru2User->assignRole('guru');
+        $guru2User->syncRoles(['guru']);
         $guru2 = Guru::firstOrCreate(
             ['user_id' => $guru2User->id],
-            ['nama' => 'Siti Aminah', 'nip_nuptk' => '199002022015022002']
+            ['nama' => 'Siti Aminah, M.Pd.', 'nip_nuptk' => '199002022015022002']
         );
 
-        // Create sample kelas, mapel, siswa for testing
-        $kelas = Kelas::firstOrCreate(
-            ['nama_kelas' => 'X-A'],
-            ['tingkat' => 'X']
+        // 5. Guru 3 (Drs. H. Ahmad Dahlan)
+        $guru3User = User::firstOrCreate(
+            ['email' => 'guru3@smartakademik.test'],
+            ['name' => 'Drs. H. Ahmad Dahlan', 'password' => bcrypt('password')]
+        );
+        $guru3User->syncRoles(['guru']);
+        $guru3 = Guru::firstOrCreate(
+            ['user_id' => $guru3User->id],
+            ['nama' => 'Drs. H. Ahmad Dahlan', 'nip_nuptk' => '197503032000031003']
         );
 
-        $mapel = Mapel::firstOrCreate(
-            ['kode_mapel' => 'MTK'],
-            ['nama_mapel' => 'Matematika']
-        );
+        // Master Kelas
+        $kelasXA = Kelas::firstOrCreate(['nama_kelas' => 'X-A'], ['tingkat' => 'X']);
+        $kelasXB = Kelas::firstOrCreate(['nama_kelas' => 'X-B'], ['tingkat' => 'X']);
+        $kelasXIA = Kelas::firstOrCreate(['nama_kelas' => 'XI-MIPA-1'], ['tingkat' => 'XI']);
+        $kelasXIIA = Kelas::firstOrCreate(['nama_kelas' => 'XII-MIPA-1'], ['tingkat' => 'XII']);
 
-        // Siswa — also create siswa record linked to user
-        $siswaUser = User::firstOrCreate(
-            ['email' => 'siswa@smartakademik.test'],
-            ['name' => 'Ahmad Fauzi', 'password' => bcrypt('password')]
-        );
-        $siswaUser->assignRole('siswa');
-        Siswa::firstOrCreate(
-            ['user_id' => $siswaUser->id],
-            ['nama' => 'Ahmad Fauzi', 'nisn' => '0012345678', 'kelas_id' => $kelas->id]
-        );
+        // Master Mapel
+        $mapelMtk = Mapel::firstOrCreate(['kode_mapel' => 'MTK'], ['nama_mapel' => 'Matematika']);
+        $mapelFis = Mapel::firstOrCreate(['kode_mapel' => 'FIS'], ['nama_mapel' => 'Fisika']);
+        $mapelBio = Mapel::firstOrCreate(['kode_mapel' => 'BIO'], ['nama_mapel' => 'Biologi']);
+        $mapelQur = Mapel::firstOrCreate(['kode_mapel' => 'QUR'], ['nama_mapel' => "Al-Qur'an Hadis"]);
+        $mapelFik = Mapel::firstOrCreate(['kode_mapel' => 'FIK'], ['nama_mapel' => 'Fikih Madrasah']);
 
-        // Create jadwal for guru 1 (NOT guru 2) — for RBAC testing
-        \App\Models\JadwalPelajaran::firstOrCreate([
-            'kelas_id' => $kelas->id,
-            'mapel_id' => $mapel->id,
+        // Master Siswa & User Accounts
+        $siswaData = [
+            ['nama' => 'Ahmad Fauzi', 'nisn' => '0012345678', 'email' => 'siswa@smartakademik.test', 'kelas_id' => $kelasXA->id],
+            ['nama' => 'Siti Nurhaliza', 'nisn' => '0012345679', 'email' => 'siti@smartakademik.test', 'kelas_id' => $kelasXB->id],
+            ['nama' => 'Bagus Pratama', 'nisn' => '0012345680', 'email' => 'bagus@smartakademik.test', 'kelas_id' => $kelasXIA->id],
+            ['nama' => 'Dewi Lestari', 'nisn' => '0012345681', 'email' => 'dewi@smartakademik.test', 'kelas_id' => $kelasXIIA->id],
+        ];
+
+        foreach ($siswaData as $sd) {
+            $u = User::firstOrCreate(
+                ['email' => $sd['email']],
+                ['name' => $sd['nama'], 'password' => bcrypt('password')]
+            );
+            $u->syncRoles(['siswa']);
+
+            Siswa::firstOrCreate(
+                ['nisn' => $sd['nisn']],
+                ['user_id' => $u->id, 'nama' => $sd['nama'], 'kelas_id' => $sd['kelas_id']]
+            );
+        }
+
+        // Jadwal Mengajar Guru 1
+        JadwalPelajaran::firstOrCreate([
+            'kelas_id' => $kelasXA->id,
+            'mapel_id' => $mapelMtk->id,
             'guru_id' => $guru->id,
             'hari' => 'Senin',
             'jam_ke' => 1,
         ], [
             'waktu_mulai' => '07:00',
             'waktu_selesai' => '07:45',
+        ]);
+
+        // Jadwal Mengajar Guru 2
+        JadwalPelajaran::firstOrCreate([
+            'kelas_id' => $kelasXB->id,
+            'mapel_id' => $mapelFis->id,
+            'guru_id' => $guru2->id,
+            'hari' => 'Selasa',
+            'jam_ke' => 2,
+        ], [
+            'waktu_mulai' => '08:30',
+            'waktu_selesai' => '10:00',
+        ]);
+
+        // Jadwal Mengajar Guru 3
+        JadwalPelajaran::firstOrCreate([
+            'kelas_id' => $kelasXIA->id,
+            'mapel_id' => $mapelQur->id,
+            'guru_id' => $guru3->id,
+            'hari' => 'Rabu',
+            'jam_ke' => 1,
+        ], [
+            'waktu_mulai' => '07:00',
+            'waktu_selesai' => '08:30',
         ]);
     }
 }

@@ -2,17 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Public Routes
+// Public & Information Routes
 Route::view('/', 'welcome')->name('home');
 Route::view('/portal', 'portal')->name('portal');
-
-// Non-MVP pages — deferred per design spec §1.5
-// Route::view('/tentang', 'tentang')->name('tentang');
-// Route::view('/fitur', 'fitur')->name('fitur');
-// Route::view('/prestasi', 'prestasi')->name('prestasi');
-// Route::view('/kalender', 'kalender')->name('kalender');
-// Route::view('/bantuan', 'bantuan')->name('bantuan');
-// Route::view('/kontak', 'kontak')->name('kontak');
+Route::view('/tentang', 'tentang')->name('tentang');
+Route::view('/fitur', 'fitur')->name('fitur');
+Route::view('/prestasi', 'prestasi')->name('prestasi');
+Route::view('/kalender', 'kalender')->name('kalender');
+Route::view('/bantuan', 'bantuan')->name('bantuan');
+Route::view('/kontak', 'kontak')->name('kontak');
 
 // Authenticated Routes
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -46,6 +44,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('event-ujian', \App\Livewire\Admin\EventUjianManager::class)->name('event-ujian');
         Route::get('pengaturan', \App\Livewire\Admin\PengaturanManager::class)->name('pengaturan');
         Route::get('import', \App\Livewire\Admin\ImportExcel::class)->name('import');
+        Route::get('users', \App\Livewire\Admin\UserRoleManager::class)->name('users');
+        Route::get('laporan', \App\Livewire\Waka\LaporanAkademik::class)->name('laporan');
     });
 
     // ===== WAKA KURIKULUM ROUTES =====
@@ -55,6 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('event-ujian', \App\Livewire\Admin\EventUjianManager::class)->name('event-ujian');
         Route::get('rekap-absensi', \App\Livewire\Waka\RekapAbsensi::class)->name('rekap-absensi');
         Route::get('rekap-nilai', \App\Livewire\Waka\RekapNilai::class)->name('rekap-nilai');
+        Route::get('laporan', \App\Livewire\Waka\LaporanAkademik::class)->name('laporan');
     });
 
     // ===== GURU ROUTES =====

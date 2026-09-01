@@ -1,202 +1,112 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Platform - MAN 4 Jombang Academic Portal</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-surface text-on-surface font-body-default min-h-screen flex flex-col antialiased">
-    <!-- Ambient Background -->
-    <div class="fixed inset-0 z-[-1] pointer-events-none opacity-20 shader-bg"></div>
+<x-public-layout>
+    <x-slot:title>Tentang Platform & Profil Madrasah - MAN 4 Jombang</x-slot:title>
 
-    <!-- Navigation Header -->
-    <header class="bg-surface/80 backdrop-blur-md border-b border-border-default sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="{{ url('/') }}" class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold shadow-xs">
-                        <span class="material-symbols-outlined text-[22px]">school</span>
-                    </div>
-                    <span class="font-headline-md text-headline-md font-bold text-primary">MAN 4 Jombang</span>
-                </a>
-
-                <nav class="hidden md:flex items-center gap-8">
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/fitur') }}">Fitur</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/prestasi') }}">Prestasi</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/kalender') }}">Kalender</a>
-                    <a class="font-label-md text-label-md text-primary font-bold transition-colors" href="{{ url('/tentang') }}">Tentang</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/bantuan') }}">Bantuan</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/kontak') }}">Kontak</a>
-                </nav>
-
-                <div class="flex items-center gap-3">
-                    
-                    @auth
-                        <a class="bg-primary text-on-primary font-label-md text-label-md px-5 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm h-touch-target flex items-center gap-2" href="{{ route('dashboard') }}">
-                            <span>Dashboard</span>
-                            <span class="material-symbols-outlined text-[18px]">dashboard</span>
-                        </a>
-                    @else
-                        <a class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm h-touch-target flex items-center gap-2" href="{{ route('login') }}">
-                            <span>Masuk Portal</span>
-                            <span class="material-symbols-outlined text-[18px]">login</span>
-                        </a>
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl mx-auto w-full p-6 lg:p-8 space-y-12">
-        <!-- Hero Section -->
-        <section class="rounded-2xl overflow-hidden shadow-sm bg-surface-container-lowest border border-border-default">
-            <div class="grid md:grid-cols-2 gap-0 items-center">
-                <div class="p-8 lg:p-12 flex flex-col justify-center">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm w-max mb-4">
-                        <span class="material-symbols-outlined text-[16px]">verified</span>
-                        <span>Profil &amp; Transformasi Digital</span>
-                    </div>
-                    <h1 class="font-headline-lg text-3xl lg:text-[36px] lg:leading-[44px] text-primary mb-4 font-extrabold">Digital Transformation at MAN 4 Jombang</h1>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">Empowering educators with high-performance tools for academic excellence. Our platform is designed to streamline operations, reduce administrative burden, and focus entirely on student success.</p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="{{ url('/fitur') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-md hover:bg-primary-container transition-colors inline-flex items-center gap-2">
-                            <span>Jelajahi Fitur</span>
-                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                        </a>
-                        <a href="{{ url('/kontak') }}" class="bg-surface-container text-on-surface px-6 py-2.5 rounded-lg font-label-md hover:bg-surface-container-high transition-colors inline-flex items-center gap-2">
-                            <span>Hubungi Kami</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="h-72 md:h-full bg-primary/10 flex items-center justify-center p-8 border-t md:border-t-0 md:border-l border-border-default">
-                    <div class="flex flex-col items-center text-center max-w-sm">
-                        <div class="w-24 h-24 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-lg mb-4">
-                            <span class="material-symbols-outlined text-[52px]">school</span>
-                        </div>
-                        <h3 class="font-headline-md text-[22px] font-bold text-text-main">MAN 4 Jombang</h3>
-                        <p class="font-body-default text-on-surface-variant mt-1 text-sm">Madrasah Unggul, Berkarakter Islami, Berwawasan Global dan Berprestasi.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Vision & Mission -->
-        <section class="grid md:grid-cols-2 gap-6">
-            <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-border-default hover-lift transition-all">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[26px]">visibility</span>
-                    </div>
-                    <div>
-                        <h2 class="font-headline-md text-[20px] font-bold text-primary">Visi Platform</h2>
-                        <p class="font-label-sm text-on-surface-variant">Arah Masa Depan Digitalisasi</p>
-                    </div>
-                </div>
-                <p class="font-body-default text-body-default text-on-surface-variant leading-relaxed">
-                    Menjadi pionir platform manajemen akademik yang andal, cepat, dan intuitif, memfasilitasi lingkungan belajar mengajar yang efisien dan terstruktur di MAN 4 Jombang. Kami berkomitmen untuk menyediakan infrastruktur digital kelas satu untuk mendukung pendidik.
-                </p>
-            </div>
-
-            <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-border-default hover-lift transition-all">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[26px]">flag</span>
-                    </div>
-                    <div>
-                        <h2 class="font-headline-md text-[20px] font-bold text-primary">Misi Kami</h2>
-                        <p class="font-label-sm text-on-surface-variant">Komitmen Pelaksanaan</p>
-                    </div>
-                </div>
-                <ul class="font-body-default text-body-default text-on-surface-variant space-y-3">
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
-                        <span>Mendukung guru dengan alat pencatatan kehadiran kurang dari 60 detik.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
-                        <span>Menyediakan dasbor analitik real-time bagi Waka Kurikulum dan Pimpinan.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
-                        <span>Mengurangi beban administratif melalui otomatisasi kalkulasi nilai dan pelaporan.</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Benefits Bento Grid -->
-        <section>
-            <div class="flex items-center justify-between mb-6 border-b border-border-default pb-3">
-                <div>
-                    <h2 class="font-headline-md text-[24px] font-bold text-on-surface">Manfaat Transformasi Digital</h2>
-                    <p class="font-body-default text-sm text-on-surface-variant">Peningkatan performa operasional pendidikan berbasis teknologi.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="col-span-1 md:col-span-2 bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-border-default flex flex-col justify-between relative overflow-hidden group">
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">speed</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-on-surface mb-2">Efisiensi Maksimal</h3>
-                        <p class="font-body-default text-body-default text-on-surface-variant max-w-xl leading-relaxed">Desain antarmuka difokuskan pada kecepatan. Interaksi dioptimalkan untuk penggunaan satu tangan di perangkat seluler (touch target 44px), memungkinkan guru menyelesaikan tugas rutin dengan cepat di tengah kesibukan kelas.</p>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-primary text-on-primary rounded-xl p-8 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-lg bg-white/20 text-white flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">security</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold mb-2">Integritas Data</h3>
-                        <p class="font-body-default text-on-primary opacity-90 leading-relaxed">Sistem terpusat memastikan setiap data absensi dan nilai tersimpan dengan aman, konsisten, dan akurat, mengurangi risiko kesalahan manusia.</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-border-default flex gap-4 items-center">
-                    <div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-on-secondary-container text-[24px]">insights</span>
-                    </div>
-                    <div>
-                        <h3 class="font-label-md text-label-md font-bold text-on-surface">Pelaporan Otomatis</h3>
-                        <p class="font-body-default text-body-default text-on-surface-variant text-sm mt-0.5">Generasi laporan kehadiran harian dan capaian formatif secara instan.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-border-default flex gap-4 items-center md:col-span-2">
-                    <div class="w-12 h-12 rounded-xl bg-tertiary-container flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-on-tertiary-container text-[24px]">phonelink</span>
-                    </div>
-                    <div>
-                        <h3 class="font-label-md text-label-md font-bold text-on-surface">Aksesibilitas Multi-Perangkat</h3>
-                        <p class="font-body-default text-body-default text-on-surface-variant text-sm mt-0.5">Responsif penuh dari layar ponsel pintar guru hingga monitor desktop administrasi, memberikan pengalaman mulus.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-surface border-t border-border-default py-8 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="font-label-sm text-label-sm text-on-surface-variant">
-                &copy; {{ date('Y') }} MAN 4 Jombang Academic Portal. All rights reserved.
+    <!-- Header Section -->
+    <section class="relative pt-16 pb-20 bg-gradient-to-b from-brand-surface/60 to-surface-page border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block px-3.5 py-1 rounded-full bg-brand/10 text-xs font-bold uppercase tracking-wider text-brand mb-4">Profil & Sejarah</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-text-primary tracking-tight mb-6">
+                Membangun Generasi Islami, <br class="hidden sm:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-emerald-600">Berdaya Saing Global & Berbasis Digital</span>
+            </h1>
+            <p class="text-base sm:text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed">
+                Madrasah Aliyah Negeri 4 Jombang berkomitmen menghadirkan pendidikan madrasah bermutu tinggi melalui perpaduan kurikulum keislaman, sains teknologi, dan digitalisasi tata kelola akademik.
             </p>
-            <div class="flex items-center gap-4 text-label-sm text-on-surface-variant">
-                <a href="{{ url('/') }}" class="hover:text-primary transition-colors">Beranda</a>
-                <span>&bull;</span>
-                <a href="{{ url('/fitur') }}" class="hover:text-primary transition-colors">Fitur</a>
-                <span>&bull;</span>
-                <a href="{{ url('/kontak') }}" class="hover:text-primary transition-colors">Kontak</a>
+        </div>
+    </section>
+
+    <!-- Visi Misi Section -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Visi Box -->
+                <div class="bg-surface-page p-8 sm:p-10 rounded-3xl border border-border shadow-sm relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-text-primary mb-4">Visi Madrasah</h2>
+                    <blockquote class="text-lg font-semibold text-brand italic border-l-4 border-brand pl-4 py-1 mb-6">
+                        "Terwujudnya Generasi Unggul, Berakhlakul Karimah, Mandiri, dan Berwawasan Lingkungan serta Berdaya Saing di Era Digital."
+                    </blockquote>
+                    <p class="text-sm text-text-secondary leading-relaxed">
+                        Visi ini menjadi kompas seluruh penyelenggaraan pendidikan, pengembangan kurikulum, dan transformasi sistem tata kelola digital SmartAkademik.
+                    </p>
+                </div>
+
+                <!-- Misi Box -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-text-primary">Misi Utama</h2>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex gap-4 p-4 rounded-2xl bg-surface-page border border-border">
+                            <span class="w-7 h-7 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+                            <p class="text-sm text-text-secondary">Menyelenggarakan proses pembelajaran inovatif berbasis Kurikulum Merdeka yang mengintegrasikan sains dan nilai-nilai Islam.</p>
+                        </div>
+                        <div class="flex gap-4 p-4 rounded-2xl bg-surface-page border border-border">
+                            <span class="w-7 h-7 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+                            <p class="text-sm text-text-secondary">Menerapkan tata kelola madrasah berbasis teknologi informasi yang transparan, akuntabel, dan efisien.</p>
+                        </div>
+                        <div class="flex gap-4 p-4 rounded-2xl bg-surface-page border border-border">
+                            <span class="w-7 h-7 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+                            <p class="text-sm text-text-secondary">Mengembangkan bakat, minat, dan potensi akademik maupun non-akademik peserta didik menuju prestasi nasional dan internasional.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+    </section>
+
+    <!-- Nilai Utama Platform Section -->
+    <section class="py-20 bg-surface-page">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand mb-2 block">Budaya Kerja</span>
+                <h3 class="text-3xl font-extrabold text-text-primary">Empat Nilai Pokok Transformasi Digital</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-surface p-6 rounded-2xl border border-border shadow-xs">
+                    <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold mb-4">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    </div>
+                    <h4 class="text-base font-bold text-text-primary mb-2">Kecepatan & Efisiensi</h4>
+                    <p class="text-xs text-text-secondary leading-relaxed">Menghapus birokrasi manual kertas. Seluruh presensi dan penilaian terselesaikan dalam hitungan detik.</p>
+                </div>
+
+                <div class="bg-surface p-6 rounded-2xl border border-border shadow-xs">
+                    <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold mb-4">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-2.18-5.75c-3.18 0-6.19 1.15-8.57 3.09a.75.75 0 0 0-.1 1.05l1.63 2.01c.26.32.73.37 1.05.11 1.77-1.42 4-2.26 6.44-2.26s4.67.84 6.44 2.26c.32.26.79.21 1.05-.11l1.63-2.01a.75.75 0 0 0-.1-1.05C21.44 8.15 18.43 7 15.25 7Z" /></svg>
+                    </div>
+                    <h4 class="text-base font-bold text-text-primary mb-2">Akurasi & Integritas</h4>
+                    <p class="text-xs text-text-secondary leading-relaxed">Data kehadiran dan capaian formatif tersimpan aman dengan audit log yang terpercaya.</p>
+                </div>
+
+                <div class="bg-surface p-6 rounded-2xl border border-border shadow-xs">
+                    <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold mb-4">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                    </div>
+                    <h4 class="text-base font-bold text-text-primary mb-2">Mobile-First Design</h4>
+                    <p class="text-xs text-text-secondary leading-relaxed">Dioptimalkan secara penuh untuk smartphone guru, staf TU, dan siswa di lingkungan madrasah.</p>
+                </div>
+
+                <div class="bg-surface p-6 rounded-2xl border border-border shadow-xs">
+                    <div class="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center font-bold mb-4">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" /></svg>
+                    </div>
+                    <h4 class="text-base font-bold text-text-primary mb-2">Kolaborasi Terpadu</h4>
+                    <p class="text-xs text-text-secondary leading-relaxed">Menghubungkan guru, waka kurikulum, staf TU, siswa, dan wali murid dalam satu ekosistem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</x-public-layout>

@@ -78,6 +78,32 @@ class JadwalManager extends Component
     {
         $this->validate();
 
+        // Automated Conflict Detection: Guru schedule clash
+        $conflictGuru = JadwalPelajaran::where('hari', $this->hari)
+            ->where('jam_ke', $this->jam_ke)
+            ->where('guru_id', $this->guru_id)
+            ->when($this->jadwalId, fn($q) => $q->where('id', '!=', $this->jadwalId))
+            ->with('kelas')
+            ->first();
+
+        if ($conflictGuru) {
+            $this->addError('guru_id', "Bentrok Jadwal Guru! Guru ini sudah terjadwal mengajar di kelas {$conflictGuru->kelas->nama_kelas} pada {$this->hari} jam ke-{$this->jam_ke}.");
+            return;
+        }
+
+        // Automated Conflict Detection: Kelas schedule clash
+        $conflictKelas = JadwalPelajaran::where('hari', $this->hari)
+            ->where('jam_ke', $this->jam_ke)
+            ->where('kelas_id', $this->kelas_id)
+            ->when($this->jadwalId, fn($q) => $q->where('id', '!=', $this->jadwalId))
+            ->with('mapel')
+            ->first();
+
+        if ($conflictKelas) {
+            $this->addError('kelas_id', "Bentrok Jadwal Kelas! Kelas ini sudah memiliki jadwal mata pelajaran {$conflictKelas->mapel->nama_mapel} pada {$this->hari} jam ke-{$this->jam_ke}.");
+            return;
+        }
+
         JadwalPelajaran::updateOrCreate(
             ['id' => $this->jadwalId],
             [
@@ -92,7 +118,7 @@ class JadwalManager extends Component
         );
 
         $this->resetForm();
-        session()->flash('message', $this->jadwalId ? 'Jadwal pelajaran berhasil diperbarui.' : 'Jadwal pelajaran baru berhasil ditambahkan.');
+        session()->flash('message', $this->jadwalId ? 'Jadwal pelajaran berhasil diperbarui.' : 'Jadwal pelajaran baru berhasil ditambahkan tanpa konflik.');
     }
 
     public function delete($id)
@@ -149,6 +175,8 @@ class JadwalManager extends Component
             'kelases' => $kelases,
             'mapels' => $mapels,
             'gurus' => $gurus,
+            'totalJadwal' => JadwalPelajaran::count(),
+            'totalGuruMengajar' => JadwalPelajaran::distinct('guru_id')->count('guru_id'),
         ])->layout('layouts.app', ['header' => 'Manajemen Jadwal Pelajaran']);
     }
 }

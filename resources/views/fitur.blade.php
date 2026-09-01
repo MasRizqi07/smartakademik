@@ -1,214 +1,177 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelajari Fitur Platform - MAN 4 Jombang Academic Portal</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-surface text-on-surface font-body-default min-h-screen flex flex-col antialiased">
-    <!-- Ambient Background -->
-    <div class="fixed inset-0 z-[-1] pointer-events-none opacity-20 shader-bg"></div>
+<x-public-layout>
+    <x-slot:title>Fitur & Keunggulan Platform - SmartAkademik MAN 4 Jombang</x-slot:title>
 
-    <!-- Navigation Header -->
-    <header class="bg-surface/80 backdrop-blur-md border-b border-border-default sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="{{ url('/') }}" class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold shadow-xs">
-                        <span class="material-symbols-outlined text-[22px]">school</span>
-                    </div>
-                    <span class="font-headline-md text-headline-md font-bold text-primary">MAN 4 Jombang</span>
-                </a>
-
-                <nav class="hidden md:flex items-center gap-8">
-                    <a class="font-label-md text-label-md text-primary font-bold transition-colors" href="{{ url('/fitur') }}">Fitur</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/prestasi') }}">Prestasi</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/kalender') }}">Kalender</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/tentang') }}">Tentang</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/bantuan') }}">Bantuan</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ url('/kontak') }}">Kontak</a>
-                </nav>
-
-                <div class="flex items-center gap-3">
-                    
-                    @auth
-                        <a class="bg-primary text-on-primary font-label-md text-label-md px-5 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm h-touch-target flex items-center gap-2" href="{{ route('dashboard') }}">
-                            <span>Dashboard</span>
-                            <span class="material-symbols-outlined text-[18px]">dashboard</span>
-                        </a>
-                    @else
-                        <a class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm h-touch-target flex items-center gap-2" href="{{ route('login') }}">
-                            <span>Masuk Portal</span>
-                            <span class="material-symbols-outlined text-[18px]">login</span>
-                        </a>
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl mx-auto w-full p-6 lg:p-8 space-y-12">
-        <!-- Hero Banner -->
-        <section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-border-default overflow-hidden p-8 md:p-12">
-            <div class="max-w-3xl">
-                <span class="text-primary font-label-md text-label-md font-semibold uppercase tracking-wider mb-2 block">Platform Capabilities</span>
-                <h1 class="font-headline-lg text-3xl sm:text-4xl font-extrabold text-on-surface mb-4">Solusi Unggulan Operasional Akademik</h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
-                    Temukan rangkaian fitur terintegrasi yang dirancang khusus untuk ekosistem MAN 4 Jombang. Mulai dari pencatatan presensi real-time bebas hambatan hingga penilaian formatif komprehensif berstandar Kurikulum Merdeka.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="{{ route('login') }}" class="bg-primary text-on-primary font-label-md px-6 py-3 rounded-lg hover:bg-primary-container transition-all flex items-center gap-2 shadow-xs">
-                        <span>Coba Langsung di Portal</span>
-                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                    </a>
-                    <a href="{{ url('/portal') }}" class="bg-surface-container text-on-surface font-label-md px-6 py-3 rounded-lg hover:bg-surface-container-high transition-all flex items-center gap-2">
-                        <span>Lihat Pilihan Peran</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature Grid (6 Pillars) -->
-        <section class="space-y-6">
-            <div class="flex flex-col gap-1">
-                <h2 class="font-headline-md text-2xl font-bold text-on-surface">6 Pilar Utama Sistem Akademik</h2>
-                <p class="font-body-default text-on-surface-variant">Setiap modul dibangun dengan filosofi efisiensi tinggi dan kemudahan pemakaian.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 1. Presensi 60 Detik -->
-                <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover-lift transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">fact_check</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-text-main mb-2">Presensi Cepat 60 Detik</h3>
-                        <p class="font-body-default text-on-surface-variant text-sm leading-relaxed mb-4">
-                            Pencatatan kehadiran Hadir, Izin, Sakit, dan Alfa berbasis touch target 44px dengan tombol "Tandai Semua Hadir" instan dan auto-save tanpa refresh halaman.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-border-default/60 flex items-center justify-between text-xs text-status-hadir font-semibold">
-                        <span>Efisiensi Tinggi</span>
-                        <span class="material-symbols-outlined text-sm">timer</span>
-                    </div>
-                </div>
-
-                <!-- 2. Formatif Merdeka -->
-                <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover-lift transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">grade</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-text-main mb-2">Penilaian Formatif TP</h3>
-                        <p class="font-body-default text-on-surface-variant text-sm leading-relaxed mb-4">
-                            Dukungan penilaian per Capaian Tujuan Pembelajaran (TP 1 - 5) dengan auto-kalkulasi rata-rata dan indikator ketuntasan KKM langsung.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-border-default/60 flex items-center justify-between text-xs text-primary font-semibold">
-                        <span>Kurikulum Merdeka</span>
-                        <span class="material-symbols-outlined text-sm">auto_graph</span>
-                    </div>
-                </div>
-
-                <!-- 3. Jadwal & Ruangan -->
-                <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover-lift transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">calendar_month</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-text-main mb-2">Jadwal Pintar Bebas Bentrok</h3>
-                        <p class="font-body-default text-on-surface-variant text-sm leading-relaxed mb-4">
-                            Validasi otomatis saat input jadwal untuk mencegah bentrok waktu mengajar guru atau penggunaan ruangan kelas.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-border-default/60 flex items-center justify-between text-xs text-secondary font-semibold">
-                        <span>Deteksi Konflik</span>
-                        <span class="material-symbols-outlined text-sm">event_busy</span>
-                    </div>
-                </div>
-
-                <!-- 4. Laporan Waka -->
-                <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover-lift transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">monitoring</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-text-main mb-2">Dashboard Eksekutif Waka</h3>
-                        <p class="font-body-default text-on-surface-variant text-sm leading-relaxed mb-4">
-                            Pemantauan rekapitulasi kehadiran dan distribusi nilai lintas tingkat/kelas secara komprehensif dengan ekspor Excel dan cetak PDF instan.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-border-default/60 flex items-center justify-between text-xs text-primary font-semibold">
-                        <span>Ekspor Excel/PDF</span>
-                        <span class="material-symbols-outlined text-sm">download</span>
-                    </div>
-                </div>
-
-                <!-- 5. Portal Siswa Mandiri -->
-                <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover-lift transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-status-sakit/15 text-status-sakit flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">face</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-text-main mb-2">Portal Siswa &amp; Profil</h3>
-                        <p class="font-body-default text-on-surface-variant text-sm leading-relaxed mb-4">
-                            Siswa dapat memantau kehadiran mandiri, melihat nilai tugas formatif harian, dan mengecek jadwal pelajaran langsung dari gawai pribadi.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-border-default/60 flex items-center justify-between text-xs text-status-sakit font-semibold">
-                        <span>Akses Transparan</span>
-                        <span class="material-symbols-outlined text-sm">verified_user</span>
-                    </div>
-                </div>
-
-                <!-- 6. Keamanan & RBAC -->
-                <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card hover-lift transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-error-container/60 text-error flex items-center justify-center mb-4">
-                            <span class="material-symbols-outlined text-[28px]">admin_panel_settings</span>
-                        </div>
-                        <h3 class="font-headline-md text-[18px] font-bold text-text-main mb-2">Keamanan Role-Based (RBAC)</h3>
-                        <p class="font-body-default text-on-surface-variant text-sm leading-relaxed mb-4">
-                            Perlindungan data ketat berbasis Spatie Permissions. Guru hanya dapat mengakses kelasnya, sedangkan Admin TU dan Waka memiliki wewenang master.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-border-default/60 flex items-center justify-between text-xs text-error font-semibold">
-                        <span>Standar Terverifikasi</span>
-                        <span class="material-symbols-outlined text-sm">lock</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="bg-primary text-on-primary rounded-2xl p-8 md:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
-            <div>
-                <h3 class="font-headline-md text-2xl font-bold mb-2">Coba Semua Fitur Ini Sekarang</h3>
-                <p class="text-on-primary/90 text-sm max-w-xl">Akses sistem dengan akun demo atau kredensial yang diberikan oleh pihak madrasah.</p>
-            </div>
-            <a href="{{ route('login') }}" class="bg-surface-container-lowest text-primary px-8 py-3 rounded-lg font-bold hover:bg-surface-container transition-all shadow-sm shrink-0 flex items-center gap-2">
-                <span>Login ke Portal</span>
-                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-            </a>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-surface border-t border-border-default py-8 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="font-label-sm text-label-sm text-on-surface-variant">
-                &copy; {{ date('Y') }} MAN 4 Jombang Academic Portal. All rights reserved.
+    <!-- Header Section -->
+    <section class="relative pt-16 pb-20 bg-gradient-to-b from-brand-surface/60 to-surface-page border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block px-3.5 py-1 rounded-full bg-brand/10 text-xs font-bold uppercase tracking-wider text-brand mb-4">Fitur Lengkap</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-text-primary tracking-tight mb-6">
+                Ekosistem Digital Terintegrasi <br class="hidden sm:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-emerald-600">Untuk Seluruh Kebutuhan Madrasah</span>
+            </h1>
+            <p class="text-base sm:text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed">
+                Setiap modul dirancang spesifik untuk menyederhanakan alur kerja administrasi guru, waka kurikulum, staf tata usaha, dan siswa.
             </p>
-            <div class="flex items-center gap-4 text-label-sm text-on-surface-variant">
-                <a href="{{ url('/') }}" class="hover:text-primary transition-colors">Beranda</a>
-                <span>&bull;</span>
-                <a href="{{ url('/tentang') }}" class="hover:text-primary transition-colors">Tentang</a>
-                <span>&bull;</span>
-                <a href="{{ url('/kontak') }}" class="hover:text-primary transition-colors">Kontak</a>
+        </div>
+    </section>
+
+    <!-- Detailed Modules Breakdown -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+            <!-- Module 1: Presensi Real-Time -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-bold">
+                        <span>Modul 01</span> • <span>Operasional Kelas</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-text-primary">Presensi Harian 1-Klik Tanpa Kertas</h2>
+                    <p class="text-base text-text-secondary leading-relaxed">
+                        Sistem absensi berbasis Livewire 3 dengan pembaruan instan. Guru dapat menandai kehadiran siswa dengan tombol cepat Hadir/Izin/Sakit/Alfa, menambahkan catatan surat dokter, dan status langsung tersinkronisasi ke server.
+                    </p>
+                    <ul class="space-y-3 text-sm text-text-secondary">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Tombol cepat <strong>Tandai Semua Hadir</strong> untuk efisiensi waktu guru.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Indikator tersimpan otomatis (<em>Tersimpan ✓</em>) per baris siswa.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Optimasi layar sentuh (touch target 44px+) nyaman digunakan di HP.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-surface-page p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
+                    <div class="bg-surface rounded-2xl p-4 border border-border space-y-3">
+                        <div class="flex items-center justify-between pb-3 border-b border-border">
+                            <span class="text-xs font-bold text-text-primary">Daftar Kehadiran Siswa</span>
+                            <span class="text-xs text-brand font-semibold">Senin, Jam ke-1</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-page border border-border">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand/10 text-brand font-bold text-xs flex items-center justify-center">AF</div>
+                                <div>
+                                    <div class="text-xs font-bold text-text-primary">Ahmad Fauzi</div>
+                                    <div class="text-[10px] text-text-secondary">NISN: 0012345678</div>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-status-hadir/15 text-status-hadir text-xs font-bold">Hadir ✓</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-page border border-border">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand/10 text-brand font-bold text-xs flex items-center justify-center">SA</div>
+                                <div>
+                                    <div class="text-xs font-bold text-text-primary">Siti Aminah</div>
+                                    <div class="text-[10px] text-text-secondary">NISN: 0012345679</div>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-status-izin/15 text-status-izin text-xs font-bold">Izin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2: Penilaian Formatif TP -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 bg-surface-page p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
+                    <div class="bg-surface rounded-2xl p-4 border border-border space-y-3">
+                        <div class="flex items-center justify-between pb-3 border-b border-border">
+                            <span class="text-xs font-bold text-text-primary">Rekap Nilai Formatif TP (KKM: 75)</span>
+                            <span class="text-xs text-text-secondary">Kelas X-A • MTK</span>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 text-center text-xs font-semibold text-text-secondary pb-1">
+                            <span class="col-span-2 text-left">Nama Siswa</span>
+                            <span>TP 1</span>
+                            <span>TP 2</span>
+                            <span>Rata-rata</span>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 items-center text-xs p-2 rounded-xl bg-surface-page border border-border">
+                            <span class="col-span-2 font-bold text-text-primary text-left">Ahmad Fauzi</span>
+                            <span class="p-1 rounded bg-emerald-50 text-emerald-700 font-bold">88</span>
+                            <span class="p-1 rounded bg-emerald-50 text-emerald-700 font-bold">92</span>
+                            <span class="font-bold text-brand">90.0</span>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 items-center text-xs p-2 rounded-xl bg-surface-page border border-border">
+                            <span class="col-span-2 font-bold text-text-primary text-left">Budi Pratama</span>
+                            <span class="p-1 rounded bg-amber-50 text-amber-700 font-bold">72</span>
+                            <span class="p-1 rounded bg-emerald-50 text-emerald-700 font-bold">78</span>
+                            <span class="font-bold text-amber-700">75.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-100 text-blue-800 text-xs font-bold">
+                        <span>Modul 02</span> • <span>Kurikulum Merdeka</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-text-primary">Penilaian Formatif Tujuan Pembelajaran (TP)</h2>
+                    <p class="text-base text-text-secondary leading-relaxed">
+                        Mendukung asesmen berkelanjutan sesuai panduan Kurikulum Merdeka. Guru dapat mendefinisikan TP 1 sampai TP 6, menginput nilai dengan keyboard numerik otomatis di HP, serta melihat status ketuntasan siswa seketika.
+                    </p>
+                    <ul class="space-y-3 text-sm text-text-secondary">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Input numerik instan dengan validasi batas nilai 0 – 100.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Kalkulasi nilai akhir & ketuntasan belajar otomatis.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Export rekap nilai formatif ke format Excel untuk wali kelas.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 3: Jadwal & Analitik Waka -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold">
+                        <span>Modul 03</span> • <span>Manajemen & Supervisi</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-text-primary">Jadwal Anti-Bentrok & Laporan Analitik Waka</h2>
+                    <p class="text-base text-text-secondary leading-relaxed">
+                        Waka Kurikulum memiliki kendali penuh untuk memetakan jadwal mengajar seluruh guru tanpa risiko tabrakan ruang/jam, serta memonitor dashboard rekapitulasi kehadiran sekolah secara holistik.
+                    </p>
+                    <ul class="space-y-3 text-sm text-text-secondary">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Deteksi bentrok jadwal otomatis pada saat penyusunan jam.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Rekapitulasi presensi bulanan per jenjang kelas (X, XI, XII).</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            <span>Export CSV dan Excel untuk laporan berkala ke Kemenag.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-surface-page p-6 sm:p-8 rounded-3xl border border-border shadow-sm">
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="p-4 rounded-2xl bg-surface border border-border">
+                            <div class="text-2xl font-extrabold text-brand mb-1">98.2%</div>
+                            <div class="text-xs text-text-secondary font-medium">Tingkat Kehadiran Guru</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface border border-border">
+                            <div class="text-2xl font-extrabold text-brand mb-1">36 Kelas</div>
+                            <div class="text-xs text-text-secondary font-medium">Jadwal Terjadwal Penuh</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface border border-border">
+                            <div class="text-2xl font-extrabold text-brand mb-1">0 Konflik</div>
+                            <div class="text-xs text-text-secondary font-medium">Jadwal Bebas Tabrakan</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface border border-border">
+                            <div class="text-2xl font-extrabold text-brand mb-1">Real-Time</div>
+                            <div class="text-xs text-text-secondary font-medium">Sinkronisasi Database</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+    </section>
+</x-public-layout>

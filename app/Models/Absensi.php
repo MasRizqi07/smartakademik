@@ -9,7 +9,7 @@ class Absensi extends Model
 {
     protected $table = 'absensi';
 
-    protected $fillable = ['siswa_id', 'jadwal_id', 'tanggal', 'status', 'dicatat_oleh'];
+    protected $fillable = ['siswa_id', 'jadwal_id', 'tanggal', 'status', 'keterangan', 'dicatat_oleh'];
 
     protected function casts(): array
     {
@@ -29,6 +29,11 @@ class Absensi extends Model
     }
 
     public function pencatat(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'dicatat_oleh');
+    }
+
+    public function dicatatOleh(): BelongsTo
     {
         return $this->belongsTo(User::class, 'dicatat_oleh');
     }
