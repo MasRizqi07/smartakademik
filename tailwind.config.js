@@ -7,12 +7,14 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './app/Livewire/**/*.php',
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', 'Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
+                display: ['Outfit', 'Inter', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'body-default': ['14px', { lineHeight: '20px', fontWeight: '400' }],
@@ -28,6 +30,7 @@ export default {
                 brand: {
                     DEFAULT: 'var(--color-brand)',
                     hover: 'var(--color-brand-hover)',
+                    dark: 'var(--color-brand-dark)',
                     surface: 'var(--color-brand-surface)',
                 },
                 status: {
@@ -48,10 +51,7 @@ export default {
                     secondary: 'var(--color-text-secondary)',
                 },
 
-                /* ===== BACKWARD-COMPAT ALIASES =====
-                   These map the MD3 class names already used in views
-                   to the 3-tier values via CSS custom properties.
-                   Migrate views file-by-file, then remove these. */
+                /* ===== BACKWARD-COMPAT ALIASES ===== */
                 'surface-container-lowest': 'rgb(var(--color-surface-container-lowest) / <alpha-value>)',
                 'surface-container-low': 'rgb(var(--color-surface-container-low) / <alpha-value>)',
                 'surface-container': 'rgb(var(--color-surface-container) / <alpha-value>)',
@@ -93,7 +93,10 @@ export default {
             },
             boxShadow: {
                 'card': 'var(--shadow-card)',
+                'card-hover': 'var(--shadow-card-hover)',
                 'soft': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
+                'glow': '0 0 25px -5px rgba(5, 150, 105, 0.3)',
+                'glow-amber': '0 0 25px -5px rgba(245, 158, 11, 0.3)',
             },
             spacing: {
                 'touch-target': '44px',
@@ -106,17 +109,27 @@ export default {
                 'DEFAULT': '0.5rem',
             },
             animation: {
-                'fade-in': 'fadeIn 0.5s ease-out',
+                'fade-in': 'fadeIn 0.4s ease-out',
                 'slide-up': 'slideUp 0.4s ease-out',
+                'float': 'floatSlow 6s ease-in-out infinite',
+                'pulse-glow': 'pulseGlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
                 fadeIn: {
-                    '0%': { opacity: '0' },
-                    '100%': { opacity: '1' },
+                    '0%': { opacity: '0', transform: 'translateY(6px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
                 slideUp: {
-                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '0%': { opacity: '0', transform: 'translateY(16px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                floatSlow: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-8px)' },
+                },
+                pulseGlow: {
+                    '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                    '50%': { opacity: '0.8', transform: 'scale(1.03)' },
                 },
             },
         },
