@@ -2,15 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Public & Marketing Routes
+// Public Routes
 Route::view('/', 'welcome')->name('home');
 Route::view('/portal', 'portal')->name('portal');
-Route::view('/tentang', 'tentang')->name('tentang');
-Route::view('/fitur', 'fitur')->name('fitur');
-Route::view('/prestasi', 'prestasi')->name('prestasi');
-Route::view('/kalender', 'kalender')->name('kalender');
-Route::view('/bantuan', 'bantuan')->name('bantuan');
-Route::view('/kontak', 'kontak')->name('kontak');
+
+// Non-MVP pages — deferred per design spec §1.5
+// Route::view('/tentang', 'tentang')->name('tentang');
+// Route::view('/fitur', 'fitur')->name('fitur');
+// Route::view('/prestasi', 'prestasi')->name('prestasi');
+// Route::view('/kalender', 'kalender')->name('kalender');
+// Route::view('/bantuan', 'bantuan')->name('bantuan');
+// Route::view('/kontak', 'kontak')->name('kontak');
 
 // Authenticated Routes
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -27,7 +27,7 @@
         <!-- Presensi Terisi -->
         <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
             <div class="flex items-center justify-between mb-2">
-                <span class="material-symbols-outlined text-primary text-[22px]">how_to_reg</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase">Hari Ini</span>
             </div>
             <div>
@@ -39,7 +39,7 @@
         <!-- Tugas / Nilai Pending -->
         <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
             <div class="flex items-center justify-between mb-2">
-                <span class="material-symbols-outlined text-status-izin text-[22px]">assignment_turned_in</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-izin bg-status-izin/15 px-2 py-0.5 rounded-full uppercase">Formatif</span>
             </div>
             <div>
@@ -51,7 +51,7 @@
         <!-- Kelas Diampu -->
         <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
             <div class="flex items-center justify-between mb-2">
-                <span class="material-symbols-outlined text-status-hadir text-[22px]">school</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-hadir bg-status-hadir/15 px-2 py-0.5 rounded-full uppercase">Aktif</span>
             </div>
             <div>
@@ -63,7 +63,7 @@
         <!-- Jam Mengajar Mingguan -->
         <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
             <div class="flex items-center justify-between mb-2">
-                <span class="material-symbols-outlined text-status-sakit text-[22px]">schedule</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-sakit bg-status-sakit/15 px-2 py-0.5 rounded-full uppercase">Beban</span>
             </div>
             <div>
@@ -78,14 +78,14 @@
         <div class="flex justify-between items-end">
             <div>
                 <h3 class="font-headline-md text-lg font-bold text-text-main flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">calendar_today</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Jadwal Mengajar Hari Ini</span>
                 </h3>
                 <p class="text-xs text-on-surface-variant">Klik "Isi Presensi" untuk mencatat kehadiran siswa langsung di kelas.</p>
             </div>
             <a href="{{ route('guru.absensi') }}" wire:navigate class="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
                 <span>Input Presensi</span>
-                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </a>
         </div>
 
@@ -117,11 +117,11 @@
 
                     <div class="flex items-center gap-2">
                         <a href="{{ route('guru.absensi') }}" wire:navigate class="w-full md:w-auto px-5 h-touch-target bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-xs font-semibold shadow-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all">
-                            <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                             <span>Isi Presensi</span>
                         </a>
                         <a href="{{ route('guru.nilai') }}" wire:navigate class="w-full md:w-auto px-4 h-touch-target bg-surface hover:bg-surface-container text-text-main border border-border-default rounded-lg font-label-md text-xs font-semibold flex items-center justify-center gap-1.5 transition-all">
-                            <span class="material-symbols-outlined text-[18px]">grade</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                             <span>Input Nilai</span>
                         </a>
                     </div>
@@ -143,7 +143,7 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <a href="{{ route('guru.absensi') }}" wire:navigate class="px-5 h-touch-target bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-xs font-semibold shadow-xs flex items-center justify-center gap-1.5">
-                            <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                             <span>Isi Presensi</span>
                         </a>
                     </div>
@@ -156,7 +156,7 @@
     <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
         <a href="{{ route('guru.absensi') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group hover-lift">
             <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center group-hover:bg-status-hadir group-hover:text-white transition-colors shrink-0">
-                <span class="material-symbols-outlined text-[26px]">fact_check</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
             <div>
                 <h4 class="font-headline-md text-base font-bold text-text-main group-hover:text-primary transition-colors">Presensi Kelas Cepat</h4>
@@ -166,7 +166,7 @@
 
         <a href="{{ route('guru.nilai') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group hover-lift">
             <div class="w-12 h-12 rounded-xl bg-status-sakit/15 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">
-                <span class="material-symbols-outlined text-[26px]">edit_note</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
             <div>
                 <h4 class="font-headline-md text-base font-bold text-text-main group-hover:text-primary transition-colors">Penilaian Formatif TP</h4>

@@ -6,7 +6,7 @@
             <p class="font-body-default text-body-default text-on-surface-variant mt-1">Jadwal hari efektif belajar, agenda asesmen, dan libur madrasah.</p>
         </div>
         <button wire:click="openAddModal" class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded-lg h-touch-target px-6 shadow-sm transition-all flex items-center gap-2 w-full md:w-auto justify-center active:scale-95">
-            <span class="material-symbols-outlined text-[20px]">add_alarm</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <span>Tambah Agenda Kegiatan</span>
         </button>
     </div>
@@ -14,7 +14,7 @@
     <!-- Feedback Message -->
     @if (session()->has('message'))
         <div class="p-4 bg-status-hadir/15 border border-status-hadir/30 text-status-hadir rounded-xl flex items-center gap-2 font-medium">
-            <span class="material-symbols-outlined">check_circle</span>
+            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             <span>{{ session('message') }}</span>
         </div>
     @endif
@@ -116,7 +116,7 @@
     <!-- Timeline of Academic Agenda -->
     <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default p-6 md:p-8">
         <h3 class="font-headline-md text-xl font-bold text-text-main mb-4 flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary">event_note</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <span>Rincian Agenda Kegiatan Akademik {{ $activeSemester }}</span>
         </h3>
 
@@ -147,7 +147,7 @@
                 <div class="flex justify-between items-center border-b border-border-default pb-3">
                     <h3 class="font-headline-md text-lg font-bold text-text-main">Tambah Agenda Kalender</h3>
                     <button wire:click="$set('isAddOpen', false)" class="text-on-surface-variant hover:bg-surface-container p-1 rounded-full">
-                        <span class="material-symbols-outlined">close</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
 

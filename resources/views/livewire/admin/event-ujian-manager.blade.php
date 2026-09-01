@@ -6,7 +6,7 @@
             <p class="font-body-default text-body-default text-on-surface-variant mt-1">Kelola agenda PTS, PAS, pembagian ruang ujian, dan penugasan pengawas madrasah.</p>
         </div>
         <button wire:click="openAddModal" class="h-touch-target px-6 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-sm font-semibold shadow-sm transition-all flex items-center gap-2 active:scale-95">
-            <span class="material-symbols-outlined text-[20px]">event_note</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <span>Tambah Jadwal Asesmen</span>
         </button>
     </div>
@@ -14,7 +14,7 @@
     <!-- Alert Flash -->
     @if (session()->has('message'))
         <div class="bg-status-hadir/10 border border-status-hadir/30 text-status-hadir rounded-xl p-4 flex items-center gap-3 animate-fade-in shadow-xs">
-            <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             <span class="font-label-md text-sm font-semibold">{{ session('message') }}</span>
         </div>
     @endif
@@ -24,7 +24,7 @@
         <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between hover-lift transition-all">
             <div class="flex justify-between items-start mb-3">
                 <span class="p-2.5 bg-secondary-container text-on-secondary-container rounded-xl">
-                    <span class="material-symbols-outlined text-[24px]">assignment</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </span>
                 <span class="text-[10px] font-bold uppercase tracking-wider text-primary px-2.5 py-1 bg-primary/10 rounded-full">Aktif Semester</span>
             </div>
@@ -37,7 +37,7 @@
         <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between hover-lift transition-all">
             <div class="flex justify-between items-start mb-3">
                 <span class="p-2.5 bg-primary/10 text-primary rounded-xl">
-                    <span class="material-symbols-outlined text-[24px]">person_check</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </span>
                 <span class="text-[10px] font-bold uppercase tracking-wider text-status-hadir px-2.5 py-1 bg-status-hadir/15 rounded-full">Terisi</span>
             </div>
@@ -50,7 +50,7 @@
         <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between hover-lift transition-all">
             <div class="flex justify-between items-start mb-3">
                 <span class="p-2.5 bg-status-izin/10 text-status-izin rounded-xl">
-                    <span class="material-symbols-outlined text-[24px]">meeting_room</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </span>
                 <span class="text-[10px] font-bold uppercase tracking-wider text-status-izin px-2.5 py-1 bg-status-izin/15 rounded-full">Siap Pakai</span>
             </div>
@@ -64,7 +64,7 @@
     <!-- Filter Bar -->
     <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col md:flex-row gap-4 items-center justify-between">
         <div class="relative w-full md:w-80">
-            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
             <input wire:model.live.debounce.300ms="search" type="text" placeholder="Cari nama ujian, ruang, pengawas..." 
                    class="w-full pl-10 pr-4 h-10 rounded-lg border border-border-default bg-surface font-input-text text-sm focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
         </div>
@@ -113,7 +113,7 @@
                             </td>
                             <td class="py-3.5 px-5">
                                 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-surface-container text-text-main border border-border-default">
-                                    <span class="material-symbols-outlined text-[14px] text-primary">meeting_room</span>
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                                     {{ $e->ruangan }}
                                 </span>
                             </td>
@@ -125,7 +125,7 @@
                             </td>
                             <td class="py-3.5 px-5 text-right">
                                 <button wire:click="deleteEvent({{ $e->id }})" wire:confirm="Hapus jadwal ujian ini?" class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors" title="Hapus Ujian">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
                                 </button>
                             </td>
                         </tr>
@@ -133,7 +133,7 @@
                         <tr>
                             <td colspan="6" class="py-12 px-4 text-center text-on-surface-variant">
                                 <div class="flex flex-col items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-[48px] text-outline">event_busy</span>
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                                     <p class="font-label-md text-sm font-semibold">Tidak ada event ujian terdaftar.</p>
                                 </div>
                             </td>
@@ -151,7 +151,7 @@
                 <div class="flex justify-between items-center border-b border-border-default pb-3">
                     <h3 class="font-headline-md text-lg font-bold text-text-main">Tambah Jadwal Event Ujian</h3>
                     <button wire:click="$set('isAddOpen', false)" class="text-on-surface-variant hover:bg-surface-container p-1 rounded-full">
-                        <span class="material-symbols-outlined">close</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
 

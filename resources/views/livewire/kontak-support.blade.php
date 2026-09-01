@@ -6,7 +6,7 @@
 
     @if (session()->has('ticket_success'))
         <div class="p-5 bg-status-hadir/15 border border-status-hadir/30 text-status-hadir rounded-2xl flex items-center gap-3 font-medium shadow-xs">
-            <span class="material-symbols-outlined text-[28px]">verified</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <div>
                 <p class="font-bold text-base">Tiket Terkirim!</p>
                 <p class="text-xs text-status-hadir/90">{{ session('ticket_success') }}</p>
@@ -20,7 +20,7 @@
         <div class="lg:col-span-7 bg-surface-container-lowest rounded-2xl shadow-card border border-border-default overflow-hidden">
             <div class="p-6 border-b border-border-default bg-surface flex items-center justify-between">
                 <h3 class="font-headline-md text-lg font-bold text-on-surface flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">mail</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Formulir Tiket Bantuan IT</span>
                 </h3>
                 <span class="text-xs bg-primary/10 text-primary px-2.5 py-0.5 rounded-full font-semibold">Respon Cepat</span>
@@ -48,7 +48,7 @@
                             <option value="schedule">Jadwal Mengajar / Konflik Ruang</option>
                             <option value="other">Pertanyaan Administrasi Umum</option>
                         </select>
-                        <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                 <div class="pt-2 flex items-center justify-between">
                     <p class="text-xs text-on-surface-variant">Data Anda aman dan ditangani oleh IT Madrasah.</p>
                     <button class="px-8 h-touch-target bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-sm font-semibold shadow-sm transition-all active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
-                        <span class="material-symbols-outlined text-[20px]">send</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Kirim Tiket</span>
                     </button>
                 </div>
@@ -73,7 +73,7 @@
             <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default p-6 relative overflow-hidden group">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-xl flex items-center justify-center shadow-xs">
-                        <span class="material-symbols-outlined text-[26px]">support_agent</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     </div>
                     <div>
                         <h3 class="font-headline-md text-lg font-bold text-on-surface">Unit IT Support Madrasah</h3>
@@ -85,7 +85,7 @@
 
                 <div class="space-y-3 pt-2 text-sm">
                     <div class="flex items-start gap-3 p-3 bg-surface rounded-xl border border-border-default/60">
-                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">call</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <div>
                             <p class="text-xs text-on-surface-variant">Hotline IT (07.00 - 16.00 WIB)</p>
                             <p class="font-bold text-text-main">(0321) 861234 ext. 102</p>
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="flex items-start gap-3 p-3 bg-surface rounded-xl border border-border-default/60">
-                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">mail</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <div>
                             <p class="text-xs text-on-surface-variant">Email Dukungan Resmi</p>
                             <p class="font-bold text-text-main">support@man4jombang.sch.id</p>
@@ -105,7 +105,7 @@
             <!-- Ticket Tracker Widget -->
             <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default p-6 space-y-4">
                 <h3 class="font-headline-md text-base font-bold text-text-main flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">search_check</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Cek Status Tiket Anda</span>
                 </h3>
                 
@@ -132,7 +132,7 @@
             <div class="bg-surface-container-lowest rounded-2xl shadow-card border border-border-default overflow-hidden flex flex-col h-72">
                 <div class="p-3.5 bg-primary text-on-primary flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-[18px]">chat</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span class="text-xs font-bold">Asisten Virtual IT Support</span>
                     </div>
                     <span class="w-2 h-2 rounded-full bg-status-hadir"></span>
@@ -152,7 +152,7 @@
                 <form wire:submit.prevent="sendChat" class="p-2 border-t border-border-default bg-surface flex gap-2">
                     <input wire:model="chatInput" class="flex-1 px-3 py-1.5 bg-surface-container-lowest rounded-lg border border-border-default text-xs outline-none focus:ring-1 focus:ring-primary" placeholder="Ketik pesan konsultasi...">
                     <button type="submit" class="p-1.5 bg-primary text-on-primary rounded-lg hover:bg-primary-container transition-colors">
-                        <span class="material-symbols-outlined text-[18px]">send</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     </button>
                 </form>
             </div>

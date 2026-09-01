@@ -1,225 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --color-surface: 248 250 252;
-    --color-surface-dim: 226 232 240;
-    --color-surface-bright: 255 255 255;
-    --color-surface-container-lowest: 255 255 255;
-    --color-surface-container-low: 241 245 249;
-    --color-surface-container: 226 232 240;
-    --color-surface-container-high: 203 213 225;
-    --color-surface-container-highest: 148 163 184;
-    --color-surface-variant: 241 245 249;
-    --color-on-surface: 25 28 30;
-    --color-on-surface-variant: 61 74 66;
-    --color-inverse-surface: 45 49 51;
-    --color-inverse-on-surface: 239 241 243;
-    --color-outline: 100 116 139;
-    --color-outline-variant: 203 213 225;
-    --color-surface-tint: 0 108 74;
-    --color-primary: 0 105 72;
-    --color-on-primary: 255 255 255;
-    --color-primary-container: 0 133 93;
-    --color-on-primary-container: 245 255 247;
-    --color-inverse-primary: 104 219 169;
-    --color-secondary: 81 95 116;
-    --color-on-secondary: 255 255 255;
-    --color-secondary-container: 213 227 252;
-    --color-on-secondary-container: 87 101 122;
-    --color-tertiary: 0 105 71;
-    --color-on-tertiary: 255 255 255;
-    --color-tertiary-container: 0 133 91;
-    --color-on-tertiary-container: 245 255 246;
-    --color-border-default: 226 232 240;
-    --color-text-main: 15 23 42;
-}
+@layer base {
+  :root {
+    /* ================================================
+       TIER 1 — PRIMITIVES (never reference outside this file)
+       ================================================ */
+    --color-slate-50:  #f8fafc;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-600: #475569;
+    --color-slate-700: #334155;
+    --color-slate-900: #0f172a;
 
-.dark {
-    --color-surface: 11 17 32;
-    --color-surface-dim: 7 11 20;
-    --color-surface-bright: 30 41 59;
-    --color-surface-container-lowest: 17 24 39;
-    --color-surface-container-low: 24 34 52;
-    --color-surface-container: 31 41 61;
-    --color-surface-container-high: 51 65 85;
-    --color-surface-container-highest: 71 85 105;
-    --color-surface-variant: 30 41 59;
-    --color-on-surface: 248 250 252;
-    --color-on-surface-variant: 148 163 184;
-    --color-inverse-surface: 241 245 249;
-    --color-inverse-on-surface: 15 23 42;
-    --color-outline: 148 163 184;
-    --color-outline-variant: 51 65 85;
-    --color-surface-tint: 16 185 129;
-    --color-primary: 16 185 129;
-    --color-on-primary: 2 44 34;
-    --color-primary-container: 5 150 105;
-    --color-on-primary-container: 236 253 245;
-    --color-inverse-primary: 0 105 72;
-    --color-secondary: 148 163 184;
-    --color-on-secondary: 15 23 42;
-    --color-secondary-container: 30 41 59;
-    --color-on-secondary-container: 147 197 253;
-    --color-tertiary: 52 211 153;
-    --color-on-tertiary: 2 44 34;
-    --color-tertiary-container: 5 150 105;
+    --color-emerald-50:  #ecfdf5;
+    --color-emerald-100: #d1fae5;
+    --color-emerald-500: #10b981;
+    --color-emerald-600: #059669;
+    --color-emerald-700: #047857;
+
+    --color-amber-500: #f59e0b;
+    --color-sky-500:   #0ea5e9;
+    --color-rose-500:  #f43f5e;
+    --color-green-500: #22c55e;
+
+    /* ================================================
+       TIER 2 — SEMANTIC TOKENS
+       ================================================ */
+    --color-text-primary:   var(--color-slate-900);
+    --color-text-secondary: var(--color-slate-600);
+    --color-bg-page:        var(--color-slate-50);
+    --color-bg-surface:     #ffffff;
+    --color-border-default: var(--color-slate-200);
+
+    --color-brand:         var(--color-emerald-600);
+    --color-brand-hover:   var(--color-emerald-700);
+    --color-brand-surface: var(--color-emerald-50);
+
+    --color-status-hadir: var(--color-green-500);
+    --color-status-izin:  var(--color-amber-500);
+    --color-status-sakit: var(--color-sky-500);
+    --color-status-alfa:  var(--color-rose-500);
+
+    --shadow-card: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+
+    /* ================================================
+       TIER 3 — BACKWARD-COMPAT ALIASES
+       Maps existing MD3 class names used across views
+       to the 3-tier values. Migrate views file-by-file,
+       then remove these once all views are updated.
+       ================================================ */
+
+    /* Surface aliases → map MD3 surface ladder to 3-tier */
+    --color-surface:                   248 250 252;  /* slate-50 as page bg */
+    --color-surface-container-lowest:  255 255 255;  /* white card surface */
+    --color-surface-container-low:     241 245 249;  /* slight shade for thead/alt rows */
+    --color-surface-container:         226 232 240;  /* interactive bg */
+    --color-surface-container-high:    203 213 225;  /* deeper interactive */
+    --color-surface-container-highest: 148 163 184;  /* reserved */
+    --color-surface-bright:            255 255 255;
+    --color-surface-dim:               226 232 240;
+    --color-surface-variant:           241 245 249;
+
+    /* Text/on-surface aliases */
+    --color-on-surface:         25 28 30;    /* near-black body text */
+    --color-on-surface-variant: 71 85 105;   /* slate-600 secondary text */
+    --color-outline:            100 116 139;  /* slate-500 placeholder/icon */
+    --color-outline-variant:    203 213 225;
+
+    /* Primary aliases → brand emerald-600 */
+    --color-primary:              5 150 105;   /* #059669 */
+    --color-on-primary:           255 255 255;
+    --color-primary-container:    4 120 87;    /* #047857 emerald-700 for hover */
+    --color-on-primary-container: 236 253 245; /* emerald-50 */
+    --color-inverse-primary:      16 185 129;  /* emerald-500 */
+
+    /* Secondary aliases → slate tones */
+    --color-secondary:              71 85 105;
+    --color-on-secondary:           255 255 255;
+    --color-secondary-container:    226 232 240;
+    --color-on-secondary-container: 71 85 105;
+
+    /* Tertiary aliases → map to brand (simplify) */
+    --color-tertiary:              5 150 105;
+    --color-on-tertiary:           255 255 255;
+    --color-tertiary-container:    4 120 87;
     --color-on-tertiary-container: 236 253 245;
-    --color-border-default: 31 41 55;
-    --color-text-main: 248 250 252;
+
+    /* Border/text compat aliases */
+    --color-border-default-rgb: 226 232 240;
+    --color-text-main: 15 23 42;
+
+    /* Surface tint (used in glass-card) */
+    --color-surface-tint: 5 150 105;
+  }
 }
 
 @layer utilities {
-    .glass-card {
-        @apply bg-surface-container-lowest/80 backdrop-blur-md border border-border-default shadow-soft;
-    }
-    
-    .glass {
-        @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-glass dark:bg-slate-900/80 dark:border-slate-700/50;
-    }
-    
-    .glass-dark {
-        @apply bg-slate-900/70 backdrop-blur-md border border-slate-700/50 shadow-glass;
-    }
-    
-    .text-gradient {
-        @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-container;
-    }
+  /* Glass card utility — simplified, no dark mode */
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border border-slate-200 shadow-card;
+  }
 
-    .focus-ring {
-        @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
-    }
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent;
+  }
 
-    .hover-lift {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 
-    .hover-lift:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
 
-    .tap-highlight-transparent {
-        -webkit-tap-highlight-color: transparent;
-    }
+  .tap-highlight-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    .pb-safe {
-        padding-bottom: env(safe-area-inset-bottom, 1rem);
-    }
-}
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-/* Shader-like animated gradient background */
-.shader-bg {
-    background: linear-gradient(135deg, #f7f9fb 0%, #d5e3fc 50%, #85f8c4 100%);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
-}
-
-.dark .shader-bg {
-    background: linear-gradient(135deg, #0b1120 0%, #1e293b 50%, #064e3b 100%);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
-}
-
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-html {
-    scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Material Symbols styling helper */
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
-}
-
-.material-symbols-outlined.fill,
-.material-symbols-outlined.filled {
-    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
 }
 
 /* Attendance button transitions and active states */
 .status-btn {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input[type="radio"]:checked + .btn-hadir {
-    background-color: #22c55e !important;
-    color: white !important;
-    border-color: #22c55e !important;
+  background-color: #22c55e !important;
+  color: white !important;
+  border-color: #22c55e !important;
 }
 
 input[type="radio"]:checked + .btn-izin {
-    background-color: #f59e0b !important;
-    color: white !important;
-    border-color: #f59e0b !important;
+  background-color: #f59e0b !important;
+  color: white !important;
+  border-color: #f59e0b !important;
 }
 
 input[type="radio"]:checked + .btn-sakit {
-    background-color: #0ea5e9 !important;
-    color: white !important;
-    border-color: #0ea5e9 !important;
+  background-color: #0ea5e9 !important;
+  color: white !important;
+  border-color: #0ea5e9 !important;
 }
 
 input[type="radio"]:checked + .btn-alfa {
-    background-color: #f43f5e !important;
-    color: white !important;
-    border-color: #f43f5e !important;
+  background-color: #f43f5e !important;
+  color: white !important;
+  border-color: #f43f5e !important;
 }
 
-/* Dark mode overrides for form controls */
-.dark input[type="text"],
-.dark input[type="password"],
-.dark input[type="email"],
-.dark input[type="date"],
-.dark input[type="number"],
-.dark select,
-.dark textarea {
-    background-color: rgb(var(--color-surface-container-lowest));
-    color: rgb(var(--color-text-main));
-    border-color: rgb(var(--color-border-default));
-}
-
-.dark input[type="text"]:focus,
-.dark input[type="password"]:focus,
-.dark input[type="email"]:focus,
-.dark input[type="date"]:focus,
-.dark input[type="number"]:focus,
-.dark select:focus,
-.dark textarea:focus {
-    border-color: rgb(var(--color-primary));
-}
-
-.dark input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.8);
-}
-
-.dark tr.hover\:bg-slate-50:hover,
-.dark tr.hover\:bg-surface-container-low\/60:hover {
-    background-color: rgba(255, 255, 255, 0.04) !important;
-}
-
-/* Smooth theme transition for background & text */
-html, body {
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+html {
+  scroll-behavior: smooth;
 }

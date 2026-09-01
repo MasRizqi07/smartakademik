@@ -7,7 +7,7 @@
         </div>
         <div class="flex items-center gap-3">
             <button onclick="window.print()" class="px-5 h-touch-target border border-border-default bg-surface hover:bg-surface-container text-text-main rounded-lg font-label-md text-sm font-semibold shadow-xs transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">print</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Cetak Laporan</span>
             </button>
         </div>
@@ -22,7 +22,7 @@
                 <p class="text-[11px] text-status-hadir font-semibold">Memenuhi KKM (75)</p>
             </div>
             <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                <span class="material-symbols-outlined text-[24px]">analytics</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
         </div>
 
@@ -33,7 +33,7 @@
                 <p class="text-[11px] text-status-hadir font-medium">Sangat Baik</p>
             </div>
             <div class="w-11 h-11 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center">
-                <span class="material-symbols-outlined text-[24px]">verified</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
                 <p class="text-[11px] text-on-surface-variant">Bimbingan Khusus</p>
             </div>
             <div class="w-11 h-11 rounded-xl bg-status-alfa/15 text-status-alfa flex items-center justify-center">
-                <span class="material-symbols-outlined text-[24px]">assignment_late</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
                 <p class="text-[11px] text-on-surface-variant">Penilaian Formatif</p>
             </div>
             <div class="w-11 h-11 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
-                <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
         <div>
             <label class="block text-xs font-semibold text-on-surface-variant mb-1">Cari Siswa</label>
             <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
                 <input type="text" wire:model.live.debounce.300ms="search" placeholder="Nama atau NISN..." class="w-full pl-9 pr-4 h-10 rounded-lg border border-border-default bg-surface text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
             </div>
         </div>
@@ -146,7 +146,7 @@
                         <tr>
                             <td colspan="7" class="py-12 px-4 text-center text-on-surface-variant">
                                 <div class="flex flex-col items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-[48px] text-outline">search_off</span>
+                                    <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
                                     <p class="font-label-md text-sm font-semibold">Tidak ada data rekap nilai ditemukan.</p>
                                 </div>
                             </td>

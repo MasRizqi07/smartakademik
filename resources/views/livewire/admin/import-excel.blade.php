@@ -13,7 +13,7 @@
                 <option value="mapel">Mata Pelajaran</option>
             </select>
             <button wire:click="downloadTemplate" class="h-touch-target px-4 bg-secondary-container text-on-secondary-container hover:bg-surface-container font-label-md rounded-DEFAULT transition-all flex items-center gap-2 shrink-0">
-                <span class="material-symbols-outlined text-[20px]">download</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
                 <span>Template CSV</span>
             </button>
         </div>
@@ -22,21 +22,21 @@
     <!-- Flash Alerts -->
     @if (session()->has('message'))
         <div class="bg-status-hadir/10 border border-status-hadir/30 text-status-hadir rounded-lg p-4 flex items-center gap-3 animate-fade-in">
-            <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             <span class="font-label-md">{{ session('message') }}</span>
         </div>
     @endif
 
     @if (session()->has('warning'))
         <div class="bg-status-izin/10 border border-status-izin/30 text-status-izin rounded-lg p-4 flex items-center gap-3 animate-fade-in">
-            <span class="material-symbols-outlined text-[24px]">warning</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
             <span class="font-label-md">{{ session('warning') }}</span>
         </div>
     @endif
 
     @if (session()->has('error'))
         <div class="bg-error/10 border border-error/30 text-error rounded-lg p-4 flex items-center gap-3 animate-fade-in">
-            <span class="material-symbols-outlined text-[24px]">error</span>
+            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
             <span class="font-label-md">{{ session('error') }}</span>
         </div>
     @endif
@@ -47,7 +47,7 @@
             <form wire:submit="import" class="flex flex-col items-center justify-center gap-6">
                 <label class="w-full flex flex-col items-center px-6 py-12 bg-surface-container-low text-on-surface-variant rounded-xl border-2 border-dashed border-outline-variant cursor-pointer hover:border-primary hover:bg-primary-container/5 transition-all group">
                     <div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-primary">
-                        <span class="material-symbols-outlined text-[32px]">upload_file</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" /></svg>
                     </div>
                     <span class="font-headline-md text-headline-md font-bold text-text-main">Pilih Berkas Excel / CSV</span>
                     <span class="font-body-default text-body-default text-on-surface-variant mt-1 text-center">Format .xlsx, .xls, atau .csv (Maksimal 10MB)</span>
@@ -57,7 +57,7 @@
                 <div class="w-full min-h-[40px] flex items-center justify-center">
                     @if($file)
                         <div class="flex items-center gap-3 px-4 py-2 bg-status-hadir/10 text-status-hadir rounded-lg font-medium border border-status-hadir/30 w-full animate-fade-in">
-                            <span class="material-symbols-outlined text-[20px]">description</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                             <span class="truncate font-mono text-sm">{{ $file->getClientOriginalName() }}</span>
                         </div>
                     @else
@@ -70,7 +70,7 @@
                 <button type="submit" @if(!$file) disabled @endif class="w-full h-touch-target bg-primary hover:bg-primary-container text-on-primary font-label-md rounded-DEFAULT shadow-xs hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
                     <span wire:loading.remove wire:target="import">Proses Import Data</span>
                     <span wire:loading wire:target="import" class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+                        <svg class="w-8 h-8 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         <span>Memproses Impor...</span>
                     </span>
                 </button>
@@ -80,7 +80,7 @@
         <!-- Sidebar Guide -->
         <div class="bg-surface-container-lowest p-6 rounded-xl border border-border-default shadow-card flex flex-col gap-4">
             <h3 class="font-headline-md text-headline-md font-bold text-text-main flex items-center gap-2">
-                <span class="material-symbols-outlined text-primary">info</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Panduan Impor</span>
             </h3>
             
@@ -109,7 +109,7 @@
     @if(count($failures) > 0)
         <div class="bg-surface-container-lowest rounded-xl border border-error/30 shadow-card flex flex-col overflow-hidden animate-fade-in">
             <div class="p-4 bg-error/10 border-b border-error/20 flex items-center gap-3">
-                <span class="material-symbols-outlined text-error text-[28px]">warning</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
                 <div>
                     <h4 class="font-headline-md text-headline-md font-bold text-error">Laporan Kegagalan Impor</h4>
                     <p class="font-body-default text-body-default text-on-surface-variant">Beberapa baris data gagal diproses. Detail baris dan kesalahan tertera di bawah.</p>

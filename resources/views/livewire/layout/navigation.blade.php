@@ -45,14 +45,14 @@ new class extends Component
         <div class="mb-4 flex items-center justify-between px-2 pt-2">
             <a href="{{ url('/') }}" class="flex items-center gap-2.5 group">
                 <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-bold shadow-xs group-hover:scale-105 transition-transform">
-                    <span class="material-symbols-outlined text-[20px]">school</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
                 </div>
                 <div>
                     <h1 class="font-headline-md text-sm leading-tight font-bold text-primary">MAN 4 Jombang</h1>
                     <p class="font-label-sm text-[9px] text-on-surface-variant uppercase tracking-wider">Academic Portal</p>
                 </div>
             </a>
-            <x-theme-toggle variant="compact" />
+
         </div>
 
         <!-- Navigation Links -->
@@ -65,55 +65,55 @@ new class extends Component
                 <li class="px-3 pt-2 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">Navigasi Admin</li>
                 <li>
                     <a href="{{ route('admin.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.dashboard') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Beranda Admin</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.siswa') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.siswa*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">groups</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Data Siswa</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.guru') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.guru*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">badge</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" /></svg>
                         <span>Data Guru &amp; User</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.kelas') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.kelas*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">meeting_room</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Data Rombel Kelas</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.mapel') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.mapel*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">book</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Mata Pelajaran</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.jadwal') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.jadwal*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
                         <span>Jadwal Pelajaran</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.event-ujian') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.event-ujian*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">assignment</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Event &amp; Ujian</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.pengaturan') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.pengaturan*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">settings</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
                         <span>Pengaturan Akademik</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.import') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('admin.import*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">upload_file</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" /></svg>
                         <span>Import Excel</span>
                     </a>
                 </li>
@@ -122,31 +122,31 @@ new class extends Component
                 <li class="px-3 pt-2 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">Kurikulum</li>
                 <li>
                     <a href="{{ route('waka.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('waka.dashboard') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Dashboard Waka</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('waka.jadwal') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('waka.jadwal*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
                         <span>Jadwal Pelajaran</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('waka.event-ujian') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('waka.event-ujian*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">assignment</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Event &amp; Asesmen</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('waka.rekap-absensi') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('waka.rekap-absensi*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Rekap Presensi</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('waka.rekap-nilai') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('waka.rekap-nilai*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">assessment</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Laporan Rapor Nilai</span>
                     </a>
                 </li>
@@ -155,25 +155,25 @@ new class extends Component
                 <li class="px-3 pt-2 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">KBM &amp; Nilai</li>
                 <li>
                     <a href="{{ route('guru.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('guru.dashboard') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Beranda Guru</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('guru.absensi') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('guru.absensi*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">fact_check</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Input Presensi</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('guru.nilai') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('guru.nilai*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">edit_note</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Input Formatif</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('guru.profil') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('guru.profil*') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">account_box</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Profil Tenaga Pendidik</span>
                     </a>
                 </li>
@@ -182,7 +182,7 @@ new class extends Component
                 <li class="px-3 pt-2 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">Portal Siswa</li>
                 <li>
                     <a href="{{ route('siswa.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all {{ request()->routeIs('siswa.dashboard') ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface hover:text-text-main' }}">
-                        <span class="material-symbols-outlined text-[18px]">person_pin</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Portal &amp; Profil Siswa</span>
                     </a>
                 </li>
@@ -191,19 +191,19 @@ new class extends Component
             <li class="px-3 pt-3 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">Publik &amp; Info</li>
             <li>
                 <a href="{{ url('/kalender') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface transition-all">
-                    <span class="material-symbols-outlined text-[18px]">event_note</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Kalender Madrasah</span>
                 </a>
             </li>
             <li>
                 <a href="{{ url('/bantuan') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface transition-all">
-                    <span class="material-symbols-outlined text-[18px]">help_outline</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Pusat Bantuan</span>
                 </a>
             </li>
             <li>
                 <a href="{{ url('/kontak') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface transition-all">
-                    <span class="material-symbols-outlined text-[18px]">support_agent</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Hubungi IT Support</span>
                 </a>
             </li>
@@ -244,7 +244,7 @@ new class extends Component
                 </div>
 
                 <button wire:click="logout" class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors" title="Keluar">
-                    <span class="material-symbols-outlined text-[18px]">logout</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </button>
             </div>
         </div>
@@ -254,15 +254,15 @@ new class extends Component
     <header class="md:hidden bg-surface-container-lowest border-b border-border-default px-4 h-16 sticky top-0 flex justify-between items-center z-40 shadow-xs">
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold">
-                <span class="material-symbols-outlined text-[18px]">school</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
             </div>
             <span class="font-headline-md text-base text-primary font-extrabold">MAN 4 Jombang</span>
         </div>
 
         <div class="flex items-center gap-2">
-            <x-theme-toggle variant="compact" />
+
             <button @click="mobileOpen = !mobileOpen" aria-label="Toggle navigation" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
-                <span class="material-symbols-outlined text-[24px]" x-text="mobileOpen ? 'close' : 'menu'">menu</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </button>
         </div>
     </header>
@@ -271,78 +271,78 @@ new class extends Component
     <div x-show="mobileOpen" x-transition class="md:hidden bg-surface-container-lowest border-b border-border-default shadow-xl fixed top-16 left-0 right-0 z-40 p-4 flex flex-col gap-2 max-h-[85vh] overflow-y-auto">
         @if($user && $user->hasRole('admin_tu'))
             <a href="{{ route('admin.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main font-semibold">
-                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Dashboard Admin</span>
             </a>
             <a href="{{ route('admin.siswa') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">groups</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Data Siswa</span>
             </a>
             <a href="{{ route('admin.guru') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">badge</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" /></svg>
                 <span>Data Guru &amp; User</span>
             </a>
             <a href="{{ route('admin.kelas') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">meeting_room</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Data Kelas</span>
             </a>
             <a href="{{ route('admin.mapel') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">book</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Mata Pelajaran</span>
             </a>
             <a href="{{ route('admin.jadwal') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
                 <span>Jadwal Pelajaran</span>
             </a>
             <a href="{{ route('admin.event-ujian') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">assignment</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Event &amp; Ujian</span>
             </a>
             <a href="{{ route('admin.pengaturan') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">settings</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
                 <span>Pengaturan Akademik</span>
             </a>
         @elseif($user && $user->hasRole('waka_kurikulum'))
             <a href="{{ route('waka.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main font-semibold">
-                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Dashboard Waka</span>
             </a>
             <a href="{{ route('waka.jadwal') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
                 <span>Jadwal Pelajaran</span>
             </a>
             <a href="{{ route('waka.event-ujian') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">assignment</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Event &amp; Asesmen</span>
             </a>
             <a href="{{ route('waka.rekap-absensi') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Rekap Absensi</span>
             </a>
             <a href="{{ route('waka.rekap-nilai') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">assessment</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Laporan Nilai</span>
             </a>
         @elseif($user && $user->hasRole('guru'))
             <a href="{{ route('guru.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main font-semibold">
-                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Beranda Guru</span>
             </a>
             <a href="{{ route('guru.absensi') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">fact_check</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Input Presensi</span>
             </a>
             <a href="{{ route('guru.nilai') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">edit_note</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Input Formatif</span>
             </a>
             <a href="{{ route('guru.profil') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">
-                <span class="material-symbols-outlined text-[20px]">account_box</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Profil Guru</span>
             </a>
         @elseif($user && $user->hasRole('siswa'))
             <a href="{{ route('siswa.dashboard') }}" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main font-semibold">
-                <span class="material-symbols-outlined text-[20px]">person_pin</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Portal Siswa</span>
             </a>
         @endif
@@ -350,10 +350,10 @@ new class extends Component
         <div class="pt-3 border-t border-border-default/60 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2 text-xs font-semibold text-on-surface-variant">
                 <span>Mode Tema:</span>
-                <x-theme-toggle variant="pill" />
+
             </div>
             <button wire:click="logout" class="px-4 py-2 bg-error/10 hover:bg-error/20 text-error font-semibold text-xs rounded-lg transition-all flex items-center justify-center gap-1.5">
-                <span class="material-symbols-outlined text-[16px]">logout</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Keluar</span>
             </button>
         </div>

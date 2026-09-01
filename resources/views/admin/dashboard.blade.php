@@ -27,7 +27,7 @@
         <!-- Active Classes -->
         <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
             <div class="flex items-center gap-2 text-primary">
-                <span class="material-symbols-outlined text-[22px]">class</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Kelas Aktif</span>
             </div>
             <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
@@ -39,7 +39,7 @@
         <!-- Total Students -->
         <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
             <div class="flex items-center gap-2 text-secondary">
-                <span class="material-symbols-outlined text-[22px]">groups</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Total Siswa</span>
             </div>
             <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
@@ -51,7 +51,7 @@
         <!-- Attendance Rate -->
         <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
             <div class="flex items-center gap-2 text-status-hadir">
-                <span class="material-symbols-outlined text-[22px]">check_circle</span>
+                <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Rata-rata Kehadiran</span>
             </div>
             <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
@@ -63,7 +63,7 @@
         <!-- Pending Tasks / Grades -->
         <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
             <div class="flex items-center gap-2 text-status-izin">
-                <span class="material-symbols-outlined text-[22px]">pending_actions</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Input Formatif</span>
             </div>
             <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
@@ -79,12 +79,12 @@
         <section class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-card border border-border-default flex flex-col overflow-hidden">
             <div class="p-5 border-b border-border-default bg-surface flex justify-between items-center">
                 <h3 class="font-headline-md text-base font-bold text-text-main flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">schedule</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Jadwal Mengajar Hari Ini</span>
                 </h3>
                 <a href="{{ route('admin.kelas') }}" wire:navigate class="text-primary font-label-md text-xs font-semibold hover:underline flex items-center gap-1">
                     <span>Lihat Semua</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </a>
             </div>
 
@@ -151,7 +151,7 @@
         <section class="bg-surface-container-lowest rounded-xl shadow-card border border-border-default flex flex-col h-full overflow-hidden">
             <div class="p-5 border-b border-border-default bg-surface">
                 <h3 class="font-headline-md text-base font-bold text-text-main flex items-center gap-2">
-                    <span class="material-symbols-outlined text-secondary">history</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     <span>Aktivitas Terkini</span>
                 </h3>
             </div>
@@ -160,7 +160,7 @@
                     <div class="absolute left-[11px] top-2 bottom-2 w-px bg-border-default -z-10"></div>
                     <li class="flex gap-3 text-xs">
                         <div class="w-6 h-6 rounded-full bg-status-hadir/15 text-status-hadir flex items-center justify-center shrink-0 border border-status-hadir/30">
-                            <span class="material-symbols-outlined text-[14px]">check</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
                             <p class="font-body-default text-text-main"><span class="font-semibold">Presensi XII IPA 1</span> telah terekam (28 Hadir, 1 Izin, 1 Sakit)</p>
@@ -169,7 +169,7 @@
                     </li>
                     <li class="flex gap-3 text-xs">
                         <div class="w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 border border-primary/30">
-                            <span class="material-symbols-outlined text-[14px]">edit_note</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
                             <p class="font-body-default text-text-main"><span class="font-semibold">Nilai Formatif TP 2</span> Matematika diinput oleh Budi Santoso</p>
@@ -178,7 +178,7 @@
                     </li>
                     <li class="flex gap-3 text-xs">
                         <div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 border border-border-default">
-                            <span class="material-symbols-outlined text-[14px]">person_add</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
                             <p class="font-body-default text-text-main">Akun portal siswa baru digenerate secara otomatis</p>
@@ -193,14 +193,14 @@
     <!-- Master Data Management Cards -->
     <section class="flex flex-col gap-4 pt-2">
         <h3 class="font-headline-md text-lg font-bold text-text-main flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary">widgets</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <span>Akses Cepat Modul Master Data</span>
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <a href="{{ route('admin.siswa') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
                 <div class="w-11 h-11 rounded-lg bg-primary-container/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors shrink-0">
-                    <span class="material-symbols-outlined text-[24px]">groups</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
                 <div>
                     <h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">Data Siswa</h4>
@@ -210,7 +210,7 @@
 
             <a href="{{ route('admin.guru') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
                 <div class="w-11 h-11 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-colors shrink-0">
-                    <span class="material-symbols-outlined text-[24px]">badge</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
                 <div>
                     <h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">Guru &amp; User</h4>
@@ -220,7 +220,7 @@
 
             <a href="{{ route('admin.kelas') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
                 <div class="w-11 h-11 rounded-lg bg-status-izin/10 text-status-izin flex items-center justify-center group-hover:bg-status-izin group-hover:text-white transition-colors shrink-0">
-                    <span class="material-symbols-outlined text-[24px]">meeting_room</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
                 <div>
                     <h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">Rombel Kelas</h4>
@@ -230,7 +230,7 @@
 
             <a href="{{ route('admin.mapel') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
                 <div class="w-11 h-11 rounded-lg bg-status-sakit/10 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">
-                    <span class="material-symbols-outlined text-[24px]">book</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
                 <div>
                     <h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">Mata Pelajaran</h4>

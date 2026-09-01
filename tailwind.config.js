@@ -3,7 +3,6 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'class',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -14,13 +13,6 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
-                'body-default': ['Inter', 'sans-serif'],
-                'headline-lg': ['Inter', 'sans-serif'],
-                'headline-md': ['Inter', 'sans-serif'],
-                'input-text': ['Inter', 'sans-serif'],
-                'label-sm': ['Inter', 'sans-serif'],
-                'label-md': ['Inter', 'sans-serif'],
-                'body-lg': ['Inter', 'sans-serif'],
             },
             fontSize: {
                 'body-default': ['14px', { lineHeight: '20px', fontWeight: '400' }],
@@ -31,30 +23,47 @@ export default {
                 'label-md': ['14px', { lineHeight: '20px', fontWeight: '500' }],
                 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
             },
-            spacing: {
-                'touch-target': '44px',
-                'container-padding-mobile': '1rem',
-                'list-gap': '0.5rem',
-                'section-margin': '1.5rem',
-                'grid-gutter': '1rem',
-            },
             colors: {
-                'surface': 'rgb(var(--color-surface) / <alpha-value>)',
-                'surface-dim': 'rgb(var(--color-surface-dim) / <alpha-value>)',
-                'surface-bright': 'rgb(var(--color-surface-bright) / <alpha-value>)',
+                /* ===== 3-TIER CANONICAL TOKENS ===== */
+                brand: {
+                    DEFAULT: 'var(--color-brand)',
+                    hover: 'var(--color-brand-hover)',
+                    surface: 'var(--color-brand-surface)',
+                },
+                status: {
+                    hadir: 'var(--color-status-hadir)',
+                    izin: 'var(--color-status-izin)',
+                    sakit: 'var(--color-status-sakit)',
+                    alfa: 'var(--color-status-alfa)',
+                },
+                surface: {
+                    page: 'var(--color-bg-page)',
+                    DEFAULT: 'var(--color-bg-surface)',
+                },
+                border: {
+                    DEFAULT: 'var(--color-border-default)',
+                },
+                text: {
+                    primary: 'var(--color-text-primary)',
+                    secondary: 'var(--color-text-secondary)',
+                },
+
+                /* ===== BACKWARD-COMPAT ALIASES =====
+                   These map the MD3 class names already used in views
+                   to the 3-tier values via CSS custom properties.
+                   Migrate views file-by-file, then remove these. */
                 'surface-container-lowest': 'rgb(var(--color-surface-container-lowest) / <alpha-value>)',
                 'surface-container-low': 'rgb(var(--color-surface-container-low) / <alpha-value>)',
                 'surface-container': 'rgb(var(--color-surface-container) / <alpha-value>)',
                 'surface-container-high': 'rgb(var(--color-surface-container-high) / <alpha-value>)',
                 'surface-container-highest': 'rgb(var(--color-surface-container-highest) / <alpha-value>)',
+                'surface-bright': 'rgb(var(--color-surface-bright) / <alpha-value>)',
+                'surface-dim': 'rgb(var(--color-surface-dim) / <alpha-value>)',
                 'surface-variant': 'rgb(var(--color-surface-variant) / <alpha-value>)',
                 'on-surface': 'rgb(var(--color-on-surface) / <alpha-value>)',
                 'on-surface-variant': 'rgb(var(--color-on-surface-variant) / <alpha-value>)',
-                'inverse-surface': 'rgb(var(--color-inverse-surface) / <alpha-value>)',
-                'inverse-on-surface': 'rgb(var(--color-inverse-on-surface) / <alpha-value>)',
                 'outline': 'rgb(var(--color-outline) / <alpha-value>)',
                 'outline-variant': 'rgb(var(--color-outline-variant) / <alpha-value>)',
-                'surface-tint': 'rgb(var(--color-surface-tint) / <alpha-value>)',
                 'primary': 'rgb(var(--color-primary) / <alpha-value>)',
                 'on-primary': 'rgb(var(--color-on-primary) / <alpha-value>)',
                 'primary-container': 'rgb(var(--color-primary-container) / <alpha-value>)',
@@ -68,58 +77,37 @@ export default {
                 'on-tertiary': 'rgb(var(--color-on-tertiary) / <alpha-value>)',
                 'tertiary-container': 'rgb(var(--color-tertiary-container) / <alpha-value>)',
                 'on-tertiary-container': 'rgb(var(--color-on-tertiary-container) / <alpha-value>)',
+                'surface-tint': 'rgb(var(--color-surface-tint) / <alpha-value>)',
                 'error': '#ba1a1a',
                 'on-error': '#ffffff',
                 'error-container': '#ffdad6',
                 'on-error-container': '#93000a',
-                'primary-fixed': '#85f8c4',
-                'primary-fixed-dim': '#68dba9',
-                'on-primary-fixed': '#002114',
-                'on-primary-fixed-variant': '#005137',
-                'secondary-fixed': '#d5e3fc',
-                'secondary-fixed-dim': '#b9c7df',
-                'on-secondary-fixed': '#0d1c2e',
-                'on-secondary-fixed-variant': '#3a485b',
-                'tertiary-fixed': '#6ffbbe',
-                'tertiary-fixed-dim': '#4edea3',
-                'on-tertiary-fixed': '#002113',
-                'on-tertiary-fixed-variant': '#005236',
                 'background': 'rgb(var(--color-surface) / <alpha-value>)',
                 'on-background': 'rgb(var(--color-on-surface) / <alpha-value>)',
-                'status-hadir': '#22c55e',
-                'status-izin': '#f59e0b',
-                'status-sakit': '#0ea5e9',
-                'status-alfa': '#f43f5e',
-                'border-default': 'rgb(var(--color-border-default) / <alpha-value>)',
+                'status-hadir': 'var(--color-status-hadir)',
+                'status-izin': 'var(--color-status-izin)',
+                'status-sakit': 'var(--color-status-sakit)',
+                'status-alfa': 'var(--color-status-alfa)',
+                'border-default': 'rgb(var(--color-border-default-rgb) / <alpha-value>)',
                 'text-main': 'rgb(var(--color-text-main) / <alpha-value>)',
-                brand: {
-                    50: '#ecfdf5',
-                    100: '#d1fae5',
-                    500: '#006948',
-                    600: '#006948',
-                    900: '#002114',
-                },
-                accent: {
-                    500: '#515f74',
-                }
             },
             boxShadow: {
-                'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
-                'glow': '0 0 15px rgba(0, 105, 72, 0.4)',
+                'card': 'var(--shadow-card)',
                 'soft': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
-                'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+            },
+            spacing: {
+                'touch-target': '44px',
+                'container-padding-mobile': '1rem',
+                'list-gap': '0.5rem',
+                'section-margin': '1.5rem',
+                'grid-gutter': '1rem',
             },
             borderRadius: {
-                'DEFAULT': '0.25rem',
-                'lg': '0.5rem',
-                'xl': '0.75rem',
-                'full': '9999px',
+                'DEFAULT': '0.5rem',
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-out',
                 'slide-up': 'slideUp 0.4s ease-out',
-                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                'bounce-sm': 'bounceSm 1s infinite',
             },
             keyframes: {
                 fadeIn: {
@@ -130,11 +118,7 @@ export default {
                     '0%': { opacity: '0', transform: 'translateY(20px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
-                bounceSm: {
-                    '0%, 100%': { transform: 'translateY(-5%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
-                    '50%': { transform: 'none', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
-                }
-            }
+            },
         },
     },
 

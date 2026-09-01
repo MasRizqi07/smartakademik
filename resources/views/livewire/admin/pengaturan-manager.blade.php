@@ -6,7 +6,7 @@
             <p class="font-body-default text-body-default text-on-surface-variant mt-1">Kelola parameter operasional madrasah, periode tahun ajaran aktif, dan standar kurikulum.</p>
         </div>
         <button wire:click="saveSettings" class="px-6 h-touch-target bg-primary hover:bg-primary-container text-on-primary font-label-md text-sm font-semibold rounded-lg shadow-sm transition-all flex items-center gap-2 active:scale-95">
-            <span class="material-symbols-outlined text-[20px]">save</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             <span>Simpan Pengaturan</span>
         </button>
     </div>
@@ -14,7 +14,7 @@
     <!-- Alert Flash Message -->
     @if (session()->has('message'))
         <div class="bg-status-hadir/10 border border-status-hadir/30 text-status-hadir rounded-xl p-4 flex items-center gap-3 animate-fade-in shadow-xs">
-            <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             <span class="font-label-md text-sm font-semibold">{{ session('message') }}</span>
         </div>
     @endif
@@ -26,7 +26,7 @@
             <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-card border border-border-default space-y-4">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[24px]">calendar_clock</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                     </div>
                     <div>
                         <h3 class="font-headline-md text-base font-bold text-text-main">Periode Aktif</h3>
@@ -83,7 +83,7 @@
                         <p class="text-[11px] text-status-hadir font-medium">Terhubung &amp; Aktif</p>
                     </div>
                 </div>
-                <span class="material-symbols-outlined text-primary">cloud_done</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
         </div>
 
@@ -91,7 +91,7 @@
         <div class="lg:col-span-2 bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-card border border-border-default space-y-6">
             <div class="flex items-center gap-3 pb-4 border-b border-border-default">
                 <div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[24px]">school</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
                 </div>
                 <div>
                     <h3 class="font-headline-md text-base font-bold text-text-main">Identitas Satuan Pendidikan</h3>
@@ -145,7 +145,7 @@
 
                 <div class="pt-4 flex justify-end">
                     <button type="submit" class="px-8 h-touch-target bg-primary hover:bg-primary-container text-on-primary font-label-md text-sm font-semibold rounded-lg shadow-sm transition-all flex items-center gap-2 active:scale-95">
-                        <span class="material-symbols-outlined text-[18px]">check</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         <span>Perbarui Data Madrasah</span>
                     </button>
                 </div>

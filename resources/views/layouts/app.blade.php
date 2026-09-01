@@ -7,26 +7,25 @@
 
         <title>{{ config('app.name', 'SmartAkademik') }} - MAN 4 Jombang</title>
 
-        <!-- Zero-FOUT Theme Initialization -->
-        <x-theme-init />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-surface text-on-surface antialiased min-h-screen relative font-sans">
+    <body class="bg-surface-page text-text-primary antialiased min-h-screen relative font-sans">
         <div class="min-h-screen flex flex-col md:flex-row relative">
             <livewire:layout.navigation />
 
             <!-- Main Content Wrapper -->
             <div class="flex-1 md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen flex flex-col relative z-10 transition-all">
                 @if (isset($header))
-                    <header class="bg-surface-container-lowest/90 backdrop-blur-md border-b border-border-default h-16 px-6 sticky top-0 flex items-center justify-between z-30 shadow-xs">
+                    <header class="bg-surface/90 backdrop-blur-md border-b border-border-default h-16 px-6 sticky top-0 flex items-center justify-between z-30">
                         <div class="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
                             <div class="flex-1 truncate">
                                 {{ $header }}
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <x-theme-toggle variant="pill" />
                             </div>
                         </div>
                     </header>
@@ -38,12 +37,8 @@
                 </main>
 
                 <!-- Footer -->
-                <footer class="mt-auto py-6 px-6 text-center text-label-sm text-on-surface-variant border-t border-border-default/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <footer class="mt-auto py-6 px-6 text-center text-label-sm text-text-secondary border-t border-border-default/60">
                     <span>&copy; {{ date('Y') }} MAN 4 Jombang Academic Portal. All rights reserved.</span>
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs">Tema:</span>
-                        <x-theme-toggle variant="compact" />
-                    </div>
                 </footer>
             </div>
         </div>

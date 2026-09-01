@@ -1,7 +1,7 @@
 <div class="space-y-6">
     @if(!$siswa)
         <div class="text-center py-12 text-status-alfa bg-status-alfa/10 rounded-2xl border border-status-alfa/20 shadow-sm p-6">
-            <span class="material-symbols-outlined text-[48px] mb-2">person_off</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <h3 class="text-xl font-bold">Data Siswa Belum Terhubung</h3>
             <p class="text-sm mt-1 text-on-surface-variant">Akun login Anda belum terhubung dengan data siswa di pangkalan data madrasah.</p>
         </div>
@@ -54,7 +54,7 @@
                     <p class="text-[11px] text-on-surface-variant">Sangat Baik</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[26px]">how_to_reg</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
             </div>
 
@@ -65,7 +65,7 @@
                     <p class="text-[11px] text-status-hadir font-semibold">Di atas KKM (75)</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[26px]">grade</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
             </div>
 
@@ -76,7 +76,7 @@
                     <p class="text-[11px] text-on-surface-variant">Kurikulum Merdeka</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[26px]">menu_book</span>
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
             </div>
         </div>
@@ -84,15 +84,15 @@
         <!-- Role Tabs Bar -->
         <div class="bg-surface-container-lowest rounded-2xl p-1.5 shadow-card border border-border-default flex gap-2">
             <button wire:click="$set('activeTab', 'jadwal')" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 {{ $activeTab === 'jadwal' ? 'bg-primary text-on-primary shadow-xs' : 'text-on-surface-variant hover:bg-surface' }}">
-                <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
                 <span>Jadwal Pelajaran</span>
             </button>
             <button wire:click="$set('activeTab', 'absensi')" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 {{ $activeTab === 'absensi' ? 'bg-primary text-on-primary shadow-xs' : 'text-on-surface-variant hover:bg-surface' }}">
-                <span class="material-symbols-outlined text-[18px]">fact_check</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Riwayat Absensi</span>
             </button>
             <button wire:click="$set('activeTab', 'nilai')" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 {{ $activeTab === 'nilai' ? 'bg-primary text-on-primary shadow-xs' : 'text-on-surface-variant hover:bg-surface' }}">
-                <span class="material-symbols-outlined text-[18px]">bar_chart</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span>Nilai Formatif</span>
             </button>
         </div>
