@@ -38,8 +38,8 @@
 
                         <!-- Top Right Academic Badges & Date -->
                         <div class="flex items-center gap-2 sm:gap-3">
-                            <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200/60 shadow-2xs">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-surface text-brand-dark text-[11px] font-bold border border-brand/20 shadow-2xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
                                 <span>TP 2026/2027 Ganjil</span>
                             </span>
 

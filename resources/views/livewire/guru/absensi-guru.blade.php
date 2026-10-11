@@ -108,7 +108,7 @@
                             <div class="text-xs text-text-secondary flex items-center gap-2">
                                 <span>NISN: {{ $siswa->nisn }}</span>
                                 @if(!empty($keteranganData[$siswa->id]))
-                                    <span class="text-amber-700 italic">• Ket: "{{ $keteranganData[$siswa->id] }}"</span>
+                                    <span class="text-status-izin italic">• Ket: "{{ $keteranganData[$siswa->id] }}"</span>
                                 @endif
                             </div>
                         </div>

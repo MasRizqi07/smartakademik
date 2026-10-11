@@ -16,7 +16,7 @@
     <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-200/80 relative overflow-hidden">
         <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="space-y-2">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-surface text-brand-dark text-[10px] font-bold uppercase tracking-wider">
                     <span>Panel Pengawasan Kurikulum</span>
                 </div>
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight font-display">
@@ -39,23 +39,23 @@
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="glass-card rounded-2xl p-5 border border-slate-200/80 hover-lift">
             <div class="text-[11px] font-bold text-text-secondary uppercase">Jadwal Aktif</div>
-            <div class="text-2xl sm:text-3xl font-extrabold text-emerald-700 mt-1 font-display">
+            <div class="text-2xl sm:text-3xl font-extrabold text-brand mt-1 font-display">
                 {{ \App\Models\JadwalPelajaran::count() }}
             </div>
             <div class="text-[10px] text-text-secondary mt-0.5">Sesi KBM Terdaftar</div>
         </div>
 
         <div class="glass-card rounded-2xl p-5 border border-slate-200/80 hover-lift">
-            <div class="text-[11px] font-bold text-sky-600 uppercase">Presensi Terdata</div>
-            <div class="text-2xl sm:text-3xl font-extrabold text-sky-600 mt-1 font-display">
+            <div class="text-[11px] font-bold text-status-sakit uppercase">Presensi Terdata</div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-status-sakit mt-1 font-display">
                 {{ \App\Models\Absensi::count() }}
             </div>
             <div class="text-[10px] text-text-secondary mt-0.5">Catatan Kehadiran Siswa</div>
         </div>
 
         <div class="glass-card rounded-2xl p-5 border border-slate-200/80 hover-lift">
-            <div class="text-[11px] font-bold text-amber-600 uppercase">Nilai Formatif</div>
-            <div class="text-2xl sm:text-3xl font-extrabold text-amber-600 mt-1 font-display">
+            <div class="text-[11px] font-bold text-status-izin uppercase">Nilai Formatif</div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-status-izin mt-1 font-display">
                 {{ \App\Models\NilaiFormatif::count() }}
             </div>
             <div class="text-[10px] text-text-secondary mt-0.5">Capaian TP Terekam</div>
@@ -80,7 +80,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <a href="{{ route('waka.jadwal') }}" wire:navigate class="glass-card rounded-2xl p-6 border border-slate-200/80 hover-lift flex flex-col justify-between group">
                 <div class="space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div class="w-12 h-12 rounded-xl bg-brand-surface text-brand flex items-center justify-center group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
                     </div>
                     <h4 class="text-base font-bold text-text-primary group-hover:text-brand transition-colors font-display">Manajemen Jadwal</h4>
@@ -96,7 +96,7 @@
 
             <a href="{{ route('waka.rekap-absensi') }}" wire:navigate class="glass-card rounded-2xl p-6 border border-slate-200/80 hover-lift flex flex-col justify-between group">
                 <div class="space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div class="w-12 h-12 rounded-xl bg-status-sakit/15 text-status-sakit flex items-center justify-center group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                     </div>
                     <h4 class="text-base font-bold text-text-primary group-hover:text-brand transition-colors font-display">Rekap Presensi</h4>
@@ -112,7 +112,7 @@
 
             <a href="{{ route('waka.rekap-nilai') }}" wire:navigate class="glass-card rounded-2xl p-6 border border-slate-200/80 hover-lift flex flex-col justify-between group">
                 <div class="space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div class="w-12 h-12 rounded-xl bg-status-izin/15 text-status-izin flex items-center justify-center group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
                     </div>
                     <h4 class="text-base font-bold text-text-primary group-hover:text-brand transition-colors font-display">Laporan Rapor Nilai</h4>

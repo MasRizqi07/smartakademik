@@ -50,7 +50,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('kelas_id') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('kelas_id') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Mata Pelajaran</label>
@@ -62,7 +62,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('mapel_id') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('mapel_id') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Guru Pengajar</label>
@@ -74,7 +74,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('guru_id') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('guru_id') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -93,22 +93,22 @@
                                         <option value="Sabtu">Sabtu</option>
                                     </select>
                                 </div>
-                                @error('hari') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('hari') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Jam Ke-</label>
                                 <input type="number" wire:model="jam_ke" min="1" max="15" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
-                                @error('jam_ke') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('jam_ke') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Waktu Mulai</label>
                                 <input type="time" wire:model="waktu_mulai" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
-                                @error('waktu_mulai') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('waktu_mulai') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Waktu Selesai</label>
                                 <input type="time" wire:model="waktu_selesai" class="block w-full rounded-xl border-slate-200 shadow-sm focus:border-brand-500 focus:ring focus:ring-brand-200 focus:ring-opacity-50 transition-colors">
-                                @error('waktu_selesai') <span class="text-rose-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                                @error('waktu_selesai') <span class="text-danger text-xs mt-1 block">{{ $message }}</span> @enderror
                             </div>
                         </div>
                     </div>
@@ -179,10 +179,10 @@
                             </td>
                             <td class="px-4 py-4 whitespace-nowrap text-right">
                                 <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button wire:click="edit({{ $jadwal->id }})" class="p-2 text-sky-600 hover:bg-sky-50 rounded-lg transition-colors" title="Edit">
+                                    <button wire:click="edit({{ $jadwal->id }})" class="p-2 text-status-sakit hover:bg-status-sakit/15 rounded-lg transition-colors" title="Edit">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                     </button>
-                                    <button wire:click="delete({{ $jadwal->id }})" wire:confirm="Yakin ingin menghapus jadwal ini?" class="p-2 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors" title="Hapus">
+                                    <button wire:click="delete({{ $jadwal->id }})" wire:confirm="Yakin ingin menghapus jadwal ini?" class="p-2 text-danger hover:bg-danger/15 rounded-lg transition-colors" title="Hapus">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                     </button>
                                 </div>

@@ -4,10 +4,10 @@
 $baseClasses = 'inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 gap-2';
 
 $variants = [
-    'primary' => 'bg-gradient-to-r from-brand-600 to-brand-500 text-white hover:from-brand-500 hover:to-brand-400 focus:ring-brand-500 shadow-lg shadow-brand-500/30',
+    'primary' => 'bg-brand text-white hover:brightness-95 focus:ring-brand shadow-sm',
     'secondary' => 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 focus:ring-slate-200 shadow-sm',
-    'danger' => 'bg-gradient-to-r from-rose-600 to-rose-500 text-white hover:from-rose-500 hover:to-rose-400 focus:ring-rose-500 shadow-lg shadow-rose-500/30',
-    'success' => 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-400 focus:ring-emerald-500 shadow-lg shadow-emerald-500/30',
+    'danger' => 'bg-danger text-white hover:brightness-95 focus:ring-danger shadow-sm',
+    'success' => 'bg-status-hadir text-white hover:brightness-95 focus:ring-status-hadir shadow-sm',
     'ghost' => 'bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900',
 ];
 

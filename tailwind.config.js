@@ -9,6 +9,14 @@ export default {
         './resources/views/**/*.blade.php',
         './app/Livewire/**/*.php',
     ],
+    safelist: [
+        'bg-brand/20',
+        'border-brand/40',
+        'border-brand/50',
+        'border-status-izin/50',
+        'border-status-sakit/50',
+        'ring-brand/20',
+    ],
 
     theme: {
         extend: {
@@ -28,16 +36,19 @@ export default {
             colors: {
                 /* ===== 3-TIER CANONICAL TOKENS ===== */
                 brand: {
-                    DEFAULT: 'var(--color-brand)',
-                    hover: 'var(--color-brand-hover)',
-                    dark: 'var(--color-brand-dark)',
-                    surface: 'var(--color-brand-surface)',
+                    DEFAULT: 'rgb(var(--color-brand-rgb) / <alpha-value>)',
+                    hover: 'rgb(var(--color-brand-hover-rgb) / <alpha-value>)',
+                    dark: 'rgb(var(--color-brand-dark-rgb) / <alpha-value>)',
+                    surface: 'rgb(var(--color-brand-surface-rgb) / <alpha-value>)',
                 },
                 status: {
-                    hadir: 'var(--color-status-hadir)',
-                    izin: 'var(--color-status-izin)',
-                    sakit: 'var(--color-status-sakit)',
-                    alfa: 'var(--color-status-alfa)',
+                    hadir: 'rgb(var(--color-status-hadir-rgb) / <alpha-value>)',
+                    izin: 'rgb(var(--color-status-izin-rgb) / <alpha-value>)',
+                    sakit: 'rgb(var(--color-status-sakit-rgb) / <alpha-value>)',
+                    alfa: 'rgb(var(--color-status-alfa-rgb) / <alpha-value>)',
+                },
+                danger: {
+                    DEFAULT: 'rgb(var(--color-danger-rgb) / <alpha-value>)',
                 },
                 surface: {
                     page: 'var(--color-bg-page)',
@@ -84,10 +95,11 @@ export default {
                 'on-error-container': '#93000a',
                 'background': 'rgb(var(--color-surface) / <alpha-value>)',
                 'on-background': 'rgb(var(--color-on-surface) / <alpha-value>)',
-                'status-hadir': 'var(--color-status-hadir)',
-                'status-izin': 'var(--color-status-izin)',
-                'status-sakit': 'var(--color-status-sakit)',
-                'status-alfa': 'var(--color-status-alfa)',
+                'status-hadir': 'rgb(var(--color-status-hadir-rgb) / <alpha-value>)',
+                'status-izin': 'rgb(var(--color-status-izin-rgb) / <alpha-value>)',
+                'status-sakit': 'rgb(var(--color-status-sakit-rgb) / <alpha-value>)',
+                'status-alfa': 'rgb(var(--color-status-alfa-rgb) / <alpha-value>)',
+                'danger': 'rgb(var(--color-danger-rgb) / <alpha-value>)',
                 'border-default': 'rgb(var(--color-border-default-rgb) / <alpha-value>)',
                 'text-main': 'rgb(var(--color-text-main) / <alpha-value>)',
             },

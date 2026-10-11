@@ -63,7 +63,7 @@
         <div class="bg-surface rounded-2xl p-5 border border-border shadow-card flex flex-col justify-between">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-text-secondary uppercase tracking-wider">Mata Pelajaran Aktif</span>
-                <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+                <div class="w-9 h-9 rounded-xl bg-status-izin/15 text-status-izin flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
                 </div>
             </div>
@@ -159,7 +159,7 @@
                                     <span class="text-xs font-bold text-text-primary">{{ $report['rate_hadir'] }}%</span>
                                 </div>
                             </td>
-                            <td class="py-3.5 px-5 font-bold {{ $report['avg_nilai'] >= 75 ? 'text-brand' : 'text-amber-600' }}">
+                            <td class="py-3.5 px-5 font-bold {{ $report['avg_nilai'] >= 75 ? 'text-brand' : 'text-status-izin' }}">
                                 {{ $report['avg_nilai'] }}
                             </td>
                             <td class="py-3.5 px-5 text-center">

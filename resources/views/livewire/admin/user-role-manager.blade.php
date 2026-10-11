@@ -45,8 +45,8 @@
             <div class="text-[10px] text-text-secondary mt-0.5">Portal Rapor & Jadwal</div>
         </div>
         <div class="bg-surface rounded-2xl p-4 border border-border shadow-card">
-            <div class="text-[11px] font-bold text-amber-600 uppercase">Admin TU & Waka</div>
-            <div class="text-2xl font-extrabold text-amber-600 mt-1">{{ $adminCount + $wakaCount }}</div>
+            <div class="text-[11px] font-bold text-status-izin uppercase">Admin TU & Waka</div>
+            <div class="text-2xl font-extrabold text-status-izin mt-1">{{ $adminCount + $wakaCount }}</div>
             <div class="text-[10px] text-text-secondary mt-0.5">Akses Penuh Manajemen</div>
         </div>
     </div>
@@ -107,7 +107,7 @@
                                         Admin TU
                                     </span>
                                 @elseif($roleName === 'waka_kurikulum')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-status-izin/15 text-status-izin border border-status-izin/30">
                                         Waka Kurikulum
                                     </span>
                                 @elseif($roleName === 'guru')
