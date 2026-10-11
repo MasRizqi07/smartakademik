@@ -25,7 +25,7 @@
     <!-- Quick Stats Bento Grid -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <!-- Presensi Terisi -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase">Hari Ini</span>
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Tugas / Nilai Pending -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-izin bg-status-izin/15 px-2 py-0.5 rounded-full uppercase">Formatif</span>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Kelas Diampu -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-hadir bg-status-hadir/15 px-2 py-0.5 rounded-full uppercase">Aktif</span>
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Jam Mengajar Mingguan -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-sakit bg-status-sakit/15 px-2 py-0.5 rounded-full uppercase">Beban</span>
@@ -98,7 +98,7 @@
             @endphp
 
             @forelse($guruSchedules as $idx => $sched)
-                <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl shadow-card border border-border-default flex flex-col md:flex-row md:items-center justify-between gap-4 hover-lift transition-all {{ $idx === 0 ? 'border-primary/60 ring-1 ring-primary/20' : '' }}">
+                <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl shadow-card border border-border-default flex flex-col md:flex-row md:items-center justify-between gap-4 transition-shadow hover:shadow-md {{ $idx === 0 ? 'border-primary/60 ring-1 ring-primary/20' : '' }}">
                     <div class="flex items-start gap-4">
                         <div class="{{ $idx === 0 ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface-variant' }} rounded-xl p-3 flex flex-col items-center justify-center min-w-[70px] shadow-xs">
                             <span class="font-bold text-xs uppercase font-mono">{{ $sched->waktu_mulai ?? '07:00' }}</span>
@@ -154,7 +154,7 @@
 
     <!-- Quick Shortcuts -->
     <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-        <a href="{{ route('guru.absensi') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group hover-lift">
+        <a href="{{ route('guru.absensi') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group transition-shadow hover:shadow-md">
             <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center group-hover:bg-status-hadir group-hover:text-white transition-colors shrink-0">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
@@ -164,7 +164,7 @@
             </div>
         </a>
 
-        <a href="{{ route('guru.nilai') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group hover-lift">
+        <a href="{{ route('guru.nilai') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group transition-shadow hover:shadow-md">
             <div class="w-12 h-12 rounded-xl bg-status-sakit/15 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>

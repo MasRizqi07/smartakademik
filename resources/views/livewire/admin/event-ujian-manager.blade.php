@@ -21,7 +21,7 @@
 
     <!-- Dashboard Stats Bento -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex justify-between items-start mb-3">
                 <span class="p-2.5 bg-secondary-container text-on-secondary-container rounded-xl">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex justify-between items-start mb-3">
                 <span class="p-2.5 bg-primary/10 text-primary rounded-xl">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex justify-between items-start mb-3">
                 <span class="p-2.5 bg-status-izin/10 text-status-izin rounded-xl">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
@@ -146,7 +146,7 @@
 
     <!-- Add Modal Dialog -->
     @if($isAddOpen)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 animate-fade-in">
             <div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-border-default flex flex-col gap-4">
                 <div class="flex justify-between items-center border-b border-border-default pb-3">
                     <h3 class="font-headline-md text-lg font-bold text-text-main">Tambah Jadwal Event Ujian</h3>

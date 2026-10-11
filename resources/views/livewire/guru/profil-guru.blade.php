@@ -93,7 +93,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse($jadwals as $j)
-                    <div class="p-4 rounded-xl bg-surface border border-border-default/80 flex justify-between items-center hover-lift transition-all">
+                    <div class="p-4 rounded-xl bg-surface border border-border-default/80 flex justify-between items-center transition-shadow hover:shadow-md">
                         <div>
                             <h4 class="font-label-md text-sm font-bold text-text-main">{{ $j->mapel->nama_mapel ?? 'Mapel' }}</h4>
                             <p class="text-xs text-on-surface-variant mt-0.5">Kelas {{ $j->kelas->tingkat ?? '' }} {{ $j->kelas->nama_kelas ?? '' }} &bull; Hari {{ $j->hari }}</p>
@@ -111,7 +111,7 @@
 
     <!-- Edit Profile Modal -->
     @if($isEditOpen)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 animate-fade-in">
             <div class="bg-surface-container-lowest rounded-2xl max-w-md w-full p-6 shadow-2xl border border-border-default flex flex-col gap-4">
                 <div class="flex justify-between items-center border-b border-border-default pb-3">
                     <h3 class="font-headline-md text-lg font-bold text-text-main">Edit Profil Guru</h3>

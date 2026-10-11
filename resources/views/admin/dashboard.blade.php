@@ -25,7 +25,7 @@
     <!-- Bento Grid Stats -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Active Classes -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-primary">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Kelas Aktif</span>
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Total Students -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-secondary">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Total Siswa</span>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Attendance Rate -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-status-hadir">
                 <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Rata-rata Kehadiran</span>
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Pending Tasks / Grades -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-status-izin">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Input Formatif</span>
@@ -198,7 +198,7 @@
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href="{{ route('admin.siswa') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.siswa') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-primary-container/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
@@ -208,7 +208,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.guru') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.guru') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
@@ -218,7 +218,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.kelas') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.kelas') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-status-izin/10 text-status-izin flex items-center justify-center group-hover:bg-status-izin group-hover:text-white transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
@@ -228,7 +228,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.mapel') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.mapel') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-status-sakit/10 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>

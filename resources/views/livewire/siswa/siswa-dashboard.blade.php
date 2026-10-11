@@ -47,7 +47,7 @@
 
         <!-- Quick KPI Stats Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Tingkat Kehadiran</p>
                     <p class="font-headline-lg text-2xl font-bold text-status-hadir mt-0.5">98.2%</p>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Rata-rata Formatif</p>
                     <p class="font-headline-lg text-2xl font-bold text-primary mt-0.5">88.5</p>
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Mata Pelajaran</p>
                     <p class="font-headline-lg text-2xl font-bold text-text-main mt-0.5">14 Mapel</p>

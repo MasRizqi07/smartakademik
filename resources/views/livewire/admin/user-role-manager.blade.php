@@ -159,7 +159,7 @@
 
     <!-- Create / Edit User Modal -->
     @if($isModalOpen)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
             <div class="bg-surface rounded-2xl p-6 border border-border shadow-xl max-w-md w-full space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-border">
                     <h3 class="font-bold text-sm text-text-primary">

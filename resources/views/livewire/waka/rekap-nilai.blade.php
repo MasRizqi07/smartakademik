@@ -15,7 +15,7 @@
 
     <!-- Summary KPI Bento -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
             <div>
                 <p class="text-xs text-on-surface-variant uppercase font-semibold">Rata-rata Madrasah</p>
                 <p class="font-headline-lg text-2xl font-bold text-primary mt-0.5">84.8</p>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
             <div>
                 <p class="text-xs text-on-surface-variant uppercase font-semibold">Ketuntasan Klasikal</p>
                 <p class="font-headline-lg text-2xl font-bold text-status-hadir mt-0.5">94.2%</p>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
             <div>
                 <p class="text-xs text-on-surface-variant uppercase font-semibold">Perlu Remedial</p>
                 <p class="font-headline-lg text-2xl font-bold text-status-alfa mt-0.5">5.8%</p>
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
             <div>
                 <p class="text-xs text-on-surface-variant uppercase font-semibold">Total Nilai Terekam</p>
                 <p class="font-headline-lg text-2xl font-bold text-text-main mt-0.5">{{ $siswas->total() }}</p>

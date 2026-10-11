@@ -22,7 +22,7 @@
             <!-- Main Content Area -->
             <div class="flex-1 md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen flex flex-col relative z-10 transition-all">
                 <!-- Top Header Bar -->
-                <header class="bg-white/85 backdrop-blur-md border-b border-slate-200/80 h-16 sm:h-20 px-4 sm:px-8 sticky top-0 flex items-center justify-between z-30 shadow-xs">
+                <header class="bg-surface border-b border-border h-16 sm:h-20 px-4 sm:px-8 sticky top-0 flex items-center justify-between z-30">
                     <div class="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
                         <div class="flex items-center gap-3 truncate">
                             @if (isset($header))

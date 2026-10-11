@@ -110,38 +110,44 @@
 }
 
 @layer utilities {
-  /* Glass card & panel utilities */
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .glass-card {
     @apply bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-card transition-all;
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .glass-panel {
     @apply bg-white/80 backdrop-blur-lg border border-white/60 shadow-soft;
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .glass-nav {
     @apply bg-white/85 backdrop-blur-md border-b border-slate-200/70;
   }
 
-  /* Rich gradients */
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .mesh-gradient-emerald {
     background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.05) 0%, transparent 60%);
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .mesh-gradient-hero {
     background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .text-gradient-emerald {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-500;
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .text-gradient-gold {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-400;
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .gradient-border-emerald {
     position: relative;
   }
@@ -158,7 +164,7 @@
     pointer-events: none;
   }
 
-  /* Micro-interactions & animations */
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .hover-lift {
     transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   }
@@ -167,6 +173,7 @@
     box-shadow: var(--shadow-card-hover);
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .hover-glow-brand {
     transition: all 0.25s ease;
   }
@@ -174,14 +181,17 @@
     box-shadow: 0 0 20px -3px rgba(5, 150, 105, 0.35);
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .animate-float-slow {
     animation: floatSlow 6s ease-in-out infinite;
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .animate-float-delayed {
     animation: floatSlow 6s ease-in-out 3s infinite;
   }
 
+  /* DEFERRED: used only by gated public pages (features.public_marketing). Do not use in live screens. */
   .animate-pulse-subtle {
     animation: pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
