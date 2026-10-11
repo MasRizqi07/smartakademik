@@ -35,7 +35,7 @@ class JadwalManager extends Component
         'waktu_selesai' => 'required',
         'kelas_id' => 'required|exists:kelas,id',
         'mapel_id' => 'required|exists:mapel,id',
-        'guru_id' => 'required|exists:gurus,id',
+        'guru_id' => 'required|exists:guru,id',
     ];
 
     public function updatingSearch()
@@ -53,14 +53,21 @@ class JadwalManager extends Component
         $this->resetPage();
     }
 
+    private function ensureCanManage(): void
+    {
+        abort_unless(auth()->user()->hasRole(['admin_tu', 'waka_kurikulum']), 403);
+    }
+
     public function create()
     {
+        $this->ensureCanManage();
         $this->resetForm();
         $this->isFormOpen = true;
     }
 
     public function edit($id)
     {
+        $this->ensureCanManage();
         $this->resetForm();
         $jadwal = JadwalPelajaran::findOrFail($id);
         $this->jadwalId = $jadwal->id;
@@ -76,6 +83,7 @@ class JadwalManager extends Component
 
     public function store()
     {
+        $this->ensureCanManage();
         $this->validate();
 
         // Automated Conflict Detection: Guru schedule clash
@@ -123,6 +131,7 @@ class JadwalManager extends Component
 
     public function delete($id)
     {
+        $this->ensureCanManage();
         JadwalPelajaran::findOrFail($id)->delete();
         session()->flash('message', 'Jadwal pelajaran berhasil dihapus.');
     }

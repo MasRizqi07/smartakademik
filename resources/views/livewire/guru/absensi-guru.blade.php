@@ -7,13 +7,17 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-            <button wire:click="markAllHadir" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand text-white font-semibold text-xs rounded-lg shadow-sm hover:bg-brand-hover transition-all active:scale-95">
+            <button wire:click="markAllHadir" wire:confirm="Isi semua siswa yang belum ditandai sebagai Hadir? Anda tetap perlu memeriksa lalu menekan Simpan." type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand/10 text-brand border border-brand/20 font-semibold text-xs rounded-lg hover:bg-brand/20 transition-all active:scale-95">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                <span>Tandai Semua Hadir</span>
+                <span>Isi Sisa sebagai Hadir</span>
             </button>
             <button wire:click="resetAll" wire:confirm="Yakin ingin mereset seluruh status presensi kelas ini?" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface text-text-secondary border border-border font-semibold text-xs rounded-lg hover:bg-slate-50 transition-all">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
                 <span>Reset</span>
+            </button>
+            <button wire:click="save" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand text-white font-semibold text-xs rounded-lg shadow-sm hover:bg-brand-hover transition-all active:scale-95">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Simpan Presensi</span>
             </button>
         </div>
     </div>
@@ -84,9 +88,9 @@
     <div class="bg-surface rounded-2xl border border-border shadow-card overflow-hidden">
         <div class="p-4 border-b border-border bg-surface-page/50 flex items-center justify-between">
             <span class="text-xs font-bold text-text-primary uppercase tracking-wider">Daftar Kehadiran Siswa ({{ count($siswas) }} Santri)</span>
-            <span class="text-xs text-text-secondary flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-status-hadir animate-pulse"></span>
-                <span>Auto-Save Aktif</span>
+            <span class="text-xs text-text-secondary flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-brand"></span>
+                <span>Periksa &amp; Tekan Simpan</span>
             </span>
         </div>
 
@@ -144,6 +148,16 @@
                 </div>
             @endforelse
         </div>
+
+        @if(count($siswas) > 0)
+            <div class="p-4 bg-surface-page/50 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+                <span class="text-xs text-text-secondary font-medium">Pastikan seluruh status presensi telah diperiksa sebelum disimpan ke database.</span>
+                <button wire:click="save" type="button" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-brand text-white font-bold text-xs rounded-lg shadow-sm hover:bg-brand-hover transition-all active:scale-95">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span>Simpan Presensi Kelas</span>
+                </button>
+            </div>
+        @endif
     </div>
 
     <!-- Note Modal -->
