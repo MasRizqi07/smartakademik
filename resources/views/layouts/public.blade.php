@@ -41,8 +41,10 @@
                     <svg class="w-3.5 h-3.5 text-amber-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                     <span>Pelayanan: 07:00 - 15:30 WIB</span>
                 </span>
+                @if(config('features.public_marketing'))
                 <span>•</span>
                 <a href="{{ route('kontak') }}" class="hover:text-white transition-colors underline decoration-dotted">Bantuan Helpdesk</a>
+                @endif
             </div>
         </div>
     </div>
@@ -73,6 +75,7 @@
                     <a href="{{ url('/') }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all relative {{ request()->is('/') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:text-text-primary hover:bg-slate-100/70' }}">
                         Beranda
                     </a>
+                    @if(config('features.public_marketing'))
                     <a href="{{ route('tentang') }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('tentang') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:text-text-primary hover:bg-slate-100/70' }}">
                         Tentang
                     </a>
@@ -91,6 +94,7 @@
                     <a href="{{ route('kontak') }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('kontak') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:text-text-primary hover:bg-slate-100/70' }}">
                         Kontak
                     </a>
+                    @endif
                 </nav>
 
                 <!-- Action Button & Mobile Trigger -->
@@ -129,12 +133,14 @@
         <!-- Mobile Drawer Navigation -->
         <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4" class="lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
             <a href="{{ url('/') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->is('/') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Beranda</a>
+            @if(config('features.public_marketing'))
             <a href="{{ route('tentang') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->routeIs('tentang') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Tentang Madrasah</a>
             <a href="{{ route('fitur') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->routeIs('fitur') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Fitur Unggulan</a>
             <a href="{{ route('prestasi') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->routeIs('prestasi') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Prestasi Santri</a>
             <a href="{{ route('kalender') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->routeIs('kalender') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Kalender Akademik</a>
             <a href="{{ route('bantuan') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->routeIs('bantuan') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Pusat Bantuan</a>
             <a href="{{ route('kontak') }}" class="block px-4 py-2.5 rounded-xl text-sm font-bold {{ request()->routeIs('kontak') ? 'text-brand bg-brand-surface' : 'text-text-secondary hover:bg-slate-50' }}">Kontak Support</a>
+            @endif
             <div class="pt-3 border-t border-slate-100 flex gap-2">
                 <a href="{{ route('portal') }}" class="flex-1 text-center py-2.5 rounded-xl text-xs font-bold border border-slate-200 text-text-secondary">Pilih Gerbang</a>
                 <a href="{{ route('login') }}" class="flex-1 text-center py-2.5 rounded-xl text-xs font-bold bg-brand text-white shadow-xs">Masuk Portal</a>
@@ -183,9 +189,11 @@
                     <h4 class="text-white text-xs font-extrabold uppercase tracking-wider font-display">Akses Pintas</h4>
                     <ul class="space-y-2 text-xs">
                         <li><a href="{{ url('/') }}" class="hover:text-emerald-400 transition-colors">Beranda Utama</a></li>
+                        @if(config('features.public_marketing'))
                         <li><a href="{{ route('fitur') }}" class="hover:text-emerald-400 transition-colors">Fitur &amp; Kemampuan</a></li>
                         <li><a href="{{ route('prestasi') }}" class="hover:text-emerald-400 transition-colors">Galeri Prestasi</a></li>
                         <li><a href="{{ route('kalender') }}" class="hover:text-emerald-400 transition-colors">Kalender Akademik</a></li>
+                        @endif
                         <li><a href="{{ route('portal') }}" class="hover:text-emerald-400 transition-colors">Gerbang Peran</a></li>
                     </ul>
                 </div>
@@ -198,7 +206,9 @@
                         <li><a href="{{ route('login', ['role' => 'siswa']) }}" class="hover:text-emerald-400 transition-colors">Portal Santri / Siswa</a></li>
                         <li><a href="{{ route('login', ['role' => 'waka']) }}" class="hover:text-emerald-400 transition-colors">Portal Waka Kurikulum</a></li>
                         <li><a href="{{ route('login', ['role' => 'admin']) }}" class="hover:text-emerald-400 transition-colors">Portal Tata Usaha</a></li>
+                        @if(config('features.public_marketing'))
                         <li><a href="{{ route('bantuan') }}" class="hover:text-emerald-400 transition-colors">Panduan &amp; FAQ</a></li>
+                        @endif
                     </ul>
                 </div>
 
@@ -206,8 +216,10 @@
                 <div class="space-y-3">
                     <h4 class="text-white text-xs font-extrabold uppercase tracking-wider font-display">Bantuan &amp; Legalitas</h4>
                     <ul class="space-y-2 text-xs">
+                        @if(config('features.public_marketing'))
                         <li><a href="{{ route('bantuan') }}" class="hover:text-emerald-400 transition-colors">Pusat Bantuan</a></li>
                         <li><a href="{{ route('kontak') }}" class="hover:text-emerald-400 transition-colors">Buat Tiket Dukungan</a></li>
+                        @endif
                         <li><span class="text-slate-500">NPSN: 20580054</span></li>
                         <li><span class="text-slate-500">Akreditasi: A (Unggul)</span></li>
                     </ul>

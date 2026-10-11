@@ -64,7 +64,9 @@
                 <footer class="mt-auto py-5 px-6 text-center text-xs text-text-secondary border-t border-slate-200/80 bg-white/60">
                     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
                         <span>&copy; {{ date('Y') }} <strong>SmartAkademik</strong> — MAN 4 Jombang PP. Mamba'ul Ma'arif Denanyar.</span>
-                        <a href="{{ route('kontak') }}" class="text-brand hover:underline font-medium">Bantuan &amp; Dukungan Sistem</a>
+                        @if(config('features.public_marketing'))
+                            <a href="{{ route('kontak') }}" class="text-brand hover:underline font-medium">Bantuan &amp; Dukungan Sistem</a>
+                        @endif
                     </div>
                 </footer>
             </div>
