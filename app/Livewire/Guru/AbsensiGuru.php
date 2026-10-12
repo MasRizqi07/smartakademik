@@ -210,6 +210,14 @@ class AbsensiGuru extends Component
                 session()->flash('error', 'Semua siswa wajib ditandai status kehadirannya sebelum menyimpan!');
                 return;
             }
+
+            $status = $this->absensiData[$siswaId];
+            abort_unless(in_array($status, self::STATUSES, true), 422, 'Status absensi tidak valid.');
+
+            $keterangan = $this->keteranganData[$siswaId] ?? null;
+            if ($keterangan !== null) {
+                abort_unless(is_string($keterangan) && mb_strlen($keterangan) <= 255, 422, 'Keterangan tidak valid.');
+            }
         }
 
         foreach ($allSiswaIds as $siswaId) {

@@ -273,4 +273,21 @@ class AbsensiGuruTest extends TestCase
             ->test(AbsensiGuru::class)
             ->assertCount('jadwals', 0);
     }
+
+    public function test_save_aborts_with_422_when_status_is_not_whitelisted()
+    {
+        $testDate = '2023-10-15';
+
+        Livewire::actingAs($this->guruUser)
+            ->test(AbsensiGuru::class, [
+                'selectedJadwalId' => $this->jadwal->id,
+                'tanggal' => $testDate,
+            ])
+            ->set("absensiData.{$this->siswa1->id}", 'hadir')
+            ->set("absensiData.{$this->siswa2->id}", 'bolos')
+            ->call('save')
+            ->assertStatus(422);
+
+        $this->assertEquals(0, Absensi::where('jadwal_id', $this->jadwal->id)->whereDate('tanggal', $testDate)->count());
+    }
 }

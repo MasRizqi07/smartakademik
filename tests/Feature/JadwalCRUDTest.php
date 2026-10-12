@@ -176,4 +176,69 @@ class JadwalCRUDTest extends TestCase
 
         $this->assertDatabaseMissing('jadwal_pelajaran', ['id' => $jadwal->id]);
     }
+
+    public function test_waka_jadwal_manager_detects_guru_clash()
+    {
+        // Existing schedule for Guru A
+        JadwalPelajaran::create([
+            'kelas_id' => $this->kelas->id,
+            'mapel_id' => $this->mapel->id,
+            'guru_id' => $this->guru->id,
+            'hari' => 'Senin',
+            'jam_ke' => 2,
+            'waktu_mulai' => '08:30',
+            'waktu_selesai' => '10:00',
+        ]);
+
+        $initialCount = JadwalPelajaran::count();
+        $kelasB = Kelas::create(['tingkat' => 'XI', 'nama_kelas' => 'XI-B']);
+
+        // Attempt to create schedule with same Guru A on same day & slot for different class
+        Livewire::actingAs($this->adminUser)
+            ->test(WakaJadwalManager::class)
+            ->set('kelas_id', $kelasB->id)
+            ->set('mapel_id', $this->mapel->id)
+            ->set('guru_id', $this->guru->id)
+            ->set('hari', 'Senin')
+            ->set('jam_ke', 2)
+            ->set('waktu_mulai', '08:30')
+            ->set('waktu_selesai', '10:00')
+            ->call('store')
+            ->assertHasErrors(['guru_id']);
+
+        $this->assertEquals($initialCount, JadwalPelajaran::count());
+    }
+
+    public function test_waka_jadwal_manager_detects_kelas_clash()
+    {
+        // Existing schedule for Kelas A
+        JadwalPelajaran::create([
+            'kelas_id' => $this->kelas->id,
+            'mapel_id' => $this->mapel->id,
+            'guru_id' => $this->guru->id,
+            'hari' => 'Selasa',
+            'jam_ke' => 3,
+            'waktu_mulai' => '10:00',
+            'waktu_selesai' => '11:30',
+        ]);
+
+        $initialCount = JadwalPelajaran::count();
+        $guru2 = Guru::create(['nip_nuptk' => 'G002', 'nama' => 'Guru B']);
+        $mapel2 = Mapel::create(['kode_mapel' => 'M002', 'nama_mapel' => 'Mapel B']);
+
+        // Attempt to create schedule for same Kelas A on same day & slot with different teacher & mapel
+        Livewire::actingAs($this->adminUser)
+            ->test(WakaJadwalManager::class)
+            ->set('kelas_id', $this->kelas->id)
+            ->set('mapel_id', $mapel2->id)
+            ->set('guru_id', $guru2->id)
+            ->set('hari', 'Selasa')
+            ->set('jam_ke', 3)
+            ->set('waktu_mulai', '10:00')
+            ->set('waktu_selesai', '11:30')
+            ->call('store')
+            ->assertHasErrors(['kelas_id']);
+
+        $this->assertEquals($initialCount, JadwalPelajaran::count());
+    }
 }
