@@ -54,10 +54,17 @@
                 <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Rata-rata Kehadiran</span>
             </div>
+            @php
+                $adminTotalAbs = \App\Models\Absensi::count();
+                $adminHadirAbs = $adminTotalAbs > 0 ? \App\Models\Absensi::where('status', 'hadir')->count() : 0;
+                $adminRateKehadiran = $adminTotalAbs > 0 ? number_format(($adminHadirAbs / $adminTotalAbs) * 100, 1) . '%' : '-';
+            @endphp
             <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
-                96.8%
+                {{ $adminRateKehadiran }}
             </div>
-            <span class="text-[11px] text-status-hadir font-medium">+1.2% dari minggu lalu</span>
+            <span class="text-[11px] {{ $adminTotalAbs > 0 ? 'text-status-hadir' : 'text-outline' }} font-medium">
+                {{ $adminTotalAbs > 0 ? 'Berdasarkan data presensi madrasah' : 'Belum ada data' }}
+            </span>
         </div>
 
         <!-- Pending Tasks / Grades -->

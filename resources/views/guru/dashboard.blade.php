@@ -22,6 +22,22 @@
         </p>
     </section>
 
+    @php
+        $guruModel = \App\Models\Guru::where('user_id', auth()->id())->first();
+        $hariMap = [1 => 'Senin', 2 => 'Selasa', 3 => 'Rabu', 4 => 'Kamis', 5 => 'Jumat', 6 => 'Sabtu', 7 => 'Minggu'];
+        $namaHariIni = $hariMap[date('N')] ?? 'Senin';
+        $jadwalHariIniGuru = $guruModel ? \App\Models\JadwalPelajaran::where('guru_id', $guruModel->id)->where('hari', $namaHariIni)->get() : collect([]);
+        $totalJadwalHariIniGuru = $jadwalHariIniGuru->count();
+        $presensiTerisiCount = $totalJadwalHariIniGuru > 0 
+            ? \App\Models\Absensi::whereIn('jadwal_id', $jadwalHariIniGuru->pluck('id'))
+                ->where('tanggal', date('Y-m-d'))
+                ->distinct('jadwal_id')
+                ->count('jadwal_id')
+            : 0;
+        $presensiDisplay = $totalJadwalHariIniGuru > 0 ? "{$presensiTerisiCount} / {$totalJadwalHariIniGuru}" : '-';
+        $kelasGuruCount = $guruModel ? \App\Models\JadwalPelajaran::where('guru_id', $guruModel->id)->distinct('kelas_id')->count('kelas_id') : 0;
+    @endphp
+
     <!-- Quick Stats Bento Grid -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <!-- Presensi Terisi -->
@@ -31,7 +47,7 @@
                 <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase">Hari Ini</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">3 / 4</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">{{ $presensiDisplay }}</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">Presensi Terisi</p>
             </div>
         </div>
@@ -43,7 +59,7 @@
                 <span class="text-[10px] font-bold text-status-izin bg-status-izin/15 px-2 py-0.5 rounded-full uppercase">Formatif</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">12</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">-</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">Siswa Belum Formatif</p>
             </div>
         </div>
@@ -55,7 +71,7 @@
                 <span class="text-[10px] font-bold text-status-hadir bg-status-hadir/15 px-2 py-0.5 rounded-full uppercase">Aktif</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">{{ \App\Models\Kelas::count() }} Kelas</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">{{ $kelasGuruCount }} Kelas</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">Rombel Mengajar</p>
             </div>
         </div>
@@ -67,7 +83,7 @@
                 <span class="text-[10px] font-bold text-status-sakit bg-status-sakit/15 px-2 py-0.5 rounded-full uppercase">Beban</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">24 Jam</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">-</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">KBM per Minggu</p>
             </div>
         </div>

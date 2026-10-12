@@ -9,6 +9,9 @@ echo "raw_hues_live=$hues"
 echo "decoration_live=$decor"
 [ "$hues" -eq 0 ] || fail=1
 [ "$decor" -eq 0 ] || fail=1
+lit=$(grep -rEn ">[[:space:]]*[0-9]+([.,][0-9]+)?[[:space:]]*%?[[:space:]]*<|^[[:space:]]+[0-9]+([.,][0-9]+)?[[:space:]]*%?[[:space:]]*$" $LIVE --include=*.blade.php | grep -vE "/($EXCL)\.blade\.php|import-excel\.blade\.php|<svg|<path" | wc -l)
+echo "static_numeric_literals_live=$lit"
+[ "$lit" -eq 0 ] || fail=1
 for c in $(grep -rEoh "(bg|text|border|ring)-(brand|status-(hadir|izin|sakit|alfa))(-hover|-surface|-dark)?/[0-9]+" $LIVE --include=*.blade.php | sort -u); do
   esc=$(printf '%s' "$c" | sed 's#/#\\\\/#g')
   grep -q "\.$esc" public/build/assets/*.css || { echo "MISSING: $c"; fail=1; }

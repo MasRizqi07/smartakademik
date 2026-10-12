@@ -71,7 +71,7 @@
             <div class="bg-surface-container-lowest rounded-2xl shadow-card p-5 border border-border-default flex items-center justify-between">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider mb-1 font-semibold">Beban Mengajar</p>
-                    <p class="font-headline-md text-2xl font-bold text-text-main">24 <span class="text-xs font-normal text-outline">Jam / Minggu</span></p>
+                    <p class="font-headline-md text-2xl font-bold text-text-main">- <span class="text-xs font-normal text-outline">Jam / Minggu</span></p>
                 </div>
                 <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>

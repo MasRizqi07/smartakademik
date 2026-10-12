@@ -22,8 +22,10 @@
         <div class="bg-surface p-5 rounded-lg shadow-card border border-border flex items-center justify-between">
             <div>
                 <p class="text-xs text-text-secondary uppercase font-semibold">Tingkat Hadir</p>
-                <p class="text-2xl font-bold text-status-hadir mt-0.5">96.8%</p>
-                <p class="text-[11px] text-status-hadir font-medium">+1.4% MoM</p>
+                <p class="text-2xl font-bold text-status-hadir mt-0.5">{{ $summaryStats['tingkatHadir'] }}</p>
+                <p class="text-[11px] {{ $summaryStats['total'] > 0 ? 'text-status-hadir' : 'text-outline' }} font-medium">
+                    {{ $summaryStats['total'] > 0 ? 'Berdasarkan data absensi' : 'Belum ada data' }}
+                </p>
             </div>
             <div class="w-11 h-11 rounded-lg bg-status-hadir/15 text-status-hadir flex items-center justify-center">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
@@ -33,7 +35,7 @@
         <div class="bg-surface p-5 rounded-lg shadow-card border border-border flex items-center justify-between">
             <div>
                 <p class="text-xs text-text-secondary uppercase font-semibold">Total Izin</p>
-                <p class="text-2xl font-bold text-status-izin mt-0.5">14</p>
+                <p class="text-2xl font-bold text-status-izin mt-0.5">{{ $summaryStats['izin'] }}</p>
                 <p class="text-[11px] text-text-secondary">Surat Tercatat</p>
             </div>
             <div class="w-11 h-11 rounded-lg bg-status-izin/15 text-status-izin flex items-center justify-center">
@@ -44,7 +46,7 @@
         <div class="bg-surface p-5 rounded-lg shadow-card border border-border flex items-center justify-between">
             <div>
                 <p class="text-xs text-text-secondary uppercase font-semibold">Total Sakit</p>
-                <p class="text-2xl font-bold text-status-sakit mt-0.5">8</p>
+                <p class="text-2xl font-bold text-status-sakit mt-0.5">{{ $summaryStats['sakit'] }}</p>
                 <p class="text-[11px] text-text-secondary">Surat Dokter</p>
             </div>
             <div class="w-11 h-11 rounded-lg bg-status-sakit/15 text-status-sakit flex items-center justify-center">
@@ -55,7 +57,7 @@
         <div class="bg-surface p-5 rounded-lg shadow-card border border-border flex items-center justify-between">
             <div>
                 <p class="text-xs text-text-secondary uppercase font-semibold">Total Tanpa Ket (Alfa)</p>
-                <p class="text-2xl font-bold text-status-alfa mt-0.5">3</p>
+                <p class="text-2xl font-bold text-status-alfa mt-0.5">{{ $summaryStats['alfa'] }}</p>
                 <p class="text-[11px] text-status-alfa font-medium">Perlu Tindak Lanjut</p>
             </div>
             <div class="w-11 h-11 rounded-lg bg-status-alfa/15 text-status-alfa flex items-center justify-center">
