@@ -66,6 +66,16 @@
     --color-danger:     #e11d48;
     --color-danger-rgb: 225 29 72;
 
+    --color-info:         #2563eb;
+    --color-info-hover:   #1d4ed8;
+    --color-info-surface: #eff6ff;
+    --color-info-border:  #bfdbfe;
+
+    --color-info-rgb:         37 99 235;
+    --color-info-hover-rgb:   29 78 216;
+    --color-info-surface-rgb: 239 246 255;
+    --color-info-border-rgb:  191 219 254;
+
     --shadow-card: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px 0 rgba(0,0,0,0.04);
     --shadow-card-hover: 0 12px 28px -5px rgba(5, 150, 105, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 

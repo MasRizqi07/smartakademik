@@ -40,8 +40,8 @@
             <div class="text-[10px] text-text-secondary mt-0.5">Hak Akses Presensi & Nilai</div>
         </div>
         <div class="bg-surface rounded-2xl p-4 border border-border shadow-card">
-            <div class="text-[11px] font-bold text-blue-600 uppercase">Siswa Terdata</div>
-            <div class="text-2xl font-extrabold text-blue-600 mt-1">{{ $siswaCount }}</div>
+            <div class="text-[11px] font-bold text-info uppercase">Siswa Terdata</div>
+            <div class="text-2xl font-extrabold text-info mt-1">{{ $siswaCount }}</div>
             <div class="text-[10px] text-text-secondary mt-0.5">Portal Rapor & Jadwal</div>
         </div>
         <div class="bg-surface rounded-2xl p-4 border border-border shadow-card">
@@ -103,7 +103,7 @@
                             </td>
                             <td class="py-3.5 px-5">
                                 @if($roleName === 'admin_tu')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-surface text-brand-dark border border-brand/30">
                                         Admin TU
                                     </span>
                                 @elseif($roleName === 'waka_kurikulum')
@@ -115,7 +115,7 @@
                                         Guru Pengampu
                                     </span>
                                 @elseif($roleName === 'siswa')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-info-surface text-info border border-info-border">
                                         Siswa
                                     </span>
                                 @else

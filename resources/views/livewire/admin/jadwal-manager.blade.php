@@ -148,9 +148,9 @@
                         <tr class="hover:bg-slate-50/70 transition-colors group">
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex flex-col items-center justify-center">
-                                        <span class="text-xs font-bold text-indigo-700 uppercase">{{ substr($jadwal->hari, 0, 3) }}</span>
-                                        <span class="text-[10px] text-indigo-500 font-semibold">{{ $jadwal->jam_ke }}</span>
+                                    <div class="w-12 h-12 rounded-xl bg-brand-surface border border-brand/20 flex flex-col items-center justify-center">
+                                        <span class="text-xs font-bold text-brand-dark uppercase">{{ substr($jadwal->hari, 0, 3) }}</span>
+                                        <span class="text-[10px] text-brand font-semibold">{{ $jadwal->jam_ke }}</span>
                                     </div>
                                     <div>
                                         <span class="block text-sm font-bold text-slate-800">{{ $jadwal->hari }}</span>

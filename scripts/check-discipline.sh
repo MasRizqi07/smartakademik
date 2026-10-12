@@ -3,7 +3,7 @@ set -u
 LIVE='resources/views'
 EXCL='welcome|tentang|fitur|prestasi|kalender|bantuan|kontak|prestasi-galeri|kalender-akademik|kontak-support'
 fail=0
-hues=$(grep -rEo "(bg|text|border|ring|from|to|via|fill|stroke|shadow)-(emerald|green|amber|sky|rose|red|yellow|orange|teal)-[0-9]+" $LIVE --include=*.blade.php | grep -vE "/($EXCL)\.blade\.php" | wc -l)
+hues=$(grep -rEo "(bg|text|border|ring|from|to|via|fill|stroke|shadow)-(emerald|green|amber|sky|rose|red|yellow|orange|teal|blue|indigo|purple|violet|pink|cyan|lime|fuchsia)-[0-9]+" $LIVE --include=*.blade.php | grep -vE "/($EXCL)\.blade\.php" | wc -l)
 decor=$(grep -rEn "backdrop-blur|animate-(float|pulse-subtle|ping)|hover-lift|glass-(card|panel|nav)|mesh-gradient|text-gradient|shadow-glow" $LIVE --include=*.blade.php | grep -vE "/($EXCL)\.blade\.php" | wc -l)
 echo "raw_hues_live=$hues"
 echo "decoration_live=$decor"

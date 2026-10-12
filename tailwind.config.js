@@ -50,6 +50,12 @@ export default {
                 danger: {
                     DEFAULT: 'rgb(var(--color-danger-rgb) / <alpha-value>)',
                 },
+                info: {
+                    DEFAULT: 'rgb(var(--color-info-rgb) / <alpha-value>)',
+                    hover: 'rgb(var(--color-info-hover-rgb) / <alpha-value>)',
+                    surface: 'rgb(var(--color-info-surface-rgb) / <alpha-value>)',
+                    border: 'rgb(var(--color-info-border-rgb) / <alpha-value>)',
+                },
                 surface: {
                     page: 'var(--color-bg-page)',
                     DEFAULT: 'var(--color-bg-surface)',
