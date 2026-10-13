@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Livewire\Admin\JadwalManager;
 use App\Livewire\Waka\JadwalManager as WakaJadwalManager;
 use App\Models\Guru;
 use App\Models\JadwalPelajaran;
@@ -37,7 +36,7 @@ class JadwalCRUDTest extends TestCase
     public function test_can_create_jadwal()
     {
         Livewire::actingAs($this->adminUser)
-            ->test(JadwalManager::class)
+            ->test(WakaJadwalManager::class)
             ->set('kelas_id', $this->kelas->id)
             ->set('mapel_id', $this->mapel->id)
             ->set('guru_id', $this->guru->id)
@@ -75,7 +74,7 @@ class JadwalCRUDTest extends TestCase
         $kelasB = Kelas::create(['tingkat' => 'X', 'nama_kelas' => 'X-B']);
         
         $livewire = Livewire::actingAs($this->adminUser)
-            ->test(JadwalManager::class)
+            ->test(WakaJadwalManager::class)
             ->set('kelas_id', $kelasB->id)
             ->set('mapel_id', $this->mapel->id)
             ->set('guru_id', $this->guru->id) // Same Guru
@@ -85,7 +84,7 @@ class JadwalCRUDTest extends TestCase
             ->set('waktu_selesai', '08:30')
             ->call('store');
             
-        $livewire->assertHasErrors(['jam_ke']);
+        $livewire->assertHasErrors(['guru_id']);
             
         $this->assertEquals(1, JadwalPelajaran::where('guru_id', $this->guru->id)->count());
     }
