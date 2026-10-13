@@ -10,6 +10,7 @@ use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Siswa;
 use App\Models\User;
+use Carbon\Carbon;
 use Database\Seeders\RoleAndUserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -31,6 +32,7 @@ class AbsensiGuruTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        Carbon::setTestNow('2023-10-09 08:00:00');
         $this->seed(RoleAndUserSeeder::class);
         
         $this->guruUser = User::where('email', 'guru@smartakademik.test')->first();
@@ -47,16 +49,18 @@ class AbsensiGuruTest extends TestCase
         $this->jadwal = JadwalPelajaran::where('guru_id', $this->guru->id)->first();
     }
 
+    protected function tearDown(): void
+    {
+        Carbon::setTestNow();
+        parent::tearDown();
+    }
+
     public function test_guru_can_see_their_own_jadwal_and_siswa()
     {
-        // Act as guru 1, set date to Monday so Jadwal is loaded
-        $testDate = '2023-10-09'; // A Monday
+        $testDate = '2023-10-09';
         
-        // Force the app to think today is Monday for the scopeHariIni to work properly if needed
-        // Or we just test that the Livewire component loads siswas correctly when jadwal is selected
         Livewire::actingAs($this->guruUser)
             ->test(AbsensiGuru::class)
-            ->set('tanggal', $testDate)
             ->set('selectedJadwalId', $this->jadwal->id)
             ->assertCount('siswas', 2)
             ->assertSee($this->siswa1->nama)
@@ -69,7 +73,6 @@ class AbsensiGuruTest extends TestCase
 
         Livewire::actingAs($this->guruUser)
             ->test(AbsensiGuru::class)
-            ->set('tanggal', $testDate)
             ->set('selectedJadwalId', $this->jadwal->id)
             ->set("absensiData.{$this->siswa1->id}", 'hadir')
             ->set("absensiData.{$this->siswa2->id}", 'sakit')
@@ -99,7 +102,6 @@ class AbsensiGuruTest extends TestCase
         Livewire::actingAs($this->guru2User)
             ->test(AbsensiGuru::class, [
                 'selectedJadwalId' => $this->jadwal->id,
-                'tanggal' => $testDate,
             ])
             ->call('setPresence', $this->siswa1->id, 'hadir')
             ->assertForbidden();
@@ -113,7 +115,6 @@ class AbsensiGuruTest extends TestCase
         Livewire::actingAs($this->guru2User)
             ->test(AbsensiGuru::class, [
                 'selectedJadwalId' => $this->jadwal->id,
-                'tanggal' => $testDate,
             ])
             ->call('resetAll')
             ->assertForbidden();
@@ -122,7 +123,6 @@ class AbsensiGuruTest extends TestCase
         Livewire::actingAs($this->guru2User)
             ->test(AbsensiGuru::class, [
                 'selectedJadwalId' => $this->jadwal->id,
-                'tanggal' => $testDate,
             ])
             ->set('activeSiswaId', $this->siswa1->id)
             ->set('noteText', 'Catatan terlarang')
@@ -136,7 +136,6 @@ class AbsensiGuruTest extends TestCase
 
         Livewire::actingAs($this->guruUser)
             ->test(AbsensiGuru::class)
-            ->set('tanggal', $testDate)
             ->set('selectedJadwalId', $this->jadwal->id)
             ->call('setPresence', $this->siswa1->id, 'bolos')
             ->assertStatus(422);
@@ -155,7 +154,6 @@ class AbsensiGuruTest extends TestCase
 
         Livewire::actingAs($this->guruUser)
             ->test(AbsensiGuru::class)
-            ->set('tanggal', $testDate)
             ->set('selectedJadwalId', $this->jadwal->id)
             ->call('setPresence', $otherSiswa->id, 'hadir')
             ->assertStatus(404);
@@ -183,7 +181,6 @@ class AbsensiGuruTest extends TestCase
 
         $component = Livewire::actingAs($this->guruUser)
             ->test(AbsensiGuru::class)
-            ->set('tanggal', $testDate)
             ->set('selectedJadwalId', $this->jadwal->id);
 
         // Verify siswa1 is loaded as izin
@@ -240,7 +237,6 @@ class AbsensiGuruTest extends TestCase
         Livewire::actingAs($this->guru2User)
             ->test(AbsensiGuru::class, [
                 'selectedJadwalId' => $this->jadwal->id,
-                'tanggal' => $testDate,
             ])
             ->set('activeSiswaId', $this->siswa1->id)
             ->set('noteText', 'Ubah keterangan')
@@ -250,7 +246,6 @@ class AbsensiGuruTest extends TestCase
         Livewire::actingAs($this->guru2User)
             ->test(AbsensiGuru::class, [
                 'selectedJadwalId' => $this->jadwal->id,
-                'tanggal' => $testDate,
             ])
             ->call('resetAll')
             ->assertForbidden();
@@ -276,12 +271,11 @@ class AbsensiGuruTest extends TestCase
 
     public function test_save_aborts_with_422_when_status_is_not_whitelisted()
     {
-        $testDate = '2023-10-15';
+        $testDate = '2023-10-09';
 
         Livewire::actingAs($this->guruUser)
             ->test(AbsensiGuru::class, [
                 'selectedJadwalId' => $this->jadwal->id,
-                'tanggal' => $testDate,
             ])
             ->set("absensiData.{$this->siswa1->id}", 'hadir')
             ->set("absensiData.{$this->siswa2->id}", 'bolos')
@@ -289,5 +283,69 @@ class AbsensiGuruTest extends TestCase
             ->assertStatus(422);
 
         $this->assertEquals(0, Absensi::where('jadwal_id', $this->jadwal->id)->whereDate('tanggal', $testDate)->count());
+    }
+
+    public function test_tanggal_is_forced_to_today_on_mount()
+    {
+        Carbon::setTestNow('2023-10-09 08:00:00');
+
+        Livewire::actingAs($this->guruUser)
+            ->test(AbsensiGuru::class)
+            ->assertSet('tanggal', '2023-10-09');
+
+        Livewire::actingAs($this->guruUser)
+            ->test(AbsensiGuru::class, ['tanggal' => '2023-10-15'])
+            ->assertSet('tanggal', '2023-10-09');
+    }
+
+    public function test_tanggal_cannot_be_modified_from_client()
+    {
+        $this->expectException(\Livewire\Features\SupportLockedProperties\CannotUpdateLockedPropertyException::class);
+
+        Livewire::actingAs($this->guruUser)
+            ->test(AbsensiGuru::class)
+            ->set('tanggal', '2023-10-10');
+    }
+
+    public function test_writes_are_rejected_after_day_rollover()
+    {
+        $mountAtRollover = function () {
+            Carbon::setTestNow(Carbon::parse('2023-10-09 23:55:00', 'Asia/Jakarta'));
+            $comp = Livewire::actingAs($this->guruUser)
+                ->test(AbsensiGuru::class, [
+                    'selectedJadwalId' => $this->jadwal->id,
+                ]);
+            $comp->assertSet('tanggal', '2023-10-09');
+            Carbon::setTestNow(Carbon::parse('2023-10-10 00:05:00', 'Asia/Jakarta'));
+            return $comp;
+        };
+
+        // 1. setPresence
+        $mountAtRollover()->call('setPresence', $this->siswa1->id, 'hadir')
+            ->assertStatus(422);
+
+        // 2. markAllHadir
+        $mountAtRollover()->call('markAllHadir')
+            ->assertStatus(422);
+
+        // 3. resetAll
+        $mountAtRollover()->call('resetAll')
+            ->assertStatus(422);
+
+        // 4. saveNote
+        $mountAtRollover()
+            ->set('activeSiswaId', $this->siswa1->id)
+            ->set('noteText', 'Catatan rollover')
+            ->call('saveNote')
+            ->assertStatus(422);
+
+        // 5. save
+        $mountAtRollover()
+            ->set("absensiData.{$this->siswa1->id}", 'hadir')
+            ->set("absensiData.{$this->siswa2->id}", 'hadir')
+            ->call('save')
+            ->assertStatus(422);
+
+        $this->assertSame(0, Absensi::count());
     }
 }

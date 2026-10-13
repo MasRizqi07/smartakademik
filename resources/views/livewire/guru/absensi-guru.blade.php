@@ -53,9 +53,11 @@
                 </select>
             </div>
 
-            <div class="w-full sm:w-44">
+            <div class="w-full sm:w-56">
                 <label class="block text-xs font-bold text-text-primary mb-1.5">Tanggal Presensi</label>
-                <input wire:model.live="tanggal" type="date" class="w-full text-xs font-semibold py-2 px-3 rounded-lg border border-border bg-surface-page focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all" />
+                <div class="w-full text-xs font-semibold py-2.5 px-3 rounded-lg border border-border bg-surface-page text-text-primary">
+                    {{ $tanggal ? \Carbon\Carbon::parse($tanggal)->translatedFormat('l, d F Y') : '-' }}
+                </div>
             </div>
         </div>
 

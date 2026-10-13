@@ -6,6 +6,7 @@ use App\Models\Absensi;
 use App\Models\JadwalPelajaran;
 use App\Models\Siswa;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class AbsensiGuru extends Component
@@ -17,6 +18,8 @@ class AbsensiGuru extends Component
     public $jadwals = [];
     public $selectedJadwalId = null;
     public $siswas = [];
+
+    #[Locked]
     public $tanggal = '';
     
     // absensiData: [siswa_id => status]
@@ -32,6 +35,7 @@ class AbsensiGuru extends Component
     private function jadwalOrFail(): JadwalPelajaran
     {
         abort_unless($this->selectedJadwalId && $this->tanggal, 422);
+        abort_unless($this->tanggal === today()->toDateString(), 422, 'Tanggal presensi hanya boleh hari ini. Muat ulang halaman.');
         $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
         $this->authorize('create', [Absensi::class, $jadwal]);   // unconditional
         return $jadwal;
@@ -44,9 +48,9 @@ class AbsensiGuru extends Component
         return $siswa;
     }
 
-    public function mount($selectedJadwalId = null, $tanggal = null)
+    public function mount($selectedJadwalId = null)
     {
-        $this->tanggal = $tanggal ?: date('Y-m-d');
+        $this->tanggal = today()->toDateString();
         if ($selectedJadwalId) {
             $this->selectedJadwalId = $selectedJadwalId;
         } else {
@@ -74,11 +78,6 @@ class AbsensiGuru extends Component
     }
 
     public function updatedSelectedJadwalId()
-    {
-        $this->loadSiswas();
-    }
-
-    public function updatedTanggal()
     {
         $this->loadSiswas();
     }
