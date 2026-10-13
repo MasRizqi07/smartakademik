@@ -241,4 +241,121 @@ class JadwalCRUDTest extends TestCase
 
         $this->assertEquals($initialCount, JadwalPelajaran::count());
     }
+
+    public function test_guru_sees_only_own_jadwal_on_waka_jadwal_manager()
+    {
+        JadwalPelajaran::query()->delete();
+
+        $guru1User = User::where('email', 'guru@smartakademik.test')->first();
+        $guru1 = Guru::where('user_id', $guru1User->id)->first();
+
+        $guru2User = User::where('email', 'guru2@smartakademik.test')->first();
+        $guru2 = Guru::where('user_id', $guru2User->id)->first();
+
+        $kelasA = Kelas::create(['tingkat' => 'X', 'nama_kelas' => 'X-Alpha']);
+        $kelasB = Kelas::create(['tingkat' => 'XI', 'nama_kelas' => 'XI-Beta']);
+
+        $mapelA = Mapel::create(['kode_mapel' => 'MAP-A', 'nama_mapel' => 'Biologi Khusus A']);
+        $mapelB = Mapel::create(['kode_mapel' => 'MAP-B', 'nama_mapel' => 'Fisika Khusus B']);
+
+        JadwalPelajaran::create([
+            'kelas_id' => $kelasA->id,
+            'mapel_id' => $mapelA->id,
+            'guru_id' => $guru1->id,
+            'hari' => 'Senin',
+            'jam_ke' => 1,
+            'waktu_mulai' => '07:00',
+            'waktu_selesai' => '08:30',
+        ]);
+
+        JadwalPelajaran::create([
+            'kelas_id' => $kelasB->id,
+            'mapel_id' => $mapelB->id,
+            'guru_id' => $guru2->id,
+            'hari' => 'Selasa',
+            'jam_ke' => 2,
+            'waktu_mulai' => '08:30',
+            'waktu_selesai' => '10:00',
+        ]);
+
+        Livewire::actingAs($guru1User)
+            ->test(WakaJadwalManager::class)
+            ->assertSee('Biologi Khusus A')
+            ->assertSee('X-Alpha')
+            ->assertDontSee('Fisika Khusus B')
+            ->assertDontSee($guru2->nama);
+    }
+
+    public function test_guru_without_guru_record_sees_no_jadwal()
+    {
+        JadwalPelajaran::query()->delete();
+
+        $userWithoutGuru = User::factory()->create();
+        $userWithoutGuru->assignRole('guru');
+
+        JadwalPelajaran::create([
+            'kelas_id' => $this->kelas->id,
+            'mapel_id' => $this->mapel->id,
+            'guru_id' => $this->guru->id,
+            'hari' => 'Rabu',
+            'jam_ke' => 1,
+            'waktu_mulai' => '07:00',
+            'waktu_selesai' => '08:30',
+        ]);
+
+        Livewire::actingAs($userWithoutGuru)
+            ->test(WakaJadwalManager::class)
+            ->assertViewHas('totalJadwal', 0)
+            ->assertViewHas('totalGuruMengajar', 0)
+            ->assertViewHas('jadwals', fn($jadwals) => $jadwals->count() === 0)
+            ->assertDontSee($this->mapel->nama_mapel);
+    }
+
+    public function test_waka_and_admin_still_see_all_jadwal()
+    {
+        JadwalPelajaran::query()->delete();
+
+        $wakaUser = User::where('email', 'waka@smartakademik.test')->first();
+
+        $guru2 = Guru::create(['nip_nuptk' => 'G002', 'nama' => 'Guru B']);
+        $mapel2 = Mapel::create(['kode_mapel' => 'M002', 'nama_mapel' => 'Mapel B']);
+
+        JadwalPelajaran::create([
+            'kelas_id' => $this->kelas->id,
+            'mapel_id' => $this->mapel->id,
+            'guru_id' => $this->guru->id,
+            'hari' => 'Senin',
+            'jam_ke' => 1,
+            'waktu_mulai' => '07:00',
+            'waktu_selesai' => '08:30',
+        ]);
+
+        JadwalPelajaran::create([
+            'kelas_id' => $this->kelas->id,
+            'mapel_id' => $mapel2->id,
+            'guru_id' => $guru2->id,
+            'hari' => 'Selasa',
+            'jam_ke' => 2,
+            'waktu_mulai' => '08:30',
+            'waktu_selesai' => '10:00',
+        ]);
+
+        Livewire::actingAs($wakaUser)
+            ->test(WakaJadwalManager::class)
+            ->assertSee('Mapel A')
+            ->assertSee('Mapel B')
+            ->assertSee('Guru A')
+            ->assertSee('Guru B')
+            ->assertViewHas('totalJadwal', 2)
+            ->assertViewHas('totalGuruMengajar', 2);
+
+        Livewire::actingAs($this->adminUser)
+            ->test(WakaJadwalManager::class)
+            ->assertSee('Mapel A')
+            ->assertSee('Mapel B')
+            ->assertSee('Guru A')
+            ->assertSee('Guru B')
+            ->assertViewHas('totalJadwal', 2)
+            ->assertViewHas('totalGuruMengajar', 2);
+    }
 }

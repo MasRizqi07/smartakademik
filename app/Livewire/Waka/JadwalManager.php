@@ -150,9 +150,24 @@ class JadwalManager extends Component
         $this->resetValidation();
     }
 
+    private function isOwnScheduleOnly(): bool
+    {
+        $user = auth()->user();
+        return $user && $user->hasRole('guru') && ! $user->hasAnyRole(['admin_tu', 'waka_kurikulum']);
+    }
+
     public function render()
     {
         $query = JadwalPelajaran::with(['kelas', 'mapel', 'guru']);
+
+        $isOwn = $this->isOwnScheduleOnly();
+        $ownGuruId = 0;
+
+        if ($isOwn) {
+            $guru = auth()->user()->guru;
+            $ownGuruId = $guru ? $guru->id : 0;
+            $query->where('guru_id', $ownGuruId);
+        }
 
         if (!empty($this->search)) {
             $query->where(function($q) {
@@ -175,17 +190,29 @@ class JadwalManager extends Component
         }
 
         $jadwals = $query->orderBy('hari')->orderBy('jam_ke')->paginate(10);
-        $kelases = Kelas::orderBy('nama_kelas')->get();
-        $mapels = Mapel::orderBy('nama_mapel')->get();
-        $gurus = Guru::orderBy('nama')->get();
+
+        if ($isOwn) {
+            $kelasIds = JadwalPelajaran::where('guru_id', $ownGuruId)->pluck('kelas_id')->unique();
+            $kelases = Kelas::whereIn('id', $kelasIds)->orderBy('nama_kelas')->get();
+            $mapels = collect();
+            $gurus = collect();
+            $totalJadwal = JadwalPelajaran::where('guru_id', $ownGuruId)->count();
+            $totalGuruMengajar = $totalJadwal > 0 ? 1 : 0;
+        } else {
+            $kelases = Kelas::orderBy('nama_kelas')->get();
+            $mapels = Mapel::orderBy('nama_mapel')->get();
+            $gurus = Guru::orderBy('nama')->get();
+            $totalJadwal = JadwalPelajaran::count();
+            $totalGuruMengajar = JadwalPelajaran::distinct('guru_id')->count('guru_id');
+        }
 
         return view('livewire.waka.jadwal-manager', [
             'jadwals' => $jadwals,
             'kelases' => $kelases,
             'mapels' => $mapels,
             'gurus' => $gurus,
-            'totalJadwal' => JadwalPelajaran::count(),
-            'totalGuruMengajar' => JadwalPelajaran::distinct('guru_id')->count('guru_id'),
+            'totalJadwal' => $totalJadwal,
+            'totalGuruMengajar' => $totalGuruMengajar,
         ])->layout('layouts.app', ['header' => 'Manajemen Jadwal Pelajaran']);
     }
 }
