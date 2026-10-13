@@ -158,5 +158,103 @@ class WakaTest extends TestCase
         $this->assertEquals('5', $row[7]); // Total
         $this->assertEquals('40%', $row[8]); // Persentase (2/5 * 100)
     }
+
+    public function test_rekap_absensi_renders_computed_kpi_and_no_fabricated_literals()
+    {
+        // 1. Empty database state
+        Livewire::actingAs($this->wakaUser)
+            ->test(RekapAbsensi::class)
+            ->assertSee('-')
+            ->assertDontSee('96.8%')
+            ->assertDontSee('+1.4% MoM');
+
+        // 2. Seed known rows
+        $kelas = \App\Models\Kelas::first();
+        $siswa = \App\Models\Siswa::create([
+            'nisn' => '0088880001',
+            'nama' => 'Siswa Rekap KPI',
+            'kelas_id' => $kelas->id,
+        ]);
+
+        // 8 hadir, 1 izin, 1 sakit, 0 alfa = 10 total -> 80.0%
+        for ($i = 1; $i <= 8; $i++) {
+            \App\Models\Absensi::create([
+                'siswa_id' => $siswa->id,
+                'jadwal_id' => 1,
+                'tanggal' => "2026-08-" . sprintf('%02d', $i),
+                'status' => 'hadir',
+                'dicatat_oleh' => $this->wakaUser->id,
+            ]);
+        }
+        \App\Models\Absensi::create([
+            'siswa_id' => $siswa->id,
+            'jadwal_id' => 1,
+            'tanggal' => '2026-08-09',
+            'status' => 'izin',
+            'dicatat_oleh' => $this->wakaUser->id,
+        ]);
+        \App\Models\Absensi::create([
+            'siswa_id' => $siswa->id,
+            'jadwal_id' => 1,
+            'tanggal' => '2026-08-10',
+            'status' => 'sakit',
+            'dicatat_oleh' => $this->wakaUser->id,
+        ]);
+
+        Livewire::actingAs($this->wakaUser)
+            ->test(RekapAbsensi::class)
+            ->set('startDate', '2026-08-01')
+            ->set('endDate', '2026-08-31')
+            ->assertSee('80.0%')
+            ->assertDontSee('96.8%')
+            ->assertDontSee('+1.4% MoM');
+    }
+
+    public function test_rekap_nilai_renders_computed_kpi_and_no_fabricated_literals()
+    {
+        // 1. Empty database state
+        Livewire::actingAs($this->wakaUser)
+            ->test(RekapNilai::class)
+            ->assertSee('-')
+            ->assertDontSee('84.8')
+            ->assertDontSee('94.2%')
+            ->assertDontSee('5.8%')
+            ->assertDontSee('Sangat Baik');
+
+        // 2. Seed known rows: 1 student grade 80 (tuntas >= 75), 1 student grade 60 (remedial < 75)
+        // Average: 70.0, Tuntas: 50.0%, Remedial: 50.0%
+        $kelas = \App\Models\Kelas::first();
+        $mapel = \App\Models\Mapel::first();
+        $guru = \App\Models\Guru::first();
+
+        $siswa1 = \App\Models\Siswa::create(['nisn' => '0099990001', 'nama' => 'Siswa 1', 'kelas_id' => $kelas->id]);
+        $siswa2 = \App\Models\Siswa::create(['nisn' => '0099990002', 'nama' => 'Siswa 2', 'kelas_id' => $kelas->id]);
+
+        \App\Models\NilaiFormatif::create([
+            'siswa_id' => $siswa1->id,
+            'guru_id' => $guru->id,
+            'mapel_id' => $mapel->id,
+            'jenis' => 'tugas',
+            'tanggal' => date('Y-m-d'),
+            'nilai' => 80,
+        ]);
+        \App\Models\NilaiFormatif::create([
+            'siswa_id' => $siswa2->id,
+            'guru_id' => $guru->id,
+            'mapel_id' => $mapel->id,
+            'jenis' => 'tugas',
+            'tanggal' => date('Y-m-d'),
+            'nilai' => 60,
+        ]);
+
+        Livewire::actingAs($this->wakaUser)
+            ->test(RekapNilai::class)
+            ->assertSee('70')
+            ->assertSee('50.0%')
+            ->assertDontSee('84.8')
+            ->assertDontSee('94.2%')
+            ->assertDontSee('5.8%')
+            ->assertDontSee('Sangat Baik');
+    }
 }
 

@@ -22,52 +22,68 @@
         </p>
     </section>
 
+    @php
+        $guruModel = \App\Models\Guru::where('user_id', auth()->id())->first();
+        $hariMap = [1 => 'Senin', 2 => 'Selasa', 3 => 'Rabu', 4 => 'Kamis', 5 => 'Jumat', 6 => 'Sabtu', 7 => 'Minggu'];
+        $namaHariIni = $hariMap[date('N')] ?? 'Senin';
+        $jadwalHariIniGuru = $guruModel ? \App\Models\JadwalPelajaran::where('guru_id', $guruModel->id)->where('hari', $namaHariIni)->get() : collect([]);
+        $totalJadwalHariIniGuru = $jadwalHariIniGuru->count();
+        $presensiTerisiCount = $totalJadwalHariIniGuru > 0 
+            ? \App\Models\Absensi::whereIn('jadwal_id', $jadwalHariIniGuru->pluck('id'))
+                ->where('tanggal', date('Y-m-d'))
+                ->distinct('jadwal_id')
+                ->count('jadwal_id')
+            : 0;
+        $presensiDisplay = $totalJadwalHariIniGuru > 0 ? "{$presensiTerisiCount} / {$totalJadwalHariIniGuru}" : '-';
+        $kelasGuruCount = $guruModel ? \App\Models\JadwalPelajaran::where('guru_id', $guruModel->id)->distinct('kelas_id')->count('kelas_id') : 0;
+    @endphp
+
     <!-- Quick Stats Bento Grid -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <!-- Presensi Terisi -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase">Hari Ini</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">3 / 4</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">{{ $presensiDisplay }}</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">Presensi Terisi</p>
             </div>
         </div>
 
         <!-- Tugas / Nilai Pending -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-izin bg-status-izin/15 px-2 py-0.5 rounded-full uppercase">Formatif</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">12</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">-</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">Siswa Belum Formatif</p>
             </div>
         </div>
 
         <!-- Kelas Diampu -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-hadir bg-status-hadir/15 px-2 py-0.5 rounded-full uppercase">Aktif</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">{{ \App\Models\Kelas::count() }} Kelas</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">{{ $kelasGuruCount }} Kelas</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">Rombel Mengajar</p>
             </div>
         </div>
 
         <!-- Jam Mengajar Mingguan -->
-        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-card border border-border-default flex flex-col justify-between transition-shadow hover:shadow-md">
             <div class="flex items-center justify-between mb-2">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="text-[10px] font-bold text-status-sakit bg-status-sakit/15 px-2 py-0.5 rounded-full uppercase">Beban</span>
             </div>
             <div>
-                <p class="font-headline-lg text-2xl font-bold text-text-main">24 Jam</p>
+                <p class="font-headline-lg text-2xl font-bold text-text-main">-</p>
                 <p class="text-xs text-on-surface-variant mt-0.5">KBM per Minggu</p>
             </div>
         </div>
@@ -92,26 +108,26 @@
         <div class="flex flex-col gap-3">
             @php
                 $userGuru = \App\Models\Guru::where('user_id', auth()->id())->first();
-                $guruSchedules = $userGuru 
+                $guruSchedules = $guruSchedules ?? ($userGuru 
                     ? \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->where('guru_id', $userGuru->id)->get()
-                    : \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->take(3)->get();
+                    : \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->take(3)->get());
             @endphp
 
             @forelse($guruSchedules as $idx => $sched)
-                <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl shadow-card border border-border-default flex flex-col md:flex-row md:items-center justify-between gap-4 hover-lift transition-all {{ $idx === 0 ? 'border-primary/60 ring-1 ring-primary/20' : '' }}">
+                <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl shadow-card border border-border-default flex flex-col md:flex-row md:items-center justify-between gap-4 transition-shadow hover:shadow-md {{ $idx === 0 ? 'border-primary/60 ring-1 ring-primary/20' : '' }}">
                     <div class="flex items-start gap-4">
                         <div class="{{ $idx === 0 ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface-variant' }} rounded-xl p-3 flex flex-col items-center justify-center min-w-[70px] shadow-xs">
-                            <span class="font-bold text-xs uppercase font-mono">{{ $sched->waktu_mulai ?? '07:00' }}</span>
-                            <span class="text-[10px] opacity-80 font-mono">{{ $sched->waktu_selesai ?? '08:30' }}</span>
+                            <span class="font-bold text-xs uppercase font-mono">{{ $sched->waktu_mulai ?? '-' }}</span>
+                            <span class="text-[10px] opacity-80 font-mono">{{ $sched->waktu_selesai ?? '-' }}</span>
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h4 class="font-label-md text-base font-bold text-text-main">{{ $sched->mapel->nama_mapel ?? 'Matematika' }}</h4>
+                                <h4 class="font-label-md text-base font-bold text-text-main">{{ $sched->mapel->nama_mapel ?? '-' }}</h4>
                                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase {{ $idx === 0 ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-surface-container text-on-surface-variant' }}">
                                     {{ $idx === 0 ? 'Jam Sekarang' : 'Mendatang' }}
                                 </span>
                             </div>
-                            <p class="text-xs text-on-surface-variant mt-0.5">Kelas {{ $sched->kelas->nama_kelas ?? 'X-A' }} &bull; Hari {{ $sched->hari ?? 'Senin' }}</p>
+                            <p class="text-xs text-on-surface-variant mt-0.5">Kelas {{ $sched->kelas->nama_kelas ?? '-' }} &bull; Hari {{ $sched->hari ?? '-' }}</p>
                         </div>
                     </div>
 
@@ -127,26 +143,8 @@
                     </div>
                 </div>
             @empty
-                <div class="bg-surface-container-lowest p-4 md:p-5 rounded-xl shadow-card border border-border-default flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-primary text-on-primary rounded-xl p-3 flex flex-col items-center justify-center min-w-[70px]">
-                            <span class="font-bold text-xs font-mono">07:00</span>
-                            <span class="text-[10px] opacity-80 font-mono">08:30</span>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="font-label-md text-base font-bold text-text-main">Fisika / Matematika</h4>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary border border-primary/20 uppercase">Jam Sekarang</span>
-                            </div>
-                            <p class="text-xs text-on-surface-variant mt-0.5">Kelas XI-A &bull; Ruang 101</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <a href="{{ route('guru.absensi') }}" wire:navigate class="px-5 h-touch-target bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-xs font-semibold shadow-xs flex items-center justify-center gap-1.5">
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-                            <span>Isi Presensi</span>
-                        </a>
-                    </div>
+                <div class="bg-surface-container-lowest p-6 rounded-xl shadow-card border border-border-default text-center text-on-surface-variant text-sm">
+                    Belum ada jadwal mengajar aktif untuk Anda.
                 </div>
             @endforelse
         </div>
@@ -154,7 +152,7 @@
 
     <!-- Quick Shortcuts -->
     <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-        <a href="{{ route('guru.absensi') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group hover-lift">
+        <a href="{{ route('guru.absensi') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group transition-shadow hover:shadow-md">
             <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center group-hover:bg-status-hadir group-hover:text-white transition-colors shrink-0">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
@@ -164,7 +162,7 @@
             </div>
         </a>
 
-        <a href="{{ route('guru.nilai') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group hover-lift">
+        <a href="{{ route('guru.nilai') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all flex items-center gap-4 group transition-shadow hover:shadow-md">
             <div class="w-12 h-12 rounded-xl bg-status-sakit/15 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>

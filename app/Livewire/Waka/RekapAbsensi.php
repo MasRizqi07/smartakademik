@@ -138,10 +138,38 @@ class RekapAbsensi extends Component
         $siswas = $this->getBaseSiswaQuery()->paginate(15);
         $rekapData = $this->getRekapDataForSiswas($siswas->items());
 
+        $summaryQuery = Absensi::query()
+            ->when(!empty($this->selectedKelas), function ($q) {
+                $q->whereHas('siswa', fn($sq) => $sq->where('kelas_id', $this->selectedKelas));
+            })
+            ->when(!empty($this->startDate), fn($q) => $q->where('tanggal', '>=', $this->startDate))
+            ->when(!empty($this->endDate), fn($q) => $q->where('tanggal', '<=', $this->endDate))
+            ->select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->pluck('total', 'status');
+
+        $hadirCount = (int) ($summaryQuery['hadir'] ?? 0);
+        $izinCount  = (int) ($summaryQuery['izin'] ?? 0);
+        $sakitCount = (int) ($summaryQuery['sakit'] ?? 0);
+        $alfaCount  = (int) ($summaryQuery['alfa'] ?? 0);
+        $totalCount = $hadirCount + $izinCount + $sakitCount + $alfaCount;
+
+        $tingkatHadir = $totalCount > 0 ? number_format(($hadirCount / $totalCount) * 100, 1) . '%' : '-';
+
+        $summaryStats = [
+            'tingkatHadir' => $tingkatHadir,
+            'hadir' => $hadirCount,
+            'izin' => $izinCount,
+            'sakit' => $sakitCount,
+            'alfa' => $alfaCount,
+            'total' => $totalCount,
+        ];
+
         return view('livewire.waka.rekap-absensi', [
             'siswas' => $siswas,
             'rekapData' => $rekapData,
             'kelases' => $kelases,
+            'summaryStats' => $summaryStats,
         ])->layout('layouts.app', ['header' => 'Rekapitulasi Absensi']);
     }
 }

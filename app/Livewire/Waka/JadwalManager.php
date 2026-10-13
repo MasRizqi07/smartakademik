@@ -35,7 +35,7 @@ class JadwalManager extends Component
         'waktu_selesai' => 'required',
         'kelas_id' => 'required|exists:kelas,id',
         'mapel_id' => 'required|exists:mapel,id',
-        'guru_id' => 'required|exists:gurus,id',
+        'guru_id' => 'required|exists:guru,id',
     ];
 
     public function updatingSearch()
@@ -53,14 +53,21 @@ class JadwalManager extends Component
         $this->resetPage();
     }
 
+    private function ensureCanManage(): void
+    {
+        abort_unless(auth()->user()->hasRole(['admin_tu', 'waka_kurikulum']), 403);
+    }
+
     public function create()
     {
+        $this->ensureCanManage();
         $this->resetForm();
         $this->isFormOpen = true;
     }
 
     public function edit($id)
     {
+        $this->ensureCanManage();
         $this->resetForm();
         $jadwal = JadwalPelajaran::findOrFail($id);
         $this->jadwalId = $jadwal->id;
@@ -76,6 +83,7 @@ class JadwalManager extends Component
 
     public function store()
     {
+        $this->ensureCanManage();
         $this->validate();
 
         // Automated Conflict Detection: Guru schedule clash
@@ -123,6 +131,7 @@ class JadwalManager extends Component
 
     public function delete($id)
     {
+        $this->ensureCanManage();
         JadwalPelajaran::findOrFail($id)->delete();
         session()->flash('message', 'Jadwal pelajaran berhasil dihapus.');
     }
@@ -141,9 +150,24 @@ class JadwalManager extends Component
         $this->resetValidation();
     }
 
+    private function isOwnScheduleOnly(): bool
+    {
+        $user = auth()->user();
+        return $user && $user->hasRole('guru') && ! $user->hasAnyRole(['admin_tu', 'waka_kurikulum']);
+    }
+
     public function render()
     {
         $query = JadwalPelajaran::with(['kelas', 'mapel', 'guru']);
+
+        $isOwn = $this->isOwnScheduleOnly();
+        $ownGuruId = 0;
+
+        if ($isOwn) {
+            $guru = auth()->user()->guru;
+            $ownGuruId = $guru ? $guru->id : 0;
+            $query->where('guru_id', $ownGuruId);
+        }
 
         if (!empty($this->search)) {
             $query->where(function($q) {
@@ -166,17 +190,29 @@ class JadwalManager extends Component
         }
 
         $jadwals = $query->orderBy('hari')->orderBy('jam_ke')->paginate(10);
-        $kelases = Kelas::orderBy('nama_kelas')->get();
-        $mapels = Mapel::orderBy('nama_mapel')->get();
-        $gurus = Guru::orderBy('nama')->get();
+
+        if ($isOwn) {
+            $kelasIds = JadwalPelajaran::where('guru_id', $ownGuruId)->pluck('kelas_id')->unique();
+            $kelases = Kelas::whereIn('id', $kelasIds)->orderBy('nama_kelas')->get();
+            $mapels = collect();
+            $gurus = collect();
+            $totalJadwal = JadwalPelajaran::where('guru_id', $ownGuruId)->count();
+            $totalGuruMengajar = $totalJadwal > 0 ? 1 : 0;
+        } else {
+            $kelases = Kelas::orderBy('nama_kelas')->get();
+            $mapels = Mapel::orderBy('nama_mapel')->get();
+            $gurus = Guru::orderBy('nama')->get();
+            $totalJadwal = JadwalPelajaran::count();
+            $totalGuruMengajar = JadwalPelajaran::distinct('guru_id')->count('guru_id');
+        }
 
         return view('livewire.waka.jadwal-manager', [
             'jadwals' => $jadwals,
             'kelases' => $kelases,
             'mapels' => $mapels,
             'gurus' => $gurus,
-            'totalJadwal' => JadwalPelajaran::count(),
-            'totalGuruMengajar' => JadwalPelajaran::distinct('guru_id')->count('guru_id'),
+            'totalJadwal' => $totalJadwal,
+            'totalGuruMengajar' => $totalGuruMengajar,
         ])->layout('layouts.app', ['header' => 'Manajemen Jadwal Pelajaran']);
     }
 }

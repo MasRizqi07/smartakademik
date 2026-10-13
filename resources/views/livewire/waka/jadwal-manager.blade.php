@@ -5,10 +5,12 @@
             <h2 class="font-headline-lg text-2xl md:text-3xl font-bold text-primary">Manajemen Jadwal Pelajaran</h2>
             <p class="font-body-default text-body-default text-on-surface-variant mt-1">Susun dan pantau jadwal kegiatan belajar mengajar lintas kelas dan guru di MAN 4 Jombang.</p>
         </div>
+        @hasanyrole('admin_tu|waka_kurikulum')
         <button wire:click="create" class="px-5 h-touch-target bg-primary hover:bg-primary-container text-on-primary font-label-md text-sm font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 active:scale-95">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             <span>Tambah Jadwal Baru</span>
         </button>
+        @endhasanyrole
     </div>
 
     <!-- Alert Flash -->
@@ -55,7 +57,7 @@
     </div>
 
     <!-- Form Drawer / Modal Card -->
-    @if($isFormOpen)
+    @if($isFormOpen && auth()->user()->hasRole(['admin_tu', 'waka_kurikulum']))
         <div class="bg-surface-container-lowest p-6 rounded-2xl border border-border-default shadow-card flex flex-col gap-6 animate-fade-in">
             <div class="flex items-center justify-between pb-4 border-b border-border-default">
                 <div class="flex items-center gap-3">
@@ -144,7 +146,7 @@
 
     <!-- Data Table Container -->
     <div class="bg-surface-container-lowest rounded-xl border border-border-default shadow-card flex flex-col overflow-hidden relative">
-        <div wire:loading wire:target="search, selectedHari, selectedKelas, previousPage, nextPage, gotoPage" class="absolute inset-0 z-20 bg-surface-container-lowest/70 backdrop-blur-xs flex items-center justify-center">
+        <div wire:loading wire:target="search, selectedHari, selectedKelas, previousPage, nextPage, gotoPage" class="absolute inset-0 z-20 bg-surface-container-lowest/80 flex items-center justify-center">
             <svg class="w-8 h-8 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
         </div>
 
@@ -157,7 +159,9 @@
                         <th class="py-3.5 px-5 font-semibold">Kelas</th>
                         <th class="py-3.5 px-5 font-semibold">Mata Pelajaran</th>
                         <th class="py-3.5 px-5 font-semibold">Guru Pengampu</th>
+                        @hasanyrole('admin_tu|waka_kurikulum')
                         <th class="py-3.5 px-5 font-semibold text-right">Aksi</th>
+                        @endhasanyrole
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-border-default/60 font-body-default text-text-main">
@@ -180,6 +184,7 @@
                             <td class="py-3.5 px-5 text-on-surface-variant text-xs font-medium">
                                 {{ $j->guru->nama ?? 'N/A' }}
                             </td>
+                            @hasanyrole('admin_tu|waka_kurikulum')
                             <td class="py-3.5 px-5 text-right">
                                 <div class="flex items-center justify-end gap-1">
                                     <button wire:click="edit({{ $j->id }})" class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit Jadwal">
@@ -190,10 +195,11 @@
                                     </button>
                                 </div>
                             </td>
+                            @endhasanyrole
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="py-12 px-4 text-center text-on-surface-variant">
+                            <td colspan="{{ auth()->user()->hasRole(['admin_tu', 'waka_kurikulum']) ? 6 : 5 }}" class="py-12 px-4 text-center text-on-surface-variant">
                                 <div class="flex flex-col items-center justify-center gap-2">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                                     <p class="font-label-md text-sm font-semibold">Tidak ada jadwal pelajaran ditemukan.</p>

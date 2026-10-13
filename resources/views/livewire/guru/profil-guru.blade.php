@@ -71,7 +71,7 @@
             <div class="bg-surface-container-lowest rounded-2xl shadow-card p-5 border border-border-default flex items-center justify-between">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider mb-1 font-semibold">Beban Mengajar</p>
-                    <p class="font-headline-md text-2xl font-bold text-text-main">24 <span class="text-xs font-normal text-outline">Jam / Minggu</span></p>
+                    <p class="font-headline-md text-2xl font-bold text-text-main">- <span class="text-xs font-normal text-outline">Jam / Minggu</span></p>
                 </div>
                 <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
@@ -93,7 +93,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse($jadwals as $j)
-                    <div class="p-4 rounded-xl bg-surface border border-border-default/80 flex justify-between items-center hover-lift transition-all">
+                    <div class="p-4 rounded-xl bg-surface border border-border-default/80 flex justify-between items-center transition-shadow hover:shadow-md">
                         <div>
                             <h4 class="font-label-md text-sm font-bold text-text-main">{{ $j->mapel->nama_mapel ?? 'Mapel' }}</h4>
                             <p class="text-xs text-on-surface-variant mt-0.5">Kelas {{ $j->kelas->tingkat ?? '' }} {{ $j->kelas->nama_kelas ?? '' }} &bull; Hari {{ $j->hari }}</p>
@@ -111,7 +111,7 @@
 
     <!-- Edit Profile Modal -->
     @if($isEditOpen)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 animate-fade-in">
             <div class="bg-surface-container-lowest rounded-2xl max-w-md w-full p-6 shadow-2xl border border-border-default flex flex-col gap-4">
                 <div class="flex justify-between items-center border-b border-border-default pb-3">
                     <h3 class="font-headline-md text-lg font-bold text-text-main">Edit Profil Guru</h3>

@@ -120,3 +120,11 @@ Jangan pakai warna sama untuk dua status berbeda — ini satu-satunya sinyal vis
 - Dark mode toggle
 - Animasi/transisi kompleks (Livewire loading state cukup pakai `wire:loading` sederhana)
 - Custom illustration/ikon set — pakai Heroicons (built-in ekosistem Tailwind/Laravel), jangan generate icon custom untuk MVP.
+
+## 8. Post-audit Decisions (Remediation)
+
+1. **Feature Flagging:** Marketing public pages are gated behind `config('features.public_marketing')` (`FEATURE_PUBLIC_MARKETING=false`). Toggle via `.env` + `php artisan route:clear`.
+2. **Token Discipline:** Brand & status colors must use canonical tokens (`brand`, `status-{hadir,izin,sakit,alfa}`, `danger`). Alpha modifiers (`/10`, `/15`) require RGB channel variables (`--color-*-rgb`) in `app.css`.
+3. **Absensi "Isi Sisa sebagai Hadir":** Mutasi lokal murni pada component state untuk siswa belum ditandai, tidak menimpa status yang ada, tanpa direct DB write, wajib `wire:confirm`, persistensi hanya via `save()`.
+4. **Deferred Public Pages Policy:** Mengaktifkan flag public marketing di luar local development membutuhkan test suite untuk 3 komponen terkait, audit keamanan form Kontak, dan persetujuan eksplisit owner.
+

@@ -7,13 +7,17 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-            <button wire:click="markAllHadir" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand text-white font-semibold text-xs rounded-lg shadow-sm hover:bg-brand-hover transition-all active:scale-95">
+            <button wire:click="markAllHadir" wire:confirm="Isi semua siswa yang belum ditandai sebagai Hadir? Anda tetap perlu memeriksa lalu menekan Simpan." type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand/10 text-brand border border-brand/20 font-semibold text-xs rounded-lg hover:bg-brand/20 transition-all active:scale-95">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                <span>Tandai Semua Hadir</span>
+                <span>Isi Sisa sebagai Hadir</span>
             </button>
             <button wire:click="resetAll" wire:confirm="Yakin ingin mereset seluruh status presensi kelas ini?" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface text-text-secondary border border-border font-semibold text-xs rounded-lg hover:bg-slate-50 transition-all">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
                 <span>Reset</span>
+            </button>
+            <button wire:click="save" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand text-white font-semibold text-xs rounded-lg shadow-sm hover:bg-brand-hover transition-all active:scale-95">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                <span>Simpan Presensi</span>
             </button>
         </div>
     </div>
@@ -49,9 +53,11 @@
                 </select>
             </div>
 
-            <div class="w-full sm:w-44">
+            <div class="w-full sm:w-56">
                 <label class="block text-xs font-bold text-text-primary mb-1.5">Tanggal Presensi</label>
-                <input wire:model.live="tanggal" type="date" class="w-full text-xs font-semibold py-2 px-3 rounded-lg border border-border bg-surface-page focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all" />
+                <div class="w-full text-xs font-semibold py-2.5 px-3 rounded-lg border border-border bg-surface-page text-text-primary">
+                    {{ $tanggal ? \Carbon\Carbon::parse($tanggal)->translatedFormat('l, d F Y') : '-' }}
+                </div>
             </div>
         </div>
 
@@ -84,9 +90,9 @@
     <div class="bg-surface rounded-2xl border border-border shadow-card overflow-hidden">
         <div class="p-4 border-b border-border bg-surface-page/50 flex items-center justify-between">
             <span class="text-xs font-bold text-text-primary uppercase tracking-wider">Daftar Kehadiran Siswa ({{ count($siswas) }} Santri)</span>
-            <span class="text-xs text-text-secondary flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-status-hadir animate-pulse"></span>
-                <span>Auto-Save Aktif</span>
+            <span class="text-xs text-text-secondary flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-brand"></span>
+                <span>Periksa &amp; Tekan Simpan</span>
             </span>
         </div>
 
@@ -104,7 +110,7 @@
                             <div class="text-xs text-text-secondary flex items-center gap-2">
                                 <span>NISN: {{ $siswa->nisn }}</span>
                                 @if(!empty($keteranganData[$siswa->id]))
-                                    <span class="text-amber-700 italic">• Ket: "{{ $keteranganData[$siswa->id] }}"</span>
+                                    <span class="text-status-izin italic">• Ket: "{{ $keteranganData[$siswa->id] }}"</span>
                                 @endif
                             </div>
                         </div>
@@ -144,11 +150,21 @@
                 </div>
             @endforelse
         </div>
+
+        @if(count($siswas) > 0)
+            <div class="p-4 bg-surface-page/50 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+                <span class="text-xs text-text-secondary font-medium">Pastikan seluruh status presensi telah diperiksa sebelum disimpan ke database.</span>
+                <button wire:click="save" type="button" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-brand text-white font-bold text-xs rounded-lg shadow-sm hover:bg-brand-hover transition-all active:scale-95">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <span>Simpan Presensi Kelas</span>
+                </button>
+            </div>
+        @endif
     </div>
 
     <!-- Note Modal -->
     @if($isNoteModalOpen)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
             <div class="bg-surface rounded-2xl p-6 border border-border shadow-xl max-w-md w-full space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-border">
                     <h3 class="font-bold text-sm text-text-primary">Catatan Presensi: {{ $activeSiswaName }}</h3>

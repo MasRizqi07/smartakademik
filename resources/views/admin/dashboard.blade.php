@@ -25,7 +25,7 @@
     <!-- Bento Grid Stats -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Active Classes -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-primary">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Kelas Aktif</span>
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Total Students -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-secondary">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Total Siswa</span>
@@ -49,19 +49,26 @@
         </div>
 
         <!-- Attendance Rate -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-status-hadir">
                 <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Rata-rata Kehadiran</span>
             </div>
+            @php
+                $adminTotalAbs = \App\Models\Absensi::count();
+                $adminHadirAbs = $adminTotalAbs > 0 ? \App\Models\Absensi::where('status', 'hadir')->count() : 0;
+                $adminRateKehadiran = $adminTotalAbs > 0 ? number_format(($adminHadirAbs / $adminTotalAbs) * 100, 1) . '%' : '-';
+            @endphp
             <div class="font-headline-lg text-3xl font-bold text-text-main mt-1">
-                96.8%
+                {{ $adminRateKehadiran }}
             </div>
-            <span class="text-[11px] text-status-hadir font-medium">+1.2% dari minggu lalu</span>
+            <span class="text-[11px] {{ $adminTotalAbs > 0 ? 'text-status-hadir' : 'text-outline' }} font-medium">
+                {{ $adminTotalAbs > 0 ? 'Berdasarkan data presensi madrasah' : 'Belum ada data' }}
+            </span>
         </div>
 
         <!-- Pending Tasks / Grades -->
-        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 hover-lift transition-all">
+        <div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">
             <div class="flex items-center gap-2 text-status-izin">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <span class="font-label-sm uppercase tracking-wider text-on-surface-variant">Input Formatif</span>
@@ -101,15 +108,15 @@
                     </thead>
                     <tbody class="divide-y divide-border-default">
                         @php
-                            $schedules = \App\Models\JadwalPelajaran::with(['kelas', 'mapel', 'guru'])->take(5)->get();
+                            $schedules = $schedules ?? \App\Models\JadwalPelajaran::with(['kelas', 'mapel', 'guru'])->take(5)->get();
                         @endphp
 
                         @forelse($schedules as $j)
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">{{ $j->waktu_mulai ?? '07:00' }} - {{ $j->waktu_selesai ?? '08:30' }}</td>
-                                <td class="py-3 px-5 font-semibold text-text-main">{{ $j->mapel->nama_mapel ?? 'Matematika Wajib' }}</td>
-                                <td class="py-3 px-5">{{ $j->kelas->nama_kelas ?? 'X-A' }}</td>
-                                <td class="py-3 px-5 text-on-surface-variant text-xs">{{ $j->guru->nama ?? 'Budi Santoso' }}</td>
+                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">{{ $j->waktu_mulai ?? '-' }} - {{ $j->waktu_selesai ?? '-' }}</td>
+                                <td class="py-3 px-5 font-semibold text-text-main">{{ $j->mapel->nama_mapel ?? '-' }}</td>
+                                <td class="py-3 px-5">{{ $j->kelas->nama_kelas ?? '-' }}</td>
+                                <td class="py-3 px-5 text-on-surface-variant text-xs">{{ $j->guru->nama ?? '-' }}</td>
                                 <td class="py-3 px-5 text-right">
                                     <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary uppercase">
                                         <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
@@ -118,27 +125,9 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">07:00 - 08:30</td>
-                                <td class="py-3 px-5 font-semibold text-text-main">Matematika Wajib</td>
-                                <td class="py-3 px-5">XII IPA 1</td>
-                                <td class="py-3 px-5 text-on-surface-variant text-xs">Budi Santoso, S.Pd.</td>
-                                <td class="py-3 px-5 text-right">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary uppercase">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        Berlangsung
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">08:30 - 10:00</td>
-                                <td class="py-3 px-5 font-semibold text-text-main">Fisika Lanjut</td>
-                                <td class="py-3 px-5">XI IPA 2</td>
-                                <td class="py-3 px-5 text-on-surface-variant text-xs">Siti Aminah, M.Pd.</td>
-                                <td class="py-3 px-5 text-right">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-surface-container text-on-surface-variant uppercase">
-                                        Mendatang
-                                    </span>
+                            <tr>
+                                <td colspan="5" class="py-6 px-5 text-center text-on-surface-variant text-sm">
+                                    Belum ada jadwal pelajaran aktif.
                                 </td>
                             </tr>
                         @endforelse
@@ -163,7 +152,7 @@
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
-                            <p class="font-body-default text-text-main"><span class="font-semibold">Presensi XII IPA 1</span> telah terekam (28 Hadir, 1 Izin, 1 Sakit)</p>
+                            <p class="font-body-default text-text-main"><span class="font-semibold">Presensi kelas</span> telah terekam oleh guru pengampu</p>
                             <span class="text-[11px] text-on-surface-variant mt-0.5">10 menit yang lalu</span>
                         </div>
                     </li>
@@ -172,7 +161,7 @@
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
-                            <p class="font-body-default text-text-main"><span class="font-semibold">Nilai Formatif TP 2</span> Matematika diinput oleh Budi Santoso</p>
+                            <p class="font-body-default text-text-main"><span class="font-semibold">Nilai Formatif TP 2</span> telah terekam ke sistem</p>
                             <span class="text-[11px] text-on-surface-variant mt-0.5">45 menit yang lalu</span>
                         </div>
                     </li>
@@ -198,7 +187,7 @@
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href="{{ route('admin.siswa') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.siswa') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-primary-container/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
@@ -208,7 +197,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.guru') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.guru') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
@@ -218,7 +207,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.kelas') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.kelas') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-status-izin/10 text-status-izin flex items-center justify-center group-hover:bg-status-izin group-hover:text-white transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
@@ -228,7 +217,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.mapel') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 hover-lift">
+            <a href="{{ route('admin.mapel') }}" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">
                 <div class="w-11 h-11 rounded-lg bg-status-sakit/10 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>

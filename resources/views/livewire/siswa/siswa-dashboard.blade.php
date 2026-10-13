@@ -47,32 +47,36 @@
 
         <!-- Quick KPI Stats Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Tingkat Kehadiran</p>
-                    <p class="font-headline-lg text-2xl font-bold text-status-hadir mt-0.5">98.2%</p>
-                    <p class="text-[11px] text-on-surface-variant">Sangat Baik</p>
+                    <p class="font-headline-lg text-2xl font-bold text-status-hadir mt-0.5">{{ $attendanceRate }}</p>
+                    <p class="text-[11px] {{ $attendanceRate !== '-' ? 'text-status-hadir' : 'text-outline' }} font-medium">
+                        {{ $attendanceRate !== '-' ? 'Berdasarkan data presensi' : 'Belum ada data' }}
+                    </p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-status-hadir/15 text-status-hadir flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
             </div>
 
-            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Rata-rata Formatif</p>
-                    <p class="font-headline-lg text-2xl font-bold text-primary mt-0.5">88.5</p>
-                    <p class="text-[11px] text-status-hadir font-semibold">Di atas KKM (75)</p>
+                    <p class="font-headline-lg text-2xl font-bold text-primary mt-0.5">{{ $avgGrade }}</p>
+                    <p class="text-[11px] {{ $avgGrade !== '-' ? 'text-status-hadir' : 'text-outline' }} font-semibold">
+                        {{ $gradeSubtext }}
+                    </p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </div>
             </div>
 
-            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between hover-lift transition-all">
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-border-default flex items-center justify-between transition-shadow hover:shadow-md">
                 <div>
                     <p class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Mata Pelajaran</p>
-                    <p class="font-headline-lg text-2xl font-bold text-text-main mt-0.5">14 Mapel</p>
+                    <p class="font-headline-lg text-2xl font-bold text-text-main mt-0.5">{{ $totalMapelCount }} Mapel</p>
                     <p class="text-[11px] text-on-surface-variant">Kurikulum Merdeka</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">

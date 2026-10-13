@@ -3,14 +3,19 @@
 use Illuminate\Support\Facades\Route;
 
 // Public & Information Routes
-Route::view('/', 'welcome')->name('home');
 Route::view('/portal', 'portal')->name('portal');
-Route::view('/tentang', 'tentang')->name('tentang');
-Route::view('/fitur', 'fitur')->name('fitur');
-Route::view('/prestasi', 'prestasi')->name('prestasi');
-Route::view('/kalender', 'kalender')->name('kalender');
-Route::view('/bantuan', 'bantuan')->name('bantuan');
-Route::view('/kontak', 'kontak')->name('kontak');
+
+if (config('features.public_marketing')) {
+    Route::view('/', 'welcome')->name('home');
+    Route::view('/tentang', 'tentang')->name('tentang');
+    Route::view('/fitur', 'fitur')->name('fitur');
+    Route::view('/prestasi', 'prestasi')->name('prestasi');
+    Route::view('/kalender', 'kalender')->name('kalender');
+    Route::view('/bantuan', 'bantuan')->name('bantuan');
+    Route::view('/kontak', 'kontak')->name('kontak');
+} else {
+    Route::redirect('/', '/portal')->name('home');
+}
 
 // Authenticated Routes
 Route::middleware(['auth', 'verified'])->group(function () {

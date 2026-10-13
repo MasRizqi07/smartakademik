@@ -40,13 +40,13 @@
             <div class="text-[10px] text-text-secondary mt-0.5">Hak Akses Presensi & Nilai</div>
         </div>
         <div class="bg-surface rounded-2xl p-4 border border-border shadow-card">
-            <div class="text-[11px] font-bold text-blue-600 uppercase">Siswa Terdata</div>
-            <div class="text-2xl font-extrabold text-blue-600 mt-1">{{ $siswaCount }}</div>
+            <div class="text-[11px] font-bold text-info uppercase">Siswa Terdata</div>
+            <div class="text-2xl font-extrabold text-info mt-1">{{ $siswaCount }}</div>
             <div class="text-[10px] text-text-secondary mt-0.5">Portal Rapor & Jadwal</div>
         </div>
         <div class="bg-surface rounded-2xl p-4 border border-border shadow-card">
-            <div class="text-[11px] font-bold text-amber-600 uppercase">Admin TU & Waka</div>
-            <div class="text-2xl font-extrabold text-amber-600 mt-1">{{ $adminCount + $wakaCount }}</div>
+            <div class="text-[11px] font-bold text-status-izin uppercase">Admin TU & Waka</div>
+            <div class="text-2xl font-extrabold text-status-izin mt-1">{{ $adminCount + $wakaCount }}</div>
             <div class="text-[10px] text-text-secondary mt-0.5">Akses Penuh Manajemen</div>
         </div>
     </div>
@@ -103,11 +103,11 @@
                             </td>
                             <td class="py-3.5 px-5">
                                 @if($roleName === 'admin_tu')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-surface text-brand-dark border border-brand/30">
                                         Admin TU
                                     </span>
                                 @elseif($roleName === 'waka_kurikulum')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-status-izin/15 text-status-izin border border-status-izin/30">
                                         Waka Kurikulum
                                     </span>
                                 @elseif($roleName === 'guru')
@@ -115,7 +115,7 @@
                                         Guru Pengampu
                                     </span>
                                 @elseif($roleName === 'siswa')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-info-surface text-info border border-info-border">
                                         Siswa
                                     </span>
                                 @else
@@ -159,7 +159,7 @@
 
     <!-- Create / Edit User Modal -->
     @if($isModalOpen)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
             <div class="bg-surface rounded-2xl p-6 border border-border shadow-xl max-w-md w-full space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-border">
                     <h3 class="font-bold text-sm text-text-primary">

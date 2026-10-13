@@ -6,15 +6,20 @@ use App\Models\Absensi;
 use App\Models\JadwalPelajaran;
 use App\Models\Siswa;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class AbsensiGuru extends Component
 {
     use AuthorizesRequests;
 
+    private const STATUSES = ['hadir', 'izin', 'sakit', 'alfa'];
+
     public $jadwals = [];
     public $selectedJadwalId = null;
     public $siswas = [];
+
+    #[Locked]
     public $tanggal = '';
     
     // absensiData: [siswa_id => status]
@@ -27,21 +32,37 @@ class AbsensiGuru extends Component
     public $noteText = '';
     public $isNoteModalOpen = false;
 
-    public function mount()
+    private function jadwalOrFail(): JadwalPelajaran
     {
-        $this->tanggal = date('Y-m-d');
-        $this->loadJadwals();
+        abort_unless($this->selectedJadwalId && $this->tanggal, 422);
+        abort_unless($this->tanggal === today()->toDateString(), 422, 'Tanggal presensi hanya boleh hari ini. Muat ulang halaman.');
+        $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
+        $this->authorize('create', [Absensi::class, $jadwal]);   // unconditional
+        return $jadwal;
+    }
+
+    private function siswaInKelasOrFail(JadwalPelajaran $jadwal, $siswaId): Siswa
+    {
+        $siswa = Siswa::where('id', $siswaId)->where('kelas_id', $jadwal->kelas_id)->first();
+        abort_unless($siswa, 404);
+        return $siswa;
+    }
+
+    public function mount($selectedJadwalId = null)
+    {
+        $this->tanggal = today()->toDateString();
+        if ($selectedJadwalId) {
+            $this->selectedJadwalId = $selectedJadwalId;
+        } else {
+            $this->loadJadwals();
+        }
     }
 
     public function loadJadwals()
     {
         $guru = auth()->user()->guru;
         if (!$guru) {
-            $this->jadwals = JadwalPelajaran::with(['kelas', 'mapel'])->orderBy('jam_ke')->get();
-            if ($this->jadwals->isNotEmpty() && !$this->selectedJadwalId) {
-                $this->selectedJadwalId = $this->jadwals->first()->id;
-                $this->loadSiswas();
-            }
+            $this->jadwals = collect();
             return;
         }
 
@@ -61,39 +82,25 @@ class AbsensiGuru extends Component
         $this->loadSiswas();
     }
 
-    public function updatedTanggal()
+    public function markAllHadir(): void
     {
-        $this->loadSiswas();
-    }
-
-    public function markAllHadir()
-    {
-        if (!$this->selectedJadwalId || !$this->tanggal) return;
-
+        $this->jadwalOrFail();
+        $filled = 0;
         foreach ($this->siswas as $siswa) {
-            $this->absensiData[$siswa->id] = 'hadir';
-            
-            Absensi::updateOrCreate(
-                [
-                    'siswa_id' => $siswa->id,
-                    'jadwal_id' => $this->selectedJadwalId,
-                    'tanggal' => $this->tanggal,
-                ],
-                [
-                    'status' => 'hadir',
-                    'dicatat_oleh' => auth()->id(),
-                ]
-            );
+            if (empty($this->absensiData[$siswa->id])) {
+                $this->absensiData[$siswa->id] = 'hadir';
+                $filled++;
+            }
         }
-        session()->flash('message', 'Semua siswa berhasil ditandai HADIR dan tersimpan otomatis.');
+        session()->flash('message', "$filled siswa yang belum ditandai diset Hadir (belum tersimpan). Periksa, lalu tekan Simpan.");
     }
 
     public function resetAll()
     {
-        if (!$this->selectedJadwalId || !$this->tanggal) return;
+        $jadwal = $this->jadwalOrFail();
 
-        Absensi::where('jadwal_id', $this->selectedJadwalId)
-            ->where('tanggal', $this->tanggal)
+        Absensi::where('jadwal_id', $jadwal->id)
+            ->whereDate('tanggal', $this->tanggal)
             ->delete();
 
         foreach ($this->siswas as $siswa) {
@@ -104,21 +111,32 @@ class AbsensiGuru extends Component
 
     public function setPresence($siswaId, $status)
     {
+        abort_unless(in_array($status, self::STATUSES, true), 422);
+        $jadwal = $this->jadwalOrFail();
+        $this->siswaInKelasOrFail($jadwal, $siswaId);
+
         $this->absensiData[$siswaId] = $status;
 
-        if ($this->selectedJadwalId && $this->tanggal) {
-            Absensi::updateOrCreate(
-                [
-                    'siswa_id' => $siswaId,
-                    'jadwal_id' => $this->selectedJadwalId,
-                    'tanggal' => $this->tanggal,
-                ],
-                [
-                    'status' => $status,
-                    'keterangan' => $this->keteranganData[$siswaId] ?? null,
-                    'dicatat_oleh' => auth()->id(),
-                ]
-            );
+        $record = Absensi::where('siswa_id', $siswaId)
+            ->where('jadwal_id', $jadwal->id)
+            ->whereDate('tanggal', $this->tanggal)
+            ->first();
+
+        if ($record) {
+            $record->update([
+                'status' => $status,
+                'keterangan' => $this->keteranganData[$siswaId] ?? null,
+                'dicatat_oleh' => auth()->id(),
+            ]);
+        } else {
+            Absensi::create([
+                'siswa_id' => $siswaId,
+                'jadwal_id' => $jadwal->id,
+                'tanggal' => $this->tanggal,
+                'status' => $status,
+                'keterangan' => $this->keteranganData[$siswaId] ?? null,
+                'dicatat_oleh' => auth()->id(),
+            ]);
         }
     }
 
@@ -132,16 +150,18 @@ class AbsensiGuru extends Component
 
     public function saveNote()
     {
-        if ($this->activeSiswaId) {
-            $this->keteranganData[$this->activeSiswaId] = $this->noteText;
+        abort_unless($this->activeSiswaId, 422);
+        $jadwal = $this->jadwalOrFail();
+        $this->siswaInKelasOrFail($jadwal, $this->activeSiswaId);
+        $this->validate(['noteText' => 'nullable|string|max:255']);
 
-            if ($this->selectedJadwalId && $this->tanggal && !empty($this->absensiData[$this->activeSiswaId])) {
-                Absensi::where('siswa_id', $this->activeSiswaId)
-                    ->where('jadwal_id', $this->selectedJadwalId)
-                    ->where('tanggal', $this->tanggal)
-                    ->update(['keterangan' => $this->noteText]);
-            }
-        }
+        $this->keteranganData[$this->activeSiswaId] = $this->noteText;
+
+        Absensi::where('siswa_id', $this->activeSiswaId)
+            ->where('jadwal_id', $jadwal->id)
+            ->whereDate('tanggal', $this->tanggal)
+            ->update(['keterangan' => $this->noteText]);
+
         $this->isNoteModalOpen = false;
         session()->flash('message', 'Catatan siswa berhasil disimpan.');
     }
@@ -156,15 +176,12 @@ class AbsensiGuru extends Component
         }
 
         $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
-
-        if (auth()->user()->hasRole('guru')) {
-            $this->authorize('create', [Absensi::class, $jadwal]);
-        }
+        $this->authorize('create', [Absensi::class, $jadwal]);
 
         $this->siswas = Siswa::where('kelas_id', $jadwal->kelas_id)->orderBy('nama')->get();
 
         $existing = Absensi::where('jadwal_id', $this->selectedJadwalId)
-            ->where('tanggal', $this->tanggal)
+            ->whereDate('tanggal', $this->tanggal)
             ->get()
             ->keyBy('siswa_id');
 
@@ -183,38 +200,49 @@ class AbsensiGuru extends Component
 
     public function save()
     {
-        if (!$this->selectedJadwalId || !$this->tanggal) {
-            return;
-        }
+        $jadwal = $this->jadwalOrFail();
 
-        $jadwal = JadwalPelajaran::findOrFail($this->selectedJadwalId);
+        $allSiswaIds = Siswa::where('kelas_id', $jadwal->kelas_id)->pluck('id');
 
-        if (auth()->user()->hasRole('guru')) {
-            $this->authorize('create', [Absensi::class, $jadwal]);
-        }
-
-        foreach ($this->siswas as $siswa) {
-            if (empty($this->absensiData[$siswa->id])) {
+        foreach ($allSiswaIds as $siswaId) {
+            if (empty($this->absensiData[$siswaId])) {
                 session()->flash('error', 'Semua siswa wajib ditandai status kehadirannya sebelum menyimpan!');
                 return;
             }
+
+            $status = $this->absensiData[$siswaId];
+            abort_unless(in_array($status, self::STATUSES, true), 422, 'Status absensi tidak valid.');
+
+            $keterangan = $this->keteranganData[$siswaId] ?? null;
+            if ($keterangan !== null) {
+                abort_unless(is_string($keterangan) && mb_strlen($keterangan) <= 255, 422, 'Keterangan tidak valid.');
+            }
         }
 
-        foreach ($this->siswas as $siswa) {
-            $status = $this->absensiData[$siswa->id];
+        foreach ($allSiswaIds as $siswaId) {
+            $status = $this->absensiData[$siswaId];
             
-            Absensi::updateOrCreate(
-                [
-                    'siswa_id' => $siswa->id,
-                    'jadwal_id' => $this->selectedJadwalId,
-                    'tanggal' => $this->tanggal,
-                ],
-                [
+            $record = Absensi::where('siswa_id', $siswaId)
+                ->where('jadwal_id', $jadwal->id)
+                ->whereDate('tanggal', $this->tanggal)
+                ->first();
+
+            if ($record) {
+                $record->update([
                     'status' => $status,
-                    'keterangan' => $this->keteranganData[$siswa->id] ?? null,
+                    'keterangan' => $this->keteranganData[$siswaId] ?? null,
                     'dicatat_oleh' => auth()->id(),
-                ]
-            );
+                ]);
+            } else {
+                Absensi::create([
+                    'siswa_id' => $siswaId,
+                    'jadwal_id' => $jadwal->id,
+                    'tanggal' => $this->tanggal,
+                    'status' => $status,
+                    'keterangan' => $this->keteranganData[$siswaId] ?? null,
+                    'dicatat_oleh' => auth()->id(),
+                ]);
+            }
         }
 
         session()->flash('message', 'Seluruh data presensi kelas berhasil disimpan!');
