@@ -108,15 +108,15 @@
                     </thead>
                     <tbody class="divide-y divide-border-default">
                         @php
-                            $schedules = \App\Models\JadwalPelajaran::with(['kelas', 'mapel', 'guru'])->take(5)->get();
+                            $schedules = $schedules ?? \App\Models\JadwalPelajaran::with(['kelas', 'mapel', 'guru'])->take(5)->get();
                         @endphp
 
                         @forelse($schedules as $j)
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">{{ $j->waktu_mulai ?? '07:00' }} - {{ $j->waktu_selesai ?? '08:30' }}</td>
-                                <td class="py-3 px-5 font-semibold text-text-main">{{ $j->mapel->nama_mapel ?? 'Matematika Wajib' }}</td>
-                                <td class="py-3 px-5">{{ $j->kelas->nama_kelas ?? 'X-A' }}</td>
-                                <td class="py-3 px-5 text-on-surface-variant text-xs">{{ $j->guru->nama ?? 'Budi Santoso' }}</td>
+                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">{{ $j->waktu_mulai ?? '-' }} - {{ $j->waktu_selesai ?? '-' }}</td>
+                                <td class="py-3 px-5 font-semibold text-text-main">{{ $j->mapel->nama_mapel ?? '-' }}</td>
+                                <td class="py-3 px-5">{{ $j->kelas->nama_kelas ?? '-' }}</td>
+                                <td class="py-3 px-5 text-on-surface-variant text-xs">{{ $j->guru->nama ?? '-' }}</td>
                                 <td class="py-3 px-5 text-right">
                                     <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary uppercase">
                                         <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
@@ -125,27 +125,9 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">07:00 - 08:30</td>
-                                <td class="py-3 px-5 font-semibold text-text-main">Matematika Wajib</td>
-                                <td class="py-3 px-5">XII IPA 1</td>
-                                <td class="py-3 px-5 text-on-surface-variant text-xs">Budi Santoso, S.Pd.</td>
-                                <td class="py-3 px-5 text-right">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary uppercase">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        Berlangsung
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="py-3 px-5 text-on-surface-variant font-mono text-xs">08:30 - 10:00</td>
-                                <td class="py-3 px-5 font-semibold text-text-main">Fisika Lanjut</td>
-                                <td class="py-3 px-5">XI IPA 2</td>
-                                <td class="py-3 px-5 text-on-surface-variant text-xs">Siti Aminah, M.Pd.</td>
-                                <td class="py-3 px-5 text-right">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-surface-container text-on-surface-variant uppercase">
-                                        Mendatang
-                                    </span>
+                            <tr>
+                                <td colspan="5" class="py-6 px-5 text-center text-on-surface-variant text-sm">
+                                    Belum ada jadwal pelajaran aktif.
                                 </td>
                             </tr>
                         @endforelse
@@ -170,7 +152,7 @@
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
-                            <p class="font-body-default text-text-main"><span class="font-semibold">Presensi XII IPA 1</span> telah terekam (28 Hadir, 1 Izin, 1 Sakit)</p>
+                            <p class="font-body-default text-text-main"><span class="font-semibold">Presensi kelas</span> telah terekam oleh guru pengampu</p>
                             <span class="text-[11px] text-on-surface-variant mt-0.5">10 menit yang lalu</span>
                         </div>
                     </li>
@@ -179,7 +161,7 @@
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                         </div>
                         <div class="flex flex-col">
-                            <p class="font-body-default text-text-main"><span class="font-semibold">Nilai Formatif TP 2</span> Matematika diinput oleh Budi Santoso</p>
+                            <p class="font-body-default text-text-main"><span class="font-semibold">Nilai Formatif TP 2</span> telah terekam ke sistem</p>
                             <span class="text-[11px] text-on-surface-variant mt-0.5">45 menit yang lalu</span>
                         </div>
                     </li>

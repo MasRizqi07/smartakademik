@@ -145,4 +145,36 @@ class DashboardMetricsTest extends TestCase
             ->assertSee('- <span class="text-xs font-normal text-outline">Jam / Minggu</span>', false)
             ->assertDontSee('24 <span class="text-xs font-normal text-outline">Jam / Minggu</span>', false);
     }
+
+    public function test_dashboards_render_no_fabricated_fallback_strings_when_jadwal_relations_missing()
+    {
+        $orphanedJadwal = new JadwalPelajaran([
+            'hari' => 'Senin',
+            'jam_ke' => 1,
+            'waktu_mulai' => '07:00',
+            'waktu_selesai' => '08:30',
+        ]);
+        $orphanedJadwal->setRelation('kelas', null);
+        $orphanedJadwal->setRelation('mapel', null);
+        $orphanedJadwal->setRelation('guru', null);
+
+        // 1. Admin dashboard view assertion
+        $adminView = $this->actingAs($this->adminUser)->view('admin.dashboard', [
+            'schedules' => collect([$orphanedJadwal]),
+        ]);
+        $adminView->assertDontSee('Budi Santoso');
+        $adminView->assertDontSee('Matematika Wajib');
+        $adminView->assertDontSee('X-A');
+
+        // 2. Guru dashboard view assertion
+        $guruView = $this->actingAs($this->guruUser)->view('guru.dashboard', [
+            'guruSchedules' => collect([$orphanedJadwal]),
+        ]);
+        $guruView->assertDontSee('Matematika');
+        $guruView->assertDontSee('X-A');
+    }
 }
+
+
+
+
