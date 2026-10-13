@@ -1,0 +1,46 @@
+
+ ANY / .. home ÔÇ║ Illuminate\Routing ÔÇ║ RedirectController
+ GET|HEAD admin/dashboard .. admin.dashboard
+ GET|HEAD admin/event-ujian .. admin.event-ujian ÔÇ║ App\Livewire\Admin\EventUjianManager
+ GET|HEAD admin/guru .. admin.guru ÔÇ║ App\Livewire\Admin\GuruManager
+ GET|HEAD admin/import .. admin.import ÔÇ║ App\Livewire\Admin\ImportExcel
+ GET|HEAD admin/jadwal .. admin.jadwal ÔÇ║ App\Livewire\Waka\JadwalManager
+ GET|HEAD admin/kelas .. admin.kelas ÔÇ║ App\Livewire\Admin\KelasManager
+ GET|HEAD admin/laporan .. admin.laporan ÔÇ║ App\Livewire\Waka\LaporanAkademik
+ GET|HEAD admin/mapel .. admin.mapel ÔÇ║ App\Livewire\Admin\MapelManager
+ GET|HEAD admin/pengaturan .. admin.pengaturan ÔÇ║ App\Livewire\Admin\PengaturanManager
+ GET|HEAD admin/siswa .. admin.siswa ÔÇ║ App\Livewire\Admin\SiswaManager
+ GET|HEAD admin/users .. admin.users ÔÇ║ App\Livewire\Admin\UserRoleManager
+ GET|HEAD confirm-password .. password.confirm ÔÇ║ vendor/livewire/volt/src/VoltManager.php:34
+ GET|HEAD dashboard .. dashboard ÔÇ║ routes/web.php:23
+ GET|HEAD forgot-password .. password.request ÔÇ║ vendor/livewire/volt/src/VoltManager.php:34
+ GET|HEAD guru/absensi .. guru.absensi ÔÇ║ App\Livewire\Guru\AbsensiGuru
+ GET|HEAD guru/dashboard .. guru.dashboard
+ GET|HEAD guru/jadwal .. guru.jadwal ÔÇ║ App\Livewire\Waka\JadwalManager
+ GET|HEAD guru/nilai .. guru.nilai ÔÇ║ App\Livewire\Guru\NilaiGuru
+ GET|HEAD guru/profil .. guru.profil ÔÇ║ App\Livewire\Guru\ProfilGuru
+ GET|HEAD livewire/livewire.js .. Livewire\Mechanisms ÔÇ║ FrontendAssets@returnJavaScriptAsFile
+ GET|HEAD livewire/livewire.min.js.map .. Livewire\Mechanisms ÔÇ║ FrontendAssets@maps
+ GET|HEAD livewire/preview-file/{filename} livewire.preview-file ÔÇ║ Livewire\Features ÔÇ║ FilePreviewController@handle
+ POST livewire/update .. default.livewire.update ÔÇ║ Livewire\Mechanisms ÔÇ║ HandleRequests@handleUpdate
+ POST livewire/upload-file .. livewire.upload-file ÔÇ║ Livewire\Features ÔÇ║ FileUploadController@handle
+ GET|HEAD login .. login ÔÇ║ vendor/livewire/volt/src/VoltManager.php:34
+ GET|HEAD portal .. portal
+ GET|HEAD profile .. profile
+ GET|HEAD register .. register ÔÇ║ vendor/livewire/volt/src/VoltManager.php:34
+ GET|HEAD reset-password/{token} .. password.reset ÔÇ║ vendor/livewire/volt/src/VoltManager.php:34
+ GET|HEAD siswa/dashboard .. siswa.dashboard ÔÇ║ App\Livewire\Siswa\SiswaDashboard
+ GET|HEAD storage/{path} storage.local ÔÇ║ vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemServiceProvidÔÇª
+ PUT storage/{path} storage.local.upload ÔÇ║ vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemServicÔÇª
+ GET|HEAD up .. vendor/laravel/framework/src/Illuminate/Foundation/Configuration/ApplicationBuilder.php:224
+ GET|HEAD verify-email .. verification.notice ÔÇ║ vendor/livewire/volt/src/VoltManager.php:34
+ GET|HEAD verify-email/{id}/{hash} .. verification.verify ÔÇ║ Auth\VerifyEmailController
+ GET|HEAD waka/dashboard .. waka.dashboard
+ GET|HEAD waka/event-ujian .. waka.event-ujian ÔÇ║ App\Livewire\Admin\EventUjianManager
+ GET|HEAD waka/jadwal .. waka.jadwal ÔÇ║ App\Livewire\Waka\JadwalManager
+ GET|HEAD waka/laporan .. waka.laporan ÔÇ║ App\Livewire\Waka\LaporanAkademik
+ GET|HEAD waka/rekap-absensi .. waka.rekap-absensi ÔÇ║ App\Livewire\Waka\RekapAbsensi
+ GET|HEAD waka/rekap-nilai .. waka.rekap-nilai ÔÇ║ App\Livewire\Waka\RekapNilai
+
+ Showing [42] routes
+

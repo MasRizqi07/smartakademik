@@ -1,0 +1,24 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\AbsensiGuruTest[39m
+  [31;1mÔ¿»[39;22m[90m [39m[90mmark all hadir is local state only and preserves existing status[39m[90m                                            [39m [90m0.58s[39m  
+  [31mÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\AbsensiGuruTest[22m [90m>[39m mark all hadir is local state only and preserves existing status             
+[39;1m  Failed asserting that 2 matches expected 1.[39;22m
+
+  at [32mtests\Feature\AbsensiGuruTest.php[39m:[32m202[39m
+    198Ôûò         $this->assertEquals('izin', $absensiData[$this->siswa1->id]);
+    199Ôûò         $this->assertEquals('hadir', $absensiData[$this->siswa2->id]);
+    200Ôûò 
+    201Ôûò         // Assert DB state is UNCHANGED immediately after markAllHadir
+  Ô×£ 202Ôûò         $this->assertEquals($initialRowCount, Absensi::count());
+    203Ôûò         $this->assertDatabaseHas('absensi', [
+    204Ôûò             'siswa_id' => $this->siswa1->id,
+    205Ôûò             'jadwal_id' => $this->jadwal->id,
+    206Ôûò             'status' => 'izin',
+
+  [33m1   [39m[39;1mtests\Feature\AbsensiGuruTest.php[39;22m:[39;1m202[39;22m
+
+
+  [90mTests:[39m    [31;1m1 failed[39;22m[90m (5 assertions)[39m
+  [90mDuration:[39m [39m1.00s[39m
+

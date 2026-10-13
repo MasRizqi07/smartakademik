@@ -1,0 +1,24 @@
+75ea461 phase-4: S3b remove decoration from live screens
+
+ resources/css/app.css                              |  16 +-
+ resources/views/admin/dashboard.blade.php          |  16 +-
+ resources/views/components/data-table.blade.php    |   2 +-
+ resources/views/guru/dashboard.blade.php           |  14 +-
+ resources/views/layouts/app.blade.php              |   2 +-
+ resources/views/layouts/public.blade.php           | 133 +++-----------
+ .../livewire/admin/event-ujian-manager.blade.php   |   8 +-
+ .../views/livewire/admin/guru-manager.blade.php    |   2 +-
+ .../views/livewire/admin/jadwal-manager.blade.php  |   2 +-
+ .../views/livewire/admin/kelas-manager.blade.php   |   2 +-
+ .../views/livewire/admin/mapel-manager.blade.php   |   2 +-
+ .../views/livewire/admin/siswa-manager.blade.php   |   2 +-
+ .../livewire/admin/user-role-manager.blade.php     |   2 +-
+ .../views/livewire/guru/absensi-guru.blade.php     |   2 +-
+ resources/views/livewire/guru/nilai-guru.blade.php |   4 +-
+ .../views/livewire/guru/profil-guru.blade.php      |   4 +-
+ .../views/livewire/siswa/siswa-dashboard.blade.php |   6 +-
+ .../views/livewire/waka/jadwal-manager.blade.php   |   2 +-
+ .../views/livewire/waka/rekap-nilai.blade.php      |   8 +-
+ resources/views/portal.blade.php                   | 197 ++++++++++-----------
+ resources/views/waka/dashboard.blade.php           |  36 ++--
+ 21 files changed, 189 insertions(+), 273 deletions(-)

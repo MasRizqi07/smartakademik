@@ -1,0 +1,154 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\JadwalCRUDTest[39m
+  [31;1mÔ¿»[39;22m[90m [39m[90mguru sees only own jadwal on waka jadwal manager[39m[90m                                                            [39m [90m0.61s[39m  
+  [31mÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\JadwalCRUDTest[22m [90m>[39m guru sees only own jadwal on waka jadwal manager                              
+[39;1m  Expected: [39;22m[31m<div wire:snapshot="" wire:effects="" wire:id="qPSmK8fe99HvIFRIqbtt" class="space-y-6">[39m[31m\n
+    <!-- Header Title & Actions -->\n
+    [39m[31m<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">[39m[31m\n
+        [39m[31m<div>[39m[31m\n
+            [39m[31m<h2 class="font-headline-lg text-2xl md:text-3xl font-bold text-primary">[39m[31mManajemen Jadwal Pelajaran[39m[31m</h2>[39m[31m\n
+            [39m[31m<p class="font-body-default text-body-default text-on-surface-variant mt-1">[39m[31mSusun dan pantau jadwal kegiatan belajar mengajar lintas kelas dan guru di MAN 4 Jombang.[39m[31m</p>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+        <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->    [39m[31m</div>[39m[31m\n
+\n
+    <!-- Alert Flash -->\n
+    <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->\n
+    <!-- Filter Card & Day Selector Pills -->\n
+    [39m[31m<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-border-default space-y-4">[39m[31m\n
+        <!-- Day Pills -->\n
+        [39m[31m<div class="flex flex-wrap items-center gap-2">[39m[31m\n
+                        <!--[if BLOCK]><![endif]-->                [39m[31m<button wire:click="$set('selectedHari', '')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-on-primary shadow-xs">[39m[31m\n
+                    Semua Hari\n
+                [39m[31m</button>[39m[31m\n
+                            [39m[31m<button wire:click="$set('selectedHari', 'Senin')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-surface hover:bg-surface-container text-on-surface-variant">[39m[31m\n
+                    Senin\n
+                [39m[31m</button>[39m[31m\n
+                            [39m[31m<button wire:click="$set('selectedHari', 'Selasa')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-surface hover:bg-surface-container text-on-surface-variant">[39m[31m\n
+                    Selasa\n
+                [39m[31m</button>[39m[31m\n
+                            [39m[31m<button wire:click="$set('selectedHari', 'Rabu')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-surface hover:bg-surface-container text-on-surface-variant">[39m[31m\n
+                    Rabu\n
+                [39m[31m</button>[39m[31m\n
+                            [39m[31m<button wire:click="$set('selectedHari', 'Kamis')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-surface hover:bg-surface-container text-on-surface-variant">[39m[31m\n
+                    Kamis\n
+                [39m[31m</button>[39m[31m\n
+                            [39m[31m<button wire:click="$set('selectedHari', 'Jumat')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-surface hover:bg-surface-container text-on-surface-variant">[39m[31m\n
+                    Jumat\n
+                [39m[31m</button>[39m[31m\n
+                            [39m[31m<button wire:click="$set('selectedHari', 'Sabtu')" \n
+                        class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-surface hover:bg-surface-container text-on-surface-variant">[39m[31m\n
+                    Sabtu\n
+                [39m[31m</button>[39m[31m\n
+            <!--[if ENDBLOCK]><![endif]-->        [39m[31m</div>[39m[31m\n
+\n
+        [39m[31m<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-border-default/60">[39m[31m\n
+            [39m[31m<div>[39m[31m\n
+                [39m[31m<label class="block text-xs font-semibold text-on-surface-variant mb-1">[39m[31mCari Guru / Mapel / Kelas[39m[31m</label>[39m[31m\n
+                [39m[31m<div class="relative">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />[39m[31m</svg>[39m[31m\n
+                    [39m[31m<input type="text" wire:model.live.debounce.300ms="search" placeholder="Ketik nama guru atau mapel..." class="w-full pl-9 pr-4 h-10 rounded-lg border border-border-default bg-surface text-sm focus:ring-2 focus:ring-primary focus:border-transparent">[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<div>[39m[31m\n
+                [39m[31m<label class="block text-xs font-semibold text-on-surface-variant mb-1">[39m[31mFilter Rombel Kelas[39m[31m</label>[39m[31m\n
+                [39m[31m<select wire:model.live="selectedKelas" class="w-full h-10 rounded-lg border border-border-default bg-surface text-sm focus:ring-2 focus:ring-primary focus:border-transparent">[39m[31m\n
+                    [39m[31m<option value="">[39m[31mSemua Rombel[39m[31m</option>[39m[31m\n
+                    <!--[if BLOCK]><![endif]-->                        [39m[31m<option value="6">[39m[31mX - X-Alpha[39m[31m</option>[39m[31m\n
+                    <!--[if ENDBLOCK]><![endif]-->                [39m[31m</select>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+    [39m[31m</div>[39m[31m\n
+\n
+    <!-- Form Drawer / Modal Card -->\n
+    <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->\n
+    <!-- Data Table Container -->\n
+    [39m[31m<div class="bg-surface-container-lowest rounded-xl border border-border-default shadow-card flex flex-col overflow-hidden relative">[39m[31m\n
+        [39m[31m<div wire:loading wire:target="search, selectedHari, selectedKelas, previousPage, nextPage, gotoPage" class="absolute inset-0 z-20 bg-surface-container-lowest/80 flex items-center justify-center">[39m[31m\n
+            [39m[31m<svg class="w-8 h-8 animate-spin" fill="none" viewBox="0 0 24 24">[39m[31m<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">[39m[31m</circle>[39m[31m<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">[39m[31m</path>[39m[31m</svg>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        [39m[31m<div class="overflow-x-auto">[39m[31m\n
+            [39m[31m<table class="w-full text-left border-collapse text-sm">[39m[31m\n
+                [39m[31m<thead>[39m[31m\n
+                    [39m[31m<tr class="bg-surface-container-low border-b border-border-default font-label-sm text-on-surface-variant text-[12px] uppercase tracking-wider">[39m[31m\n
+                        [39m[31m<th class="py-3.5 px-5 font-semibold">[39m[31mHari / Jam[39m[31m</th>[39m[31m\n
+                        [39m[31m<th class="py-3.5 px-5 font-semibold">[39m[31mWaktu KBM[39m[31m</th>[39m[31m\n
+                        [39m[31m<th class="py-3.5 px-5 font-semibold">[39m[31mKelas[39m[31m</th>[39m[31m\n
+                        [39m[31m<th class="py-3.5 px-5 font-semibold">[39m[31mMata Pelajaran[39m[31m</th>[39m[31m\n
+                        [39m[31m<th class="py-3.5 px-5 font-semibold">[39m[31mGuru Pengampu[39m[31m</th>[39m[31m\n
+                        <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                    [39m[31m</tr>[39m[31m\n
+                [39m[31m</thead>[39m[31m\n
+                [39m[31m<tbody class="divide-y divide-border-default/60 font-body-default text-text-main">[39m[31m\n
+                    <!--[if BLOCK]><![endif]-->                        [39m[31m<tr class="hover:bg-slate-50 transition-colors">[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5">[39m[31m\n
+                                [39m[31m<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-primary/10 text-primary uppercase">[39m[31m\n
+                                    Selasa &bull; Jam 2\n
+                                [39m[31m</span>[39m[31m\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 font-mono text-xs text-on-surface-variant">[39m[31m\n
+                                08:30 - 10:00\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 font-semibold text-text-main">[39m[31m\n
+                                XI XI-Beta\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 font-medium text-text-main">[39m[31m\n
+                                Fisika Khusus B\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 text-on-surface-variant text-xs font-medium">[39m[31m\n
+                                Siti Aminah, M.Pd.\n
+                            [39m[31m</td>[39m[31m\n
+                            <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                        [39m[31m</tr>[39m[31m\n
+                                            [39m[31m<tr class="hover:bg-slate-50 transition-colors">[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5">[39m[31m\n
+                                [39m[31m<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-primary/10 text-primary uppercase">[39m[31m\n
+                                    Senin &bull; Jam 1\n
+                                [39m[31m</span>[39m[31m\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 font-mono text-xs text-on-surface-variant">[39m[31m\n
+                                07:00 - 08:30\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 font-semibold text-text-main">[39m[31m\n
+                                X X-Alpha\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 font-medium text-text-main">[39m[31m\n
+                                Biologi Khusus A\n
+                            [39m[31m</td>[39m[31m\n
+                            [39m[31m<td class="py-3.5 px-5 text-on-surface-variant text-xs font-medium">[39m[31m\n
+                                Budi Santoso, S.Pd.\n
+                            [39m[31m</td>[39m[31m\n
+                            <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                        [39m[31m</tr>[39m[31m\n
+                    <!--[if ENDBLOCK]><![endif]-->                [39m[31m</tbody>[39m[31m\n
+            [39m[31m</table>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->    [39m[31m</div>[39m[31m\n
+[39m[31m</div>[39m[31m\n
+[39m[39;1m
+
+  Not to contain: [39;22m[32mFisika Khusus B[39m
+
+  at [32mvendor\livewire\livewire\src\Features\SupportTesting\MakesAssertions.php[39m:[32m26[39m
+     22Ôûò 
+     23Ôûò     function assertDontSee($values, $escape = true, $stripInitialData = true)
+     24Ôûò     {
+     25Ôûò         foreach (Arr::wrap($values) as $value) {
+  Ô×£  26Ôûò             PHPUnit::assertStringNotContainsString(
+     27Ôûò                 $escape ? e($value): $value,
+     28Ôûò                 $this->html($stripInitialData)
+     29Ôûò             );
+     30Ôûò         }
+
+  [33m1   [39m[39;1mvendor\livewire\livewire\src\Features\SupportTesting\MakesAssertions.php[39;22m:[39;1m26[39;22m
+  [33m2   [39m[39;1mtests\Feature\JadwalCRUDTest.php[39;22m:[39;1m285[39;22m
+
+
+  [90mTests:[39m    [31;1m1 failed[39;22m[90m (3 assertions)[39m
+  [90mDuration:[39m [39m1.01s[39m
+

@@ -1,0 +1,16 @@
+68ed851 phase-6.4: complete token migration for blue indigo purple
+
+ resources/css/app.css                                          | 10 ++++++++++
+ resources/views/components/nav-link.blade.php                  |  2 +-
+ resources/views/components/responsive-nav-link.blade.php       |  2 +-
+ resources/views/components/secondary-button.blade.php          |  2 +-
+ resources/views/components/text-input.blade.php                |  2 +-
+ resources/views/livewire/admin/jadwal-manager.blade.php        |  6 +++---
+ resources/views/livewire/admin/user-role-manager.blade.php     |  8 ++++----
+ resources/views/livewire/pages/auth/register.blade.php         |  2 +-
+ resources/views/livewire/pages/auth/verify-email.blade.php     |  2 +-
+ .../livewire/profile/update-profile-information-form.blade.php |  2 +-
+ resources/views/waka/dashboard.blade.php                       |  6 +++---
+ scripts/check-discipline.sh                                    |  2 +-
+ tailwind.config.js                                             |  6 ++++++
+ 13 files changed, 34 insertions(+), 18 deletions(-)

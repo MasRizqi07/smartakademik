@@ -1,0 +1,24 @@
+app/Livewire/Guru/AbsensiGuru.php:37:        abort_unless($this->selectedJadwalId && $this->tanggal, 422);
+app/Livewire/Guru/AbsensiGuru.php:38:        abort_unless($this->tanggal === today()->toDateString(), 422, 'Tanggal presensi hanya boleh hari ini. Muat ulang halaman.');
+app/Livewire/Guru/AbsensiGuru.php:40:        $this->authorize('create', [Absensi::class, $jadwal]);   // unconditional
+app/Livewire/Guru/AbsensiGuru.php:47:        abort_unless($siswa, 404);
+app/Livewire/Guru/AbsensiGuru.php:114:        abort_unless(in_array($status, self::STATUSES, true), 422);
+app/Livewire/Guru/AbsensiGuru.php:153:        abort_unless($this->activeSiswaId, 422);
+app/Livewire/Guru/AbsensiGuru.php:179:        $this->authorize('create', [Absensi::class, $jadwal]);
+app/Livewire/Guru/AbsensiGuru.php:214:            abort_unless(in_array($status, self::STATUSES, true), 422, 'Status absensi tidak valid.');
+app/Livewire/Guru/AbsensiGuru.php:218:                abort_unless(is_string($keterangan) && mb_strlen($keterangan) <= 255, 422, 'Keterangan tidak valid.');
+app/Livewire/Guru/NilaiGuru.php:90:        abort_unless($jadwal, 404, 'Jadwal tidak ditemukan');
+app/Livewire/Guru/NilaiGuru.php:91:        $this->authorize('create', [NilaiFormatif::class, $jadwal]);
+app/Livewire/Guru/NilaiGuru.php:128:        abort_unless($jadwal, 404, 'Jadwal tidak ditemukan');
+app/Livewire/Guru/NilaiGuru.php:129:        $this->authorize('create', [NilaiFormatif::class, $jadwal]);
+app/Livewire/Waka/JadwalManager.php:56:    private function ensureCanManage(): void
+app/Livewire/Waka/JadwalManager.php:58:        abort_unless(auth()->user()->hasRole(['admin_tu', 'waka_kurikulum']), 403);
+app/Livewire/Waka/JadwalManager.php:63:        $this->ensureCanManage();
+app/Livewire/Waka/JadwalManager.php:70:        $this->ensureCanManage();
+app/Livewire/Waka/JadwalManager.php:86:        $this->ensureCanManage();
+app/Livewire/Waka/JadwalManager.php:134:        $this->ensureCanManage();
+app/Livewire/Waka/JadwalManager.php:153:    private function isOwnScheduleOnly(): bool
+app/Livewire/Waka/JadwalManager.php:156:        return $user && $user->hasRole('guru') && ! $user->hasAnyRole(['admin_tu', 'waka_kurikulum']);
+app/Livewire/Waka/JadwalManager.php:163:        $isOwn = $this->isOwnScheduleOnly();
+app/Livewire/Waka/LaporanAkademik.php:25:        abort_unless(auth()->user()->hasAnyRole(['admin_tu', 'waka_kurikulum']), 403);
+app/Livewire/Waka/LaporanAkademik.php:30:        abort_unless(auth()->user()->hasAnyRole(['admin_tu', 'waka_kurikulum']), 403);

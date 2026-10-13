@@ -1,0 +1,20 @@
+6e68033 phase-3: S3a token alpha support and semantic hue migration
+
+ resources/css/app.css                              | 14 ++++++
+ .../views/components/animated-button.blade.php     |  6 +--
+ .../views/components/auth-session-status.blade.php |  2 +-
+ resources/views/components/danger-button.blade.php |  2 +-
+ resources/views/components/input-error.blade.php   |  2 +-
+ resources/views/layouts/app.blade.php              |  4 +-
+ resources/views/layouts/public.blade.php           | 52 +++++++++++-----------
+ .../views/livewire/admin/jadwal-manager.blade.php  | 18 ++++----
+ .../livewire/admin/user-role-manager.blade.php     |  6 +--
+ .../views/livewire/guru/absensi-guru.blade.php     |  2 +-
+ .../livewire/pages/auth/verify-email.blade.php     |  2 +-
+ .../update-profile-information-form.blade.php      |  2 +-
+ .../views/livewire/waka/laporan-akademik.blade.php |  4 +-
+ resources/views/portal.blade.php                   | 38 ++++++++--------
+ resources/views/waka/dashboard.blade.php           | 18 ++++----
+ scripts/check-discipline.sh                        | 16 +++++++
+ tailwind.config.js                                 | 36 ++++++++++-----
+ 17 files changed, 133 insertions(+), 91 deletions(-)

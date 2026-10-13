@@ -1,0 +1,10 @@
+a7becf7 phase-2: S2 gate deferred public pages
+
+ .env.example                             |  2 +
+ config/features.php                      |  5 +++
+ resources/views/layouts/app.blade.php    |  4 +-
+ resources/views/layouts/public.blade.php | 12 ++++++
+ routes/web.php                           | 19 +++++----
+ tests/Feature/ExampleTest.php            |  2 +-
+ tests/Feature/PublicGatingTest.php       | 68 ++++++++++++++++++++++++++++++++
+ 7 files changed, 103 insertions(+), 9 deletions(-)

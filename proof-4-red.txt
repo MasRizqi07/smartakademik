@@ -1,0 +1,507 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\DashboardMetricsTest[39m
+  [31;1mÔ¿»[39;22m[90m [39m[90mdashboards render no fabricated fallback strings when jadwal relations missing[39m[90m                              [39m [90m0.54s[39m  
+  [31mÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\DashboardMetricsTest[22m [90m>[39m dashboards render no fabricated fallback strings when jadwal relatioÔÇª   
+[39;1m  Expected: [39;22m[31m<!DOCTYPE html>\n
+[39m[31m<html lang="id" class="scroll-smooth">[39m[31m\n
+    [39m[31m<head>[39m[31m\n
+        [39m[31m<meta charset="utf-8">[39m[31m\n
+        [39m[31m<meta name="viewport" content="width=device-width, initial-scale=1">[39m[31m\n
+        [39m[31m<meta name="csrf-token" content="gFkJkeQBg29nJK5kl7AHILB8aWeMHwUiR0pN2lh5">[39m[31m\n
+\n
+        [39m[31m<title>[39m[31mSmartAkademik ÔÇö MAN 4 Jombang[39m[31m</title>[39m[31m\n
+\n
+        <!-- Fonts -->\n
+        [39m[31m<link rel="preconnect" href="https://fonts.bunny.net">[39m[31m\n
+        [39m[31m<link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|outfit:500,600,700,800&display=swap" rel="stylesheet" />[39m[31m\n
+\n
+        <!-- Scripts -->\n
+        [39m[31m<link rel="preload" as="style" href="http://localhost/build/assets/app-BHSdOM-d.css" />[39m[31m<link rel="modulepreload" as="script" href="http://localhost/build/assets/app-DywH33HS.js" />[39m[31m<link rel="stylesheet" href="http://localhost/build/assets/app-BHSdOM-d.css" data-navigate-track="reload" />[39m[31m<script type="module" src="http://localhost/build/assets/app-DywH33HS.js" data-navigate-track="reload">[39m[31m</script>[39m[31m        <!-- Livewire Styles -->[39m[31m<style >[39m[31m[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}[39m[31m</style>[39m[31m\n
+    [39m[31m</head>[39m[31m\n
+    [39m[31m<body class="bg-surface-page text-text-primary antialiased min-h-screen relative font-sans selection:bg-brand selection:text-white overflow-x-hidden">[39m[31m\n
+        [39m[31m<div class="min-h-screen flex flex-col md:flex-row relative">[39m[31m\n
+            [39m[31m<div wire:snapshot="{&quot;data&quot;:[],&quot;memo&quot;:{&quot;id&quot;:&quot;aOhMHPaq9TKFCDQXJs14&quot;,&quot;name&quot;:&quot;layout.navigation&quot;,&quot;path&quot;:&quot;admin\/dashboard&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;id&quot;},&quot;checksum&quot;:&quot;404c9eb8e42f6b85e908ddf5f721cc7ee0b3b8a8fcf60eb77391c3637d8a2c41&quot;}" wire:effects="[]" wire:id="aOhMHPaq9TKFCDQXJs14" x-data="{ mobileOpen: false, roleMenuOpen: false }">[39m[31m\n
+    <!-- Desktop Sidebar Navbar -->\n
+    [39m[31m<nav class="hidden md:flex bg-surface-container-lowest shadow-sm h-screen w-64 fixed left-0 top-0 flex-col p-4 border-r border-border-default z-40">[39m[31m\n
+        <!-- Brand Header & Theme Toggle -->\n
+        [39m[31m<div class="mb-4 flex items-center justify-between px-2 pt-2">[39m[31m\n
+            [39m[31m<a href="http://localhost" class="flex items-center gap-2.5 group">[39m[31m\n
+                [39m[31m<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-bold shadow-xs group-hover:scale-105 transition-transform">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+                [39m[31m<div>[39m[31m\n
+                    [39m[31m<h1 class="font-headline-md text-sm leading-tight font-bold text-primary">[39m[31mMAN 4 Jombang[39m[31m</h1>[39m[31m\n
+                    [39m[31m<p class="font-label-sm text-[9px] text-on-surface-variant uppercase tracking-wider">[39m[31mAcademic Portal[39m[31m</p>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+\n
+        [39m[31m</div>[39m[31m\n
+\n
+        <!-- Navigation Links -->\n
+        [39m[31m<ul class="flex flex-col gap-1 flex-1 overflow-y-auto py-2 pr-1 space-y-0.5">[39m[31m\n
+            \n
+            <!--[if BLOCK]><![endif]-->                [39m[31m<li class="px-3 pt-2 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">[39m[31mNavigasi Admin[39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/dashboard" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all bg-primary text-on-primary font-bold shadow-xs">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mBeranda Admin[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/siswa" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mData Siswa[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/guru" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mData Guru &amp; User[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/kelas" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mData Rombel Kelas[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/mapel" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mMata Pelajaran[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/jadwal" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mJadwal Pelajaran[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/event-ujian" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mEvent &amp; Ujian[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/users" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mManajemen User (RBAC)[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/pengaturan" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mPengaturan Akademik[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+                [39m[31m<li>[39m[31m\n
+                    [39m[31m<a href="http://localhost/admin/import" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-on-surface-variant hover:bg-surface hover:text-text-main">[39m[31m\n
+                        [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m<span>[39m[31mImport Excel[39m[31m</span>[39m[31m\n
+                    [39m[31m</a>[39m[31m\n
+                [39m[31m</li>[39m[31m\n
+\n
+            <!--[if ENDBLOCK]><![endif]-->\n
+            [39m[31m<li class="px-3 pt-3 pb-1 text-[10px] font-bold text-outline uppercase tracking-wider">[39m[31mPublik &amp; Info[39m[31m</li>[39m[31m\n
+            [39m[31m<li>[39m[31m\n
+                [39m[31m<a href="http://localhost/kalender" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface transition-all">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                    [39m[31m<span>[39m[31mKalender Madrasah[39m[31m</span>[39m[31m\n
+                [39m[31m</a>[39m[31m\n
+            [39m[31m</li>[39m[31m\n
+            [39m[31m<li>[39m[31m\n
+                [39m[31m<a href="http://localhost/bantuan" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface transition-all">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                    [39m[31m<span>[39m[31mPusat Bantuan[39m[31m</span>[39m[31m\n
+                [39m[31m</a>[39m[31m\n
+            [39m[31m</li>[39m[31m\n
+            [39m[31m<li>[39m[31m\n
+                [39m[31m<a href="http://localhost/kontak" class="flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface transition-all">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                    [39m[31m<span>[39m[31mHubungi IT Support[39m[31m</span>[39m[31m\n
+                [39m[31m</a>[39m[31m\n
+            [39m[31m</li>[39m[31m\n
+        [39m[31m</ul>[39m[31m\n
+\n
+        <!-- Demo Role Switcher Dropdown (Frictionless Paired Evaluation) -->\n
+        [39m[31m<div class="pt-2 border-t border-border-default/60 relative">[39m[31m\n
+            [39m[31m<div class="p-2 bg-surface rounded-xl border border-border-default mb-2">[39m[31m\n
+                [39m[31m<div class="flex items-center justify-between mb-1.5">[39m[31m\n
+                    [39m[31m<span class="text-[10px] font-bold text-primary uppercase tracking-wider">[39m[31mUji Coba Peran:[39m[31m</span>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+                [39m[31m<div class="grid grid-cols-4 gap-1">[39m[31m\n
+                    [39m[31m<button wire:click="switchRole('admin')" class="py-1 px-1 rounded text-[10px] font-bold text-center bg-primary text-on-primary">[39m[31m\n
+                        Admin\n
+                    [39m[31m</button>[39m[31m\n
+                    [39m[31m<button wire:click="switchRole('waka')" class="py-1 px-1 rounded text-[10px] font-bold text-center bg-surface-container text-on-surface-variant hover:bg-primary/20">[39m[31m\n
+                        Waka\n
+                    [39m[31m</button>[39m[31m\n
+                    [39m[31m<button wire:click="switchRole('guru')" class="py-1 px-1 rounded text-[10px] font-bold text-center bg-surface-container text-on-surface-variant hover:bg-primary/20">[39m[31m\n
+                        Guru\n
+                    [39m[31m</button>[39m[31m\n
+                    [39m[31m<button wire:click="switchRole('siswa')" class="py-1 px-1 rounded text-[10px] font-bold text-center bg-surface-container text-on-surface-variant hover:bg-primary/20">[39m[31m\n
+                        Siswa\n
+                    [39m[31m</button>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+\n
+            <!-- User Info & Logout Button -->\n
+            [39m[31m<div class="flex items-center justify-between pt-1">[39m[31m\n
+                [39m[31m<div class="flex items-center gap-2.5 min-w-0">[39m[31m\n
+                    [39m[31m<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs shadow-xs shrink-0">[39m[31m\n
+                        A\n
+                    [39m[31m</div>[39m[31m\n
+                    [39m[31m<div class="flex flex-col min-w-0 overflow-hidden">[39m[31m\n
+                        [39m[31m<span class="text-xs text-text-main truncate font-bold">[39m[31mAdmin TU MAN 4[39m[31m</span>[39m[31m\n
+                        [39m[31m<span class="text-[10px] text-on-surface-variant truncate font-semibold uppercase">[39m[31madmin_tu[39m[31m</span>[39m[31m\n
+                    [39m[31m</div>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+\n
+                [39m[31m<button wire:click="logout" class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors" title="Keluar">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</button>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+    [39m[31m</nav>[39m[31m\n
+\n
+    <!-- Mobile Header Navigation Topbar -->\n
+    [39m[31m<header class="md:hidden bg-surface-container-lowest border-b border-border-default px-4 h-16 sticky top-0 flex justify-between items-center z-40 shadow-xs">[39m[31m\n
+        [39m[31m<div class="flex items-center gap-3">[39m[31m\n
+            [39m[31m<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />[39m[31m</svg>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<span class="font-headline-md text-base text-primary font-extrabold">[39m[31mMAN 4 Jombang[39m[31m</span>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        [39m[31m<div class="flex items-center gap-2">[39m[31m\n
+\n
+            [39m[31m<button @click="mobileOpen = !mobileOpen" aria-label="Toggle navigation" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+            [39m[31m</button>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+    [39m[31m</header>[39m[31m\n
+\n
+    <!-- Mobile Navigation Drawer Overlay -->\n
+    [39m[31m<div x-show="mobileOpen" x-transition class="md:hidden bg-surface-container-lowest border-b border-border-default shadow-xl fixed top-16 left-0 right-0 z-40 p-4 flex flex-col gap-2 max-h-[85vh] overflow-y-auto">[39m[31m\n
+        <!--[if BLOCK]><![endif]-->            [39m[31m<a href="http://localhost/admin/dashboard" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main font-semibold">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mDashboard Admin[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/siswa" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mData Siswa[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/guru" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mData Guru &amp; User[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/kelas" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mData Kelas[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/mapel" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mMata Pelajaran[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/jadwal" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mJadwal Pelajaran[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/event-ujian" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mEvent &amp; Ujian[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/pengaturan" wire:navigate class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-text-main">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mPengaturan Akademik[39m[31m</span>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+        <!--[if ENDBLOCK]><![endif]-->\n
+        [39m[31m<div class="pt-3 border-t border-border-default/60 flex items-center justify-between gap-3">[39m[31m\n
+            [39m[31m<div class="flex items-center gap-2 text-xs font-semibold text-on-surface-variant">[39m[31m\n
+                [39m[31m<span>[39m[31mMode Tema:[39m[31m</span>[39m[31m\n
+\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<button wire:click="logout" class="px-4 py-2 bg-error/10 hover:bg-error/20 text-error font-semibold text-xs rounded-lg transition-all flex items-center justify-center gap-1.5">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span>[39m[31mKeluar[39m[31m</span>[39m[31m\n
+            [39m[31m</button>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+    [39m[31m</div>[39m[31m\n
+[39m[31m</div>[39m[31m\n
+            <!-- Main Content Area -->\n
+            [39m[31m<div class="flex-1 md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen flex flex-col relative z-10 transition-all">[39m[31m\n
+                <!-- Top Header Bar -->\n
+                [39m[31m<header class="bg-surface border-b border-border h-16 sm:h-20 px-4 sm:px-8 sticky top-0 flex items-center justify-between z-30">[39m[31m\n
+                    [39m[31m<div class="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">[39m[31m\n
+                        [39m[31m<div class="flex items-center gap-3 truncate">[39m[31m\n
+                                                            [39m[31m<div class="text-base sm:text-lg font-bold text-text-primary font-display truncate">[39m[31m\n
+                                    [39m[31m<div class="flex items-center justify-between w-full">[39m[31m\n
+            [39m[31m<div class="flex items-center gap-3">[39m[31m\n
+                [39m[31m<span class="font-headline-md text-headline-md text-primary font-extrabold">[39m[31mAcademic Portal[39m[31m</span>[39m[31m\n
+                [39m[31m<span class="text-border-default hidden sm:inline">[39m[31m&bull;[39m[31m</span>[39m[31m\n
+                [39m[31m<span class="text-xs font-semibold bg-primary/10 text-primary px-3 py-1 rounded-full hidden sm:inline">[39m[31mAdmin TU &amp; Overview[39m[31m</span>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<div class="flex items-center gap-2">[39m[31m\n
+                [39m[31m<span class="text-xs text-on-surface-variant font-medium">[39m[31mTuesday, 13 October 2026[39m[31m</span>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+                                [39m[31m</div>[39m[31m\n
+                                                    [39m[31m</div>[39m[31m\n
+\n
+                        <!-- Top Right Academic Badges & Date -->\n
+                        [39m[31m<div class="flex items-center gap-2 sm:gap-3">[39m[31m\n
+                            [39m[31m<span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-surface text-brand-dark text-[11px] font-bold border border-brand/20 shadow-2xs">[39m[31m\n
+                                [39m[31m<span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse">[39m[31m</span>[39m[31m\n
+                                [39m[31m<span>[39m[31mTP 2026/2027 Ganjil[39m[31m</span>[39m[31m\n
+                            [39m[31m</span>[39m[31m\n
+\n
+                            [39m[31m<span class="hidden lg:inline-flex text-[11px] text-text-secondary font-medium items-center gap-1.5">[39m[31m\n
+                                [39m[31m<svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />[39m[31m</svg>[39m[31m\n
+                                [39m[31m<span>[39m[31m13 Oct 2026[39m[31m</span>[39m[31m\n
+                            [39m[31m</span>[39m[31m\n
+\n
+                            [39m[31m<a href="http://localhost" target="_blank" title="Buka Portal Publik Madrasah" class="p-2 rounded-xl text-text-secondary hover:text-brand hover:bg-brand-surface border border-slate-200 transition-colors">[39m[31m\n
+                                [39m[31m<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />[39m[31m</svg>[39m[31m\n
+                            [39m[31m</a>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                    [39m[31m</div>[39m[31m\n
+                [39m[31m</header>[39m[31m\n
+\n
+                <!-- Page Canvas -->\n
+                [39m[31m<main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full animate-fade-in space-y-6">[39m[31m\n
+                    <!-- Welcome Header -->\n
+    [39m[31m<section class="flex flex-col gap-1">[39m[31m\n
+        [39m[31m<h1 class="font-headline-lg text-2xl md:text-3xl font-bold text-text-main">[39m[31m\n
+            Selamat Datang, Admin TU MAN 4\n
+        [39m[31m</h1>[39m[31m\n
+        [39m[31m<p class="font-body-default text-body-default text-on-surface-variant">[39m[31m\n
+            Berikut adalah ringkasan operasional dan aktivitas akademik madrasah hari ini.\n
+        [39m[31m</p>[39m[31m\n
+    [39m[31m</section>[39m[31m\n
+\n
+    <!-- Bento Grid Stats -->\n
+    [39m[31m<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">[39m[31m\n
+        <!-- Active Classes -->\n
+        [39m[31m<div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">[39m[31m\n
+            [39m[31m<div class="flex items-center gap-2 text-primary">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span class="font-label-sm uppercase tracking-wider text-on-surface-variant">[39m[31mKelas Aktif[39m[31m</span>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<div class="font-headline-lg text-3xl font-bold text-text-main mt-1">[39m[31m\n
+                4\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<span class="text-[11px] text-on-surface-variant">[39m[31mTingkat X, XI, dan XII[39m[31m</span>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        <!-- Total Students -->\n
+        [39m[31m<div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">[39m[31m\n
+            [39m[31m<div class="flex items-center gap-2 text-secondary">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span class="font-label-sm uppercase tracking-wider text-on-surface-variant">[39m[31mTotal Siswa[39m[31m</span>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<div class="font-headline-lg text-3xl font-bold text-text-main mt-1">[39m[31m\n
+                4\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<span class="text-[11px] text-status-hadir font-medium">[39m[31mTerdaftar Aktif di Dapodik/EMIS[39m[31m</span>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        <!-- Attendance Rate -->\n
+        [39m[31m<div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">[39m[31m\n
+            [39m[31m<div class="flex items-center gap-2 text-status-hadir">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span class="font-label-sm uppercase tracking-wider text-on-surface-variant">[39m[31mRata-rata Kehadiran[39m[31m</span>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+                        [39m[31m<div class="font-headline-lg text-3xl font-bold text-text-main mt-1">[39m[31m\n
+                -\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<span class="text-[11px] text-outline font-medium">[39m[31m\n
+                Belum ada data\n
+            [39m[31m</span>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        <!-- Pending Tasks / Grades -->\n
+        [39m[31m<div class="bg-surface-container-lowest p-5 rounded-xl shadow-card border border-border-default flex flex-col gap-2 transition-shadow hover:shadow-md">[39m[31m\n
+            [39m[31m<div class="flex items-center gap-2 text-status-izin">[39m[31m\n
+                [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m<span class="font-label-sm uppercase tracking-wider text-on-surface-variant">[39m[31mInput Formatif[39m[31m</span>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<div class="font-headline-lg text-3xl font-bold text-text-main mt-1">[39m[31m\n
+                5 Mapel\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<span class="text-[11px] text-on-surface-variant">[39m[31mTujuan Pembelajaran Aktif[39m[31m</span>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+    [39m[31m</section>[39m[31m\n
+\n
+    <!-- Main Layout: Today's Schedule Table + Recent Activity Panel -->\n
+    [39m[31m<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">[39m[31m\n
+        <!-- Schedule Table (2 Cols) -->\n
+        [39m[31m<section class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-card border border-border-default flex flex-col overflow-hidden">[39m[31m\n
+            [39m[31m<div class="p-5 border-b border-border-default bg-surface flex justify-between items-center">[39m[31m\n
+                [39m[31m<h3 class="font-headline-md text-base font-bold text-text-main flex items-center gap-2">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                    [39m[31m<span>[39m[31mJadwal Mengajar Hari Ini[39m[31m</span>[39m[31m\n
+                [39m[31m</h3>[39m[31m\n
+                [39m[31m<a href="http://localhost/admin/kelas" wire:navigate class="text-primary font-label-md text-xs font-semibold hover:underline flex items-center gap-1">[39m[31m\n
+                    [39m[31m<span>[39m[31mLihat Semua[39m[31m</span>[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</a>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+\n
+            [39m[31m<div class="overflow-x-auto">[39m[31m\n
+                [39m[31m<table class="w-full text-left border-collapse text-sm">[39m[31m\n
+                    [39m[31m<thead>[39m[31m\n
+                        [39m[31m<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-xs uppercase border-b border-border-default">[39m[31m\n
+                            [39m[31m<th class="py-3 px-5 font-semibold">[39m[31mWaktu[39m[31m</th>[39m[31m\n
+                            [39m[31m<th class="py-3 px-5 font-semibold">[39m[31mMata Pelajaran[39m[31m</th>[39m[31m\n
+                            [39m[31m<th class="py-3 px-5 font-semibold">[39m[31mKelas[39m[31m</th>[39m[31m\n
+                            [39m[31m<th class="py-3 px-5 font-semibold">[39m[31mPengajar[39m[31m</th>[39m[31m\n
+                            [39m[31m<th class="py-3 px-5 font-semibold text-right">[39m[31mStatus[39m[31m</th>[39m[31m\n
+                        [39m[31m</tr>[39m[31m\n
+                    [39m[31m</thead>[39m[31m\n
+                    [39m[31m<tbody class="divide-y divide-border-default">[39m[31m\n
+                        \n
+                                                    [39m[31m<tr class="hover:bg-slate-50 transition-colors">[39m[31m\n
+                                [39m[31m<td class="py-3 px-5 text-on-surface-variant font-mono text-xs">[39m[31m14:00 - 15:30[39m[31m</td>[39m[31m\n
+                                [39m[31m<td class="py-3 px-5 font-semibold text-text-main">[39m[31m-[39m[31m</td>[39m[31m\n
+                                [39m[31m<td class="py-3 px-5">[39m[31m-[39m[31m</td>[39m[31m\n
+                                [39m[31m<td class="py-3 px-5 text-on-surface-variant text-xs">[39m[31mBudi Santoso[39m[31m</td>[39m[31m\n
+                                [39m[31m<td class="py-3 px-5 text-right">[39m[31m\n
+                                    [39m[31m<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary uppercase">[39m[31m\n
+                                        [39m[31m<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse">[39m[31m</span>[39m[31m\n
+                                        Aktif\n
+                                    [39m[31m</span>[39m[31m\n
+                                [39m[31m</td>[39m[31m\n
+                            [39m[31m</tr>[39m[31m\n
+                                            [39m[31m</tbody>[39m[31m\n
+                [39m[31m</table>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+        [39m[31m</section>[39m[31m\n
+\n
+        <!-- Recent Activity Feed (1 Col) -->\n
+        [39m[31m<section class="bg-surface-container-lowest rounded-xl shadow-card border border-border-default flex flex-col h-full overflow-hidden">[39m[31m\n
+            [39m[31m<div class="p-5 border-b border-border-default bg-surface">[39m[31m\n
+                [39m[31m<h3 class="font-headline-md text-base font-bold text-text-main flex items-center gap-2">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                    [39m[31m<span>[39m[31mAktivitas Terkini[39m[31m</span>[39m[31m\n
+                [39m[31m</h3>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+            [39m[31m<div class="p-5 flex-1 overflow-y-auto">[39m[31m\n
+                [39m[31m<ul class="flex flex-col gap-4 relative">[39m[31m\n
+                    [39m[31m<div class="absolute left-[11px] top-2 bottom-2 w-px bg-border-default -z-10">[39m[31m</div>[39m[31m\n
+                    [39m[31m<li class="flex gap-3 text-xs">[39m[31m\n
+                        [39m[31m<div class="w-6 h-6 rounded-full bg-status-hadir/15 text-status-hadir flex items-center justify-center shrink-0 border border-status-hadir/30">[39m[31m\n
+                            [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                        [39m[31m<div class="flex flex-col">[39m[31m\n
+                            [39m[31m<p class="font-body-default text-text-main">[39m[31m<span class="font-semibold">[39m[31mPresensi kelas[39m[31m</span>[39m[31m telah terekam oleh guru pengampu[39m[31m</p>[39m[31m\n
+                            [39m[31m<span class="text-[11px] text-on-surface-variant mt-0.5">[39m[31m10 menit yang lalu[39m[31m</span>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                    [39m[31m</li>[39m[31m\n
+                    [39m[31m<li class="flex gap-3 text-xs">[39m[31m\n
+                        [39m[31m<div class="w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 border border-primary/30">[39m[31m\n
+                            [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                        [39m[31m<div class="flex flex-col">[39m[31m\n
+                            [39m[31m<p class="font-body-default text-text-main">[39m[31m<span class="font-semibold">[39m[31mNilai Formatif TP 2[39m[31m</span>[39m[31m telah terekam ke sistem[39m[31m</p>[39m[31m\n
+                            [39m[31m<span class="text-[11px] text-on-surface-variant mt-0.5">[39m[31m45 menit yang lalu[39m[31m</span>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                    [39m[31m</li>[39m[31m\n
+                    [39m[31m<li class="flex gap-3 text-xs">[39m[31m\n
+                        [39m[31m<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 border border-border-default">[39m[31m\n
+                            [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                        [39m[31m<div class="flex flex-col">[39m[31m\n
+                            [39m[31m<p class="font-body-default text-text-main">[39m[31mAkun portal siswa baru digenerate secara otomatis[39m[31m</p>[39m[31m\n
+                            [39m[31m<span class="text-[11px] text-on-surface-variant mt-0.5">[39m[31mHari ini, 08:15 WIB[39m[31m</span>[39m[31m\n
+                        [39m[31m</div>[39m[31m\n
+                    [39m[31m</li>[39m[31m\n
+                [39m[31m</ul>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+        [39m[31m</section>[39m[31m\n
+    [39m[31m</div>[39m[31m\n
+\n
+    <!-- Master Data Management Cards -->\n
+    [39m[31m<section class="flex flex-col gap-4 pt-2">[39m[31m\n
+        [39m[31m<h3 class="font-headline-md text-lg font-bold text-text-main flex items-center gap-2">[39m[31m\n
+            [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+            [39m[31m<span>[39m[31mAkses Cepat Modul Master Data[39m[31m</span>[39m[31m\n
+        [39m[31m</h3>[39m[31m\n
+\n
+        [39m[31m<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">[39m[31m\n
+            [39m[31m<a href="http://localhost/admin/siswa" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">[39m[31m\n
+                [39m[31m<div class="w-11 h-11 rounded-lg bg-primary-container/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors shrink-0">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+                [39m[31m<div>[39m[31m\n
+                    [39m[31m<h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">[39m[31mData Siswa[39m[31m</h4>[39m[31m\n
+                    [39m[31m<p class="text-xs text-on-surface-variant">[39m[31mNISN &amp; Profil Siswa[39m[31m</p>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+\n
+            [39m[31m<a href="http://localhost/admin/guru" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">[39m[31m\n
+                [39m[31m<div class="w-11 h-11 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-colors shrink-0">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+                [39m[31m<div>[39m[31m\n
+                    [39m[31m<h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">[39m[31mGuru &amp; User[39m[31m</h4>[39m[31m\n
+                    [39m[31m<p class="text-xs text-on-surface-variant">[39m[31mNIP &amp; Hak Akses[39m[31m</p>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+\n
+            [39m[31m<a href="http://localhost/admin/kelas" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">[39m[31m\n
+                [39m[31m<div class="w-11 h-11 rounded-lg bg-status-izin/10 text-status-izin flex items-center justify-center group-hover:bg-status-izin group-hover:text-white transition-colors shrink-0">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+                [39m[31m<div>[39m[31m\n
+                    [39m[31m<h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">[39m[31mRombel Kelas[39m[31m</h4>[39m[31m\n
+                    [39m[31m<p class="text-xs text-on-surface-variant">[39m[31mTingkat &amp; Wali Kelas[39m[31m</p>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+\n
+            [39m[31m<a href="http://localhost/admin/mapel" wire:navigate class="bg-surface-container-lowest p-5 rounded-xl border border-border-default shadow-card hover:border-primary transition-all group flex items-center gap-3.5 transition-shadow hover:shadow-md">[39m[31m\n
+                [39m[31m<div class="w-11 h-11 rounded-lg bg-status-sakit/10 text-status-sakit flex items-center justify-center group-hover:bg-status-sakit group-hover:text-white transition-colors shrink-0">[39m[31m\n
+                    [39m[31m<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">[39m[31m<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />[39m[31m</svg>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+                [39m[31m<div>[39m[31m\n
+                    [39m[31m<h4 class="font-headline-md text-sm font-bold text-text-main group-hover:text-primary transition-colors">[39m[31mMata Pelajaran[39m[31m</h4>[39m[31m\n
+                    [39m[31m<p class="text-xs text-on-surface-variant">[39m[31mKode &amp; Bobot Jam[39m[31m</p>[39m[31m\n
+                [39m[31m</div>[39m[31m\n
+            [39m[31m</a>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+    [39m[31m</section>[39m[31m\n
+                [39m[31m</main>[39m[31m\n
+\n
+                <!-- App Footer -->\n
+                [39m[31m<footer class="mt-auto py-5 px-6 text-center text-xs text-text-secondary border-t border-slate-200/80 bg-white/60">[39m[31m\n
+                    [39m[31m<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">[39m[31m\n
+                        [39m[31m<span>[39m[31m&copy; 2026 [39m[31m<strong>[39m[31mSmartAkademik[39m[31m</strong>[39m[31m ÔÇö MAN 4 Jombang PP. Mamba'ul Ma'arif Denanyar.[39m[31m</span>[39m[31m\n
+                                            [39m[31m</div>[39m[31m\n
+                [39m[31m</footer>[39m[31m\n
+            [39m[31m</div>[39m[31m\n
+        [39m[31m</div>[39m[31m\n
+\n
+        <!-- Livewire Scripts -->\n
+[39m[31m<script src="/livewire/livewire.js?id=b4ec3bf2"   data-csrf="gFkJkeQBg29nJK5kl7AHILB8aWeMHwUiR0pN2lh5" data-update-uri="/livewire/update" data-navigate-once="true">[39m[31m</script>[39m[31m\n
+    [39m[31m</body>[39m[31m\n
+[39m[31m</html>[39m[31m\n
+[39m[39;1m
+
+  Not to contain: [39;22m[32mBudi Santoso[39m
+
+  at [32mtests\Feature\DashboardMetricsTest.php[39m:[32m176[39m
+    172Ôûò 
+    173Ôûò         // Admin dashboard must not render fabricated fallback literals
+    174Ôûò         $adminResponse = $this->actingAs($this->adminUser)->get(route('admin.dashboard'));
+    175Ôûò         $adminResponse->assertStatus(200);
+  Ô×£ 176Ôûò         $adminResponse->assertDontSee('Budi Santoso');
+    177Ôûò         $adminResponse->assertDontSee('Matematika Wajib');
+    178Ôûò         $adminResponse->assertDontSee('X-A');
+    179Ôûò 
+    180Ôûò         // 2. Insert missing-relation schedule for Guru Dashboard
+
+
+  [90mTests:[39m    [31;1m1 failed[39;22m[90m (2 assertions)[39m
+  [90mDuration:[39m [39m0.91s[39m
+

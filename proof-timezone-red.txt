@@ -1,0 +1,29 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\SchoolTimezoneTest[39m
+  [31;1mÔ¿»[39;22m[90m [39m[90mschool timezone is configured to asia jakarta[39m[90m                                                               [39m [90m0.33s[39m  
+  [31mÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\SchoolTimezoneTest[22m [90m>[39m school timezone is configured to asia jakarta                             
+[39;1m  Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'Asia/Jakarta'
++'UTC'[39;22m
+
+  at [32mtests\Feature\SchoolTimezoneTest.php[39m:[32m18[39m
+     14Ôûò     }
+     15Ôûò 
+     16Ôûò     public function test_school_timezone_is_configured_to_asia_jakarta(): void
+     17Ôûò     {
+  Ô×£  18Ôûò         $this->assertSame('Asia/Jakarta', config('app.timezone'));
+     19Ôûò 
+     20Ôûò         Carbon::setTestNow(Carbon::parse('2026-10-12 23:30:00', 'UTC'));
+     21Ôûò         $this->assertSame('2026-10-13', today()->toDateString());
+     22Ôûò
+
+  [33m1   [39m[39;1mtests\Feature\SchoolTimezoneTest.php[39;22m:[39;1m18[39;22m
+
+
+  [90mTests:[39m    [31;1m1 failed[39;22m[90m (1 assertions)[39m
+  [90mDuration:[39m [39m0.77s[39m
+

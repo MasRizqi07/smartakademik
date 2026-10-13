@@ -1,0 +1,4 @@
+d6a62db phase-0: add remediation spec
+
+ docs/remediation/master_remediation_prompt.md | 340 ++++++++++++++++++++++++++
+ 1 file changed, 340 insertions(+)
