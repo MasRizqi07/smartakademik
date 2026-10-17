@@ -110,7 +110,7 @@
                 $userGuru = \App\Models\Guru::where('user_id', auth()->id())->first();
                 $guruSchedules = $guruSchedules ?? ($userGuru 
                     ? \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->where('guru_id', $userGuru->id)->get()
-                    : \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->take(3)->get());
+                    : collect());
             @endphp
 
             @forelse($guruSchedules as $idx => $sched)

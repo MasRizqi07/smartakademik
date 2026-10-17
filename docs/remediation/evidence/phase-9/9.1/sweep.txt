@@ -1,0 +1,1 @@
+resources/views/guru/dashboard.blade.php:113:                    : \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->take(3)->get());

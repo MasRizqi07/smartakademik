@@ -173,6 +173,35 @@ class DashboardMetricsTest extends TestCase
         $guruView->assertDontSee('Matematika');
         $guruView->assertDontSee('X-A');
     }
+
+    public function test_guru_without_guru_record_sees_no_jadwal_on_dashboard(): void
+    {
+        JadwalPelajaran::query()->delete();
+
+        // Distinctive foreign subject and class for another guru
+        $foreignKelas = Kelas::create(['tingkat' => 'XII', 'nama_kelas' => 'XII-ForeignScope']);
+        $foreignMapel = Mapel::create(['kode_mapel' => 'MAP-FOREIGN', 'nama_mapel' => 'Astronomi Khusus']);
+        $foreignGuru = Guru::create(['nip_nuptk' => 'NIP-FOREIGN-01', 'nama' => 'Guru Asing']);
+
+        JadwalPelajaran::create([
+            'kelas_id' => $foreignKelas->id,
+            'mapel_id' => $foreignMapel->id,
+            'guru_id' => $foreignGuru->id,
+            'hari' => 'Senin',
+            'jam_ke' => 1,
+            'waktu_mulai' => '07:00',
+            'waktu_selesai' => '08:30',
+        ]);
+
+        $guruWithoutRecord = User::factory()->create();
+        $guruWithoutRecord->assignRole('guru');
+
+        $response = $this->actingAs($guruWithoutRecord)->get(route('guru.dashboard'));
+        $response->assertStatus(200);
+        $response->assertDontSee('Astronomi Khusus');
+        $response->assertDontSee('XII-ForeignScope');
+        $response->assertDontSee('Guru Asing');
+    }
 }
 
 

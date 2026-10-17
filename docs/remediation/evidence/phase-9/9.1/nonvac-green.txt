@@ -1,0 +1,12 @@
+PHPUnit 12.5.33 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.9
+Configuration: D:\MY CODE\ANTIGRAVITY\PHP\smartakademik\phpunit.xml
+
+Time: 00:00.711, Memory: 60.00 MB
+
+[4mDashboard Metrics (Tests\Feature\DashboardMetrics)[0m
+[32m ✔ [0mGuru without guru record sees no jadwal on dashboard
+
+[30;42mOK (1 test, 4 assertions)[0m
+{"tool":"phpunit","result":"passed","tests":1,"passed":1,"assertions":4,"duration_ms":709}

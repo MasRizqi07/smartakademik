@@ -1,0 +1,13 @@
+diff --git b/resources/views/guru/dashboard.blade.php a/resources/views/guru/dashboard.blade.php
+index 72ab7fb..9d89993 100644
+--- b/resources/views/guru/dashboard.blade.php
++++ a/resources/views/guru/dashboard.blade.php
+@@ -110,7 +110,7 @@
+                 $userGuru = \App\Models\Guru::where('user_id', auth()->id())->first();
+                 $guruSchedules = $guruSchedules ?? ($userGuru 
+                     ? \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->where('guru_id', $userGuru->id)->get()
+-                    : collect());
++                    : \App\Models\JadwalPelajaran::with(['kelas', 'mapel'])->take(3)->get());
+             @endphp
+ 
+             @forelse($guruSchedules as $idx => $sched)
