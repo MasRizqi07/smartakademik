@@ -6,7 +6,7 @@ Dokumen ini mendokumentasikan arsitektur teknis, desain data, model otorisasi, d
 
 ## 1. Ikhtisar Arsitektur (High-Level Architecture)
 
-SmartAkademik dibangun di atas arsitektur monolitik modern yang reaktif (**Modern Reactive Monolith**) memanfaatkan ekosistem **Laravel 11**, **Livewire 3**, dan **Tailwind CSS**. Arsitektur ini dipilih untuk meminimalkan latensi jaringan dan kompleksitas state synchronization tanpa perlu memisahkan backend API dan frontend SPA.
+SmartAkademik dibangun di atas arsitektur monolitik modern yang reaktif (**Modern Reactive Monolith**) memanfaatkan ekosistem **Laravel 13**, **Livewire 3**, dan **Tailwind CSS**. Arsitektur ini dipilih untuk meminimalkan latensi jaringan dan kompleksitas state synchronization tanpa perlu memisahkan backend API dan frontend SPA.
 
 ```mermaid
 graph TB

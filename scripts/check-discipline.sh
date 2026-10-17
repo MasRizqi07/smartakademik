@@ -12,6 +12,9 @@ echo "decoration_live=$decor"
 lit=$(grep -rEn ">[[:space:]]*[0-9]+([.,][0-9]+)?[[:space:]]*%?[[:space:]]*<|^[[:space:]]+[0-9]+([.,][0-9]+)?[[:space:]]*%?[[:space:]]*$" $LIVE --include=*.blade.php | grep -vE "/($EXCL)\.blade\.php|import-excel\.blade\.php|<svg|<path" | wc -l)
 echo "static_numeric_literals_live=$lit"
 [ "$lit" -eq 0 ] || fail=1
+stale=$(grep -rEn "Laravel[ -]1[0-2]|[Ll]aravel-1[0-2]\.x|PHP[ -]8\.2" README.md docs --include=*.md | grep -vE "^docs/(remediation|Design)/" | wc -l)
+echo "stale_version_claims_docs=$stale"
+[ "$stale" -eq 0 ] || fail=1
 for c in $(grep -rEoh "(bg|text|border|ring)-(brand|status-(hadir|izin|sakit|alfa))(-hover|-surface|-dark)?/[0-9]+" $LIVE --include=*.blade.php | sort -u); do
   esc=$(printf '%s' "$c" | sed 's#/#\\\\/#g')
   grep -q "\.$esc" public/build/assets/*.css || { echo "MISSING: $c"; fail=1; }

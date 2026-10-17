@@ -17,7 +17,7 @@ php artisan test
 - **Total Pengujian:** 95 Tests
 - **Total Assertion:** 376 Assertions
 - **Tingkat Kelulusan:** 100% PASS (0 Failed, 0 Skipped)
-- **Framework:** PHPUnit 11 / Laravel Testing Framework dengan SQLite In-Memory Isolation
+- **Framework:** PHPUnit 12 / Laravel Testing Framework dengan SQLite In-Memory Isolation
 
 ---
 

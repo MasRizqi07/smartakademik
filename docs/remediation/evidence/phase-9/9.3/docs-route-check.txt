@@ -1,0 +1,69 @@
+Total Registered Routes:  42
+--- Registered Route URIs ---
+/
+admin/dashboard
+admin/event-ujian
+admin/guru
+admin/import
+admin/jadwal
+admin/kelas
+admin/laporan
+admin/mapel
+admin/pengaturan
+admin/siswa
+admin/users
+confirm-password
+dashboard
+forgot-password
+guru/absensi
+guru/dashboard
+guru/jadwal
+guru/nilai
+guru/profil
+livewire/livewire.js
+livewire/livewire.min.js.map
+livewire/preview-file/{filename}
+livewire/update
+livewire/upload-file
+login
+portal
+profile
+register
+reset-password/{token}
+siswa/dashboard
+storage/{path}
+storage/{path}
+up
+verify-email
+verify-email/{id}/{hash}
+waka/dashboard
+waka/event-ujian
+waka/jadwal
+waka/laporan
+waka/rekap-absensi
+waka/rekap-nilai
+
+--- Checking Routes Cited in Docs ---
+VALID: /login -> matches login (login)
+VALID: /portal -> matches portal (portal)
+VALID: /dashboard -> matches dashboard (dashboard)
+VALID: /admin/dashboard -> matches admin/dashboard (admin.dashboard)
+VALID: /admin/siswa -> matches admin/siswa (admin.siswa)
+VALID: /admin/guru -> matches admin/guru (admin.guru)
+VALID: /admin/kelas -> matches admin/kelas (admin.kelas)
+VALID: /admin/mapel -> matches admin/mapel (admin.mapel)
+VALID: /admin/import -> matches admin/import (admin.import)
+VALID: /admin/pengaturan -> matches admin/pengaturan (admin.pengaturan)
+VALID: /admin/event-ujian -> matches admin/event-ujian (admin.event-ujian)
+VALID: /admin/users -> matches admin/users (admin.users)
+VALID: /guru/dashboard -> matches guru/dashboard (guru.dashboard)
+VALID: /guru/absensi -> matches guru/absensi (guru.absensi)
+VALID: /guru/jadwal -> matches guru/jadwal (guru.jadwal)
+VALID: /guru/nilai -> matches guru/nilai (guru.nilai)
+VALID: /guru/profil -> matches guru/profil (guru.profil)
+VALID: /waka/dashboard -> matches waka/dashboard (waka.dashboard)
+VALID: /waka/jadwal -> matches waka/jadwal (waka.jadwal)
+VALID: /waka/laporan -> matches waka/laporan (waka.laporan)
+VALID: /waka/rekap-absensi -> matches waka/rekap-absensi (waka.rekap-absensi)
+VALID: /waka/rekap-nilai -> matches waka/rekap-nilai (waka.rekap-nilai)
+VALID: /siswa/dashboard -> matches siswa/dashboard (siswa.dashboard)

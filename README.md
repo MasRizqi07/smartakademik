@@ -1,7 +1,7 @@
 # SmartAkademik — MAN 4 Jombang
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="220" alt="Laravel 11">
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="220" alt="Laravel 13">
   <br>
   <strong>Platform Operasional Akademik & Presensi Harian Siswa Berbasis Mobile-First</strong>
   <br>
@@ -9,11 +9,10 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.2%20%7C%208.3-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP Version">
-  <img src="https://img.shields.io/badge/Laravel-11.x-FF2D20?style=flat-square&logo=laravel&logoColor=white" alt="Laravel Framework">
+  <img src="https://img.shields.io/badge/PHP-%5E8.3-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP Version">
+  <img src="https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel&logoColor=white" alt="Laravel Framework">
   <img src="https://img.shields.io/badge/Livewire-3.x-FB70A9?style=flat-square&logo=livewire&logoColor=white" alt="Livewire 3">
   <img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/Tests-95%20Passed%20(376%20assertions)-success?style=flat-square" alt="Test Suite">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
 </p>
 
@@ -74,21 +73,21 @@ graph TD
 
 | Lapisan | Teknologi | Deskripsi |
 |---|---|---|
-| **Backend Framework** | Laravel 11.x | PHP 8.2+ dengan Eloquent ORM & Strict Types |
+| **Backend Framework** | Laravel 13.x | PHP ^8.3 dengan Eloquent ORM & Strict Types |
 | **Reactivity Layer** | Livewire 3.x | Single-Page experience tanpa API boilerplate |
 | **Frontend Styling** | Tailwind CSS 3.4 | Atomic CSS dengan semantic design token |
 | **Authentication & RBAC** | Laravel Breeze & Spatie Permission | Multi-role protection pada route dan method level |
 | **Database** | SQLite (Dev/Test) / MySQL (Production) | Transaksional ACID dengan composite unique constraints |
 | **Timezone** | `Asia/Jakarta` (WIB, UTC+7) | Penyelarasan waktu madrasah Jombang |
 | **Build Tooling** | Vite 5.x | HMR cepat dan bundle css/js teroptimasi |
-| **Quality Assurance** | PHPUnit 11 & Custom Discipline Script | 95 tes fitur/unit dengan pengujian non-vacuity |
+| **Quality Assurance** | PHPUnit 12 & Custom Discipline Script | Pengujian fitur/unit dengan pengujian non-vacuity |
 
 ---
 
 ## 4. Persyaratan Sistem (Prerequisites)
 
 Sebelum menjalankan aplikasi di lingkungan lokal atau server produksi, pastikan komponen berikut telah terpasang:
-- **PHP** $\ge$ 8.2 (ekstensi wajib: `pdo_sqlite`, `pdo_mysql`, `mbstring`, `xml`, `curl`, `zip`, `fileinfo`)
+- **PHP** $\ge$ 8.3 (ekstensi wajib: `pdo_sqlite`, `pdo_mysql`, `mbstring`, `xml`, `curl`, `zip`, `fileinfo`)
 - **Composer** $\ge$ 2.6
 - **Node.js** $\ge$ 18.x dan **NPM** $\ge$ 9.x
 - **Git**
