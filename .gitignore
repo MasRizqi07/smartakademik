@@ -25,3 +25,10 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+/scratch/
+/test-output.txt
+/test-testdox.txt
+/stats-*.txt
+/proof-*.txt
+/inventory-*.txt
