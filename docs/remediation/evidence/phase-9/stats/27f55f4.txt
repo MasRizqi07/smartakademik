@@ -1,0 +1,5 @@
+27f55f4 phase-8.3: scope guru jadwal view to own schedule only
+
+ app/Livewire/Waka/JadwalManager.php |  37 ++++++++++--
+ tests/Feature/JadwalCRUDTest.php    | 117 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 149 insertions(+), 5 deletions(-)

@@ -1,0 +1,11 @@
+8db6431 phase-9.3: align documentation with actual framework versions and school rules
+
+ README.md                                          | 13 ++--
+ docs/ARCHITECTURE.md                               |  2 +-
+ docs/QA_REVIEW_GUIDE.md                            |  2 +-
+ .../evidence/phase-9/9.3/check-discipline.txt      |  5 ++
+ .../evidence/phase-9/9.3/docs-route-check.txt      | 69 ++++++++++++++++++++++
+ docs/remediation/evidence/phase-9/9.3/meta.txt     |  7 +++
+ docs/remediation/evidence/phase-9/9.3/versions.txt | 34 +++++++++++
+ scripts/check-discipline.sh                        |  3 +
+ 8 files changed, 126 insertions(+), 9 deletions(-)

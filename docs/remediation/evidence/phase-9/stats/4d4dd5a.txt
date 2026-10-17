@@ -1,0 +1,6 @@
+4d4dd5a phase-7.4: replace fabricated fallbacks with dashes and add non-vacuity test
+
+ resources/views/admin/dashboard.blade.php | 38 ++++++++-----------------------
+ resources/views/guru/dashboard.blade.php  | 34 +++++++--------------------
+ tests/Feature/DashboardMetricsTest.php    | 32 ++++++++++++++++++++++++++
+ 3 files changed, 50 insertions(+), 54 deletions(-)

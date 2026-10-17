@@ -1,0 +1,10 @@
+720ada1 docs: upgrade project documentation with README, ARCHITECTURE, DESIGN, QA review guide, and user manual
+
+ ARCHITECTURE.md         |  16 +++
+ DESIGN.md               |  12 +++
+ README.md               | 218 ++++++++++++++++++++++++++++++++++------
+ docs/ARCHITECTURE.md    | 262 ++++++++++++++++++++++++++++++++++++++++++++++++
+ docs/DESIGN.md          | 141 ++++++++++++++++++++++++++
+ docs/QA_REVIEW_GUIDE.md | 114 +++++++++++++++++++++
+ docs/USER_MANUAL.md     | 122 ++++++++++++++++++++++
+ 7 files changed, 853 insertions(+), 32 deletions(-)

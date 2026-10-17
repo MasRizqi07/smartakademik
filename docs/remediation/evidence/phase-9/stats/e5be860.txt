@@ -1,0 +1,13 @@
+e5be860 phase-9.1: guru dashboard empty state when no guru record
+
+ docs/remediation/evidence/phase-9/9.1/meta.txt     |   7 +
+ .../evidence/phase-9/9.1/nonvac-diff.txt           |  13 ++
+ .../evidence/phase-9/9.1/nonvac-green.txt          |  12 ++
+ .../evidence/phase-9/9.1/nonvac-red.txt            |   1 +
+ .../evidence/phase-9/9.1/nonvac-restored-diff.txt  |   0
+ docs/remediation/evidence/phase-9/9.1/sweep.md     |  14 ++
+ docs/remediation/evidence/phase-9/9.1/sweep.txt    |   1 +
+ docs/remediation/evidence/phase-9/9.1/tests.txt    | 153 +++++++++++++++++++++
+ resources/views/guru/dashboard.blade.php           |   2 +-
+ tests/Feature/DashboardMetricsTest.php             |  29 ++++
+ 10 files changed, 231 insertions(+), 1 deletion(-)

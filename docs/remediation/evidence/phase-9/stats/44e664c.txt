@@ -1,0 +1,6 @@
+44e664c feat(waka): optimize LaporanAkademik N+1 queries, remove fake mock fallbacks, and add feature tests
+
+ app/Livewire/Waka/LaporanAkademik.php              | 142 ++++++++----
+ .../views/livewire/waka/laporan-akademik.blade.php |  50 +++--
+ tests/Feature/LaporanAkademikTest.php              | 237 +++++++++++++++++++++
+ 3 files changed, 378 insertions(+), 51 deletions(-)

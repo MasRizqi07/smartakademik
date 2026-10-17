@@ -1,0 +1,21 @@
+d6a62db phase-0: add remediation spec
+28d83a3 phase-1: S1 absensi safety and jadwal rbac
+a7becf7 phase-2: S2 gate deferred public pages
+6e68033 phase-3: S3a token alpha support and semantic hue migration
+75ea461 phase-4: S3b remove decoration from live screens
+a927d93 phase-5: verification and repo memory
+44e664c feat(waka): optimize LaporanAkademik N+1 queries, remove fake mock fallbacks, and add feature tests
+93d3f60 feat: add student dashboard, public layout, Waka reporting modules, and associated tests
+4f33457 phase-6.3: absensi save whitelist and waka jadwal conflict tests
+68ed851 phase-6.4: complete token migration for blue indigo purple
+4d4dd5a phase-7.4: replace fabricated fallbacks with dashes and add non-vacuity test
+571c9f7 phase-8.1: configure school timezone Asia/Jakarta
+de1e0e6 phase-8.2: restrict attendance entry to today only
+27f55f4 phase-8.3: scope guru jadwal view to own schedule only
+8aa28a2 phase-8.4: delete orphan Admin JadwalManager component and view
+6a71841 feat: implement academic system enhancements, UI token migration, and comprehensive test coverage
+720ada1 docs: upgrade project documentation with README, ARCHITECTURE, DESIGN, QA review guide, and user manual
+b5fd94d phase-9.0: baseline evidence
+e5be860 phase-9.1: guru dashboard empty state when no guru record
+a55b885 phase-9.2: clean repository root and organize evidence
+8db6431 phase-9.3: align documentation with actual framework versions and school rules

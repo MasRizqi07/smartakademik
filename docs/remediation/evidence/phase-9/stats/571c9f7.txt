@@ -1,0 +1,6 @@
+571c9f7 phase-8.1: configure school timezone Asia/Jakarta
+
+ .env.example                         |  1 +
+ config/app.php                       |  2 +-
+ tests/Feature/SchoolTimezoneTest.php | 25 +++++++++++++++++++++++++
+ 3 files changed, 27 insertions(+), 1 deletion(-)

@@ -1,0 +1,6 @@
+8aa28a2 phase-8.4: delete orphan Admin JadwalManager component and view
+
+ app/Livewire/Admin/JadwalManager.php               | 159 ----------------
+ .../views/livewire/admin/jadwal-manager.blade.php  | 211 ---------------------
+ tests/Feature/JadwalCRUDTest.php                   |   7 +-
+ 3 files changed, 3 insertions(+), 374 deletions(-)

@@ -1,0 +1,9 @@
+b5fd94d phase-9.0: baseline evidence
+
+ .../evidence/phase-9/9.0/check-discipline.txt      |   4 +
+ docs/remediation/evidence/phase-9/9.0/git-log.txt  |   2 +
+ .../evidence/phase-9/9.0/git-status.txt            |   8 ++
+ .../evidence/phase-9/9.0/ls-tree-root.txt          |  64 +++++++++
+ docs/remediation/evidence/phase-9/9.0/meta.txt     |   7 +
+ docs/remediation/evidence/phase-9/9.0/tests.txt    | 152 +++++++++++++++++++++
+ 6 files changed, 237 insertions(+)

@@ -1,0 +1,17 @@
+93d3f60 feat: add student dashboard, public layout, Waka reporting modules, and associated tests
+
+ app/Livewire/Siswa/SiswaDashboard.php              |  33 +++++
+ app/Livewire/Waka/RekapAbsensi.php                 |  28 ++++
+ app/Livewire/Waka/RekapNilai.php                   |  44 ++++--
+ resources/views/admin/dashboard.blade.php          |  11 +-
+ resources/views/guru/dashboard.blade.php           |  24 +++-
+ resources/views/layouts/public.blade.php           |   4 +-
+ .../views/livewire/guru/profil-guru.blade.php      |   2 +-
+ .../views/livewire/siswa/siswa-dashboard.blade.php |  14 +-
+ .../views/livewire/waka/rekap-absensi.blade.php    |  12 +-
+ .../views/livewire/waka/rekap-nilai.blade.php      |  20 ++-
+ scripts/check-discipline.sh                        |   3 +
+ tests/Feature/DashboardMetricsTest.php             | 148 +++++++++++++++++++++
+ tests/Feature/SiswaDashboardTest.php               | 110 +++++++++++++++
+ tests/Feature/WakaTest.php                         |  98 ++++++++++++++
+ 14 files changed, 517 insertions(+), 34 deletions(-)
