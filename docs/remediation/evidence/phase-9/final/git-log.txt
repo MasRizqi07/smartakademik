@@ -1,0 +1,8 @@
+0d3d610 phase-9.5: capture mobile screenshots with current date
+bd31072 phase-9.4: regenerate commit stats and authorization inventory
+8db6431 phase-9.3: align documentation with actual framework versions and school rules
+a55b885 phase-9.2: clean repository root and organize evidence
+e5be860 phase-9.1: guru dashboard empty state when no guru record
+b5fd94d phase-9.0: baseline evidence
+720ada1 docs: upgrade project documentation with README, ARCHITECTURE, DESIGN, QA review guide, and user manual
+6a71841 feat: implement academic system enhancements, UI token migration, and comprehensive test coverage
