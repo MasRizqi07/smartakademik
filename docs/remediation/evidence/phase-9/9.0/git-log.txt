@@ -1,0 +1,2 @@
+720ada1 docs: upgrade project documentation with README, ARCHITECTURE, DESIGN, QA review guide, and user manual
+6a71841 feat: implement academic system enhancements, UI token migration, and comprehensive test coverage

@@ -1,0 +1,7 @@
+PHP 8.5.9 (cli) (built: Jul 28 2026 13:21:24) (ZTS Visual C++ 2022 x64)
+Copyright (c) The PHP Group
+Built by The PHP Group
+Zend Engine v4.5.9, Copyright (c) Zend Technologies
+    with Zend OPcache v8.5.9, Copyright (c), by Zend Technologies
+720ada14f8b1135d4f8a37bb802f24768310a9f5
+2026-10-17 17:56:11 +07:00

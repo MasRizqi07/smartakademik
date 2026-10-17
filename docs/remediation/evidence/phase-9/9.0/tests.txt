@@ -1,0 +1,152 @@
+PHPUnit 12.5.33 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.9
+Configuration: D:\MY CODE\ANTIGRAVITY\PHP\smartakademik\phpunit.xml
+
+Time: 00:16.146, Memory: 82.00 MB
+
+[4mAbsensi Guru (Tests\Feature\AbsensiGuru)[0m
+[32m ✔ [0mGuru can see their own jadwal and siswa
+[32m ✔ [0mGuru can save absensi
+[32m ✔ [0mMethod level guard denies non owner direct mutation
+[32m ✔ [0mSet presence rejects invalid status
+[32m ✔ [0mSet presence rejects student from different class
+[32m ✔ [0mMark all hadir is local state only and preserves existing status
+[32m ✔ [0mReset all and save note by non owner forbidden
+[32m ✔ [0mGuru with no guru record sees empty jadwal list
+[32m ✔ [0mSave aborts with 422 when status is not whitelisted
+[32m ✔ [0mTanggal is forced to today on mount
+[32m ✔ [0mTanggal cannot be modified from client
+[32m ✔ [0mWrites are rejected after day rollover
+
+[4mAuthentication (Tests\Feature\Auth\Authentication)[0m
+[32m ✔ [0mLogin screen can be rendered
+[32m ✔ [0mUsers can authenticate using the login screen
+[32m ✔ [0mUsers can not authenticate with invalid password
+[32m ✔ [0mNavigation menu can be rendered
+[32m ✔ [0mUsers can logout
+
+[4mDashboard Metrics (Tests\Feature\DashboardMetrics)[0m
+[32m ✔ [0mAdmin dashboard renders computed attendance rate and no fabricated literals
+[32m ✔ [0mGuru dashboard renders computed metrics and no fabricated literals
+[32m ✔ [0mProfil guru renders computed metrics and no fabricated literals
+[32m ✔ [0mDashboards render no fabricated fallback strings when jadwal relations missing
+
+[4mEmail Verification (Tests\Feature\Auth\EmailVerification)[0m
+[32m ✔ [0mEmail verification screen can be rendered
+[32m ✔ [0mEmail can be verified
+[32m ✔ [0mEmail is not verified with invalid hash
+
+[4mEvent Ujian (Tests\Feature\EventUjian)[0m
+[32m ✔ [0mEvent ujian persists across fresh component instance
+[32m ✔ [0mDelete event ujian removes from database
+[32m ✔ [0mFilter and search event ujian
+
+[4mExample (Tests\Feature\Example)[0m
+[32m ✔ [0mThe application returns a successful response
+
+[4mExample (Tests\Unit\Example)[0m
+[32m ✔ [0mThat true is true
+
+[4mGuru Import (Tests\Feature\GuruImport)[0m
+[32m ✔ [0mGuru import creates user with nip as password and must change password flag
+[32m ✔ [0mUser with must change password is redirected to profile before accessing dashboard
+
+[4mImport Excel (Tests\Feature\ImportExcel)[0m
+[32m ✔ [0mCan download templates
+[32m ✔ [0mSiswa import logic
+[32m ✔ [0mRetroactive siswa user account provisioning
+[32m ✔ [0mGuru import logic
+[32m ✔ [0mKelas import logic
+[32m ✔ [0mMapel import logic
+[32m ✔ [0mImport excel component handles validation failures gracefully
+[32m ✔ [0mImport excel component successful import
+
+[4mJadwal CRUD (Tests\Feature\JadwalCRUD)[0m
+[32m ✔ [0mCan create jadwal
+[32m ✔ [0mCannot create jadwal with guru clash
+[32m ✔ [0mGuru cannot mutate jadwal on waka jadwal manager
+[32m ✔ [0mWaka and admin can manage jadwal on waka jadwal manager
+[32m ✔ [0mWaka jadwal manager detects guru clash
+[32m ✔ [0mWaka jadwal manager detects kelas clash
+[32m ✔ [0mGuru sees only own jadwal on waka jadwal manager
+[32m ✔ [0mGuru without guru record sees no jadwal
+[32m ✔ [0mWaka and admin still see all jadwal
+
+[4mLaporan Akademik (Tests\Feature\LaporanAkademik)[0m
+[32m ✔ [0mWaka and admin can access laporan akademik
+[32m ✔ [0mGuru and siswa cannot access laporan akademik
+[32m ✔ [0mLaporan akademik has constant queries with multiple classes
+[32m ✔ [0mLaporan akademik reports truthful aggregates without mock fallbacks
+[32m ✔ [0mLaporan akademik calculates correct math when data exists
+[32m ✔ [0mLaporan akademik can export csv
+
+[4mMaster Data CRUD (Tests\Feature\MasterDataCRUD)[0m
+[32m ✔ [0mCan create mapel
+[32m ✔ [0mCan create kelas
+[32m ✔ [0mCan create guru
+[32m ✔ [0mCan create siswa with user account
+
+[4mNilai Guru (Tests\Feature\NilaiGuru)[0m
+[32m ✔ [0mGuru can save nilai formatif
+
+[4mPassword Confirmation (Tests\Feature\Auth\PasswordConfirmation)[0m
+[32m ✔ [0mConfirm password screen can be rendered
+[32m ✔ [0mPassword can be confirmed
+[32m ✔ [0mPassword is not confirmed with invalid password
+
+[4mPassword Reset (Tests\Feature\Auth\PasswordReset)[0m
+[32m ✔ [0mReset password link screen can be rendered
+[32m ✔ [0mReset password link can be requested
+[32m ✔ [0mReset password screen can be rendered
+[32m ✔ [0mPassword can be reset with valid token
+
+[4mPassword Update (Tests\Feature\Auth\PasswordUpdate)[0m
+[32m ✔ [0mPassword can be updated
+[32m ✔ [0mCorrect password must be provided to update password
+
+[4mPengaturan (Tests\Feature\Pengaturan)[0m
+[32m ✔ [0mPengaturan persists across fresh component instance
+[32m ✔ [0mPengaturan can update semester and kbm duration
+
+[4mProfile (Tests\Feature\Profile)[0m
+[32m ✔ [0mProfile page is displayed
+[32m ✔ [0mProfile information can be updated
+[32m ✔ [0mEmail verification status is unchanged when the email address is unchanged
+[32m ✔ [0mUser can delete their account
+[32m ✔ [0mCorrect password must be provided to delete account
+
+[4mPublic Gating (Tests\Feature\PublicGating)[0m
+[32m ✔ [0mDeferred public pages return 404 when marketing feature disabled
+[32m ✔ [0mHome redirects to portal and core entrypoints return 200
+[32m ✔ [0mFour role dashboards render successfully without route exceptions
+
+[4mRBAC (Tests\Feature\RBAC)[0m
+[32m ✔ [0mGuru cannot access absensi for other gurus class
+[32m ✔ [0mGuru cannot access nilai for other gurus class
+[32m ✔ [0mSiswa cannot access crud endpoints
+[32m ✔ [0mGuru cannot access admin endpoints
+
+[4mRegistration (Tests\Feature\Auth\Registration)[0m
+[32m ✔ [0mRegistration screen can be rendered
+[32m ✔ [0mNew users can register
+
+[4mSchool Timezone (Tests\Feature\SchoolTimezone)[0m
+[32m ✔ [0mSchool timezone is configured to asia jakarta
+
+[4mSiswa Dashboard (Tests\Feature\SiswaDashboard)[0m
+[32m ✔ [0mSiswa dashboard loads properly
+[32m ✔ [0mGuru cannot access siswa dashboard
+[32m ✔ [0mTwo students with different data see different computed values
+
+[4mWaka (Tests\Feature\Waka)[0m
+[32m ✔ [0mWaka can access jadwal manager
+[32m ✔ [0mWaka can access rekap absensi
+[32m ✔ [0mRekap absensi has constant queries with multiple students
+[32m ✔ [0mRekap nilai has constant queries with multiple students
+[32m ✔ [0mWaka can export rekap absensi csv
+[32m ✔ [0mRekap absensi renders computed kpi and no fabricated literals
+[32m ✔ [0mRekap nilai renders computed kpi and no fabricated literals
+
+[30;42mOK (95 tests, 376 assertions)[0m
+{"tool":"phpunit","result":"passed","tests":95,"passed":95,"assertions":376,"duration_ms":16155}
